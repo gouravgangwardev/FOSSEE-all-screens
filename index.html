@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8018,9 +8019,52 @@ html, body {
   align-self: center;
   white-space: nowrap;
 }
-/* Prevent .app overflow/scroll issues in merged context */
-.app.file-wrap { overflow: hidden; top: 33px; }
-#sec-login.on { top: 33px; }
+/* ══════════════════════════════════════════════════════
+   LAYOUT FIX — Navigation/Sidebar Overlap Resolution
+   ──────────────────────────────────────────────────────
+   ROOT CAUSE 1: No display:none default for .file-wrap
+     → All 4 sections (login, v3, 4s, cinematic) render
+       simultaneously. JS toggles .on but no CSS hides
+       the inactive sections. The 3 .app.file-wrap divs
+       are all position:fixed;inset:0;top:33px so they
+       fully stack on top of each other.
+   ROOT CAUSE 2: Login .page uses height:100vh / width:100vw
+     → Does not account for the fixed .snav (~31px tall),
+       so the login panel content is clipped under the bar.
+   ROOT CAUSE 3: #sec-login.on { top:33px } had no effect
+     → sec-login has no position:fixed, so top: has no effect.
+   ══════════════════════════════════════════════════════ */
+
+/* 1. Hide ALL section wrappers by default */
+.file-wrap {
+  display: none !important;
+}
+
+/* 2. App sections (already position:fixed in .app rule) — show as flex */
+.app.file-wrap.on {
+  display: flex !important;
+  position: fixed !important;
+  inset: 0 !important;
+  top: 33px !important;   /* offset below .snav */
+  overflow: hidden !important;
+}
+
+/* 3. Login section — give it the same fixed positioning as app sections */
+#sec-login.file-wrap.on {
+  display: block !important;
+  position: fixed !important;
+  inset: 0 !important;
+  top: 33px !important;   /* offset below .snav */
+  z-index: 10 !important;
+  overflow: hidden !important;
+}
+
+/* 4. Login .page must fill its fixed container, not the full 100vh
+      (100vh would overflow back under the snav) */
+#sec-login .page {
+  height: 100% !important;
+  width: 100% !important;
+}
 </style>
 </head>
 <body>
