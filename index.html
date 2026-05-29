@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8019,52 +8018,3985 @@ html, body {
   align-self: center;
   white-space: nowrap;
 }
-/* ══════════════════════════════════════════════════════
-   LAYOUT FIX — Navigation/Sidebar Overlap Resolution
-   ──────────────────────────────────────────────────────
-   ROOT CAUSE 1: No display:none default for .file-wrap
-     → All 4 sections (login, v3, 4s, cinematic) render
-       simultaneously. JS toggles .on but no CSS hides
-       the inactive sections. The 3 .app.file-wrap divs
-       are all position:fixed;inset:0;top:33px so they
-       fully stack on top of each other.
-   ROOT CAUSE 2: Login .page uses height:100vh / width:100vw
-     → Does not account for the fixed .snav (~31px tall),
-       so the login panel content is clipped under the bar.
-   ROOT CAUSE 3: #sec-login.on { top:33px } had no effect
-     → sec-login has no position:fixed, so top: has no effect.
-   ══════════════════════════════════════════════════════ */
+/* Prevent .app overflow/scroll issues in merged context */
+.app.file-wrap { overflow: hidden; top: 33px; }
+#sec-login.on { top: 33px; }
+</style>
 
-/* 1. Hide ALL section wrappers by default */
-.file-wrap {
+<!-- ══════════════════════════════════════════════════════════
+     FOSSEE ACE — MASTERPIECE ACADEMIC REFINEMENT SYSTEM
+     Visual refinement only. All architecture preserved.
+     Target: Sober, intelligent, scholarly, calm, readable.
+     Dark + Light mode. Zero futurism. Zero glow spectacle.
+══════════════════════════════════════════════════════════ -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── THEME TOGGLE BUTTON ── */
+#theme-toggle {
+  position: fixed;
+  top: 4px;
+  right: 12px;
+  z-index: 9999;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+#theme-toggle:hover {
+  background: rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.20);
+}
+
+/* ══════════════════════════════════════════════
+   DARK MODE (default)
+   Foundation: obsidian-plum, scholarly depth
+══════════════════════════════════════════════ */
+:root {
+  /* ── Core Backgrounds ── */
+  --bg-base:     #16161D;   /* deep obsidian foundation */
+  --bg-sec:      #1E1E28;   /* smoked-plum undertone — felt, not seen */
+  --bg-surface:  #252836;   /* primary card/panel surface */
+  --bg-elevated: #2E3142;   /* active/focused elevated surface */
+  --bg-raised:   #353849;   /* dialog/selection */
+
+  /* ── Typography ── */
+  --txt-heading: #F3F1ED;   /* warm off-white — human, not harsh */
+  --txt-body:    #D0D3DC;   /* comfortable long-session reading */
+  --txt-muted:   #9CA3AF;   /* quiet hierarchy */
+  --txt-dim:     #6B7280;   /* inactive / low priority */
+
+  /* ── Accent System ── */
+  --accent:      #6D5EF5;   /* refined indigo-violet, NOT neon */
+  --accent-soft: #8B7FFF;   /* hover / micro-interaction */
+  --accent-dim:  rgba(109,94,245,0.15);
+  --accent-line: rgba(109,94,245,0.30);
+
+  /* ── Status ── */
+  --success:     #1F8A70;   /* calm academic mastery */
+  --success-dim: rgba(31,138,112,0.15);
+  --success-line: rgba(31,138,112,0.30);
+  --warn:        #B07C1A;   /* muted amber */
+  --warn-dim:    rgba(176,124,26,0.12);
+  --warn-line:   rgba(176,124,26,0.28);
+  --danger:      #B03A4A;   /* restrained crimson */
+  --danger-dim:  rgba(176,58,74,0.12);
+  --danger-line: rgba(176,58,74,0.28);
+
+  /* ── Borders ── */
+  --border:      rgba(255,255,255,0.07);
+  --border-soft: rgba(255,255,255,0.04);
+  --border-accent: rgba(109,94,245,0.22);
+
+  /* ── Shadows — material depth, NOT glow ── */
+  --shadow-sm:   0 1px 3px rgba(0,0,0,0.35), 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-md:   0 2px 8px rgba(0,0,0,0.40), 0 10px 30px rgba(0,0,0,0.30);
+  --shadow-lg:   0 4px 16px rgba(0,0,0,0.45), 0 20px 50px rgba(0,0,0,0.35);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.40), 0 16px 40px rgba(0,0,0,0.25);
+
+  /* ── Accent glows (CONTROLLED — only active states) ── */
+  --glow-accent: 0 0 0 1px rgba(109,94,245,0.20), 0 0 16px rgba(109,94,245,0.08);
+  --glow-success: 0 0 0 1px rgba(31,138,112,0.20), 0 0 12px rgba(31,138,112,0.07);
+  --glow-warn:  0 0 0 1px rgba(176,124,26,0.18), 0 0 10px rgba(176,124,26,0.06);
+  --glow-danger: 0 0 0 1px rgba(176,58,74,0.18), 0 0 10px rgba(176,58,74,0.06);
+
+  /* ── Fonts ── */
+  --ff-head: 'Inter', system-ui, sans-serif;
+  --ff-body: 'Inter', system-ui, sans-serif;
+  --ff-mono: 'JetBrains Mono', monospace;
+  --ff-serif: 'Crimson Pro', Georgia, serif;
+}
+
+/* ── LIGHT MODE — Premium editorial intelligence platform ── */
+.light-mode {
+  /* ── Foundation: cool-neutral intelligent workspace ── */
+  --bg-base:     #F6F7FB;
+  --bg-sec:      #EEF1F6;
+  --bg-surface:  #FFFFFF;
+  --bg-elevated: #FCFCFD;
+  --bg-raised:   #F8FAFC;
+
+  /* ── Typography — editorial hierarchy ── */
+  --txt-heading: #111827;
+  --txt-body:    #475569;
+  --txt-muted:   #64748B;
+  --txt-dim:     #94A3B8;
+
+  /* ── Accent — academic indigo ── */
+  --accent:      #4F46E5;
+  --accent-soft: #6366F1;
+  --accent-dim:  rgba(79,70,229,0.08);
+  --accent-line: rgba(79,70,229,0.18);
+
+  /* ── Status ── */
+  --success:     #0F766E;
+  --success-dim: rgba(15,118,110,0.08);
+  --success-line: rgba(15,118,110,0.20);
+  --warn:        #B45309;
+  --warn-dim:    rgba(180,83,9,0.08);
+  --warn-line:   rgba(180,83,9,0.20);
+  --danger:      #B91C1C;
+  --danger-dim:  rgba(185,28,28,0.08);
+  --danger-line: rgba(185,28,28,0.20);
+
+  /* ── Borders ── */
+  --border:      rgba(148,163,184,0.14);
+  --border-soft: rgba(148,163,184,0.10);
+  --border-accent: rgba(79,70,229,0.22);
+
+  /* ── Premium shadow system — soft atmospheric editorial depth ── */
+  --shadow-sm:   0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05);
+  --shadow-md:   0 2px 6px rgba(15,23,42,0.05), 0 12px 32px rgba(99,102,241,0.08);
+  --shadow-lg:   0 4px 12px rgba(15,23,42,0.08), 0 24px 60px rgba(99,102,241,0.12);
+  --shadow-card: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05);
+
+  /* ── Focus states ── */
+  --glow-accent:  0 0 0 4px rgba(79,70,229,0.08);
+  --glow-success: 0 0 0 3px rgba(15,118,110,0.10);
+  --glow-warn:    0 0 0 3px rgba(180,83,9,0.10);
+  --glow-danger:  0 0 0 3px rgba(185,28,28,0.10);
+}
+
+/* ══════════════════════════════════════════════
+   GLOBAL FOUNDATION OVERRIDE
+══════════════════════════════════════════════ */
+
+/* Kill ALL atmospheric effects — we replace with material depth */
+#atm-grain,
+#atm-haze,
+#bg-cvs,
+.a-glow,
+.cybeam,
+.scanl {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Root body background — obsidian foundation with subtle vignette */
+html, body {
+  background: var(--bg-base) !important;
+  color: var(--txt-body) !important;
+  font-family: var(--ff-body) !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Subtle atmospheric undertone — the smoked-plum layer users feel, never see */
+body::before {
+  content: '' !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(109,94,245,0.028) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(30,30,40,0.6) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(20,20,30,0.5) 0%, transparent 52%) !important;
+}
+
+/* Light mode body */
+.light-mode body, body.light-mode {
+  background: var(--bg-base) !important;
+}
+.light-mode body::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(67,56,202,0.025) 0%, transparent 60%) !important;
+}
+
+/* ══════════════════════════════════════════════
+   SCREEN NAVIGATION BAR
+══════════════════════════════════════════════ */
+.snav {
+  background: var(--bg-sec) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: none !important;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.25) !important;
+}
+.snav::after { display: none !important; }
+
+.snav-lbl {
+  font-family: var(--ff-body) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.18em !important;
+  color: var(--txt-dim) !important;
+  font-weight: 600 !important;
+}
+
+.snav-sep {
+  font-size: 8px !important;
+  letter-spacing: 0.18em !important;
+  color: var(--txt-dim) !important;
+  border-left-color: var(--border) !important;
+}
+
+.sbtn {
+  font-family: var(--ff-body) !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  color: var(--txt-muted) !important;
+  border: 1px solid transparent !important;
+  border-radius: 5px !important;
+  background: none !important;
+  padding: 4px 10px !important;
+  transition: all 0.18s ease !important;
+  text-transform: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.sbtn:hover {
+  color: var(--txt-body) !important;
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+}
+.sbtn.on {
+  color: var(--accent-soft) !important;
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════
+   APP SHELL + SIDEBAR
+══════════════════════════════════════════════ */
+
+/* Sidebar */
+.sb {
+  background: var(--bg-sec) !important;
+  border-right: 1px solid var(--border) !important;
+  box-shadow: 2px 0 12px rgba(0,0,0,0.20) !important;
+}
+.sb::before, .sb::after { display: none !important; }
+
+/* Logo */
+.logo {
+  border-bottom: 1px solid var(--border-soft) !important;
+}
+.logo-icon {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-accent) !important;
+  box-shadow: none !important;
+  color: var(--accent-soft) !important;
+}
+.logo-icon::after { display: none !important; }
+.logo-n {
+  font-family: var(--ff-body) !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: 0.08em !important;
+}
+.logo-s {
+  font-size: 8px !important;
+  color: var(--accent-soft) !important;
+  opacity: 0.7 !important;
+  letter-spacing: 0.15em !important;
+  text-shadow: none !important;
+}
+
+/* Nav items */
+.nsect {
+  font-size: 8px !important;
+  letter-spacing: 0.20em !important;
+  color: var(--txt-dim) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+}
+.ni {
+  font-family: var(--ff-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: var(--txt-muted) !important;
+  border-left: 2px solid transparent !important;
+  letter-spacing: 0 !important;
+  transition: all 0.18s ease !important;
+  border-radius: 0 !important;
+}
+.ni svg {
+  opacity: 0.55 !important;
+  filter: none !important;
+}
+.ni:hover {
+  color: var(--txt-body) !important;
+  background: rgba(255,255,255,0.04) !important;
+}
+.light-mode .ni:hover {
+  background: rgba(0,0,0,0.04) !important;
+}
+.ni.on {
+  color: var(--accent-soft) !important;
+  background: var(--accent-dim) !important;
+  border-left-color: var(--accent) !important;
+  text-shadow: none !important;
+}
+.ni.on svg {
+  opacity: 0.90 !important;
+  filter: none !important;
+}
+
+/* Cursor items in sidebar */
+.ci {
+  font-size: 11px !important;
+  color: var(--txt-muted) !important;
+}
+.ci:hover { color: var(--txt-body) !important; }
+.ci.on { color: var(--txt-heading) !important; }
+
+.cdot {
+  width: 5px !important;
+  height: 5px !important;
+  background: var(--border) !important;
+  box-shadow: none !important;
+}
+.cdot.g {
+  background: var(--success) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.cdot.c {
+  background: var(--accent) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.ck {
+  color: var(--success) !important;
+  text-shadow: none !important;
+}
+.ca {
+  color: var(--accent-soft) !important;
+  text-shadow: none !important;
+}
+
+/* User bar */
+.ubar {
+  border-top: 1px solid var(--border-soft) !important;
+  background: transparent !important;
+}
+.av {
+  background: var(--bg-elevated) !important;
+  border: 1.5px solid var(--border-accent) !important;
+  box-shadow: none !important;
+}
+.un {
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  color: var(--txt-heading) !important;
+}
+.ur {
+  font-size: 9.5px !important;
+  color: var(--txt-dim) !important;
+}
+
+/* ══════════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════════ */
+.tb {
+  background: var(--bg-sec) !important;
+  border-bottom: 1px solid var(--border) !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+.tb::before, .tb::after { display: none !important; }
+
+.tb-bc {
+  font-size: 11.5px !important;
+  color: var(--txt-dim) !important;
+  font-weight: 400 !important;
+}
+.tb-bc span { color: var(--txt-muted) !important; }
+
+.tb-title {
+  font-family: var(--ff-body) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: 0.01em !important;
+  text-shadow: none !important;
+}
+.tb-sub {
+  font-size: 10.5px !important;
+  color: var(--txt-dim) !important;
+  letter-spacing: 0 !important;
+}
+
+/* Current unit badge */
+.cur-badge {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.cur-lbl {
+  color: var(--txt-dim) !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.12em !important;
+}
+.cur-val {
+  color: var(--accent-soft) !important;
+  font-size: 11.5px !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+/* Streak badge */
+.stk-badge {
+  background: var(--warn-dim) !important;
+  border: 1px solid var(--warn-line) !important;
+  color: var(--warn) !important;
+  box-shadow: none !important;
+}
+.stk-badge-0 {
+  background: var(--danger-dim) !important;
+  border: 1px solid var(--danger-line) !important;
+  color: var(--danger) !important;
+  box-shadow: none !important;
+}
+
+/* ══════════════════════════════════════════════
+   CONTENT AREA
+══════════════════════════════════════════════ */
+.cnt {
+  background: transparent !important;
+  padding: 18px 20px !important;
+  gap: 16px !important;
+}
+.cnt::-webkit-scrollbar { width: 4px !important; }
+.cnt::-webkit-scrollbar-thumb {
+  background: var(--border) !important;
+  border-radius: 2px !important;
+}
+.cnt::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+/* ══════════════════════════════════════════════
+   CARD MATERIAL SYSTEM — 3 levels
+══════════════════════════════════════════════ */
+
+/* Level 1: Primary card — important content */
+.gc {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow-card) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: box-shadow 0.20s ease, transform 0.20s ease, border-color 0.20s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.gc::before { display: none !important; }
+.gc::after { display: none !important; }
+
+/* Subtle top-edge separator line — material, not glow */
+.gc > *:first-child::before { display: none !important; }
+
+.gc:hover {
+  border-color: rgba(109,94,245,0.18) !important;
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(109,94,245,0.10) !important;
+  transform: translateY(-1px) !important;
+  background: var(--bg-surface) !important;
+}
+
+/* Light mode card */
+.light-mode .gc {
+  background: var(--bg-surface) !important;
+  border-color: var(--border) !important;
+}
+.light-mode .gc:hover {
+  border-color: rgba(67,56,202,0.16) !important;
+  box-shadow: var(--shadow-md), 0 0 0 1px rgba(67,56,202,0.08) !important;
+}
+
+/* Remove all holographic shimmer elements */
+.hs { display: none !important; }
+
+/* Corner bracket decorations — remove */
+.cb { display: none !important; }
+
+/* Level 2: Stat card / secondary surface */
+.stat-card, .kpi, .eb-param {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-soft) !important;
+  border-radius: 10px !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.stat-card::before, .stat-card::after,
+.kpi::before, .kpi::after { display: none !important; }
+
+/* Color tinted cards — academic, not gaming */
+.gc-grn {
+  background: var(--bg-surface) !important;
+  border-color: var(--success-line) !important;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(31,138,112,0.08) !important;
+}
+.gc-grn::before, .gc-grn::after { display: none !important; }
+
+.gc-red {
+  background: var(--bg-surface) !important;
+  border-color: var(--danger-line) !important;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(176,58,74,0.08) !important;
+}
+.gc-red::before, .gc-red::after { display: none !important; }
+
+.gc-gold {
+  background: var(--bg-surface) !important;
+  border-color: var(--warn-line) !important;
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(176,124,26,0.08) !important;
+}
+.gc-gold::before, .gc-gold::after { display: none !important; }
+
+/* ══════════════════════════════════════════════
+   TYPOGRAPHY SYSTEM
+   Editorial, scholarly, composed
+══════════════════════════════════════════════ */
+
+/* Kill all glow typography */
+.dv.c, .dv.g, .dv.a, .dv.r,
+.cur-val, .un, .stat-val.c, .stat-val.g, .stat-val.a,
+.wl-q-num, .wl-concept, .eng-act,
+.tc-num.ok, .tc-num.fl,
+.ck, .ca,
+.air-line {
+  text-shadow: none !important;
+}
+
+/* Section titles */
+.st {
+  font-family: var(--ff-body) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.3 !important;
+}
+.ss {
+  font-size: 11px !important;
+  color: var(--txt-muted) !important;
+  font-weight: 400 !important;
+}
+
+/* Hero title in cards */
+.hero-title {
+  font-family: var(--ff-body) !important;
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.01em !important;
+  text-shadow: none !important;
+}
+.hero-sub {
+  color: var(--txt-muted) !important;
+  font-size: 11px !important;
+}
+
+/* Card labels */
+.clbl {
+  font-size: 9px !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+  color: var(--txt-dim) !important;
+  font-weight: 600 !important;
+  margin-bottom: 14px !important;
+  gap: 6px !important;
+}
+
+/* Data rows */
+.dr {
+  border-bottom: 1px solid var(--border-soft) !important;
+  padding: 9px 0 !important;
+}
+.dk {
+  font-size: 11.5px !important;
+  color: var(--txt-muted) !important;
+  font-weight: 400 !important;
+}
+.dv {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  color: var(--txt-heading) !important;
+  text-shadow: none !important;
+}
+.dv.c { color: var(--accent-soft) !important; }
+.dv.g { color: var(--success) !important; }
+.dv.a { color: var(--warn) !important; }
+.dv.r { color: var(--danger) !important; }
+
+/* Stat values */
+.stat-lbl {
+  font-size: 9.5px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--txt-dim) !important;
+  margin-bottom: 6px !important;
+}
+.stat-val {
+  font-family: var(--ff-body) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1 !important;
+  text-shadow: none !important;
+}
+.stat-val.c { color: var(--accent-soft) !important; text-shadow: none !important; }
+.stat-val.g { color: var(--success) !important; text-shadow: none !important; }
+.stat-val.a { color: var(--warn) !important; text-shadow: none !important; }
+.stat-sub { font-size: 10.5px !important; color: var(--txt-dim) !important; }
+
+/* ══════════════════════════════════════════════
+   STATUS INDICATORS — no glow
+══════════════════════════════════════════════ */
+
+/* Dot indicators */
+.ldot {
+  width: 6px !important;
+  height: 6px !important;
+  border-radius: 50% !important;
+  animation: none !important;
+  flex-shrink: 0 !important;
+}
+.ldot.c { background: var(--accent) !important; box-shadow: none !important; animation: none !important; }
+.ldot.g { background: var(--success) !important; box-shadow: none !important; animation: none !important; }
+.ldot.r { background: var(--danger) !important; box-shadow: none !important; animation: none !important; }
+.ldot.a { background: var(--warn) !important; box-shadow: none !important; animation: none !important; }
+
+/* pdot (engine status) */
+.pdot {
+  background: var(--success) !important;
+  box-shadow: none !important;
+}
+.pdot::before, .pdot::after { display: none !important; }
+
+/* ══════════════════════════════════════════════
+   PROGRESS BARS — calm, academic
+══════════════════════════════════════════════ */
+
+.pb-wrap, .pbar-w, .wl-progress-bar {
+  height: 4px !important;
+  background: var(--border-soft) !important;
+  border-radius: 2px !important;
+}
+.pb-fill, .pbar-f, .wl-progress-fill {
+  height: 100% !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.pb-fill::after, .pbar-f::after {
   display: none !important;
 }
 
-/* 2. App sections (already position:fixed in .app rule) — show as flex */
-.app.file-wrap.on {
-  display: flex !important;
-  position: fixed !important;
-  inset: 0 !important;
-  top: 33px !important;   /* offset below .snav */
-  overflow: hidden !important;
+.pb-cy, .pbar-c { background: var(--accent) !important; box-shadow: none !important; }
+.pb-gn, .pbar-g { background: var(--success) !important; box-shadow: none !important; }
+.pb-rd { background: var(--danger) !important; box-shadow: none !important; }
+.pb-amb, .pbar-a { background: var(--warn) !important; box-shadow: none !important; }
+.pb-in { background: var(--accent) !important; box-shadow: none !important; }
+
+/* Where-you-left-off progress fill */
+.wl-progress-fill {
+  background: var(--accent) !important;
+  box-shadow: none !important;
+  animation: none !important;
 }
 
-/* 3. Login section — give it the same fixed positioning as app sections */
-#sec-login.file-wrap.on {
-  display: block !important;
-  position: fixed !important;
-  inset: 0 !important;
-  top: 33px !important;   /* offset below .snav */
-  z-index: 10 !important;
-  overflow: hidden !important;
+/* ══════════════════════════════════════════════
+   BADGES — academic, restrained
+══════════════════════════════════════════════ */
+
+.badge, .pbadge, .pbadge {
+  font-size: 9.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+}
+.b-grn, .pb-m {
+  background: var(--success-dim) !important;
+  color: var(--success) !important;
+  border: 1px solid var(--success-line) !important;
+  box-shadow: none !important;
+}
+.b-cy, .pb-p {
+  background: var(--accent-dim) !important;
+  color: var(--accent-soft) !important;
+  border: 1px solid var(--accent-line) !important;
+  box-shadow: none !important;
+}
+.b-red {
+  background: var(--danger-dim) !important;
+  color: var(--danger) !important;
+  border: 1px solid var(--danger-line) !important;
+  box-shadow: none !important;
+}
+.b-amb, .pb-a {
+  background: var(--warn-dim) !important;
+  color: var(--warn) !important;
+  border: 1px solid var(--warn-line) !important;
+  box-shadow: none !important;
+}
+.b-in {
+  background: var(--accent-dim) !important;
+  color: var(--accent-soft) !important;
+  border: 1px solid var(--accent-line) !important;
+}
+.b-dim, .pb-l {
+  background: rgba(255,255,255,0.04) !important;
+  color: var(--txt-dim) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: none !important;
 }
 
-/* 4. Login .page must fill its fixed container, not the full 100vh
-      (100vh would overflow back under the snav) */
-#sec-login .page {
-  height: 100% !important;
+/* ══════════════════════════════════════════════
+   BUTTONS — refined, not flashy
+══════════════════════════════════════════════ */
+
+.btn-pri, .btn-res {
+  background: var(--accent) !important;
+  border: 1px solid rgba(109,94,245,0.30) !important;
+  color: #FFFFFF !important;
+  font-family: var(--ff-body) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(109,94,245,0.25) !important;
+  transition: all 0.18s ease !important;
+}
+.btn-pri::after, .btn-res::after { display: none !important; }
+.btn-pri:hover, .btn-res:hover {
+  background: var(--accent-soft) !important;
+  border-color: rgba(139,127,255,0.40) !important;
+  box-shadow: 0 4px 16px rgba(109,94,245,0.30) !important;
+  transform: translateY(-1px) !important;
+}
+
+.btn-sec {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt-body) !important;
+  font-family: var(--ff-body) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-sm) !important;
+  transition: all 0.18s ease !important;
+}
+.btn-sec:hover {
+  background: var(--bg-raised) !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  color: var(--txt-heading) !important;
+}
+
+.btn-grn {
+  background: var(--success) !important;
+  border: 1px solid rgba(31,138,112,0.30) !important;
+  color: #FFFFFF !important;
+  font-family: var(--ff-body) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(31,138,112,0.20) !important;
+  transition: all 0.18s ease !important;
+}
+.btn-grn:hover {
+  background: #22A088 !important;
+  box-shadow: 0 4px 16px rgba(31,138,112,0.28) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* All misc buttons */
+.btn-hint, .btn-check, .btn-submit-ans, button[type="submit"], .btn-primary, .btn-submit {
+  background: var(--accent) !important;
+  border: 1px solid rgba(109,94,245,0.30) !important;
+  color: #fff !important;
+  border-radius: 7px !important;
+  box-shadow: 0 2px 8px rgba(109,94,245,0.20) !important;
+}
+.btn-close-hint {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt-muted) !important;
+}
+.btn-close-hint:hover {
+  background: var(--bg-raised) !important;
+  color: var(--txt-body) !important;
+}
+
+/* ══════════════════════════════════════════════
+   WORKSPACE PANELS
+══════════════════════════════════════════════ */
+
+.ws-prob, .ws-hint, .ws-ap, .ws-editor, .ws-ed {
+  background: var(--bg-sec) !important;
+  box-shadow: none !important;
+}
+.ws-prob {
+  border-right: 1px solid var(--border-soft) !important;
+}
+.ws-hint, .ws-ap {
+  border-left: 1px solid var(--border-soft) !important;
+}
+
+/* Code editor */
+.ws-ed, .ws-editor {
+  background: #111118 !important;
+}
+.light-mode .ws-ed, .light-mode .ws-editor {
+  background: #1E1E2E !important;
+}
+
+/* Terminal */
+.term, .ed-terminal {
+  background: #0D0D14 !important;
+  border-top: 1px solid var(--border-soft) !important;
+}
+.light-mode .term, .light-mode .ed-terminal {
+  background: #1A1A28 !important;
+}
+
+/* Code / pre */
+code, pre, .code, .code-block {
+  font-family: var(--ff-mono) !important;
+  background: rgba(0,0,0,0.25) !important;
+  border: 1px solid var(--border-soft) !important;
+  color: #A9B7D0 !important;
+  border-radius: 5px !important;
+}
+.light-mode code, .light-mode pre {
+  background: rgba(0,0,0,0.06) !important;
+  color: #334155 !important;
+}
+.hint-block code, .hint-block2 code {
+  background: var(--accent-dim) !important;
+  color: var(--accent-soft) !important;
+  border: none !important;
+  padding: 1px 5px !important;
+  border-radius: 3px !important;
+}
+
+/* ══════════════════════════════════════════════
+   SPECIFIC COMPONENT REFINEMENTS
+══════════════════════════════════════════════ */
+
+/* Streak dots */
+.sd.ok, .sk-dot.ok {
+  background: var(--success-dim) !important;
+  border-color: var(--success-line) !important;
+  color: var(--success) !important;
+  box-shadow: none !important;
+}
+.sd.em, .sk-dot.em {
+  background: var(--border-soft) !important;
+  border-color: var(--border) !important;
+  color: var(--txt-dim) !important;
+}
+.sk-dot.fl {
+  background: var(--danger-dim) !important;
+  border-color: var(--danger-line) !important;
+  color: var(--danger) !important;
+}
+
+/* AI reasoning box */
+.air {
+  background: var(--accent-dim) !important;
+  border: 1px solid var(--accent-line) !important;
+  box-shadow: none !important;
+}
+.air-line { color: var(--accent-soft) !important; }
+.air-text { color: var(--txt-body) !important; }
+
+/* Error focus */
+.erfc {
+  background: var(--danger-dim) !important;
+  border-color: var(--danger-line) !important;
+}
+
+/* Error type badge */
+.err-type {
+  background: var(--warn-dim) !important;
+  border: 1px solid var(--warn-line) !important;
+  color: var(--warn) !important;
+  box-shadow: none !important;
+}
+
+/* Concept circles */
+.pcirc {
+  transition: all 0.22s ease !important;
+}
+.pcirc.c {
+  box-shadow: 0 0 0 2px var(--accent), 0 0 0 4px var(--accent-dim) !important;
+  animation: none !important;
+}
+.pcirc.m {
+  box-shadow: 0 0 0 2px var(--success), 0 0 0 4px var(--success-dim) !important;
+}
+
+/* Hint box */
+.hint-bx {
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+  box-shadow: none !important;
+}
+
+/* Mastery note box */
+.wl-mastery-note {
+  background: var(--accent-dim) !important;
+  border: 1px solid var(--accent-line) !important;
+  border-radius: 6px !important;
+}
+
+/* ETA block */
+.eta-block {
+  background: var(--success-dim) !important;
+  border: 1px solid var(--success-line) !important;
+  border-radius: 6px !important;
+}
+
+/* Matrix table */
+.mx-hi { background: var(--success-dim) !important; color: var(--success) !important; border-color: var(--success-line) !important; }
+.mx-md { background: var(--accent-dim) !important; color: var(--accent-soft) !important; border-color: var(--accent-line) !important; }
+.mx-lo { background: var(--danger-dim) !important; color: var(--danger) !important; border-color: var(--danger-line) !important; }
+.mx-table .row-lbl { color: var(--txt-dim) !important; }
+.mx-table th { color: var(--txt-dim) !important; }
+
+/* TC result rows */
+.tc-num.ok { color: var(--success) !important; text-shadow: none !important; }
+.tc-num.fl { color: var(--danger) !important; text-shadow: none !important; }
+.tc-detail { color: var(--txt-muted) !important; }
+
+/* Activity result dots */
+.ares.ok { box-shadow: none !important; background: var(--success) !important; }
+.ares.no { box-shadow: none !important; background: var(--danger) !important; }
+
+/* Rec items */
+.rec-item { color: var(--txt-muted) !important; border-bottom-color: var(--border-soft) !important; }
+.rec-dot { box-shadow: none !important; background: var(--accent) !important; }
+.rec-dot.r { background: var(--danger) !important; box-shadow: none !important; }
+
+/* MPath / breadcrumbs */
+.mnode.done {
+  background: var(--success-dim) !important;
+  border-color: var(--success-line) !important;
+  box-shadow: none !important;
+}
+.mnode.cur {
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+  box-shadow: none !important;
+}
+
+/* AP panel / section titles */
+.ap-t, .ai-header, .ai-panel-title, .panel-title {
+  font-size: 8px !important;
+  letter-spacing: 0.20em !important;
+  color: var(--txt-dim) !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+}
+
+/* Engine labels */
+.eng-k {
+  color: var(--txt-dim) !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.14em !important;
+}
+.eng-v { font-size: 11.5px !important; color: var(--txt-body) !important; }
+
+/* Engine active label */
+.eng-act {
+  font-size: 9.5px !important;
+  color: var(--success) !important;
+  text-shadow: none !important;
+}
+
+/* Concept label items */
+.cl-title {
+  font-size: 22px !important;
+  color: var(--txt-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.2 !important;
+}
+.cl-sub {
+  font-size: 9px !important;
+  color: var(--accent-soft) !important;
+  letter-spacing: 0.14em !important;
+  opacity: 0.8 !important;
+}
+.cl-desc, .cl-meta { color: var(--txt-muted) !important; font-size: 11px !important; }
+.pi-nm { color: var(--txt-body) !important; font-size: 11.5px !important; }
+.pi-pct { color: var(--txt-dim) !important; font-size: 9.5px !important; }
+.atm { color: var(--txt-dim) !important; }
+
+/* Concept names */
+.wl-concept {
+  font-family: var(--ff-body) !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+}
+.wl-q-num {
+  font-family: var(--ff-mono) !important;
+  font-size: 12px !important;
+  color: var(--accent-soft) !important;
+  text-shadow: none !important;
+}
+.wl-q-note, .wl-q-warn { color: var(--txt-muted) !important; }
+.wl-q-warn { color: var(--warn) !important; }
+
+/* Epoch bars */
+.ep-bar {
+  background: var(--accent) !important;
+  box-shadow: none !important;
+  opacity: 0.75 !important;
+}
+
+/* Dividers */
+hr, .divider {
+  border-color: var(--border-soft) !important;
+}
+
+/* Inputs */
+input, .inp, .input-field {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt-heading) !important;
+  caret-color: var(--accent-soft) !important;
+  border-radius: 8px !important;
+  font-family: var(--ff-body) !important;
+}
+input:focus, .inp:focus {
+  border-color: var(--accent-line) !important;
+  box-shadow: 0 0 0 3px rgba(109,94,245,0.08) !important;
+  outline: none !important;
+}
+::placeholder { color: var(--txt-dim) !important; }
+
+/* ══════════════════════════════════════════════
+   LOGIN PAGE REFINEMENT
+══════════════════════════════════════════════ */
+
+/* Kill left panel animations/particles */
+#particles {
+  display: none !important;
+}
+.cursor-glow { display: none !important; }
+.left-glow-a, .left-glow-b, .left-glow-c { display: none !important; }
+.fog { display: none !important; }
+.corner-lines { display: none !important; }
+
+/* Login page layout */
+.page {
+  background: var(--bg-base) !important;
+}
+
+.left {
+  background: linear-gradient(145deg, var(--bg-sec) 0%, var(--bg-base) 100%) !important;
+  border-right: 1px solid var(--border-soft) !important;
+}
+
+.right {
+  background: var(--bg-base) !important;
+}
+.right::before { display: none !important; }
+
+/* Logo row on login */
+.logo-badge {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-accent) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.logo-badge svg path, .logo-badge svg circle {
+  stroke-opacity: 0.8 !important;
+}
+.logo-name {
+  font-family: var(--ff-body) !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: 0.10em !important;
+}
+.logo-sub {
+  font-size: 10.5px !important;
+  color: var(--txt-muted) !important;
+  letter-spacing: 0.04em !important;
+}
+
+/* Label pill */
+.label-pill {
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+  color: var(--accent-soft) !important;
+}
+.label-dot {
+  background: var(--accent) !important;
+  animation: refine-pulse 2.5s ease-in-out infinite !important;
+  box-shadow: none !important;
+}
+
+/* Headline */
+.headline {
+  font-family: var(--ff-body) !important;
+  font-weight: 800 !important;
+  font-size: clamp(30px, 3.2vw, 46px) !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.025em !important;
+  line-height: 1.12 !important;
+}
+.hl-adaptive {
+  font-style: italic !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: var(--accent-soft) !important;
+  background-clip: unset !important;
+  animation: none !important;
+}
+
+/* Description */
+.desc {
+  font-size: 14px !important;
+  line-height: 1.70 !important;
+  color: var(--txt-muted) !important;
+  font-weight: 400 !important;
+}
+
+/* Chips */
+.chips-label {
+  font-size: 9.5px !important;
+  letter-spacing: 0.14em !important;
+  color: var(--txt-dim) !important;
+  font-weight: 600 !important;
+}
+.chip {
+  font-family: var(--ff-mono) !important;
+  font-size: 11px !important;
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt-muted) !important;
+  border-radius: 7px !important;
+  transition: all 0.18s ease !important;
+}
+.chip:hover {
+  color: var(--txt-body) !important;
+  border-color: rgba(109,94,245,0.28) !important;
+  background: var(--accent-dim) !important;
+  transform: translateY(-1px) !important;
+}
+.chip::before { display: none !important; }
+.chip.active {
+  background: var(--accent-dim) !important;
+  border-color: var(--accent-line) !important;
+  color: var(--accent-soft) !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* Stats section */
+.stats {
+  border-top: 1px solid var(--border-soft) !important;
+}
+.stats::after { display: none !important; }
+.stat-num {
+  font-family: var(--ff-body) !important;
+  font-weight: 800 !important;
+  font-size: 20px !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.02em !important;
+}
+.stat-num span { color: var(--accent-soft) !important; }
+.stat-label {
+  font-size: 9.5px !important;
+  color: var(--txt-dim) !important;
+  letter-spacing: 0.12em !important;
+}
+
+/* Form card */
+.form-card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--shadow-lg) !important;
+  backdrop-filter: none !important;
+}
+.form-card::before { display: none !important; }
+.form-eyebrow {
+  font-size: 10px !important;
+  letter-spacing: 0.14em !important;
+  color: var(--accent-soft) !important;
+  font-weight: 600 !important;
+  text-shadow: none !important;
+}
+.form-title {
+  font-family: var(--ff-body) !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--txt-heading) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Login card variant */
+.login-card, .lc {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Google button */
+.googleBtn, #googleBtn, [id="googleBtn"] {
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--txt-body) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+/* ══════════════════════════════════════════════
+   KEYFRAMES — subtle, calm, restrained
+══════════════════════════════════════════════ */
+
+@keyframes refine-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Override ALL previous animation keyframes with no-ops */
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+@keyframes bar-shim {
+  0%, 100% { opacity: 0; }
+}
+@keyframes holo-run {
+  0%, 100% { opacity: 0; }
+}
+@keyframes bar-glw {
+  0%, 100% { box-shadow: none; }
+}
+@keyframes circ-glow {
+  0%, 100% { box-shadow: 0 0 0 2px var(--accent); }
+}
+@keyframes beam-pulse { 0%, 100% { opacity: 0; } }
+@keyframes scan-run { 0%, 100% { top: -10px; } }
+@keyframes ag1 { 0%, 100% { opacity: 0; } }
+@keyframes ag2 { 0%, 100% { opacity: 0; } }
+@keyframes ag3 { 0%, 100% { opacity: 0; } }
+@keyframes chipBreathe { 0%, 100% { box-shadow: none; } }
+@keyframes ring-out { 0%, 100% { opacity: 0; } }
+@keyframes statSweep { 0%, 100% { opacity: 0; } }
+@keyframes shimmerText { 0%, 100% {} }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — Premium editorial academic intelligence platform
+   Target: calm, layered, readable, breathable, refined.
+   NOT beige. NOT warm. NOT corporate. NOT flat.
+   Cool-neutral intelligent workspace with material depth.
+══════════════════════════════════════════════════════════════ */
+
+/* ── Body & global foundation ── */
+html.light-mode,
+html.light-mode body,
+.light-mode body {
+  background: #F6F7FB !important;
+  color: #475569 !important;
+}
+
+/* ── Subtle ambient atmospheric layer — depth without effects ── */
+.light-mode body::before {
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(79,70,229,0.025) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(148,163,184,0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 35% at 100% 100%, rgba(148,163,184,0.08) 0%, transparent 48%) !important;
+}
+
+/* ── Screen navigation bar ── */
+.light-mode .snav {
+  background: rgba(255,255,255,0.88) !important;
+  border-bottom: 1px solid rgba(148,163,184,0.14) !important;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.06) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.light-mode .snav-lbl { color: #94A3B8 !important; }
+.light-mode .snav-sep { color: #94A3B8 !important; border-left-color: rgba(148,163,184,0.18) !important; }
+.light-mode .sbtn { color: #64748B !important; border-color: transparent !important; background: none !important; }
+.light-mode .sbtn:hover { color: #4F46E5 !important; background: rgba(79,70,229,0.07) !important; border-color: rgba(79,70,229,0.14) !important; }
+.light-mode .sbtn.on { color: #312E81 !important; background: rgba(79,70,229,0.10) !important; border-color: rgba(79,70,229,0.22) !important; box-shadow: none !important; text-shadow: none !important; }
+
+/* ── Sidebar — structured, scholarly, calm ── */
+.light-mode .sb {
+  background: #EEF1F6 !important;
+  border-right: 1px solid rgba(148,163,184,0.14) !important;
+  box-shadow: 2px 0 8px rgba(15,23,42,0.04) !important;
+}
+.light-mode .nsect { color: #94A3B8 !important; }
+.light-mode .ni { color: #475569 !important; }
+.light-mode .ni svg { opacity: 0.60 !important; }
+.light-mode .ni:hover { color: #1E293B !important; background: rgba(79,70,229,0.06) !important; }
+.light-mode .ni:hover svg { opacity: 0.80 !important; }
+.light-mode .ni.on { color: #312E81 !important; background: rgba(79,70,229,0.10) !important; border-left-color: #4F46E5 !important; }
+.light-mode .ni.on svg { opacity: 1 !important; }
+.light-mode .ci { color: #64748B !important; }
+.light-mode .ci.on { color: #1E293B !important; }
+.light-mode .cdot { background: rgba(148,163,184,0.25) !important; }
+.light-mode .cdot.g { background: #0F766E !important; }
+.light-mode .cdot.c { background: #4F46E5 !important; }
+.light-mode .ck { color: #0F766E !important; }
+.light-mode .ca { color: #4F46E5 !important; }
+
+/* Logo in sidebar */
+.light-mode .logo-icon { background: #FFFFFF !important; border-color: rgba(79,70,229,0.20) !important; color: #4F46E5 !important; }
+.light-mode .logo-n { color: #111827 !important; }
+.light-mode .logo-s { color: #4F46E5 !important; opacity: 0.75 !important; }
+
+/* User bar */
+.light-mode .ubar { border-top-color: rgba(148,163,184,0.12) !important; }
+.light-mode .un { color: #111827 !important; }
+.light-mode .ur { color: #94A3B8 !important; }
+.light-mode .av { background: #EEF1F6 !important; border-color: rgba(79,70,229,0.18) !important; }
+
+/* ── Topbar — editorial navbar with glass touch ── */
+.light-mode .tb {
+  background: rgba(255,255,255,0.82) !important;
+  border-bottom: 1px solid rgba(148,163,184,0.12) !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: none !important;
+}
+.light-mode .tb-title { color: #111827 !important; font-weight: 700 !important; }
+.light-mode .tb-sub { color: #64748B !important; }
+.light-mode .tb-bc { color: #94A3B8 !important; }
+.light-mode .tb-bc span { color: #64748B !important; }
+
+/* Topbar badges */
+.light-mode .cur-badge {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05) !important;
+}
+.light-mode .cur-lbl { color: #94A3B8 !important; }
+.light-mode .cur-val { color: #4F46E5 !important; }
+.light-mode .stk-badge { background: rgba(180,83,9,0.08) !important; border-color: rgba(180,83,9,0.20) !important; color: #B45309 !important; }
+.light-mode .stk-badge-0 { background: rgba(185,28,28,0.08) !important; border-color: rgba(185,28,28,0.20) !important; color: #B91C1C !important; }
+
+/* ── Content area ── */
+.light-mode .cnt { background: #F6F7FB !important; }
+.light-mode .cnt::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.25) !important; }
+
+/* ── Primary cards — true white, sharp paper depth ── */
+.light-mode .gc {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(148,163,184,0.10) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05) !important;
+}
+.light-mode .gc:hover {
+  background: #FFFFFF !important;
+  border-color: rgba(79,70,229,0.16) !important;
+  box-shadow: 0 2px 6px rgba(15,23,42,0.05), 0 12px 32px rgba(99,102,241,0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Tinted variant cards */
+.light-mode .gc-grn {
+  background: #FFFFFF !important;
+  border-color: rgba(15,118,110,0.18) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,118,110,0.06) !important;
+}
+.light-mode .gc-red {
+  background: #FFFFFF !important;
+  border-color: rgba(185,28,28,0.16) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(185,28,28,0.06) !important;
+}
+.light-mode .gc-gold {
+  background: #FFFFFF !important;
+  border-color: rgba(180,83,9,0.18) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(180,83,9,0.06) !important;
+}
+
+/* ── Stat cards — secondary surface, supporting info ── */
+.light-mode .stat-card {
+  background: #F8FAFC !important;
+  border: 1px solid rgba(148,163,184,0.10) !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05) !important;
+}
+
+/* ── Typography — editorial hierarchy ── */
+.light-mode .st { color: #1E293B !important; font-weight: 600 !important; }
+.light-mode .ss { color: #64748B !important; }
+.light-mode .clbl { color: #94A3B8 !important; }
+.light-mode .hero-title { color: #111827 !important; font-weight: 700 !important; }
+.light-mode .hero-sub { color: #64748B !important; }
+
+/* Stat card typography */
+.light-mode .stat-lbl { color: #94A3B8 !important; }
+.light-mode .stat-val { color: #111827 !important; }
+.light-mode .stat-val.c { color: #4F46E5 !important; }
+.light-mode .stat-val.g { color: #0F766E !important; }
+.light-mode .stat-val.a { color: #B45309 !important; }
+.light-mode .stat-sub { color: #94A3B8 !important; }
+
+/* Data rows */
+.light-mode .dk { color: #64748B !important; }
+.light-mode .dv { color: #111827 !important; }
+.light-mode .dv.c { color: #4F46E5 !important; }
+.light-mode .dv.g { color: #0F766E !important; }
+.light-mode .dv.a { color: #B45309 !important; }
+.light-mode .dv.r { color: #B91C1C !important; }
+.light-mode .dr { border-bottom-color: rgba(148,163,184,0.10) !important; }
+
+/* Status dots */
+.light-mode .ldot.c { background: #4F46E5 !important; }
+.light-mode .ldot.g { background: #0F766E !important; }
+.light-mode .ldot.r { background: #B91C1C !important; }
+.light-mode .ldot.a { background: #B45309 !important; }
+.light-mode .pdot { background: #0F766E !important; }
+
+/* ── Workspace content typography ── */
+.light-mode .wl-concept { color: #111827 !important; }
+.light-mode .wl-progress-lbl { color: #64748B !important; }
+.light-mode .wl-q-num { color: #4F46E5 !important; }
+.light-mode .wl-q-note { color: #475569 !important; }
+.light-mode .wl-q-warn { color: #B45309 !important; }
+.light-mode .wl-mastery-note { background: rgba(79,70,229,0.06) !important; border-color: rgba(79,70,229,0.14) !important; }
+.light-mode .streak-lbl { color: #64748B !important; }
+.light-mode .wl-q-lbl { color: #94A3B8 !important; }
+
+/* Section title */
+.light-mode .ap-t, .light-mode .ai-header { color: #94A3B8 !important; }
+.light-mode .eng-k { color: #94A3B8 !important; }
+.light-mode .eng-v { color: #1E293B !important; }
+.light-mode .eng-act { color: #0F766E !important; }
+.light-mode .cl-title { color: #111827 !important; }
+.light-mode .cl-sub { color: #4F46E5 !important; }
+.light-mode .cl-desc, .light-mode .cl-meta { color: #64748B !important; }
+.light-mode .pi-nm { color: #475569 !important; }
+.light-mode .pi-pct { color: #94A3B8 !important; }
+.light-mode .atm { color: #94A3B8 !important; }
+.light-mode .tc-detail { color: #64748B !important; }
+.light-mode .tc-num.ok { color: #0F766E !important; }
+.light-mode .tc-num.fl { color: #B91C1C !important; }
+.light-mode .air-line { color: #4F46E5 !important; }
+.light-mode .air-text { color: #475569 !important; }
+
+/* ── Buttons — focused intelligent interaction ── */
+.light-mode .btn-pri,
+.light-mode .btn-res {
+  background: #4F46E5 !important;
+  border-color: rgba(79,70,229,0.28) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 8px 20px rgba(79,70,229,0.20) !important;
+}
+.light-mode .btn-pri:hover, .light-mode .btn-res:hover {
+  background: #4338CA !important;
+  box-shadow: 0 8px 20px rgba(79,70,229,0.28) !important;
+}
+.light-mode .btn-sec {
+  background: #FFFFFF !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #334155 !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05) !important;
+}
+.light-mode .btn-sec:hover {
+  background: #F8FAFC !important;
+  border-color: rgba(148,163,184,0.28) !important;
+  color: #1E293B !important;
+}
+.light-mode .btn-grn {
+  background: #0F766E !important;
+  border-color: rgba(15,118,110,0.28) !important;
+  box-shadow: 0 4px 14px rgba(15,118,110,0.18) !important;
+}
+.light-mode .btn-hint,
+.light-mode .btn-check,
+.light-mode .btn-submit-ans,
+.light-mode button[type="submit"],
+.light-mode .btn-primary,
+.light-mode .btn-submit {
+  background: #4F46E5 !important;
+  border-color: rgba(79,70,229,0.28) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(79,70,229,0.18) !important;
+}
+.light-mode .btn-close-hint {
+  background: #FFFFFF !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #64748B !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04) !important;
+}
+
+/* ── Input fields ── */
+.light-mode input,
+.light-mode .inp,
+.light-mode .input-field {
+  background: rgba(255,255,255,0.88) !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #111827 !important;
+}
+.light-mode input:focus,
+.light-mode .inp:focus {
+  border-color: rgba(79,70,229,0.40) !important;
+  box-shadow: 0 0 0 4px rgba(79,70,229,0.08) !important;
+}
+.light-mode ::placeholder { color: #94A3B8 !important; }
+
+/* ── Badges ── */
+.light-mode .b-grn, .light-mode .pb-m { background: rgba(15,118,110,0.08) !important; color: #0F766E !important; border-color: rgba(15,118,110,0.20) !important; }
+.light-mode .b-cy, .light-mode .pb-p { background: rgba(79,70,229,0.08) !important; color: #4F46E5 !important; border-color: rgba(79,70,229,0.18) !important; }
+.light-mode .b-red { background: rgba(185,28,28,0.08) !important; color: #B91C1C !important; border-color: rgba(185,28,28,0.18) !important; }
+.light-mode .b-amb, .light-mode .pb-a { background: rgba(180,83,9,0.08) !important; color: #B45309 !important; border-color: rgba(180,83,9,0.18) !important; }
+.light-mode .b-in { background: rgba(79,70,229,0.08) !important; color: #4F46E5 !important; border-color: rgba(79,70,229,0.18) !important; }
+.light-mode .b-dim, .light-mode .pb-l { background: rgba(148,163,184,0.10) !important; color: #64748B !important; border-color: rgba(148,163,184,0.16) !important; }
+
+/* ── Progress bars ── */
+.light-mode .pb-wrap,
+.light-mode .pbar-w,
+.light-mode .wl-progress-bar { background: rgba(148,163,184,0.14) !important; }
+.light-mode .pb-cy, .light-mode .pbar-c { background: #4F46E5 !important; }
+.light-mode .pb-gn, .light-mode .pbar-g { background: #0F766E !important; }
+.light-mode .pb-rd { background: #B91C1C !important; }
+.light-mode .pb-amb, .light-mode .pbar-a { background: #B45309 !important; }
+.light-mode .pb-in { background: #4F46E5 !important; }
+.light-mode .wl-progress-fill { background: #4F46E5 !important; }
+
+/* ── Streak/mastery dots ── */
+.light-mode .sd.ok, .light-mode .sk-dot.ok { background: rgba(15,118,110,0.08) !important; border-color: rgba(15,118,110,0.22) !important; color: #0F766E !important; }
+.light-mode .sd.em, .light-mode .sk-dot.em { background: rgba(148,163,184,0.10) !important; border-color: rgba(148,163,184,0.18) !important; color: #94A3B8 !important; }
+.light-mode .sk-dot.fl { background: rgba(185,28,28,0.08) !important; border-color: rgba(185,28,28,0.20) !important; color: #B91C1C !important; }
+
+/* ── AI reasoning panel ── */
+.light-mode .air { background: rgba(79,70,229,0.06) !important; border-color: rgba(79,70,229,0.16) !important; }
+
+/* ── Error focus ── */
+.light-mode .erfc { background: rgba(185,28,28,0.06) !important; border-color: rgba(185,28,28,0.16) !important; }
+
+/* ── Error type badge ── */
+.light-mode .err-type { background: rgba(180,83,9,0.08) !important; border-color: rgba(180,83,9,0.18) !important; color: #B45309 !important; }
+
+/* ── Concept circles ── */
+.light-mode .pcirc.c { box-shadow: 0 0 0 2px #4F46E5, 0 0 0 4px rgba(79,70,229,0.10) !important; }
+.light-mode .pcirc.m { box-shadow: 0 0 0 2px #0F766E, 0 0 0 4px rgba(15,118,110,0.10) !important; }
+
+/* ── Hint/mastery/eta boxes ── */
+.light-mode .hint-bx { background: rgba(79,70,229,0.06) !important; border-color: rgba(79,70,229,0.14) !important; }
+.light-mode .eta-block { background: rgba(15,118,110,0.06) !important; border-color: rgba(15,118,110,0.16) !important; }
+
+/* ── Matrix table ── */
+.light-mode .mx-hi { background: rgba(15,118,110,0.08) !important; color: #0F766E !important; border-color: rgba(15,118,110,0.18) !important; }
+.light-mode .mx-md { background: rgba(79,70,229,0.08) !important; color: #4F46E5 !important; border-color: rgba(79,70,229,0.16) !important; }
+.light-mode .mx-lo { background: rgba(185,28,28,0.08) !important; color: #B91C1C !important; border-color: rgba(185,28,28,0.16) !important; }
+.light-mode .mx-table .row-lbl { color: #94A3B8 !important; }
+.light-mode .mx-table th { color: #94A3B8 !important; }
+
+/* ── MPath nodes ── */
+.light-mode .mnode.done { background: rgba(15,118,110,0.08) !important; border-color: rgba(15,118,110,0.18) !important; }
+.light-mode .mnode.cur { background: rgba(79,70,229,0.08) !important; border-color: rgba(79,70,229,0.16) !important; }
+
+/* ── Rec items ── */
+.light-mode .rec-item { color: #64748B !important; border-bottom-color: rgba(148,163,184,0.10) !important; }
+.light-mode .rec-dot { background: #4F46E5 !important; }
+.light-mode .rec-dot.r { background: #B91C1C !important; }
+
+/* ── Activity dots ── */
+.light-mode .ares.ok { background: #0F766E !important; }
+.light-mode .ares.no { background: #B91C1C !important; }
+
+/* ── Epoch bars ── */
+.light-mode .ep-bar { background: #4F46E5 !important; opacity: 0.65 !important; }
+
+/* ── Code blocks ── */
+.light-mode code,
+.light-mode pre { background: #F1F5F9 !important; border-color: rgba(148,163,184,0.14) !important; color: #334155 !important; }
+.light-mode .hint-block code,
+.light-mode .hint-block2 code { background: rgba(79,70,229,0.08) !important; color: #4F46E5 !important; }
+
+/* ── Workspace panels ── */
+.light-mode .ws-prob { background: #EEF1F6 !important; border-right-color: rgba(148,163,184,0.12) !important; box-shadow: none !important; }
+.light-mode .ws-hint, .light-mode .ws-ap { background: #EEF1F6 !important; border-left-color: rgba(148,163,184,0.12) !important; box-shadow: none !important; }
+.light-mode .ws-ed, .light-mode .ws-editor { background: #1E1E2E !important; }
+.light-mode .term, .light-mode .ed-terminal { background: #1A1A28 !important; border-top-color: rgba(148,163,184,0.10) !important; }
+
+/* ── Dividers ── */
+.light-mode hr,
+.light-mode .divider { border-color: rgba(148,163,184,0.12) !important; }
+
+/* ── Login page ── */
+.light-mode .page { background: #F6F7FB !important; }
+.light-mode .left {
+  background: linear-gradient(150deg, #EEF1F6 0%, #F6F7FB 100%) !important;
+  border-right: 1px solid rgba(148,163,184,0.12) !important;
+}
+.light-mode .right { background: #F6F7FB !important; }
+.light-mode .form-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(148,163,184,0.10) !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.08), 0 24px 60px rgba(99,102,241,0.10) !important;
+}
+.light-mode .login-card, .light-mode .lc {
+  background: #FFFFFF !important;
+  border-color: rgba(148,163,184,0.10) !important;
+  box-shadow: 0 4px 12px rgba(15,23,42,0.08), 0 24px 60px rgba(99,102,241,0.10) !important;
+}
+
+/* Login panel text */
+.light-mode .headline { color: #111827 !important; }
+.light-mode .hl-adaptive { -webkit-text-fill-color: #4F46E5 !important; }
+.light-mode .desc { color: #64748B !important; }
+.light-mode .logo-name { color: #111827 !important; }
+.light-mode .logo-sub { color: #64748B !important; }
+.light-mode .logo-badge { background: #FFFFFF !important; border-color: rgba(79,70,229,0.20) !important; }
+.light-mode .label-pill { background: rgba(79,70,229,0.08) !important; border-color: rgba(79,70,229,0.16) !important; color: #4F46E5 !important; }
+.light-mode .chips-label { color: #94A3B8 !important; }
+.light-mode .chip { background: #FFFFFF !important; border-color: rgba(148,163,184,0.16) !important; color: #64748B !important; }
+.light-mode .chip.active { background: rgba(79,70,229,0.08) !important; border-color: rgba(79,70,229,0.18) !important; color: #4F46E5 !important; }
+.light-mode .chip:hover { background: rgba(79,70,229,0.06) !important; border-color: rgba(79,70,229,0.18) !important; color: #4F46E5 !important; }
+.light-mode .stat-num { color: #111827 !important; }
+.light-mode .stat-num span { color: #4F46E5 !important; }
+.light-mode .stat-label { color: #94A3B8 !important; }
+.light-mode .stats { border-top-color: rgba(148,163,184,0.12) !important; }
+.light-mode .form-eyebrow { color: #4F46E5 !important; }
+.light-mode .form-title { color: #111827 !important; }
+.light-mode .googleBtn, .light-mode #googleBtn {
+  background: #FFFFFF !important;
+  border-color: rgba(148,163,184,0.18) !important;
+  color: #334155 !important;
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.05) !important;
+}
+
+/* ── Scrollbar ── */
+.light-mode .cnt::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.28) !important; }
+
+/* ── Theme toggle in light mode ── */
+.light-mode #theme-toggle {
+  border-color: rgba(148,163,184,0.20) !important;
+  background: rgba(255,255,255,0.70) !important;
+  color: #64748B !important;
+}
+.light-mode #theme-toggle:hover {
+  background: rgba(255,255,255,0.90) !important;
+  color: #1E293B !important;
+  border-color: rgba(148,163,184,0.30) !important;
+}
+
+/* ══════════════════════════════════════════════
+   SECTION BREATHING RHYTHM
+══════════════════════════════════════════════ */
+.row { gap: 14px !important; }
+.cnt { gap: 16px !important; }
+.gc { padding: 18px 20px !important; }
+.stat-card { padding: 14px 18px !important; }
+
+/* Hero header in cards */
+.hero-hdr {
+  padding: 20px 22px !important;
+}
+.hero-hdr::after { display: none !important; }
+
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — COMPREHENSIVE FIX
+   Covers: all inline rgba(255,255,255) colors, shadow corrections,
+   missing class overrides, background + text hierarchy
+══════════════════════════════════════════════════════════════ */
+
+/* ── 1. BODY & WRAPPER ── */
+html.light-mode, html.light-mode body, .light-mode body {
+  background: #F6F7FB !important;
+  color: #475569 !important;
+}
+
+/* ── 2. SNAV (screen nav) — ensure proper scoping ── */
+html.light-mode .snav, body.light-mode .snav,
+.light-mode .snav {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom: 1px solid rgba(148,163,184,0.14) !important;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.06) !important;
+  backdrop-filter: blur(12px) !important;
+}
+.light-mode .snav::after { display: none !important; }
+.light-mode .snav-sep {
+  color: #94A3B8 !important;
+  border-left-color: rgba(148,163,184,0.18) !important;
+}
+
+/* ── 3. INLINE STYLE OVERRIDES — breadcrumbs, spans, topbar ── */
+.light-mode [style*="rgba(255,255,255,0.28)"],
+.light-mode [style*="rgba(255,255,255,0.32)"],
+.light-mode [style*="rgba(255,255,255,0.36)"],
+.light-mode [style*="rgba(255,255,255,0.4)"],
+.light-mode [style*="rgba(255,255,255,0.42)"],
+.light-mode [style*="rgba(255,255,255,0.45)"],
+.light-mode [style*="rgba(255,255,255,0.55)"],
+.light-mode [style*="rgba(255,255,255,0.6)"],
+.light-mode [style*="rgba(255,255,255,0.8)"],
+.light-mode [style*="rgba(255,255,255,0.82)"],
+.light-mode [style*="rgba(255,255,255,0.85)"] {
+  color: #475569 !important;
+}
+.light-mode [style*="rgba(255,255,255,0.14)"],
+.light-mode [style*="rgba(255,255,255,0.18)"],
+.light-mode [style*="rgba(255,255,255,0.2)"],
+.light-mode [style*="rgba(255,255,255,0.22)"],
+.light-mode [style*="rgba(255,255,255,0.25)"],
+.light-mode [style*="rgba(255,255,255,0.26)"] {
+  color: #94A3B8 !important;
+}
+.light-mode [style*="rgba(255,255,255,0.3)"] {
+  color: #64748B !important;
+}
+
+/* ── 4. TOPBAR WORKSPACE inline breadcrumbs ── */
+.light-mode .tb span[style],
+.light-mode .tb > span {
+  color: #64748B !important;
+}
+
+/* ── 5. USER BADGE inline ── */
+.light-mode .usr-badge {
+  color: #1E293B !important;
+  background: rgba(255,255,255,0.70) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+  border-radius: 6px !important;
+  padding: 3px 8px !important;
+}
+.light-mode .usr-badge .av {
+  background: #EEF1F6 !important;
+  border-color: rgba(79,70,229,0.18) !important;
+  color: #4F46E5 !important;
+}
+.light-mode .usr-badge span {
+  color: #94A3B8 !important;
+}
+
+/* ── 6. SHADOW SYSTEM — light-appropriate depth ── */
+/* Dark deep shadows are invisible gains on white; use indigo-tinted soft shadows */
+.light-mode .gc {
+  box-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 20px rgba(15,23,42,0.06), 0 0 0 1px rgba(148,163,184,0.10) !important;
+}
+.light-mode .gc:hover {
+  box-shadow: 0 2px 6px rgba(15,23,42,0.06), 0 14px 36px rgba(99,102,241,0.10), 0 0 0 1px rgba(79,70,229,0.14) !important;
+  transform: translateY(-1px) !important;
+}
+.light-mode .stat-card, .light-mode .kpi {
+  box-shadow: 0 1px 2px rgba(15,23,42,0.03), 0 4px 14px rgba(15,23,42,0.05) !important;
+}
+.light-mode .sb {
+  box-shadow: 2px 0 8px rgba(15,23,42,0.06), 4px 0 20px rgba(15,23,42,0.03) !important;
+}
+.light-mode .snav {
+  box-shadow: 0 1px 6px rgba(15,23,42,0.06) !important;
+}
+.light-mode .tb {
+  box-shadow: 0 1px 4px rgba(15,23,42,0.06) !important;
+}
+.light-mode .btn-pri, .light-mode .btn-res {
+  box-shadow: 0 2px 8px rgba(79,70,229,0.22), 0 0 0 1px rgba(79,70,229,0.16) !important;
+}
+.light-mode .btn-pri:hover, .light-mode .btn-res:hover {
+  box-shadow: 0 4px 16px rgba(79,70,229,0.28), 0 0 0 1px rgba(79,70,229,0.22) !important;
+}
+.light-mode .btn-sec {
+  box-shadow: 0 1px 3px rgba(15,23,42,0.05), 0 4px 12px rgba(15,23,42,0.04) !important;
+}
+
+/* ── 7. BTN-SEC HOVER — border color fix (white border invisible on light) ── */
+.light-mode .btn-sec:hover {
+  border-color: rgba(148,163,184,0.28) !important;
+  color: #1E293B !important;
+  background: #F1F5F9 !important;
+  box-shadow: 0 2px 8px rgba(15,23,42,0.07) !important;
+}
+
+/* ── 8. DARK OPACITY BACKGROUNDS — panels, boxes ── */
+.light-mode .whn-col {
+  background: rgba(148,163,184,0.08) !important;
+  border: 1px solid rgba(148,163,184,0.12) !important;
+}
+.light-mode .whn-title { color: #1E293B !important; }
+.light-mode .whn-body { color: #64748B !important; }
+
+.light-mode .seq-log {
+  background: rgba(241,245,249,0.85) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+}
+.light-mode .seq-log::before {
+  background: linear-gradient(180deg, #4F46E5, #0F766E) !important;
+  box-shadow: none !important;
+}
+.light-mode .seq-hdr { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .seq-row { color: #64748B !important; }
+.light-mode .seq-k { color: #94A3B8 !important; }
+.light-mode .seq-v { color: #475569 !important; }
+.light-mode .seq-v.hi { color: #4F46E5 !important; text-shadow: none !important; }
+
+.light-mode .hm {
+  background: rgba(241,245,249,0.90) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+}
+.light-mode .hm-c { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .hm-t { color: #64748B !important; }
+.light-mode .hm-t code { color: #4F46E5 !important; }
+
+.light-mode .rem-card {
+  background: rgba(241,245,249,0.80) !important;
+  border-left-width: 3px !important;
+}
+.light-mode .rem-card.lo { border-left-color: #B91C1C !important; }
+.light-mode .rem-card.md { border-left-color: #B45309 !important; }
+.light-mode .rem-title { color: #1E293B !important; }
+.light-mode .rem-body { color: #64748B !important; }
+.light-mode .rem-focus { color: #475569 !important; }
+.light-mode .rem-gap { background: rgba(185,28,28,0.08) !important; border-color: rgba(185,28,28,0.18) !important; color: #B91C1C !important; }
+.light-mode .rem-gap.md { background: rgba(180,83,9,0.08) !important; border-color: rgba(180,83,9,0.18) !important; color: #B45309 !important; }
+
+/* ── 9. B-DIM BADGE — invisible bg on light ── */
+.light-mode .b-dim, .light-mode .pb-l {
+  background: rgba(148,163,184,0.12) !important;
+  color: #64748B !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+}
+.light-mode .mx-em {
+  background: rgba(148,163,184,0.10) !important;
+  color: #94A3B8 !important;
+  border: 1px solid rgba(148,163,184,0.16) !important;
+}
+
+/* ── 10. TIMELINE, CONCEPT PATH NODES ── */
+.light-mode .tl-lbl { color: #64748B !important; }
+.light-mode .tl-time { color: #94A3B8 !important; }
+.light-mode .tl-line { background: rgba(148,163,184,0.20) !important; }
+.light-mode .tl-line.done { background: linear-gradient(90deg, #0F766E, #4F46E5) !important; box-shadow: none !important; }
+.light-mode .cp-nm { color: #64748B !important; }
+.light-mode .cp-pct.l { color: #94A3B8 !important; }
+.light-mode .cp-circ.l {
+  background: rgba(148,163,184,0.10) !important;
+  border: 1px solid rgba(148,163,184,0.22) !important;
+  color: #94A3B8 !important;
+}
+.light-mode .cp-line::before { background: rgba(148,163,184,0.20) !important; }
+
+/* ── 11. MASTERY HERO ── */
+.light-mode .mastery-hero {
+  background: linear-gradient(135deg, rgba(15,118,110,0.08), rgba(15,118,110,0.04)) !important;
+  border: 1px solid rgba(15,118,110,0.20) !important;
+  box-shadow: 0 2px 8px rgba(15,118,110,0.10) !important;
+}
+.light-mode .mastery-hero::before { display: none !important; }
+.light-mode .mh-title { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .mh-sub { color: #64748B !important; }
+.light-mode .mh-meta { color: #94A3B8 !important; }
+.light-mode .mh-aura { display: none !important; }
+
+/* ── 12. CHART ELEMENTS ── */
+.light-mode .chart-area { border-bottom-color: rgba(148,163,184,0.14) !important; }
+.light-mode .chart-bar-val { color: #64748B !important; }
+.light-mode .chart-day { color: #94A3B8 !important; }
+
+/* ── 13. CODE QUALITY / CQ ROWS ── */
+.light-mode .cq-lbl { color: #64748B !important; }
+.light-mode .cq-val { color: #1E293B !important; }
+
+/* ── 14. FEEDBACK COLUMNS ── */
+.light-mode .fb-col {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(148,163,184,0.12) !important;
+  box-shadow: 0 1px 4px rgba(15,23,42,0.04) !important;
+}
+.light-mode .fb-col::before { display: none !important; }
+.light-mode .fb-col-title { color: #1E293B !important; }
+.light-mode .fb-k { color: #94A3B8 !important; }
+.light-mode .fb-v { color: #475569 !important; }
+.light-mode .fb-v.hi { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .fb-v.gn { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .fb-v.am { color: #B45309 !important; }
+
+/* ── 15. WORKSPACE — editor, terminal text KEPT DARK (intentional) ── */
+/* Editor and terminal remain dark theme — only ensure text is visible */
+.light-mode .ws-ed .ln { color: rgba(100,116,139,0.45) !important; }
+.light-mode .ws-ed .ck_ { color: #c678dd !important; }
+.light-mode .ws-ed .cf_ { color: #61afef !important; }
+.light-mode .ws-ed .cs_ { color: #98c379 !important; }
+.light-mode .ws-ed .cn_ { color: #d19a66 !important; }
+.light-mode .ws-ed .cc_ { color: rgba(200,210,230,0.35) !important; }
+
+/* ── 16. WORKSPACE PROBLEM PANEL TEXT ── */
+.light-mode .ws-prob .ct-hdr { color: #1E293B !important; }
+.light-mode .ws-prob .qnum { color: #111827 !important; }
+.light-mode .ws-prob .ctag {
+  background: rgba(79,70,229,0.08) !important;
+  color: #4F46E5 !important;
+  border: 1px solid rgba(79,70,229,0.16) !important;
+}
+.light-mode .ws-prob .stag {
+  background: rgba(180,83,9,0.08) !important;
+  color: #B45309 !important;
+  border: 1px solid rgba(180,83,9,0.16) !important;
+}
+/* Inline span overrides inside ws-prob for attempt #, streak, input/output labels */
+.light-mode .ws-prob span[style*="rgba(255,255,255"] {
+  color: #64748B !important;
+}
+.light-mode .ws-prob .sp-dot {
+  background: #B45309 !important;
+  box-shadow: none !important;
+}
+
+/* ── 17. ERROR ROWS in dashboard ── */
+.light-mode .err-row .err-nm { color: #475569 !important; }
+.light-mode .ecnt.r { color: #B91C1C !important; }
+.light-mode .ecnt.a { color: #B45309 !important; }
+.light-mode .ecnt.c { color: #4F46E5 !important; }
+.light-mode .ecnt[style*="rgba(255,255,255,0.22)"] { color: #94A3B8 !important; }
+.light-mode .ebar { background: rgba(148,163,184,0.12) !important; }
+.light-mode .ebf.r { background: #B91C1C !important; box-shadow: none !important; }
+.light-mode .ebf.a { background: #B45309 !important; box-shadow: none !important; }
+.light-mode .ebf.c { background: #4F46E5 !important; box-shadow: none !important; }
+.light-mode .ebf.gy { background: rgba(148,163,184,0.30) !important; }
+
+/* ── 18. ACTIVITY TAGS ── */
+.light-mode .atag {
+  border-radius: 3px !important;
+  padding: 1px 6px !important;
+  font-size: 8.5px !important;
+  font-weight: 700 !important;
+}
+.light-mode .atag.sy { background: rgba(185,28,28,0.08) !important; color: #B91C1C !important; border: 1px solid rgba(185,28,28,0.16) !important; }
+.light-mode .atag.lp { background: rgba(79,70,229,0.08) !important; color: #4F46E5 !important; border: 1px solid rgba(79,70,229,0.14) !important; }
+.light-mode .atag.co { background: rgba(15,118,110,0.08) !important; color: #0F766E !important; border: 1px solid rgba(15,118,110,0.16) !important; }
+.light-mode .aqn { color: #64748B !important; }
+
+/* ── 19. LEARNING PATH PROGRESSION ── */
+.light-mode .pn .plbl { color: #64748B !important; }
+.light-mode .pn .ppct.m { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .pn .ppct.c { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .pn .ppct.l { color: #94A3B8 !important; }
+.light-mode .pn .pst { color: #94A3B8 !important; font-size: 9px !important; }
+.light-mode .pline { background: rgba(148,163,184,0.20) !important; height: 1px !important; }
+.light-mode .pline.dn::after { background: linear-gradient(90deg, #0F766E, #4F46E5) !important; box-shadow: none !important; }
+
+/* Pcirc locked variant */
+.light-mode .pcirc.l {
+  background: rgba(148,163,184,0.10) !important;
+  border: 1px solid rgba(148,163,184,0.22) !important;
+  color: #94A3B8 !important;
+}
+
+/* ── 20. DAILY GOAL ROW ── */
+.light-mode .dgoal { color: #64748B !important; }
+
+/* ── 21. STAT ROW TEXT ── */
+.light-mode .slbl { color: #94A3B8 !important; }
+.light-mode .sval { color: #111827 !important; }
+.light-mode .sval.c { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .sval.g { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .sval.a { color: #B45309 !important; text-shadow: none !important; }
+
+/* ── 22. LEARNING PATH INLINE BADGE ── */
+.light-mode span[style*="color:var(--cy2)"][style*="background:rgba(0,184,217"] {
+  color: #4F46E5 !important;
+  background: rgba(79,70,229,0.08) !important;
+  border: 1px solid rgba(79,70,229,0.16) !important;
+  box-shadow: none !important;
+}
+
+/* ── 23. CONCEPT MINI LIST (workspace AP panel) ── */
+.light-mode .cmi { color: #64748B !important; background: transparent !important; }
+.light-mode .cmi.on {
+  background: rgba(79,70,229,0.07) !important;
+  border: 1px solid rgba(79,70,229,0.14) !important;
+  color: #4F46E5 !important;
+  box-shadow: none !important;
+}
+.light-mode .cmi-cd { color: #94A3B8 !important; }
+.light-mode .cmi-d { background: rgba(148,163,184,0.25) !important; }
+.light-mode .cmi.on .cmi-d { background: #4F46E5 !important; box-shadow: none !important; }
+.light-mode .cmi-d.dn { background: #0F766E !important; box-shadow: none !important; }
+
+/* ── 24. WORKSPACE FEEDBACK BUTTONS ── */
+.light-mode .ws-fbtns { border-top-color: rgba(148,163,184,0.12) !important; }
+.light-mode .ws-fb.db {
+  background: rgba(148,163,184,0.08) !important;
+  border-color: rgba(148,163,184,0.16) !important;
+  color: #64748B !important;
+}
+.light-mode .ws-fb.ws {
+  background: rgba(79,70,229,0.08) !important;
+  border-color: rgba(79,70,229,0.18) !important;
+  color: #4F46E5 !important;
+  box-shadow: none !important;
+}
+
+/* ── 25. WORKSPACE BUTTONS (run, stop, submit) ── */
+.light-mode .bn-run {
+  background: #0F766E !important;
+  border: 1px solid rgba(15,118,110,0.30) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 4px rgba(15,118,110,0.20) !important;
+}
+.light-mode .bn-stop {
+  background: rgba(185,28,28,0.10) !important;
+  border: 1px solid rgba(185,28,28,0.20) !important;
+  color: #B91C1C !important;
+}
+.light-mode .bn-out {
+  background: rgba(148,163,184,0.10) !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+  color: #64748B !important;
+}
+.light-mode .bn-sub {
+  background: #4F46E5 !important;
+  border: 1px solid rgba(79,70,229,0.30) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 6px rgba(79,70,229,0.22) !important;
+}
+.light-mode .ec-badge {
+  background: rgba(15,118,110,0.10) !important;
+  border: 1px solid rgba(15,118,110,0.20) !important;
+  color: #0F766E !important;
+}
+
+/* ── 26. WORKSPACE STREAK DISPLAY ── */
+.light-mode .stk-p { display: flex; align-items: center; gap: 4px; }
+.light-mode .stk-p span { color: #B45309 !important; }
+.light-mode .sp-dot { background: #B45309 !important; box-shadow: none !important; }
+.light-mode .sp-dot[style*="rgba(255,255,255"] { background: rgba(148,163,184,0.22) !important; }
+
+/* ── 27. PERFORMANCE & 4S SCREENS — general text ── */
+/* Inline text/color overrides for screen 4s and cinematic sections */
+.light-mode [style*="color:rgba(255,255,255,0.22)"] { color: #94A3B8 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.25)"] { color: #94A3B8 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.28)"] { color: #94A3B8 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.3)"] { color: #64748B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.32)"] { color: #64748B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.36)"] { color: #64748B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.4)"] { color: #64748B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.42)"] { color: #475569 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.45)"] { color: #475569 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.55)"] { color: #475569 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.6)"] { color: #475569 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.65)"] { color: #1E293B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.7)"] { color: #1E293B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.75)"] { color: #1E293B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.8)"] { color: #1E293B !important; }
+.light-mode [style*="color:rgba(255,255,255,0.82)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.85)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.88)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.9)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.94)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(255,255,255,0.95)"] { color: #111827 !important; }
+.light-mode [style*="color:rgba(200,215,230,0.16)"] { color: #94A3B8 !important; }
+
+/* ── 28. INLINE DARK BACKGROUNDS ── */
+.light-mode [style*="background:rgba(0,0,0,0.3)"],
+.light-mode [style*="background:rgba(0,0,0,0.24)"],
+.light-mode [style*="background:rgba(0,0,0,0.55)"] {
+  background: rgba(241,245,249,0.85) !important;
+}
+.light-mode [style*="background:rgba(255,255,255,0.02)"],
+.light-mode [style*="background:rgba(255,255,255,0.03)"] {
+  background: rgba(148,163,184,0.08) !important;
+}
+.light-mode [style*="border:1px solid rgba(255,255,255,0.06)"],
+.light-mode [style*="border:1px solid rgba(255,255,255,0.07)"],
+.light-mode [style*="border:1px solid rgba(255,255,255,0.08)"],
+.light-mode [style*="border:1px solid rgba(255,255,255,0.04)"] {
+  border-color: rgba(148,163,184,0.14) !important;
+}
+.light-mode [style*="border-bottom:1px solid rgba(255,255,255,0.04)"] {
+  border-bottom-color: rgba(148,163,184,0.10) !important;
+}
+
+/* ── 29. CODE COLOR TOKENS in workspace problem (hnt-txt) ── */
+.light-mode .hnt-txt { color: #475569 !important; }
+.light-mode .hnt-cod { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .hnt-lbl { color: #4F46E5 !important; }
+.light-mode .ai-b {
+  background: rgba(79,70,229,0.10) !important;
+  border: 1px solid rgba(79,70,229,0.18) !important;
+  color: #4F46E5 !important;
+  box-shadow: none !important;
+}
+.light-mode .cst {
+  background: rgba(148,163,184,0.10) !important;
+  border: 1px solid rgba(148,163,184,0.16) !important;
+  color: #64748B !important;
+}
+
+/* ── 30. INLINE COLORED HIGHLIGHTS (var(--cy), var(--amb)) ── */
+.light-mode [style*="color:var(--cy)"] { color: #4F46E5 !important; }
+.light-mode [style*="color:var(--cy2)"] { color: #4F46E5 !important; }
+.light-mode [style*="color:var(--cy3)"] { color: #6366F1 !important; }
+.light-mode [style*="color:var(--amb)"] { color: #B45309 !important; }
+.light-mode [style*="text-shadow:var(--gamb)"] { text-shadow: none !important; }
+.light-mode [style*="text-shadow:var(--gcx"] { text-shadow: none !important; }
+.light-mode [style*="text-shadow:var(--ggn"] { text-shadow: none !important; }
+.light-mode [style*="text-shadow:var(--grd"] { text-shadow: none !important; }
+
+/* Inline streak amber text */
+.light-mode .stk { color: #B45309 !important; }
+
+/* ── 31. MASTERY PATH NODE INLINE ── */
+.light-mode .mpath { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.light-mode .marr { color: #94A3B8 !important; }
+.light-mode .mnode {
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  padding: 3px 8px !important;
+  border-radius: 5px !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+  color: #475569 !important;
+  background: rgba(148,163,184,0.10) !important;
+}
+
+/* ── 32. KPI LABELS ── */
+.light-mode .kpi-lbl { color: #94A3B8 !important; }
+.light-mode .kpi-val { color: #111827 !important; }
+.light-mode .kpi-val.c { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .kpi-val.g { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .kpi-val.a { color: #B45309 !important; text-shadow: none !important; }
+.light-mode .kpi-sub { color: #94A3B8 !important; }
+.light-mode .kpi::before { background: linear-gradient(90deg, transparent, rgba(79,70,229,0.10), transparent) !important; }
+
+/* ── 33. CONCEPT REVIEW TABLE ── */
+.light-mode .ctb-row { border-bottom-color: rgba(148,163,184,0.10) !important; }
+.light-mode .ctb-type { color: #64748B !important; }
+.light-mode .ctb-q { color: #1E293B !important; }
+.light-mode .ctb-c { color: #94A3B8 !important; }
+
+/* ── 34. LIVENESS — pdot, animations suppressed ── */
+.light-mode .pdot {
+  background: #0F766E !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.light-mode .pdot::before, .light-mode .pdot::after { display: none !important; }
+
+/* ── 35. SCROLL CONTAINER ── */
+.light-mode .scr > .cnt { background: #F6F7FB !important; }
+.light-mode .ws-ap { background: #EEF1F6 !important; }
+.light-mode .ws-ap::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.22) !important; }
+
+/* ── 36. EDTAB (code file tabs in editor) ── */
+.light-mode .ed-tabs {
+  background: #2A2A3C !important;
+  border-bottom: 1px solid rgba(255,255,255,0.06) !important;
+}
+.light-mode .ed-tab { color: rgba(220,225,240,0.80) !important; }
+.light-mode .ed-meta { color: rgba(180,190,210,0.40) !important; }
+
+/* ── 37. TERM tabs ── */
+.light-mode .term-tabs { border-bottom-color: rgba(255,255,255,0.06) !important; }
+.light-mode .tt { color: rgba(180,190,210,0.35) !important; }
+.light-mode .tt.on { color: #f77 !important; text-shadow: none !important; }
+
+/* ── 38. LIVENESS BADGE (ec-badge) ── */
+.light-mode .lv {
+  background: rgba(15,118,110,0.10) !important;
+  border: 1px solid rgba(15,118,110,0.22) !important;
+  color: #0F766E !important;
+  box-shadow: none !important;
+}
+
+/* ── 39. ALL TEXT-SHADOW OVERRIDES — kill all glow in light mode ── */
+.light-mode * { text-shadow: none !important; }
+/* Re-allow specific ones if needed (none needed in light mode) */
+
+/* ── 40. ALL BOX-SHADOW GLOWS — kill all neon glow in light mode ── */
+.light-mode .ldot, .light-mode .cdot,
+.light-mode .ldot.c, .light-mode .ldot.g, .light-mode .ldot.r, .light-mode .ldot.a,
+.light-mode .cdot.c, .light-mode .cdot.g {
+  box-shadow: none !important;
+  animation: none !important;
+}
+.light-mode .sk-dot.ok, .light-mode .ski.ok { box-shadow: none !important; }
+.light-mode .ski.fl { box-shadow: none !important; }
+.light-mode .air-hdr { text-shadow: none !important; }
+.light-mode .air-cod { text-shadow: none !important; }
+
+/* ── 41. CR (confidence bars) in AI panel ── */
+.light-mode .cr-b { background: rgba(148,163,184,0.14) !important; }
+.light-mode .cr-l { color: #94A3B8 !important; }
+.light-mode .cr-p { color: #475569 !important; }
+.light-mode .cr-f.g { background: linear-gradient(90deg, #0F766E, #1F8A70) !important; box-shadow: none !important; }
+.light-mode .cr-f.a { background: linear-gradient(90deg, #B45309, #B07C1A) !important; box-shadow: none !important; }
+
+/* ── 42. CTAG, STAG in workspace ── */
+.light-mode .ctag {
+  background: rgba(79,70,229,0.08) !important;
+  color: #4F46E5 !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(79,70,229,0.16) !important;
+}
+.light-mode .stag {
+  background: rgba(180,83,9,0.08) !important;
+  color: #B45309 !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  border: 1px solid rgba(180,83,9,0.16) !important;
+}
+
+/* ── 43. EINT (error inline in code) ── */
+.light-mode .einl { color: #B91C1C !important; }
+
+/* ── 44. HINT NUMBER (wl-q-num style) ── */
+.light-mode .wl-q-num { color: #4F46E5 !important; }
+
+/* ── 45. ERROR STREAK TEXT (in workspace inline) ── */
+.light-mode [style*="color:var(--amb);font-size:11px;font-weight:700;text-shadow"] {
+  color: #B45309 !important;
+}
+
+/* ══ END COMPREHENSIVE LIGHT MODE FIX ══ */
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT MODE — ALL SCREENS FIX (Workspace, S1–S4, Cinematic)
+   Covers every class used outside login & dashboard
+══════════════════════════════════════════════════════════════ */
+
+/* ═══ WORKSPACE SCREEN ═══ */
+
+/* Problem panel */
+.light-mode .qnum { color: #111827 !important; }
+.light-mode .stl { color: #94A3B8 !important; }
+.light-mode .ptxt { color: #475569 !important; }
+.light-mode .io-lbl { color: #94A3B8 !important; }
+.light-mode .io-v { color: #475569 !important; }
+.light-mode .ex-box {
+  background: rgba(241,245,249,0.80) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+}
+.light-mode .exh { color: #94A3B8 !important; }
+.light-mode .exv { color: #1E293B !important; }
+.light-mode .exv.pos { color: #0F766E !important; }
+
+/* Hint warning banner on workspace */
+.light-mode .hint-banner {
+  background: rgba(180,83,9,0.07) !important;
+  border-bottom: 1px solid rgba(180,83,9,0.18) !important;
+}
+.light-mode .hint-banner::after { display: none !important; }
+.light-mode .hb-icon {
+  background: rgba(180,83,9,0.10) !important;
+  border-color: rgba(180,83,9,0.30) !important;
+  color: #B45309 !important;
+}
+.light-mode .hb-text { color: #B45309 !important; }
+.light-mode .hb-note { color: rgba(180,83,9,0.65) !important; }
+
+/* Adaptive hint box (inline in problem) */
+.light-mode .aih-box {
+  background: rgba(79,70,229,0.05) !important;
+  border: 1px solid rgba(79,70,229,0.16) !important;
+  box-shadow: none !important;
+}
+.light-mode .aih-hdr { color: #4F46E5 !important; }
+.light-mode .aih-txt { color: #64748B !important; }
+
+/* Hint panel (right column in Screen 2) */
+.light-mode .hint-panel-title { color: #1E293B !important; }
+.light-mode .hint-used-box {
+  background: rgba(180,83,9,0.07) !important;
+  border: 1px solid rgba(180,83,9,0.20) !important;
+}
+.light-mode .hub-hdr { color: #B45309 !important; }
+.light-mode .hub-note { color: rgba(180,83,9,0.65) !important; }
+.light-mode .hint-section .hs-lbl { color: #94A3B8 !important; }
+.light-mode .hint-block {
+  background: rgba(241,245,249,0.85) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+.light-mode .hint-block.l2 {
+  background: rgba(79,70,229,0.05) !important;
+  border-color: rgba(79,70,229,0.16) !important;
+}
+.light-mode .hint-block code { color: #4F46E5 !important; }
+.light-mode .ctx-block {
+  background: rgba(185,28,28,0.05) !important;
+  border: 1px solid rgba(185,28,28,0.16) !important;
+  color: #B91C1C !important;
+}
+.light-mode .rel-block {
+  background: rgba(241,245,249,0.85) !important;
+  border: 1px solid rgba(148,163,184,0.14) !important;
+}
+.light-mode .rel-func { color: #4F46E5 !important; }
+.light-mode .rel-item { color: #64748B !important; }
+
+/* Editor tab bar */
+.light-mode .ed-tb {
+  background: #252836 !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+}
+.light-mode .ed-file { color: rgba(220,225,240,0.70) !important; }
+.light-mode .ed-lang { color: rgba(0,184,217,0.45) !important; }
+.light-mode .ed-body::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.18) !important; }
+
+/* Terminal output text (stays dark) */
+.light-mode .tok { color: rgba(200,210,230,0.80) !important; }
+.light-mode .tok.ok { color: #98c379 !important; }
+
+/* Error focus box in AP panel */
+.light-mode .efc-l { color: #B91C1C !important; }
+.light-mode .efc-tg {
+  background: rgba(185,28,28,0.10) !important;
+  color: #B91C1C !important;
+}
+.light-mode .efc-v { color: #B91C1C !important; }
+.light-mode .efc-d { color: #64748B !important; }
+
+/* AI reasoning header */
+.light-mode .air-hdr { color: #4F46E5 !important; }
+.light-mode .air-txt { color: #64748B !important; }
+.light-mode .air-cod { color: #4F46E5 !important; }
+
+/* Period toggle */
+.light-mode .period-toggle {
+  background: rgba(241,245,249,0.90) !important;
+  border: 1px solid rgba(148,163,184,0.18) !important;
+}
+.light-mode .pt-btn { color: #94A3B8 !important; background: none !important; }
+.light-mode .pt-btn.on {
+  background: #4F46E5 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 1px 6px rgba(79,70,229,0.22) !important;
+}
+
+/* ═══ SCREEN 1 — WELCOME BACK ═══ */
+
+/* Where you left off */
+.light-mode .wl-progress-lbl { color: #64748B !important; }
+.light-mode .wl-progress-bar { background: rgba(148,163,184,0.14) !important; }
+.light-mode .wl-progress-fill {
+  background: #4F46E5 !important;
+  box-shadow: none !important;
+  animation: none !important;
+}
+.light-mode .wl-q-lbl { color: #94A3B8 !important; }
+.light-mode .wl-q-note { color: #64748B !important; }
+.light-mode .wl-q-warn { color: #B45309 !important; }
+.light-mode [style*="color:var(--red);text-shadow:var(--grd)"] { color: #B91C1C !important; }
+.light-mode .streak-lbl { color: #94A3B8 !important; }
+
+/* Streak dots */
+.light-mode .sd.ok {
+  background: rgba(15,118,110,0.10) !important;
+  border: 1px solid rgba(15,118,110,0.24) !important;
+  color: #0F766E !important;
+}
+.light-mode .sd.em {
+  background: rgba(148,163,184,0.10) !important;
+  border: 1px solid rgba(148,163,184,0.20) !important;
+  color: #94A3B8 !important;
+}
+
+/* Daily goal */
+.light-mode .goal-lbl { color: #1E293B !important; }
+.light-mode .goal-progress-bar { background: rgba(148,163,184,0.14) !important; }
+.light-mode .goal-fill { background: #4F46E5 !important; }
+.light-mode .goal-pct { color: #94A3B8 !important; }
+.light-mode .goal-progress-wrap [style*="rgba(200,215,230,0.12)"],
+.light-mode .goal-progress-wrap [style*="rgba(255,255,255,0.22)"] {
+  color: #94A3B8 !important;
+}
+
+/* Rec section */
+.light-mode .rec-lbl { color: #94A3B8 !important; }
+
+/* ETA block */
+.light-mode .eta-lbl { color: #64748B !important; }
+.light-mode .eta-val { color: #0F766E !important; text-shadow: none !important; }
+
+/* Platform progress track */
+.light-mode .pp-track { padding: 10px 4px !important; }
+.light-mode .pp-name { color: #64748B !important; }
+.light-mode .pp-status { color: #94A3B8 !important; }
+.light-mode .pp-pct.m { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .pp-pct.a { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .pp-pct.l { color: #94A3B8 !important; }
+
+/* Platform progress circles */
+.light-mode .pp-circ.m {
+  background: rgba(15,118,110,0.10) !important;
+  border: 2px solid rgba(15,118,110,0.40) !important;
+  color: #0F766E !important;
+  box-shadow: 0 0 0 3px rgba(15,118,110,0.08) !important;
+}
+.light-mode .pp-circ.a {
+  background: rgba(79,70,229,0.08) !important;
+  border: 2px solid rgba(79,70,229,0.40) !important;
+  color: #4F46E5 !important;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.08) !important;
+  animation: none !important;
+}
+.light-mode .pp-circ.l {
+  background: rgba(148,163,184,0.08) !important;
+  border: 1px solid rgba(148,163,184,0.22) !important;
+  color: #94A3B8 !important;
+}
+.light-mode .pp-circ.l::after { background: rgba(148,163,184,0.20) !important; }
+
+/* Progress lines */
+.light-mode .pp-line::before { background: rgba(148,163,184,0.18) !important; }
+.light-mode .pp-line.done::after {
+  background: linear-gradient(90deg, #0F766E, #4F46E5) !important;
+  box-shadow: none !important;
+}
+
+/* Inline "6 CONCEPTS" badge */
+.light-mode .gc span[style*="color:var(--cy2)"][style*="background:rgba(0,184,217"] {
+  color: #4F46E5 !important;
+  background: rgba(79,70,229,0.08) !important;
+  border-color: rgba(79,70,229,0.16) !important;
+  box-shadow: none !important;
+}
+
+/* ═══ SCREEN 3 — PERFORMANCE SUMMARY ═══ */
+
+/* Stat card "Time Spent" — inline style with var(--in2) */
+.light-mode .stat-val[style*="color:var(--in2)"] {
+  color: #4F46E5 !important;
+  text-shadow: none !important;
+}
+
+/* Chart bars */
+.light-mode .chart-bars { display: flex; align-items: flex-end; height: 100%; gap: 4px; }
+.light-mode .chart-bar-wrap { display: flex; flex-direction: column; align-items: center; flex: 1; gap: 3px; }
+.light-mode .chart-bar {
   width: 100% !important;
+  border-radius: 3px 3px 0 0 !important;
 }
+.light-mode .chart-bar.hi {
+  background: linear-gradient(180deg, #4F46E5 0%, rgba(79,70,229,0.55) 100%) !important;
+  box-shadow: none !important;
+}
+.light-mode .chart-bar.lo {
+  background: linear-gradient(180deg, rgba(79,70,229,0.45) 0%, rgba(79,70,229,0.20) 100%) !important;
+  box-shadow: none !important;
+}
+
+/* Accuracy by concept */
+.light-mode .acc-concept { margin-bottom: 16px !important; }
+.light-mode .acc-name { color: #1E293B !important; }
+.light-mode .acc-pct { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .acc-pct[style*="color:var(--cy2)"] { color: #4F46E5 !important; }
+.light-mode .acc-bar { background: rgba(148,163,184,0.14) !important; }
+.light-mode .acc-fill.hi {
+  background: #0F766E !important;
+  box-shadow: none !important;
+}
+.light-mode .acc-fill.mid {
+  background: #4F46E5 !important;
+  box-shadow: none !important;
+}
+.light-mode .acc-fill.lo {
+  background: #B91C1C !important;
+  box-shadow: none !important;
+}
+/* Inline accuracy category labels */
+.light-mode [style*="rgba(0,232,122,0.55)"] { color: #0F766E !important; }
+.light-mode [style*="rgba(255,61,90,0.6)"] { color: #B91C1C !important; }
+.light-mode [style*="rgba(0,184,217,0.20)"] { color: rgba(79,70,229,0.50) !important; }
+
+/* Mastery milestones */
+.light-mode .milestone-track { padding: 16px 0 8px !important; }
+.light-mode .milestone-line { background: rgba(148,163,184,0.16) !important; }
+.light-mode .milestone-line-fill {
+  background: linear-gradient(90deg, #0F766E, #4F46E5) !important;
+  box-shadow: none !important;
+}
+.light-mode .ms-circle.done {
+  background: rgba(15,118,110,0.10) !important;
+  border: 2px solid rgba(15,118,110,0.40) !important;
+  box-shadow: 0 0 0 3px rgba(15,118,110,0.08) !important;
+  color: #0F766E !important;
+}
+.light-mode .ms-circle.prog {
+  background: rgba(79,70,229,0.08) !important;
+  border: 2px solid rgba(79,70,229,0.30) !important;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.08) !important;
+  animation: none !important;
+  color: #4F46E5 !important;
+}
+.light-mode .ms-title { color: #1E293B !important; }
+.light-mode .ms-date { color: #64748B !important; }
+.light-mode .ms-date[style*="color:var(--cy)"] { color: #4F46E5 !important; }
+.light-mode .ms-note { color: #94A3B8 !important; }
+
+/* ═══ SCREEN 4 — ADAPTIVE INTELLIGENCE OVERVIEW ═══ */
+
+/* Engine bar */
+.light-mode .engine-bar {
+  background: #EEF1F6 !important;
+  border-bottom: 1px solid rgba(148,163,184,0.16) !important;
+  box-shadow: none !important;
+}
+.light-mode .engine-bar::before { display: none !important; }
+.light-mode .engine-bar::after { display: none !important; }
+.light-mode .eb-title { color: #111827 !important; }
+.light-mode .eb-version { color: #94A3B8 !important; }
+
+/* Engine active status */
+.light-mode .eb-active span[style*="color:var(--grn)"] { color: #0F766E !important; }
+
+/* Engine param cards */
+.light-mode .eb-param {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(148,163,184,0.12) !important;
+  box-shadow: 0 1px 3px rgba(15,23,42,0.04) !important;
+}
+.light-mode .ep-key { color: #94A3B8 !important; }
+.light-mode .ep-val.false { color: #94A3B8 !important; }
+.light-mode .ep-val.true { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .ep-val.info { color: #4F46E5 !important; text-shadow: none !important; }
+
+/* Trajectory panel */
+.light-mode .traj-row { border-bottom-color: rgba(148,163,184,0.10) !important; }
+.light-mode .traj-key { color: #94A3B8 !important; }
+.light-mode .traj-val { color: #1E293B !important; }
+.light-mode .traj-val.hi { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .traj-val.warn { color: #B45309 !important; text-shadow: none !important; }
+.light-mode .traj-note { color: #64748B !important; }
+
+/* Algorithm state panel */
+.light-mode .algo-row { border-bottom-color: rgba(148,163,184,0.10) !important; }
+.light-mode .algo-key { color: #94A3B8 !important; }
+.light-mode .algo-val { color: #1E293B !important; }
+.light-mode .algo-val.c { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .algo-note { color: #64748B !important; }
+/* Inline hint status amber */
+.light-mode .algo-val[style*="color:var(--amb)"] { color: #B45309 !important; text-shadow: none !important; }
+
+/* Recommendations panel */
+.light-mode .rg-label { text-shadow: none !important; }
+.light-mode .rg-label.imm { color: #4F46E5 !important; }
+.light-mode .rg-label.sht { color: #B45309 !important; }
+.light-mode .rg-label.avd { color: #B91C1C !important; }
+.light-mode .rg-label.alr { color: #6366F1 !important; }
+.light-mode .rg-label.rem { color: #0F766E !important; }
+.light-mode .rg-item { color: #1E293B !important; }
+.light-mode .rg-note { color: #64748B !important; }
+
+/* Error Exposure Map */
+.light-mode .eem-grid { gap: 6px !important; }
+.light-mode .eem-bar-wrap { background: rgba(241,245,249,0.80) !important; border-radius: 4px 4px 0 0 !important; }
+.light-mode .eem-bar.hi {
+  background: linear-gradient(180deg, #B91C1C 0%, rgba(185,28,28,0.45) 100%) !important;
+  box-shadow: none !important;
+}
+.light-mode .eem-bar.mid {
+  background: linear-gradient(180deg, #B45309 0%, rgba(180,83,9,0.40) 100%) !important;
+  box-shadow: none !important;
+}
+.light-mode .eem-bar.lo {
+  background: linear-gradient(180deg, #4F46E5 0%, rgba(79,70,229,0.30) 100%) !important;
+  box-shadow: none !important;
+}
+.light-mode .eem-bar.zero { background: rgba(148,163,184,0.15) !important; }
+.light-mode .eem-pct.hi { color: #B91C1C !important; text-shadow: none !important; }
+.light-mode .eem-pct.mid { color: #B45309 !important; text-shadow: none !important; }
+.light-mode .eem-pct.lo { color: #4F46E5 !important; text-shadow: none !important; }
+.light-mode .eem-pct.zero { color: #94A3B8 !important; }
+.light-mode .eem-name { color: #64748B !important; }
+
+/* usr-badge (shared across all screens) */
+.light-mode .usr-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  color: #1E293B !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+}
+.light-mode .usr-badge span { color: #94A3B8 !important; }
+
+/* Streak badge / red streak in workspace topbar */
+.light-mode div[style*="background:rgba(255,61,90,0.1)"][style*="color:var(--red)"] {
+  background: rgba(185,28,28,0.08) !important;
+  border-color: rgba(185,28,28,0.20) !important;
+  color: #B91C1C !important;
+}
+
+/* "ACTIVE" engine status label inline */
+.light-mode span[style*="color:var(--grn);font-weight:700;text-shadow"] {
+  color: #0F766E !important;
+  text-shadow: none !important;
+}
+
+/* ═══ SHARED — all 4s screens active styling inline ═══ */
+
+/* "In progress" milestone date */
+.light-mode .ms-date[style*="color:var(--cy)"] { color: #4F46E5 !important; }
+
+/* Accuracy pct inline on acc-name */
+.light-mode .acc-pct[style*="color:var(--cy2)"] { color: #4F46E5 !important; }
+
+/* "streak: 0" in screen 2 inline */
+.light-mode span[style*="color:rgba(255,255,255,0.3)"][style*="font-size:10px"] {
+  color: #64748B !important;
+}
+
+/* Input/Output grid in screen 2 problem */
+.light-mode div[style*="grid-template-columns:40px 1fr"] span[style*="rgba(255,255,255,0.28)"] {
+  color: #94A3B8 !important;
+}
+.light-mode div[style*="grid-template-columns:40px 1fr"] span[style*="rgba(255,255,255,0.55)"] {
+  color: #475569 !important;
+}
+
+/* "Streak: 0" inline streak container */
+.light-mode div[style*="display:flex;align-items:center;gap:6px;margin-bottom:10px"] span {
+  color: #64748B !important;
+}
+
+/* "Current streak: 2 / 4" text */
+.light-mode div[style*="rgba(200,215,230,0.12)"] { color: #94A3B8 !important; }
+
+/* "Completed: 0 / 10" */
+.light-mode .goal-progress-wrap span[style*="rgba(200,215,230,0.12)"] { color: #94A3B8 !important; }
+
+/* ═══ ALL SCREENS — kill remaining glow box-shadows ═══ */
+.light-mode .pp-circ, .light-mode .ms-circle { transition: none !important; }
+.light-mode .wl-progress-fill { animation: none !important; }
+.light-mode .pp-line.done::before { background: none !important; }
+
+/* ══ END ALL SCREENS FIX ══ */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   FOSSEE ACE — COOL-WARM HYBRID WORKSPACE SYSTEM
+   "Premium academic IDE · A modern research notebook for deep cognitive coding"
+   
+   Palette architecture:
+     #EFE9DD  outer workspace atmosphere (warm editorial parchment)
+     #F7F5F1  editor surface — the REAL coding paper
+     #FCFBF8  editor inner layer — active regions, execution containers
+     #ECE6DA  sidebar — architectural framing
+     #F3F1EB  terminal — integrated, NOT hacker console
+   
+   Code typography:
+     base:#263041  comments:#7A8394  keywords:#5B4DF5
+     functions:#345FA8  strings:#0F766E  errors:#C2415B  warnings:#C28A1D
+   
+   Active line: rgba(111,99,255,0.07)   Selection: rgba(111,99,255,0.12)
+══════════════════════════════════════════════════════════════════════ */
+
+/* ── ROOT WORKSPACE VARIABLES ── */
+html.light-mode {
+  --lm-outer:   #EFE9DD;   /* outer workspace frame */
+  --lm-editor:  #F7F5F1;   /* MAIN editor/coding surface */
+  --lm-inner:   #FCFBF8;   /* active regions, execution */
+  --lm-sidebar: #ECE6DA;   /* sidebar inside workspace */
+  --lm-term:    #F3F1EB;   /* terminal */
+  --lm-border:  rgba(60,40,20,0.09);
+  --lm-border2: rgba(60,40,20,0.06);
+  --lm-shadow-main:
+    0 1px 2px rgba(60,40,20,0.04),
+    0 12px 30px rgba(30,35,50,0.06);
+  --lm-shadow-float:
+    0 8px 24px rgba(20,25,40,0.08),
+    0 1px 0 rgba(255,255,255,0.80) inset;
+}
+
+/* ══ 1. GLOBAL BODY — warm outer shell ══ */
+html.light-mode,
+html.light-mode body,
+.light-mode body {
+  background: #EFE9DD !important;
+  color: #263041 !important;
+}
+
+.light-mode body::before {
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -5%, rgba(91,77,245,0.018) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(60,40,20,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 35% at 100% 100%, rgba(60,40,20,0.04) 0%, transparent 48%) !important;
+}
+
+/* ══ 2. CONTENT AREA — warm parchment atmosphere ══ */
+.light-mode .cnt { background: #EFE9DD !important; }
+
+/* ══ 3. PRIMARY GLASS CARDS — premium paper surface ══ */
+.light-mode .gc {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .gc:hover {
+  background: #FCFBF8 !important;
+  border-color: rgba(91,77,245,0.18) !important;
+  box-shadow:
+    0 2px 6px rgba(30,35,50,0.06),
+    0 14px 36px rgba(91,77,245,0.07),
+    0 0 0 1px rgba(91,77,245,0.10) !important;
+  transform: translateY(-1px) !important;
+}
+.light-mode .gc-grn {
+  background: #F7F5F1 !important;
+  border-color: rgba(15,118,110,0.16) !important;
+  box-shadow: var(--lm-shadow-main), 0 0 0 1px rgba(15,118,110,0.06) !important;
+}
+.light-mode .gc-red {
+  background: #F7F5F1 !important;
+  border-color: rgba(194,65,91,0.16) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .gc-gold {
+  background: #F7F5F1 !important;
+  border-color: rgba(194,138,29,0.18) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+
+/* ══ 4. STAT / KPI TILES — slightly denser warm tone ══ */
+.light-mode .stat-card,
+.light-mode .kpi {
+  background: #ECE6DA !important;
+  border: 1px solid rgba(60,40,20,0.08) !important;
+  box-shadow:
+    0 1px 2px rgba(60,40,20,0.04),
+    0 4px 14px rgba(30,35,50,0.04) !important;
+}
+
+/* ══ 5. SIDEBAR — architectural framing ══ */
+.light-mode .sb {
+  background: #ECE6DA !important;
+  border-right: 1px solid rgba(60,40,20,0.10) !important;
+  box-shadow: 2px 0 12px rgba(30,35,50,0.05), 4px 0 28px rgba(30,35,50,0.03) !important;
+}
+.light-mode .nsect { color: #7A8394 !important; }
+.light-mode .ni { color: #263041 !important; opacity: 0.65; }
+.light-mode .ni svg { opacity: 0.55 !important; }
+.light-mode .ni:hover { color: #263041 !important; opacity: 1; background: rgba(91,77,245,0.06) !important; }
+.light-mode .ni:hover svg { opacity: 0.80 !important; }
+.light-mode .ni.on {
+  color: #3D32C4 !important;
+  opacity: 1;
+  background: rgba(91,77,245,0.10) !important;
+  border-left-color: #5B4DF5 !important;
+}
+.light-mode .ni.on svg { opacity: 1 !important; }
+.light-mode .ci { color: #52607A !important; }
+.light-mode .ci.on { color: #263041 !important; }
+.light-mode .ubar { background: rgba(236,230,218,0.70) !important; border-top-color: rgba(60,40,20,0.08) !important; }
+.light-mode .un { color: #263041 !important; }
+.light-mode .ur { color: #7A8394 !important; }
+.light-mode .av { background: #F7F5F1 !important; border-color: rgba(91,77,245,0.18) !important; color: #5B4DF5 !important; }
+
+/* Logo */
+.light-mode .logo-icon { background: #FCFBF8 !important; border-color: rgba(91,77,245,0.20) !important; color: #5B4DF5 !important; }
+.light-mode .logo-n { color: #263041 !important; }
+.light-mode .logo-s { color: #5B4DF5 !important; opacity: 0.75 !important; }
+
+/* ══ 6. SCREEN NAV ══ */
+.light-mode .snav {
+  background: rgba(247,245,241,0.94) !important;
+  border-bottom: 1px solid rgba(60,40,20,0.09) !important;
+  box-shadow: 0 1px 6px rgba(30,35,50,0.05) !important;
+  backdrop-filter: blur(16px) !important;
+}
+.light-mode .snav::after { display: none !important; }
+.light-mode .sbtn { color: #52607A !important; border-color: transparent !important; background: none !important; }
+.light-mode .sbtn:hover { color: #5B4DF5 !important; background: rgba(91,77,245,0.07) !important; border-color: rgba(91,77,245,0.14) !important; }
+.light-mode .sbtn.on { color: #3D32C4 !important; background: rgba(91,77,245,0.10) !important; border-color: rgba(91,77,245,0.22) !important; box-shadow: none !important; text-shadow: none !important; }
+
+/* ══ 7. TOPBAR ══ */
+.light-mode .tb {
+  background: rgba(247,245,241,0.88) !important;
+  border-bottom: 1px solid rgba(60,40,20,0.09) !important;
+  backdrop-filter: blur(16px) !important;
+  box-shadow: 0 1px 4px rgba(30,35,50,0.05) !important;
+}
+.light-mode .tb-title { color: #263041 !important; font-weight: 700 !important; }
+.light-mode .tb-sub { color: #52607A !important; }
+.light-mode .tb-bc { color: #7A8394 !important; }
+.light-mode .tb-bc span { color: #52607A !important; }
+.light-mode .cur-badge {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .cur-lbl { color: #7A8394 !important; }
+.light-mode .cur-val { color: #5B4DF5 !important; }
+.light-mode .stk-badge { background: rgba(194,138,29,0.09) !important; border-color: rgba(194,138,29,0.22) !important; color: #C28A1D !important; }
+.light-mode .stk-badge-0 { background: rgba(194,65,91,0.09) !important; border-color: rgba(194,65,91,0.22) !important; color: #C2415B !important; }
+
+/* ══ 8. WORKSPACE PANELS — cool editor core inside warm shell ══ */
+
+/* Problem panel: warm outer-workspace tone */
+.light-mode .ws-prob {
+  background: #EFE9DD !important;
+  border-right: 1px solid rgba(60,40,20,0.10) !important;
+  box-shadow: none !important;
+}
+/* AI/Hint panel: same warm outer tone */
+.light-mode .ws-hint,
+.light-mode .ws-ap {
+  background: #EFE9DD !important;
+  border-left: 1px solid rgba(60,40,20,0.10) !important;
+  box-shadow: none !important;
+}
+/* EDITOR SURFACE — the real coding paper, cool-warm balance */
+.light-mode .ws-ed,
+.light-mode .ws-editor {
+  background: #F7F5F1 !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+
+/* TERMINAL — integrated, warm, NOT hacker console */
+.light-mode .term,
+.light-mode .ed-terminal {
+  background: #F3F1EB !important;
+  border-top: 1px solid rgba(60,40,20,0.09) !important;
+}
+.light-mode .tok { color: #263041 !important; }
+.light-mode .tok.ok { color: #0F766E !important; }
+
+/* ══ 9. CODE TYPOGRAPHY — the heart of the editor ══ */
+.light-mode .ws-ed,
+.light-mode .ws-editor,
+.light-mode .ed-body {
+  color: #263041 !important;          /* base code: deep slate-blue charcoal */
+}
+/* Syntax classes */
+.light-mode .ws-ed .cc_,
+.light-mode .ed-body .cc_ { color: #7A8394 !important; }   /* comments: soft academic */
+.light-mode .ws-ed .ck_,
+.light-mode .ed-body .ck_ { color: #5B4DF5 !important; }   /* keywords: intelligent violet */
+.light-mode .ws-ed .cf_,
+.light-mode .ed-body .cf_ { color: #345FA8 !important; }   /* functions: professional research-blue */
+.light-mode .ws-ed .cs_,
+.light-mode .ed-body .cs_ { color: #0F766E !important; }   /* strings: elegant emerald-teal */
+.light-mode .ws-ed .ce_,
+.light-mode .ed-body .ce_ { color: #C2415B !important; }   /* errors: muted crimson */
+.light-mode .ws-ed .cw_,
+.light-mode .ed-body .cw_ { color: #C28A1D !important; }   /* warnings: academic amber */
+.light-mode .ws-ed .cn_,
+.light-mode .ed-body .cn_ { color: #345FA8 !important; }   /* numbers: research-blue */
+
+/* Active line + selection */
+.light-mode .ws-ed .active-line,
+.light-mode .ed-body .active-line { background: rgba(111,99,255,0.07) !important; }
+.light-mode .ws-ed ::selection,
+.light-mode .ed-body ::selection { background: rgba(111,99,255,0.12) !important; }
+
+/* Line numbers */
+.light-mode .ws-ed .ln { color: rgba(122,131,148,0.5) !important; }
+
+/* Editor tab bar */
+.light-mode .ed-tb {
+  background: #ECE6DA !important;
+  border-bottom: 1px solid rgba(60,40,20,0.10) !important;
+}
+.light-mode .ed-file { color: #263041 !important; opacity: 0.75; }
+.light-mode .ed-lang { color: #5B4DF5 !important; opacity: 0.65; }
+
+/* Execution / active containers use inner layer */
+.light-mode .exec-container,
+.light-mode .run-output,
+.light-mode .output-pane {
+  background: #FCFBF8 !important;
+  border: 1px solid rgba(60,40,20,0.08) !important;
+}
+
+/* ══ 10. TYPOGRAPHY SYSTEM ══ */
+.light-mode .st { color: #263041 !important; font-weight: 600 !important; }
+.light-mode .ss { color: #52607A !important; }
+.light-mode .clbl { color: #7A8394 !important; }
+.light-mode .hero-title { color: #263041 !important; font-weight: 700 !important; }
+.light-mode .hero-sub { color: #52607A !important; }
+.light-mode .stat-lbl { color: #7A8394 !important; }
+.light-mode .stat-val { color: #263041 !important; }
+.light-mode .stat-val.c { color: #5B4DF5 !important; }
+.light-mode .stat-val.g { color: #0F766E !important; }
+.light-mode .stat-val.a { color: #C28A1D !important; }
+.light-mode .stat-sub { color: #7A8394 !important; }
+.light-mode .dk { color: #52607A !important; }
+.light-mode .dv { color: #263041 !important; }
+.light-mode .dv.c { color: #5B4DF5 !important; }
+.light-mode .dv.g { color: #0F766E !important; }
+.light-mode .dv.a { color: #C28A1D !important; }
+.light-mode .dv.r { color: #C2415B !important; }
+.light-mode .dr { border-bottom-color: rgba(60,40,20,0.07) !important; }
+.light-mode .cl-title { color: #263041 !important; }
+.light-mode .cl-sub { color: #5B4DF5 !important; }
+.light-mode .cl-desc, .light-mode .cl-meta { color: #52607A !important; }
+.light-mode .slbl { color: #7A8394 !important; }
+.light-mode .sval { color: #263041 !important; }
+.light-mode .sval.c { color: #5B4DF5 !important; text-shadow: none !important; }
+.light-mode .sval.g { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .sval.a { color: #C28A1D !important; text-shadow: none !important; }
+.light-mode .eng-k { color: #7A8394 !important; }
+.light-mode .eng-v { color: #263041 !important; }
+.light-mode .atm { color: #7A8394 !important; }
+.light-mode .ptxt { color: #263041 !important; }
+.light-mode .io-lbl { color: #7A8394 !important; }
+.light-mode .io-v { color: #52607A !important; }
+.light-mode .stl { color: #7A8394 !important; }
+.light-mode .qnum { color: #263041 !important; }
+
+/* ══ 11. CODE BLOCKS (inline/pre) ══ */
+.light-mode code,
+.light-mode pre {
+  background: #FCFBF8 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+  color: #263041 !important;
+}
+.light-mode .hint-block code,
+.light-mode .hint-block2 code { background: rgba(91,77,245,0.08) !important; color: #5B4DF5 !important; }
+
+/* ══ 12. BUTTONS ══ */
+.light-mode .btn-pri,
+.light-mode .btn-res {
+  background: #5B4DF5 !important;
+  border-color: rgba(91,77,245,0.30) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(91,77,245,0.22), 0 0 0 1px rgba(91,77,245,0.18) !important;
+}
+.light-mode .btn-pri:hover,
+.light-mode .btn-res:hover {
+  background: #4A3FD4 !important;
+  box-shadow: 0 6px 20px rgba(91,77,245,0.30) !important;
+}
+.light-mode .btn-sec {
+  background: #F7F5F1 !important;
+  border-color: rgba(60,40,20,0.14) !important;
+  color: #263041 !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .btn-sec:hover {
+  background: #FCFBF8 !important;
+  border-color: rgba(60,40,20,0.22) !important;
+  color: #263041 !important;
+}
+.light-mode .btn-grn {
+  background: #0F766E !important;
+  border-color: rgba(15,118,110,0.28) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(15,118,110,0.20) !important;
+}
+.light-mode .bn-run {
+  background: #0F766E !important; border: 1px solid rgba(15,118,110,0.30) !important; color: #FFFFFF !important;
+}
+.light-mode .bn-stop {
+  background: rgba(194,65,91,0.10) !important; border: 1px solid rgba(194,65,91,0.22) !important; color: #C2415B !important;
+}
+.light-mode .bn-sub {
+  background: #5B4DF5 !important; border: 1px solid rgba(91,77,245,0.28) !important; color: #FFFFFF !important;
+}
+.light-mode .bn-out {
+  background: rgba(60,40,20,0.06) !important; border: 1px solid rgba(60,40,20,0.12) !important; color: #52607A !important;
+}
+
+/* Submit/hint/check/primary buttons */
+.light-mode .btn-hint,
+.light-mode .btn-check,
+.light-mode .btn-submit-ans,
+.light-mode button[type="submit"],
+.light-mode .btn-primary,
+.light-mode .btn-submit {
+  background: #5B4DF5 !important;
+  border-color: rgba(91,77,245,0.28) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(91,77,245,0.18) !important;
+}
+
+/* ══ 13. INPUT FIELDS ══ */
+.light-mode input,
+.light-mode .inp,
+.light-mode .input-field {
+  background: #FCFBF8 !important;
+  border-color: rgba(60,40,20,0.15) !important;
+  color: #263041 !important;
+}
+.light-mode input:focus,
+.light-mode .inp:focus {
+  border-color: rgba(91,77,245,0.40) !important;
+  box-shadow: 0 0 0 4px rgba(91,77,245,0.07) !important;
+  background: #FFFFFF !important;
+}
+.light-mode ::placeholder { color: #7A8394 !important; }
+
+/* ══ 14. BADGES ══ */
+.light-mode .b-grn, .light-mode .pb-m { background: rgba(15,118,110,0.09) !important; color: #0F766E !important; border-color: rgba(15,118,110,0.20) !important; }
+.light-mode .b-cy, .light-mode .pb-p { background: rgba(91,77,245,0.09) !important; color: #5B4DF5 !important; border-color: rgba(91,77,245,0.20) !important; }
+.light-mode .b-red { background: rgba(194,65,91,0.09) !important; color: #C2415B !important; border-color: rgba(194,65,91,0.20) !important; }
+.light-mode .b-amb, .light-mode .pb-a { background: rgba(194,138,29,0.09) !important; color: #C28A1D !important; border-color: rgba(194,138,29,0.20) !important; }
+.light-mode .b-dim, .light-mode .pb-l { background: rgba(60,40,20,0.06) !important; color: #52607A !important; border-color: rgba(60,40,20,0.12) !important; }
+
+/* ══ 15. STATUS / INDICATOR DOTS ══ */
+.light-mode .ldot.c { background: #5B4DF5 !important; }
+.light-mode .ldot.g { background: #0F766E !important; }
+.light-mode .ldot.r { background: #C2415B !important; }
+.light-mode .ldot.a { background: #C28A1D !important; }
+.light-mode .cdot { background: rgba(60,40,20,0.18) !important; }
+.light-mode .cdot.g { background: #0F766E !important; }
+.light-mode .cdot.c { background: #5B4DF5 !important; }
+
+/* ══ 16. PROGRESS BARS ══ */
+.light-mode .pb-wrap, .light-mode .pbar-w, .light-mode .wl-progress-bar { background: rgba(60,40,20,0.10) !important; }
+.light-mode .pb-cy, .light-mode .pbar-c { background: #5B4DF5 !important; box-shadow: none !important; }
+.light-mode .pb-gn, .light-mode .pbar-g { background: #0F766E !important; box-shadow: none !important; }
+.light-mode .pb-rd { background: #C2415B !important; box-shadow: none !important; }
+.light-mode .pb-amb, .light-mode .pbar-a { background: #C28A1D !important; box-shadow: none !important; }
+.light-mode .pb-in { background: #5B4DF5 !important; box-shadow: none !important; }
+.light-mode .wl-progress-fill { background: #5B4DF5 !important; box-shadow: none !important; }
+
+/* ══ 17. DIVIDERS / SEPARATORS ══ */
+.light-mode hr, .light-mode .divider { border-color: rgba(60,40,20,0.10) !important; }
+
+/* ══ 18. AI REASONING PANEL ══ */
+.light-mode .air {
+  background: rgba(91,77,245,0.06) !important;
+  border-color: rgba(91,77,245,0.16) !important;
+  box-shadow: none !important;
+}
+.light-mode .air-hdr { color: #5B4DF5 !important; }
+.light-mode .air-txt { color: #52607A !important; }
+.light-mode .air-cod { color: #5B4DF5 !important; }
+.light-mode .air-line { color: #5B4DF5 !important; }
+.light-mode .air-text { color: #52607A !important; }
+
+/* ══ 19. EXAMPLE BOXES / IO CONTAINERS ══ */
+.light-mode .ex-box {
+  background: #FCFBF8 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+}
+.light-mode .exh { color: #7A8394 !important; }
+.light-mode .exv { color: #263041 !important; }
+
+/* ══ 20. ERROR / HINT SYSTEM ══ */
+.light-mode .erfc { background: rgba(194,65,91,0.06) !important; border-color: rgba(194,65,91,0.16) !important; }
+.light-mode .err-type { background: rgba(194,138,29,0.09) !important; border-color: rgba(194,138,29,0.20) !important; color: #C28A1D !important; }
+.light-mode .hint-bx { background: rgba(91,77,245,0.06) !important; border-color: rgba(91,77,245,0.14) !important; }
+.light-mode .hint-block {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+  color: #263041 !important;
+  box-shadow: none !important;
+}
+.light-mode .hint-block.l2 { background: rgba(91,77,245,0.05) !important; border-color: rgba(91,77,245,0.14) !important; }
+
+/* ══ 21. MATRIX / TABLES ══ */
+.light-mode .mx-hi { background: rgba(15,118,110,0.09) !important; color: #0F766E !important; border-color: rgba(15,118,110,0.18) !important; }
+.light-mode .mx-md { background: rgba(91,77,245,0.09) !important; color: #5B4DF5 !important; border-color: rgba(91,77,245,0.18) !important; }
+.light-mode .mx-lo { background: rgba(194,65,91,0.09) !important; color: #C2415B !important; border-color: rgba(194,65,91,0.18) !important; }
+.light-mode .mx-em { background: rgba(60,40,20,0.06) !important; color: #7A8394 !important; border-color: rgba(60,40,20,0.10) !important; }
+.light-mode .mx-table .row-lbl { color: #7A8394 !important; }
+.light-mode .mx-table th { color: #7A8394 !important; }
+
+/* ══ 22. FEEDBACK COLUMNS ══ */
+.light-mode .fb-col {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .fb-col::before { display: none !important; }
+.light-mode .fb-col-title { color: #263041 !important; }
+.light-mode .fb-k { color: #7A8394 !important; }
+.light-mode .fb-v { color: #52607A !important; }
+.light-mode .fb-v.hi { color: #5B4DF5 !important; text-shadow: none !important; }
+.light-mode .fb-v.gn { color: #0F766E !important; text-shadow: none !important; }
+.light-mode .fb-v.am { color: #C28A1D !important; }
+
+/* ══ 23. SEQUENCER LOG ══ */
+.light-mode .seq-log {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.09) !important;
+}
+.light-mode .seq-log::before { background: linear-gradient(180deg, #5B4DF5, #0F766E) !important; box-shadow: none !important; }
+.light-mode .seq-hdr { color: #5B4DF5 !important; text-shadow: none !important; }
+.light-mode .seq-k { color: #7A8394 !important; }
+.light-mode .seq-v { color: #52607A !important; }
+.light-mode .seq-v.hi { color: #5B4DF5 !important; text-shadow: none !important; }
+
+/* ══ 24. WH COLS / RECS ══ */
+.light-mode .whn-col { background: rgba(60,40,20,0.05) !important; border: 1px solid rgba(60,40,20,0.09) !important; }
+.light-mode .whn-title { color: #263041 !important; }
+.light-mode .whn-body { color: #52607A !important; }
+.light-mode .rec-item { color: #52607A !important; border-bottom-color: rgba(60,40,20,0.07) !important; }
+.light-mode .rec-dot { background: #5B4DF5 !important; }
+.light-mode .rec-dot.r { background: #C2415B !important; }
+.light-mode .rem-card { background: rgba(60,40,20,0.04) !important; }
+.light-mode .rem-card.lo { border-left-color: #C2415B !important; }
+.light-mode .rem-card.md { border-left-color: #C28A1D !important; }
+.light-mode .rem-title { color: #263041 !important; }
+.light-mode .rem-body { color: #52607A !important; }
+.light-mode .rem-focus { color: #52607A !important; }
+
+/* ══ 25. CONCEPT CIRCLES / PATH ══ */
+.light-mode .pcirc.c { box-shadow: 0 0 0 2px #5B4DF5, 0 0 0 4px rgba(91,77,245,0.10) !important; }
+.light-mode .pcirc.m { box-shadow: 0 0 0 2px #0F766E, 0 0 0 4px rgba(15,118,110,0.10) !important; }
+.light-mode .pcirc.l { background: rgba(60,40,20,0.07) !important; border: 1px solid rgba(60,40,20,0.14) !important; color: #7A8394 !important; }
+.light-mode .cp-nm { color: #52607A !important; }
+.light-mode .cp-circ.l { background: rgba(60,40,20,0.07) !important; border: 1px solid rgba(60,40,20,0.14) !important; color: #7A8394 !important; }
+.light-mode .cp-line::before { background: rgba(60,40,20,0.12) !important; }
+.light-mode .tl-line { background: rgba(60,40,20,0.14) !important; }
+.light-mode .tl-line.done { background: linear-gradient(90deg, #0F766E, #5B4DF5) !important; box-shadow: none !important; }
+
+/* ══ 26. MPATH / STREAKS ══ */
+.light-mode .mnode.done { background: rgba(15,118,110,0.09) !important; border-color: rgba(15,118,110,0.20) !important; }
+.light-mode .mnode.cur { background: rgba(91,77,245,0.09) !important; border-color: rgba(91,77,245,0.18) !important; }
+.light-mode .sd.ok, .light-mode .sk-dot.ok { background: rgba(15,118,110,0.09) !important; border-color: rgba(15,118,110,0.22) !important; color: #0F766E !important; }
+.light-mode .sd.em, .light-mode .sk-dot.em { background: rgba(60,40,20,0.07) !important; border-color: rgba(60,40,20,0.14) !important; color: #7A8394 !important; }
+
+/* ══ 27. PERIOD TOGGLE ══ */
+.light-mode .period-toggle { background: #F7F5F1 !important; border: 1px solid rgba(60,40,20,0.12) !important; }
+.light-mode .pt-btn { color: #7A8394 !important; background: none !important; }
+.light-mode .pt-btn.on { background: #5B4DF5 !important; color: #FFFFFF !important; box-shadow: 0 1px 6px rgba(91,77,245,0.22) !important; }
+
+/* ══ 28. CONCEPT MINI LIST (AP panel) ══ */
+.light-mode .cmi { color: #52607A !important; background: transparent !important; }
+.light-mode .cmi.on { background: rgba(91,77,245,0.07) !important; border: 1px solid rgba(91,77,245,0.14) !important; color: #5B4DF5 !important; }
+.light-mode .cmi-cd { color: #7A8394 !important; }
+.light-mode .cmi-d { background: rgba(60,40,20,0.18) !important; }
+.light-mode .cmi.on .cmi-d { background: #5B4DF5 !important; }
+.light-mode .cmi-d.dn { background: #0F766E !important; }
+
+/* ══ 29. WORKSPACE BUTTONS (feedback) ══ */
+.light-mode .ws-fbtns { border-top-color: rgba(60,40,20,0.10) !important; }
+.light-mode .ws-fb.db { background: rgba(60,40,20,0.06) !important; border-color: rgba(60,40,20,0.14) !important; color: #52607A !important; }
+.light-mode .ws-fb.ws { background: rgba(91,77,245,0.08) !important; border-color: rgba(91,77,245,0.18) !important; color: #5B4DF5 !important; }
+
+/* ══ 30. SCROLLBAR ══ */
+.light-mode .cnt::-webkit-scrollbar-thumb { background: rgba(60,40,20,0.18) !important; }
+
+/* ══ 31. THEME TOGGLE ══ */
+.light-mode #theme-toggle {
+  border-color: rgba(60,40,20,0.16) !important;
+  background: rgba(247,245,241,0.80) !important;
+  color: #52607A !important;
+}
+.light-mode #theme-toggle:hover {
+  background: #F7F5F1 !important;
+  color: #263041 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════
+   LOGIN PAGE — COMPLETE WARM-LIGHT RESTYLE
+   Premium editorial login. Warm parchment shell. Cool form card.
+══════════════════════════════════════════════════════════════════════ */
+
+/* Page shell */
+.light-mode .page { background: #EFE9DD !important; }
+
+/* Left panel — warm editorial background */
+.light-mode .left {
+  background: linear-gradient(150deg, #ECE6DA 0%, #EFE9DD 50%, #F7F5F1 100%) !important;
+  border-right: 1px solid rgba(60,40,20,0.10) !important;
+}
+/* Kill dark canvas particles in light mode — replace with subtle warm tone */
+.light-mode .left canvas,
+.light-mode #particles { opacity: 0.08 !important; }
+.light-mode .left-glow-a, .light-mode .left-glow-b, .light-mode .left-glow-c { opacity: 0 !important; }
+.light-mode .fog { opacity: 0 !important; }
+.light-mode .cursor-glow { display: none !important; }
+/* Corner SVG lines — keep but in warm tone */
+.light-mode .corner-lines path { stroke: rgba(91,77,245,0.30) !important; }
+
+/* Left panel text */
+.light-mode .headline { color: #263041 !important; }
+.light-mode .hl-line { color: #263041 !important; }
+.light-mode .hl-adaptive { color: #5B4DF5 !important; -webkit-text-fill-color: #5B4DF5 !important; }
+.light-mode .desc { color: #52607A !important; }
+.light-mode .logo-name { color: #263041 !important; font-weight: 700 !important; }
+.light-mode .logo-sub { color: #52607A !important; }
+.light-mode .logo-badge {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(91,77,245,0.18) !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .logo-badge svg path { stroke: #5B4DF5 !important; }
+.light-mode .logo-badge svg circle { fill: rgba(91,77,245,0.50) !important; }
+.light-mode .label-pill {
+  background: rgba(91,77,245,0.09) !important;
+  border: 1px solid rgba(91,77,245,0.18) !important;
+  color: #5B4DF5 !important;
+}
+.light-mode .label-dot { background: #5B4DF5 !important; box-shadow: none !important; }
+.light-mode .chips-label { color: #7A8394 !important; }
+.light-mode .chip {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.14) !important;
+  color: #52607A !important;
+}
+.light-mode .chip.active, .light-mode .chip:hover {
+  background: rgba(91,77,245,0.09) !important;
+  border-color: rgba(91,77,245,0.20) !important;
+  color: #5B4DF5 !important;
+}
+.light-mode .stat-num { color: #263041 !important; }
+.light-mode .stat-num span { color: #5B4DF5 !important; }
+.light-mode .stat-label { color: #7A8394 !important; }
+.light-mode .stats { border-top-color: rgba(60,40,20,0.12) !important; }
+
+/* Right panel — slightly cleaner warm tone */
+.light-mode .right { background: #F7F5F1 !important; }
+.light-mode .right-top { border-bottom-color: rgba(60,40,20,0.09) !important; }
+.light-mode .right-top-dot { background: #0F766E !important; box-shadow: none !important; }
+.light-mode .right-top-label { color: #7A8394 !important; }
+
+/* Form card — premium paper surface with float shadow */
+.light-mode .form-card {
+  background: #FCFBF8 !important;
+  border: 1px solid rgba(60,40,20,0.10) !important;
+  box-shadow: var(--lm-shadow-float) !important;
+}
+.light-mode .form-card::before { display: none !important; }
+
+/* Form typography */
+.light-mode .form-eyebrow { color: #5B4DF5 !important; text-shadow: none !important; }
+.light-mode .form-title { color: #263041 !important; text-shadow: none !important; }
+.light-mode .form-sub { color: #52607A !important; }
+
+/* Labels */
+.light-mode .field label { color: #52607A !important; }
+.light-mode .field-row label { color: #52607A !important; }
+.light-mode .forgot { color: #5B4DF5 !important; text-shadow: none !important; }
+.light-mode .input-icon { color: #7A8394 !important; }
+.light-mode .input-wrap:focus-within .input-icon { color: #5B4DF5 !important; }
+
+/* Login inputs — on the FCFBF8 surface */
+.light-mode .field input {
+  background: #F7F5F1 !important;
+  border-color: rgba(60,40,20,0.14) !important;
+  color: #263041 !important;
+}
+.light-mode .field input::placeholder { color: #7A8394 !important; }
+.light-mode .field input:hover {
+  border-color: rgba(60,40,20,0.22) !important;
+  background: #F7F5F1 !important;
+}
+.light-mode .field input:focus {
+  border-color: rgba(91,77,245,0.40) !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 0 0 3px rgba(91,77,245,0.07) !important;
+}
+
+/* Remember checkbox */
+.light-mode .remember label { color: #52607A !important; }
+.light-mode .remember input[type="checkbox"] { accent-color: #5B4DF5 !important; }
+
+/* Sign in button */
+.light-mode #signInBtn,
+.light-mode .btn-primary {
+  background: linear-gradient(135deg, #5B4DF5 0%, #4A3FD4 100%) !important;
+  border-color: rgba(91,77,245,0.30) !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(91,77,245,0.25), 0 0 0 1px rgba(91,77,245,0.20) !important;
+}
+.light-mode #signInBtn:hover,
+.light-mode .btn-primary:hover {
+  background: linear-gradient(135deg, #4A3FD4 0%, #3D32C4 100%) !important;
+  box-shadow: 0 6px 20px rgba(91,77,245,0.32) !important;
+}
+
+/* Google button */
+.light-mode .btn-secondary,
+.light-mode #googleBtn,
+.light-mode .googleBtn {
+  background: #F7F5F1 !important;
+  border: 1px solid rgba(60,40,20,0.14) !important;
+  color: #263041 !important;
+  box-shadow: var(--lm-shadow-main) !important;
+}
+.light-mode .btn-secondary:hover,
+.light-mode #googleBtn:hover {
+  background: #FCFBF8 !important;
+  border-color: rgba(60,40,20,0.22) !important;
+}
+
+/* Divider */
+.light-mode .divider-line { background: rgba(60,40,20,0.12) !important; }
+.light-mode .divider-txt { color: #7A8394 !important; background: #FCFBF8 !important; }
+
+/* Form footer */
+.light-mode .form-footer { color: #52607A !important; }
+.light-mode .form-footer a { color: #5B4DF5 !important; }
+
+/* ══════════════════════════════════
+   GLOBAL KILL GLOWS IN LIGHT MODE
+══════════════════════════════════ */
+.light-mode * { text-shadow: none !important; }
+.light-mode .ldot, .light-mode .cdot,
+.light-mode .ldot.c, .light-mode .ldot.g, .light-mode .ldot.r, .light-mode .ldot.a,
+.light-mode .cdot.c, .light-mode .cdot.g {
+  box-shadow: none !important;
+  animation: none !important;
+}
+
+/* ══ END COOL-WARM HYBRID WORKSPACE SYSTEM ══ */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   NAV BAR FIX — force fixed height so .app never hides beneath it
+   The .snav is position:fixed z-index:300; .app is position:fixed top:33px.
+   We lock snav to exactly 34px and push app to match universally.
+══════════════════════════════════════════════════════════════════════ */
+
+/* Lock snav to a fixed height of 34px (padding + content) */
+.snav {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  padding: 0 10px !important;
+  align-items: center !important;
+  overflow: visible !important;
+  box-sizing: border-box !important;
+}
+
+/* Constrain buttons to fit inside 34px snav */
+.sbtn {
+  padding: 3px 10px !important;
+  font-size: 10px !important;
+  line-height: 1.4 !important;
+}
+
+/* Push ALL app content below the nav — covers both dark + light mode */
+.app {
+  top: 34px !important;
+}
+
+/* Also fix the login screen position */
+#sec-login.on {
+  top: 34px !important;
+}
+.app.file-wrap {
+  top: 34px !important;
+}
+
+/* Cybeam decorative line — also move down */
+.cybeam {
+  top: 34px !important;
+}
+
+/* Light mode snav keeps correct height */
+.light-mode .snav {
+  height: 34px !important;
+  min-height: 34px !important;
+  max-height: 34px !important;
+  padding: 0 10px !important;
+}
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   CODE EDITOR TEXT COLORS — LIGHT MODE
+   Workspace editor (.ws-ed) and Hint Mode editor (.ed-body)
+   Fix all syntax token classes + line numbers + active line
+══════════════════════════════════════════════════════════════════════ */
+
+/* Base text — ALL content inside the editor */
+.light-mode .ws-ed .ct_,
+.light-mode .ed-body .ct_ {
+  color: #263041 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+/* Line numbers */
+.light-mode .ws-ed .ln,
+.light-mode .ed-body .ln {
+  color: rgba(122,131,148,0.55) !important;
+}
+
+/* Active / focused code line */
+.light-mode .ws-ed .cl_.active,
+.light-mode .ed-body .cl_.active {
+  background: rgba(111,99,255,0.07) !important;
+  border-left-color: #5B4DF5 !important;
+}
+
+/* Error line */
+.light-mode .ws-ed .cl_.err-line,
+.light-mode .ed-body .cl_.err-line {
+  background: rgba(194,65,91,0.07) !important;
+  border-left-color: #C2415B !important;
+  box-shadow: inset 6px 0 14px rgba(194,65,91,0.05) !important;
+}
+
+/* KEYWORD — intelligent violet */
+.light-mode .ws-ed .ck_,
+.light-mode .ws-ed .kw,
+.light-mode .ed-body .ck_,
+.light-mode .ed-body .kw {
+  color: #5B4DF5 !important;
+  font-style: normal !important;
+}
+
+/* FUNCTION / CALL — professional research-blue */
+.light-mode .ws-ed .cf_,
+.light-mode .ws-ed .fn,
+.light-mode .ed-body .cf_,
+.light-mode .ed-body .fn {
+  color: #345FA8 !important;
+}
+
+/* STRING — elegant emerald-teal */
+.light-mode .ws-ed .cs_,
+.light-mode .ws-ed .st,
+.light-mode .ed-body .cs_,
+.light-mode .ed-body .st {
+  color: #0F766E !important;
+}
+
+/* COMMENT — soft academic muted tone */
+.light-mode .ws-ed .cc_,
+.light-mode .ws-ed .cm,
+.light-mode .ed-body .cc_,
+.light-mode .ed-body .cm {
+  color: #7A8394 !important;
+  font-style: italic !important;
+}
+
+/* NUMBER — academic amber-warm */
+.light-mode .ws-ed .cn_,
+.light-mode .ws-ed .nm,
+.light-mode .ed-body .cn_,
+.light-mode .ed-body .nm {
+  color: #C28A1D !important;
+}
+
+/* ERROR underline token */
+.light-mode .ws-ed .cerr,
+.light-mode .ed-body .cerr {
+  text-decoration: underline !important;
+  text-decoration-color: #C2415B !important;
+  text-decoration-style: wavy !important;
+  color: #C2415B !important;
+}
+
+/* Whole editor container default text fallback */
+.light-mode .ws-ed,
+.light-mode .ed-body {
+  color: #263041 !important;
+}
+
+/* Terminal output text */
+.light-mode .term,
+.light-mode .ed-terminal {
+  color: #263041 !important;
+}
+.light-mode .tok {
+  color: #263041 !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+.light-mode .tok.ok { color: #0F766E !important; }
+.light-mode .tok.er { color: #C2415B !important; }
+
+/* ══ END CODE EDITOR COLOR FIX ══ */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   ████  DARK MODE TEXT VISIBILITY FIX — FINAL PASS  ████
+   Fixes near-invisible text: rgba(200,215,230,0.16) and
+   ultra-low-opacity rgba(255,255,255,0.10–0.20) elements.
+   Also adds scrollbars to all major scroll containers.
+══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. GLOBAL SCROLLBAR — cyan-themed, visible on all containers ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0,184,217,0.35) rgba(0,184,217,0.05);
+}
+*::-webkit-scrollbar { width: 5px; height: 5px; }
+*::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.18);
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0,184,217,0.45), rgba(0,184,217,0.22));
+  border-radius: 3px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0,184,217,0.70), rgba(0,184,217,0.42));
+}
+
+/* ── Override specific containers ── */
+.cnt { overflow-y: auto !important; scrollbar-width: thin !important; }
+.cnt::-webkit-scrollbar { width: 5px !important; }
+.cnt::-webkit-scrollbar-track { background: rgba(0,0,0,0.18) !important; }
+.cnt::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0,184,217,0.45), rgba(0,184,217,0.22)) !important;
+  border-radius: 3px !important;
+}
+.ws-prob, .ws-ap, .ws-hint, .ed-body, .code-a, .ws-editor, .scr {
+  overflow-y: auto !important;
+  scrollbar-width: thin !important;
+}
+.ws-prob::-webkit-scrollbar,
+.ws-ap::-webkit-scrollbar,
+.ws-hint::-webkit-scrollbar,
+.ed-body::-webkit-scrollbar,
+.code-a::-webkit-scrollbar { width: 4px !important; }
+.ws-prob::-webkit-scrollbar-thumb,
+.ws-ap::-webkit-scrollbar-thumb,
+.ws-hint::-webkit-scrollbar-thumb,
+.ed-body::-webkit-scrollbar-thumb,
+.code-a::-webkit-scrollbar-thumb {
+  background: rgba(0,184,217,0.30) !important;
+  border-radius: 3px !important;
+}
+
+/* ── 2. FIX rgba(200,215,230,0.16) — completely invisible ── */
+/* These are essentially 3% opacity: hint-block, rec-item, bn-out, hnt-txt, eta-lbl, row-lbl, ctb-c */
+.hint-block,
+.hint-block2 {
+  color: rgba(255,255,255,0.62) !important;
+}
+.rec-item {
+  color: rgba(255,255,255,0.52) !important;
+}
+.bn-out {
+  color: rgba(255,255,255,0.48) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+.hnt-txt {
+  color: rgba(255,255,255,0.56) !important;
+}
+.eta-lbl {
+  color: rgba(255,255,255,0.42) !important;
+}
+.mx-table .row-lbl {
+  color: rgba(255,255,255,0.44) !important;
+}
+.ctb-c {
+  color: rgba(255,255,255,0.44) !important;
+}
+
+/* ── 3. FIX over-dimmed card & sidebar labels ── */
+/* .clbl (card section labels) — was pushed to rgba(255,255,255,0.14) */
+.clbl {
+  color: rgba(255,255,255,0.42) !important;
+  font-size: 8px !important;
+  letter-spacing: 0.22em !important;
+}
+
+/* .nsect (sidebar section headers) — was pushed to rgba(255,255,255,0.10–0.12) */
+.nsect {
+  color: rgba(255,255,255,0.40) !important;
+}
+
+/* .ap-t (AI panel titles) — was pushed to rgba(255,255,255,0.12–0.16) */
+.ap-t,
+.ai-header,
+.ai-panel-title,
+.panel-title {
+  color: rgba(255,255,255,0.40) !important;
+  font-size: 8px !important;
+  letter-spacing: 0.22em !important;
+}
+
+/* .hs-lbl (hint section labels) */
+.hs-lbl {
+  color: rgba(255,255,255,0.42) !important;
+}
+
+/* .seq-hdr (sequencer log header) */
+.seq-hdr {
+  color: var(--cy2) !important;
+}
+
+/* .seq-k (sequencer key labels) — was rgba(255,255,255,0.22) */
+.seq-k {
+  color: rgba(255,255,255,0.44) !important;
+}
+
+/* ── 4. FIX stat / KPI / data card labels ── */
+/* .stat-lbl / .kpi-lbl — was rgba(255,255,255,0.14) */
+.stat-lbl,
+.kpi-lbl,
+.ep-key {
+  color: rgba(255,255,255,0.42) !important;
+  font-size: 8.5px !important;
+  letter-spacing: 0.18em !important;
+}
+
+/* .stat-sub / .kpi-sub — was rgba(255,255,255,0.13) */
+.stat-sub,
+.kpi-sub {
+  color: rgba(255,255,255,0.35) !important;
+}
+
+/* .slbl (dashboard stat row labels) — was rgba(255,255,255,0.28) */
+.slbl {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* ── 5. FIX progress & learning labels ── */
+/* .pi-pct (progress percentages) — was rgba(255,255,255,0.20) */
+.pi-pct {
+  color: rgba(255,255,255,0.42) !important;
+}
+
+/* .pi-nm (progress item names) — was rgba(255,255,255,0.64) */
+.pi-nm {
+  color: rgba(255,255,255,0.70) !important;
+}
+
+/* .cl-desc, .cl-meta — dashboard descriptions */
+.cl-desc {
+  color: rgba(255,255,255,0.48) !important;
+}
+.cl-meta {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* ── 6. FIX concept list sidebar items ── */
+/* .ci — was rgba(255,255,255,0.16–0.22) */
+.ci {
+  color: rgba(255,255,255,0.42) !important;
+}
+.ci:hover {
+  color: rgba(255,255,255,0.68) !important;
+}
+.ci.on {
+  color: rgba(255,255,255,0.88) !important;
+}
+
+/* ── 7. FIX engine rows ── */
+/* .eng-k — was rgba(255,255,255,0.14–0.15) */
+.eng-k {
+  color: rgba(255,255,255,0.40) !important;
+}
+
+/* ── 8. FIX timestamps & metadata ── */
+/* .atm — was pushed to rgba(255,255,255,0.10–0.13) */
+.atm {
+  color: rgba(255,255,255,0.34) !important;
+}
+
+/* .tl-time */
+.tl-time {
+  color: rgba(255,255,255,0.32) !important;
+}
+
+/* .tl-lbl */
+.tl-lbl {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* ── 9. FIX locked / inactive state items ── */
+/* .pcirc.l, .pp-circ.l, .cp-circ.l — was rgba(255,255,255,0.15) */
+.pcirc.l,
+.pp-circ.l,
+.cp-circ.l {
+  color: rgba(255,255,255,0.34) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+}
+
+.pp-pct.l,
+.ppct.l,
+.cp-pct.l {
+  color: rgba(255,255,255,0.32) !important;
+}
+
+.pp-status,
+.pst {
+  color: rgba(255,255,255,0.36) !important;
+}
+
+/* .sd.em (empty streak dots) — was rgba(255,255,255,0.15) */
+.sd.em {
+  color: rgba(255,255,255,0.32) !important;
+  border-color: rgba(255,255,255,0.18) !important;
+}
+
+/* ── 10. FIX secondary content text ── */
+/* .whn-body (what-happens-next panels) */
+.whn-body {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* .rem-body (remediation plan body) */
+.rem-body {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* .dk (data keys) — was rgba(255,255,255,0.42) */
+.dk {
+  color: rgba(255,255,255,0.50) !important;
+}
+
+/* .tc-detail (test case details) */
+.tc-detail {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* .exh (example header labels) */
+.exh {
+  color: rgba(255,255,255,0.40) !important;
+}
+
+/* .stl (sub-title labels in workspace) */
+.stl {
+  color: rgba(255,255,255,0.40) !important;
+}
+
+/* .io-lbl (input/output labels) */
+.io-lbl {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* .aih-txt (AI hint text) */
+.aih-txt {
+  color: rgba(255,255,255,0.55) !important;
+}
+
+/* .air-txt (AI reasoning text) */
+.air-txt {
+  color: rgba(255,255,255,0.52) !important;
+}
+
+/* .efc-d (error focus description) */
+.efc-d {
+  color: rgba(255,255,255,0.48) !important;
+}
+
+/* .cr-l (code review labels) */
+.cr-l {
+  color: rgba(255,255,255,0.40) !important;
+}
+
+/* .cmi-cd (concept mini description) */
+.cmi-cd {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* .hm-t (hint meta text) */
+.hm-t {
+  color: rgba(255,255,255,0.50) !important;
+}
+
+/* ── 11. FIX editor & terminal secondary text ── */
+.ed-meta {
+  color: rgba(255,255,255,0.36) !important;
+}
+.ed-lang {
+  color: rgba(0,184,217,0.55) !important;
+}
+.ln {
+  color: rgba(255,255,255,0.30) !important;
+}
+.tt {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* ── 12. FIX breadcrumbs & topbar dim text ── */
+.tb-bc {
+  color: rgba(255,255,255,0.40) !important;
+}
+.tb-bc span {
+  color: rgba(255,255,255,0.60) !important;
+}
+
+/* ── 13. SNAV label fix ── */
+.snav-lbl,
+.snav-sep {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* ── 14. PROGRESS & ETA labels ── */
+.goal-pct {
+  color: rgba(255,255,255,0.42) !important;
+}
+.rec-lbl {
+  color: rgba(255,255,255,0.44) !important;
+}
+.streak-lbl {
+  color: rgba(255,255,255,0.44) !important;
+}
+.csub {
+  color: rgba(255,255,255,0.38) !important;
+}
+
+/* ── 15. LIGHT MODE — make sure scrollbar is also styled ── */
+.light-mode * {
+  scrollbar-color: rgba(148,163,184,0.35) rgba(148,163,184,0.08) !important;
+}
+.light-mode *::-webkit-scrollbar-track {
+  background: rgba(148,163,184,0.08) !important;
+}
+.light-mode *::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(100,116,139,0.40), rgba(100,116,139,0.22)) !important;
+  border-radius: 3px !important;
+}
+.light-mode *::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(79,70,229,0.55), rgba(79,70,229,0.32)) !important;
+}
+
+/* ══ END DARK MODE TEXT VISIBILITY FIX ══ */
+
+/* ══════════════════════════════════════════════════════════════════════
+   ████  DARK MODE — ADDITIONAL CSS CLASS VISIBILITY FIXES  ████
+   Covering all remaining dim classes found in full audit pass.
+══════════════════════════════════════════════════════════════════════ */
+
+/* Matrix table headers */
+.mx-table th { color: rgba(255,255,255,0.52) !important; }
+
+/* Mastery hero meta info */
+.mh-meta { color: rgba(255,255,255,0.52) !important; }
+
+/* Feedback panel key labels */
+.fb-k { color: rgba(255,255,255,0.48) !important; }
+.fb-v { color: rgba(255,255,255,0.70) !important; }
+
+/* Topbar sub-label */
+.tb-sub { color: rgba(255,255,255,0.48) !important; }
+
+/* User role text */
+.ur { color: rgba(255,255,255,0.48) !important; }
+
+/* Chart day labels */
+.chart-day { color: rgba(255,255,255,0.46) !important; }
+.chart-val { color: rgba(255,255,255,0.52) !important; }
+
+/* Accuracy sub label */
+.acc-sub-lbl { color: rgba(255,255,255,0.46) !important; }
+
+/* Mastery session note */
+.ms-note { color: rgba(255,255,255,0.48) !important; }
+
+/* Epoch chart keys */
+.ep-key { color: rgba(255,255,255,0.46) !important; }
+.ep-val.false { color: rgba(255,255,255,0.50) !important; }
+
+/* Trajectory & algorithm notes */
+.traj-note { color: rgba(255,255,255,0.52) !important; }
+.algo-note { color: rgba(255,255,255,0.52) !important; }
+.rg-note { color: rgba(255,255,255,0.52) !important; }
+
+/* Workspace question labels */
+.wl-q-lbl { color: rgba(255,255,255,0.46) !important; }
+
+/* Concept path arrow separators */
+.marr { color: rgba(255,255,255,0.38) !important; }
+
+/* Code syntax comment color */
+.cm { color: rgba(255,255,255,0.40) !important; }
+.cc { color: rgba(255,255,255,0.38) !important; }
+
+/* Concept path locked percentage */
+.cp-pct.l { color: rgba(255,255,255,0.36) !important; }
+
+/* Progress circle sub-label */
+.ctxt small { color: rgba(255,255,255,0.42) !important; }
+
+/* WL stat labels */
+.wl-progress-lbl { color: rgba(255,255,255,0.50) !important; }
+.wl-concept { color: rgba(255,255,255,0.90) !important; }
+
+/* KPI sub-text */
+.kpi-sub { color: rgba(255,255,255,0.40) !important; }
+.kpi-lbl { color: rgba(255,255,255,0.46) !important; }
+
+/* Data row key */
+.dk { color: rgba(255,255,255,0.52) !important; }
+
+/* Timeline labels */
+.tl-lbl { color: rgba(255,255,255,0.46) !important; }
+.tl-time { color: rgba(255,255,255,0.36) !important; }
+
+/* Concept table sub columns */
+.ctb-type { color: rgba(255,255,255,0.68) !important; }
+
+/* Relative block items */
+.rel-item { color: rgba(255,255,255,0.50) !important; }
+
+/* What-happens-next column title */
+.whn-title { color: rgba(255,255,255,0.72) !important; }
+.whn-body { color: rgba(255,255,255,0.52) !important; }
+
+/* Remediation plan text */
+.rem-title { color: rgba(255,255,255,0.82) !important; }
+.rem-body { color: rgba(255,255,255,0.52) !important; }
+.rem-focus { color: rgba(255,255,255,0.65) !important; }
+
+/* Error type text */
+.err-nm { color: rgba(255,255,255,0.72) !important; }
+
+/* Streak dots empty */
+.sd.em { color: rgba(255,255,255,0.36) !important; border-color: rgba(255,255,255,0.20) !important; }
+.ski.em { color: rgba(255,255,255,0.34) !important; }
+
+/* Hint block sub-text */
+.hub-note { color: rgba(255,184,0,0.70) !important; }
+.hb-note { color: rgba(255,184,0,0.72) !important; }
+
+/* Editor io labels / secondary */
+.io-v { color: rgba(255,255,255,0.65) !important; }
+
+/* Code block tag (cst) */
+.cst { color: rgba(255,255,255,0.50) !important; }
+
+/* Question sub-labels in workspace */
+.qnum { color: rgba(255,255,255,0.95) !important; }
+
+/* Acc fill helper text */
+.acc-sub { color: rgba(255,255,255,0.48) !important; }
+
+/* Concept mini desc */
+.cmi-cd { color: rgba(255,255,255,0.42) !important; }
+.cmi { color: rgba(255,255,255,0.44) !important; }
+
+/* Path node names & sub */
+.plbl, .pp-name, .cp-nm { color: rgba(255,255,255,0.58) !important; }
+.pst, .pp-status { color: rgba(255,255,255,0.40) !important; }
+
+/* Sequencer row text */
+.seq-row { color: rgba(255,255,255,0.55) !important; }
+.seq-v { color: rgba(255,255,255,0.60) !important; }
+
+/* KPI row sub content */
+.kpi-row .kpi-lbl { color: rgba(255,255,255,0.46) !important; }
+
+/* Workload summary stats */
+.slbl { color: rgba(255,255,255,0.52) !important; }
+
+/* Activity queue text */
+.aqn { color: rgba(255,255,255,0.85) !important; }
+
+/* Code quality labels */
+.cq-lbl { color: rgba(255,255,255,0.65) !important; }
+.cq-val { color: rgba(255,255,255,0.88) !important; }
+
+/* tc (test case) detail rows */
+.tc-detail { color: rgba(255,255,255,0.52) !important; }
+
+/* Feedback item values */
+.fb-v.hi { color: var(--cy2) !important; }
+.fb-v.gn { color: var(--grn) !important; }
+.fb-v.am { color: var(--amb2) !important; }
+
+/* Hint block 2 colors */
+.hint-block2 { color: rgba(255,255,255,0.62) !important; }
+
+/* ══ END ADDITIONAL CSS CLASS FIXES ══ */
+
 </style>
 </head>
 <body>
@@ -8126,6 +12058,9 @@ html, body {
   <button class="sbtn" onclick="goTo('cin','s6')">◈ Performance</button>
   <button class="sbtn" onclick="goTo('cin','s7')">◉ Adaptive Report</button>
 </div>
+
+<!-- Theme Toggle Button -->
+<button id="theme-toggle" onclick="toggleTheme()" title="Toggle light/dark mode">☽</button>
 
 <!-- ════════════════════════════════════════════
      SECTION 1 — LOGIN PAGE (fossee_login)
@@ -8329,7 +12264,7 @@ html, body {
     <span class="tb-title">Dashboard</span><div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Current</span><span class="cur-val">C2: Basic Loops</span></div>
     <div class="stk-badge">🔥 3</div>
-    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.26)">Student</span></div>
+    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.52)">Student</span></div>
   </div>
   <div class="cnt">
     <div class="row">
@@ -8381,7 +12316,7 @@ html, body {
         <div class="eng-r"><div class="eng-k">Focus</div><div class="eng-v pr">Loop Syntax errors <span style="opacity:0.55;font-size:10px">(priority 1)</span></div></div>
         <div class="eng-r"><div class="eng-k">Error Streak</div><div class="eng-v fo">2 consecutive Syntax errors</div></div>
         <div class="eng-r"><div class="eng-k">Next Priority</div><div class="eng-v">Conceptual understanding</div></div>
-        <div class="eng-r"><div class="eng-k">Random Mode</div><div class="eng-v" style="color:rgba(255,255,255,0.3)">Inactive</div></div>
+        <div class="eng-r"><div class="eng-k">Random Mode</div><div class="eng-v" style="color:rgba(255,255,255,0.55)">Inactive</div></div>
         <div class="eng-r"><div class="eng-k">Recommended</div><div class="eng-v rc">Review: range() function</div></div>
       </div>
       <div class="gc f1"><div class="hs"></div>
@@ -8389,7 +12324,7 @@ html, body {
         <div><div class="err-row"><span class="err-nm">Syntax</span><span class="ecnt r">6</span></div><div class="ebar"><div class="ebf r" style="width:86%"></div></div></div>
         <div style="margin-top:6px"><div class="err-row"><span class="err-nm">Conceptual</span><span class="ecnt a">3</span></div><div class="ebar"><div class="ebf a" style="width:46%"></div></div></div>
         <div style="margin-top:6px"><div class="err-row"><span class="err-nm">Loop</span><span class="ecnt c">1</span></div><div class="ebar"><div class="ebf c" style="width:18%"></div></div></div>
-        <div style="margin-top:6px"><div class="err-row"><span class="err-nm">Input</span><span class="ecnt" style="color:rgba(255,255,255,0.22)">0</span></div><div class="ebar"><div class="ebf gy" style="width:2%"></div></div></div>
+        <div style="margin-top:6px"><div class="err-row"><span class="err-nm">Input</span><span class="ecnt" style="color:rgba(255,255,255,0.50)">0</span></div><div class="ebar"><div class="ebf gy" style="width:2%"></div></div></div>
       </div>
       <div class="gc f1"><div class="hs"></div>
         <div class="clbl"><div class="ldot a"></div>Recent Activity</div>
@@ -8425,8 +12360,8 @@ html, body {
 <!-- ════ WORKSPACE ════ -->
 <div class="scr" id="scr-ws">
   <div class="tb" style="font-size:10.5px;gap:5px;padding:0 10px">
-    <span style="color:rgba(255,255,255,0.28)">FOSSEE</span><span style="color:rgba(255,255,255,0.14)">›</span>
-    <span style="color:rgba(255,255,255,0.28)">Workspace</span><span style="color:rgba(255,255,255,0.14)">›</span>
+    <span style="color:rgba(255,255,255,0.55)">FOSSEE</span><span style="color:rgba(255,255,255,0.44)">›</span>
+    <span style="color:rgba(255,255,255,0.55)">Workspace</span><span style="color:rgba(255,255,255,0.44)">›</span>
     <span class="cur-val" style="font-size:10.5px">C2: Basic Loops</span>
     <div class="tb-sp"></div>
     <button class="bn-run">▶ Run</button><button class="bn-stop">■ Stop</button>
@@ -8436,11 +12371,11 @@ html, body {
     <span style="color:var(--amb);font-size:11px;font-weight:700;text-shadow:var(--gamb)">= 3</span>
     <div class="av">RS</div>
     <span style="font-size:11px;color:rgba(255,255,255,0.6)">Rahul Sharma</span>
-    <span style="font-size:9.5px;color:rgba(255,255,255,0.28)">Python 3.11 · solution.py</span>
+    <span style="font-size:9.5px;color:rgba(255,255,255,0.55)">Python 3.11 · solution.py</span>
   </div>
   <div class="ws-layout">
     <div class="ws-prob">
-      <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.32)">Attempt 12</span></div>
+      <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.57)">Attempt 12</span></div>
       <div class="qnum">Question 12</div>
       <div class="stk-p"><span style="font-size:9.5px;color:var(--amb);margin-right:3px">Streak</span>
         <div class="sp-dot" style="background:var(--amb);box-shadow:var(--gamb)"></div>
@@ -8481,8 +12416,8 @@ html, body {
       </div>
       <div class="term">
         <div class="term-tabs"><div class="tt">Output</div><div class="tt">Terminal</div><div class="tt on">• SyntaxError</div>
-          <span style="margin-left:auto;color:rgba(255,255,255,0.22);font-size:9.5px;cursor:pointer">Clear</span>
-          <span style="color:rgba(255,255,255,0.22);font-size:9.5px;cursor:pointer;margin-left:8px">Copy</span>
+          <span style="margin-left:auto;color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer">Clear</span>
+          <span style="color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer;margin-left:8px">Copy</span>
         </div>
         <div><span class="tp">$</span> python3 solution.py</div>
         <div class="te">SyntaxError: invalid syntax</div>
@@ -8578,7 +12513,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Active</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">🔥 2</div>
-    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.26)">Student</span></div>
+    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.52)">Student</span></div>
   </div>
   <div class="cnt">
 
@@ -8641,7 +12576,7 @@ html, body {
         <div class="goal-progress-wrap">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
             <span style="font-size:10px;color:rgba(200,215,230,0.12);">Completed: 0 / 10</span>
-            <span style="font-size:10px;color:rgba(255,255,255,0.22);">0%</span>
+            <span style="font-size:10px;color:rgba(255,255,255,0.50);">0%</span>
           </div>
           <div class="goal-progress-bar"><div class="goal-fill" style="width:2%"></div></div>
         </div>
@@ -8688,8 +12623,8 @@ html, body {
 ════════════════════════════════════ -->
 <div class="scr" id="scr-s2">
   <div class="tb" style="font-size:10.5px;gap:6px;padding:0 14px;">
-    <span style="color:rgba(255,255,255,0.28)">Workspace</span>
-    <span style="color:rgba(255,255,255,0.14)">·</span>
+    <span style="color:rgba(255,255,255,0.55)">Workspace</span>
+    <span style="color:rgba(255,255,255,0.44)">·</span>
     <span class="cur-val" style="font-size:11px">Hint Mode</span>
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Topic</span><span class="cur-val">C2: Basic Loops</span></div>
@@ -8710,19 +12645,19 @@ html, body {
       <div class="ct-hdr">
         <div class="ctag">C2: Basic Loops</div>
         <div class="stag">Conceptual</div>
-        <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.32)">Attempt 13</span>
+        <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.57)">Attempt 13</span>
       </div>
       <div class="qnum">Question 13</div>
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-        <span style="font-size:10px;color:rgba(255,255,255,0.3)">Streak: 0</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Streak: 0</span>
       </div>
 
       <div class="stl">Problem Statement</div>
       <div class="ptxt">Write a function that determines if a number is positive, negative, or zero using conditional statements.</div>
       <div style="margin-top:10px;display:grid;grid-template-columns:40px 1fr;gap:4px;">
-        <span style="font-size:10px;color:rgba(255,255,255,0.28)">Input:</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Input:</span>
         <span style="font-size:10.5px;color:rgba(255,255,255,0.55);font-family:var(--ff-m)">A single integer n (−10⁶ ≤ n ≤ 10⁶)</span>
-        <span style="font-size:10px;color:rgba(255,255,255,0.28)">Output:</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Output:</span>
         <span style="font-size:10.5px;color:rgba(255,255,255,0.55);font-family:var(--ff-m)">Print 'Positive', 'Negative', or 'Zero'</span>
       </div>
       <div class="ex-box">
@@ -8767,7 +12702,7 @@ html, body {
         <div class="term-tabs">
           <div class="tt">Output</div>
           <div class="tt on">Terminal</div>
-          <span style="margin-left:auto;color:rgba(255,255,255,0.22);font-size:9.5px;cursor:pointer">Clear</span>
+          <span style="margin-left:auto;color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer">Clear</span>
         </div>
         <div class="term-body">
           <div style="margin-bottom:4px;"><span class="tp">$</span><span class="tok"> python3 solution.py &lt; test1.txt</span></div>
@@ -8931,7 +12866,7 @@ html, body {
           <div class="acc-name">C1 Conditionals <span class="acc-pct">88%</span></div>
           <div class="acc-bar"><div class="acc-fill hi" style="width:88%"></div></div>
           <div style="display:flex;justify-content:space-between;margin-top:4px;">
-            <span style="font-size:9px;color:rgba(255,255,255,0.22)">24 questions</span>
+            <span style="font-size:9px;color:rgba(255,255,255,0.50)">24 questions</span>
             <div class="acc-sub-row" style="gap:6px;">
               <span style="font-size:8.5px;color:rgba(0,232,122,0.55)">Syn</span>
               <span style="font-size:8.5px;color:rgba(0,232,122,0.55)">Con</span>
@@ -8944,12 +12879,12 @@ html, body {
           <div class="acc-name">C2 Basic Loops <span class="acc-pct" style="color:var(--cy2)">72%</span></div>
           <div class="acc-bar"><div class="acc-fill mid" style="width:72%"></div></div>
           <div style="display:flex;justify-content:space-between;margin-top:4px;">
-            <span style="font-size:9px;color:rgba(255,255,255,0.22)">23 questions</span>
+            <span style="font-size:9px;color:rgba(255,255,255,0.50)">23 questions</span>
             <div style="display:flex;gap:6px;">
               <span style="font-size:8.5px;color:rgba(255,61,90,0.6)">Syn</span>
               <span style="font-size:8.5px;color:rgba(0,184,217,0.20)">Con</span>
               <span style="font-size:8.5px;color:rgba(0,184,217,0.20)">Loop</span>
-              <span style="font-size:8.5px;color:rgba(255,255,255,0.25)">Inp</span>
+              <span style="font-size:8.5px;color:rgba(255,255,255,0.52)">Inp</span>
             </div>
           </div>
         </div>
@@ -9288,16 +13223,16 @@ html, body {
         <div class="clbl"><div class="ldot c"></div>Adaptive Progression</div>
         <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:8px;">C2: Basic Loops</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
-          <span style="font-size:9.5px;color:rgba(255,255,255,0.28);width:38px;">Before</span>
+          <span style="font-size:9.5px;color:rgba(255,255,255,0.55);width:38px;">Before</span>
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-cy" style="width:55%"></div></div>
           <span style="font-size:10px;color:rgba(200,215,230,0.12);">55%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <span style="font-size:9.5px;color:rgba(255,255,255,0.28);width:38px;">After</span>
+          <span style="font-size:9.5px;color:rgba(255,255,255,0.55);width:38px;">After</span>
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-gn" style="width:60%"></div></div>
           <span style="font-size:10px;color:var(--grn);text-shadow:var(--ggn2);">60%</span>
         </div>
-        <div style="font-size:9.5px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Mastery Streak</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Mastery Streak</div>
         <div class="streak-dots" style="margin-bottom:12px;">
           <div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div>
         </div>
@@ -9378,7 +13313,7 @@ html, body {
           <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,61,90,0.12);border:2px solid rgba(255,61,90,0.5);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--red);box-shadow:var(--grd);">✗</div>
           <div>
             <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--red2);text-shadow:0 0 15px rgba(255,61,90,0.6);letter-spacing:0.04em;">Incorrect Answer</div>
-            <div style="font-size:10.5px;color:rgba(255,255,255,0.3);margin-top:2px;">3 of 5 test cases failed · Streak reset to 0</div>
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.55);margin-top:2px;">3 of 5 test cases failed · Streak reset to 0</div>
           </div>
         </div>
         <div class="stk-badge-0">Streak: 0</div>
@@ -9425,7 +13360,7 @@ html, body {
           <div style="font-size:11px;color:rgba(255,255,255,0.42);line-height:1.6;">Your solution doesn't handle negative values of n. range() with negative step or no guard clause causes issues.</div>
         </div>
         <div style="margin-bottom:10px;">
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.28);margin-bottom:6px;">Streak Impact:</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Streak Impact:</div>
           <div class="streak-dots" style="margin-bottom:5px;">
             <div class="sk-dot em"></div><div class="sk-dot em"></div><div class="sk-dot em"></div><div class="sk-dot em"></div>
           </div>
@@ -9547,11 +13482,11 @@ html, body {
           <div style="font-family:var(--ff-d);font-size:16px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:3px;">C3: Loops + Lists</div>
           <div style="font-size:8.5px;letter-spacing:0.18em;color:var(--grn);font-weight:700;text-shadow:var(--ggn2);">NOW UNLOCKED</div>
         </div>
-        <div style="font-size:9.5px;color:rgba(255,255,255,0.25);margin-bottom:7px;">Concepts remaining:</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.52);margin-bottom:7px;">Concepts remaining:</div>
         <div style="font-size:11px;color:var(--cy2);text-shadow:var(--gcx2);margin-bottom:5px;">▶ C3: Loops+Lists</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:3px;">○ C4: Nested Loops</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-bottom:3px;">○ C5: Strings</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.3);">○ C6: Functions</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:3px;">○ C4: Nested Loops</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:3px;">○ C5: Strings</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.55);">○ C6: Functions</div>
       </div>
     </div>
 
@@ -9585,21 +13520,21 @@ html, body {
           <div class="cp-circ l">C4</div>
           <div class="cp-nm">Nested Loops</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
         <div class="cp-line"></div>
         <div class="cpath-node">
           <div class="cp-circ l">C5</div>
           <div class="cp-nm">Strings</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
         <div class="cp-line"></div>
         <div class="cpath-node">
           <div class="cp-circ l">C6</div>
           <div class="cp-nm">Functions</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.2);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
       </div>
       <div style="display:flex;gap:10px;margin-top:4px;">
@@ -9637,48 +13572,48 @@ html, body {
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#1</div>
           <div class="tl-time">14:02</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Synt</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Synt</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#2</div>
           <div class="tl-time">14:08</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Synt</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Synt</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node fl">✗</div>
           <div class="tl-lbl">Q#3</div>
           <div class="tl-time">14:15</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Conc</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Conc</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#4</div>
           <div class="tl-time">14:22</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Conc</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Conc</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#5</div>
           <div class="tl-time">14:28</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#6</div>
           <div class="tl-time">14:35</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
         </div>
         <div class="tl-seg">
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#7</div>
           <div class="tl-time">14:41</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.2);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
         </div>
       </div>
     </div>
@@ -9688,27 +13623,27 @@ html, body {
       <div class="gc f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot c"></div>State Before Session</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.32);margin-bottom:6px;">C3 Progress:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">C3 Progress:</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-cy" style="width:55%"></div></div>
           <span style="font-size:10.5px;color:rgba(200,215,230,0.16);min-width:28px;">55%</span>
         </div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.32);margin-bottom:6px;">Active Error Type:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">Active Error Type:</div>
         <div class="b-amb badge" style="font-size:10px;padding:4px 11px;margin-bottom:12px;display:inline-block;">Syntax</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.28);">Note: Starting error focus: Syntax</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.55);">Note: Starting error focus: Syntax</div>
       </div>
 
       <div class="gc f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot g"></div>State After Session</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.32);margin-bottom:6px;">C3 Progress:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">C3 Progress:</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-gn" style="width:70%"></div></div>
           <span style="font-size:10.5px;color:var(--grn);text-shadow:var(--ggn2);min-width:28px;">70%</span>
         </div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.32);margin-bottom:6px;">Active Error Type:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">Active Error Type:</div>
         <div class="b-cy badge" style="font-size:10px;padding:4px 11px;margin-bottom:12px;display:inline-block;">Loop</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.28);margin-bottom:6px;">Note: Error focus updated: Loop</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Note: Error focus updated: Loop</div>
         <div style="font-size:11px;font-weight:700;color:var(--grn);text-shadow:var(--ggn2);">▲ 15% improvement this session</div>
       </div>
     </div>
@@ -9757,7 +13692,7 @@ html, body {
     <div class="gc">
       <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
       <div class="clbl"><div class="ldot c"></div>C3: Error Type Exposure &amp; Accuracy</div>
-      <div style="display:flex;gap:8px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.22);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">
+      <div style="display:flex;gap:8px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.50);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">
         <span style="flex:0 0 90px;">Error Type</span>
         <span style="flex:0 0 30px;text-align:center;">Qs</span>
         <span style="flex:0 0 28px;text-align:center;">✓</span>
@@ -9939,7 +13874,7 @@ html, body {
             <circle cx="480" cy="15" r="4" fill="#22e8ff" filter="drop-shadow(0 0 6px #00d4ff)"/>
           </svg>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,0.18);">
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,0.46);">
           <span>Day 1</span><span>Today</span>
         </div>
       </div>
@@ -9950,34 +13885,34 @@ html, body {
         <div class="clbl"><div class="ldot g"></div>Session Accuracy Trend</div>
         <div style="display:flex;align-items:flex-end;gap:6px;height:100px;padding-bottom:4px;">
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.3);">60%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.55);">60%</span>
             <div style="width:100%;background:rgba(0,184,217,0.10);border-top:2px solid rgba(0,184,217,0.5);height:48px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">15</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">15</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.3);">68%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.55);">68%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.55);height:55px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">16</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">16</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.3);">72%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.55);">72%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.25);height:59px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">17</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">17</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.3);">74%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.55);">74%</span>
             <div style="width:100%;background:rgba(0,184,217,0.14);border-top:2px solid rgba(0,184,217,0.28);height:61px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">18</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">18</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.3);">70%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.55);">70%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.55);height:57px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">19</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">19</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
             <span style="font-size:8px;color:var(--grn);text-shadow:var(--ggn2);">78%</span>
             <div style="width:100%;background:rgba(0,232,122,0.2);border-top:2px solid rgba(0,232,122,0.6);height:68px;border-radius:3px 3px 0 0;box-shadow:0 -4px 14px rgba(0,232,122,0.3);"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.2);">20</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.44);">20</span>
           </div>
         </div>
       </div>
@@ -10353,7 +14288,6 @@ goTo('login', '');
   goTo = function(section, screen) {
     _origGoTo(section, screen);
     if (section === 'login') {
-      // Trigger canvas resize for login particles after display:flex kicks in
       requestAnimationFrame(function() {
         var c = document.getElementById('particles');
         if (c && c.offsetWidth > 0) {
@@ -10363,6 +14297,33 @@ goTo('login', '');
       });
     }
   };
+})();
+
+/* ─── THEME TOGGLE ─── */
+(function() {
+  var isDark = true;
+  var btn = document.getElementById('theme-toggle');
+
+  function applyTheme() {
+    if (isDark) {
+      document.documentElement.classList.remove('light-mode');
+      document.body.classList.remove('light-mode');
+      btn.textContent = '☽';
+      btn.title = 'Switch to light mode';
+    } else {
+      document.documentElement.classList.add('light-mode');
+      document.body.classList.add('light-mode');
+      btn.textContent = '☀';
+      btn.title = 'Switch to dark mode';
+    }
+  }
+
+  window.toggleTheme = function() {
+    isDark = !isDark;
+    applyTheme();
+  };
+
+  applyTheme();
 })();
 </script>
 </body>
