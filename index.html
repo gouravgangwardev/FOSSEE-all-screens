@@ -8021,6 +8021,536 @@ html, body {
 /* Prevent .app overflow/scroll issues in merged context */
 .app.file-wrap { overflow: hidden; top: 33px; }
 #sec-login.on { top: 33px; }
+
+/* ══════════════════════════════════════════════════════════════
+   FOSSEE ACE — PREMIUM POLISH PASS
+   Surface separation · Glow restraint · Card depth · Text warmth
+   Sidebar breathing room · Academic feel · No layout changes
+══════════════════════════════════════════════════════════════ */
+
+/* ── 1. GLOW SOVEREIGNTY — final calibration ──
+   Only 4 things glow: active nav, current concept, primary CTA, mastery.
+   Everything else casts shadow, not light. */
+:root {
+  /* Passive traces — sub-perceptual, almost environmental */
+  --gcx:  0 0 4px rgba(0,184,217,0.10), 0 0 12px rgba(0,184,217,0.038), 0 0 28px rgba(0,184,217,0.010);
+  --gcx2: 0 0 2px rgba(0,184,217,0.075), 0 0 6px rgba(0,184,217,0.025);
+  /* Hero — reserved for active intelligence, mastery, CTA only */
+  --gcx3: 0 0 10px rgba(0,184,217,0.34), 0 0 26px rgba(0,184,217,0.14), 0 0 58px rgba(0,184,217,0.048), 0 0 100px rgba(0,184,217,0.012);
+  --ggn:  0 0 5px rgba(0,201,103,0.18), 0 0 14px rgba(0,201,103,0.065), 0 0 30px rgba(0,201,103,0.016);
+  --ggn2: 0 0 3px rgba(0,201,103,0.13), 0 0 7px rgba(0,201,103,0.042);
+  --grd:  0 0 3px rgba(232,48,78,0.14), 0 0 9px rgba(232,48,78,0.048);
+  --gamb: 0 0 3px rgba(212,152,0,0.14), 0 0 9px rgba(212,152,0,0.050);
+}
+
+/* ── 2. SURFACE SEPARATION — 4-layer depth stack ──
+   Layer 1: sidebar = darkest void
+   Layer 2: main background = slightly lifted from void
+   Layer 3: cards = clearly above background
+   Layer 4: active/important cards = highest elevation */
+
+/* Layer 1 — Sidebar: absolute darkest surface */
+.sb {
+  background: linear-gradient(172deg,
+    rgba(0,1,6,0.9999) 0%,
+    rgba(0,0,4,0.9999) 60%,
+    rgba(0,1,5,0.9999) 100%
+  ) !important;
+  border-right: 1px solid rgba(0,184,217,0.030) !important;
+  box-shadow:
+    2px 0 8px  rgba(0,0,0,0.90),
+    6px 0 38px rgba(0,0,0,0.72),
+    18px 0 72px rgba(0,0,0,0.44),
+    inset -1px 0 0 rgba(255,255,255,0.003) !important;
+  width: 184px !important;
+  min-width: 184px !important;
+}
+
+/* Layer 2 — Main background: lifted from void with cold atmospheric depth */
+html, body {
+  background:
+    radial-gradient(ellipse 62% 62% at 50% 50%, transparent 22%, rgba(0,0,2,0.62) 56%, rgba(0,0,1,0.92) 100%),
+    radial-gradient(ellipse 170% 94% at 44% -12%, #060f1c 0%, #030810 14%, #010508 38%, #010308 100%),
+    radial-gradient(ellipse 56% 46% at -4% 8%,  rgba(0,4,14,0.90) 0%, transparent 52%),
+    radial-gradient(ellipse 50% 42% at 1% 98%,  rgba(0,0,6,0.99) 0%, transparent 52%),
+    radial-gradient(ellipse 38% 32% at 99% 98%, rgba(0,1,9,0.92) 0%, transparent 48%),
+    radial-gradient(ellipse 42% 36% at 102% 4%, rgba(0,1,8,0.88) 0%, transparent 46%),
+    #010308 !important;
+  color: rgb(245,247,250) !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Layer 3 — Glass cards: clearly elevated above workspace */
+.gc {
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.028) 0px,
+      rgba(255,255,255,0.005) 1.5px,
+      transparent 13%
+    ),
+    linear-gradient(151deg,
+      rgba(5,11,26,0.976),
+      rgba(3,6,16,0.992)
+    ) !important;
+  backdrop-filter: blur(42px) saturate(1.10) brightness(1.014) !important;
+  -webkit-backdrop-filter: blur(42px) saturate(1.10) brightness(1.014) !important;
+  border: 1px solid rgba(0,184,217,0.052) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.013),
+    0 1px 2px  rgba(0,0,0,0.96),
+    0 4px 12px rgba(0,0,0,0.92),
+    0 14px 42px rgba(0,0,0,0.82),
+    0 32px 78px rgba(0,0,0,0.60),
+    0 60px 110px rgba(0,0,0,0.38),
+    0 0 0 1px rgba(0,184,217,0.008),
+    inset 0 1px 0 rgba(0,184,217,0.058),
+    inset 0 -1px 0 rgba(0,0,0,0.94),
+    inset 0 0 70px rgba(0,55,82,0.005) !important;
+  transition: all .32s cubic-bezier(.4,0,.2,1) !important;
+}
+
+.gc::before {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,184,217,0.068) 16%,
+    rgba(90,148,172,0.022) 50%,
+    rgba(0,184,217,0.068) 84%,
+    transparent 100%
+  ) !important;
+}
+
+.gc::after {
+  background: linear-gradient(151deg,
+    rgba(0,78,112,0.011) 0%,
+    rgba(0,40,65,0.004) 40%,
+    transparent 100%
+  ) !important;
+}
+
+/* Layer 4 — Active/important cards hover: highest elevation */
+.gc:hover {
+  background:
+    linear-gradient(180deg,
+      rgba(255,255,255,0.034) 0px,
+      rgba(255,255,255,0.007) 1.5px,
+      transparent 13%
+    ),
+    linear-gradient(151deg,
+      rgba(6,13,28,0.966),
+      rgba(4,7,19,0.986)
+    ) !important;
+  border-color: rgba(0,184,217,0.095) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.018),
+    0 2px 5px  rgba(0,0,0,0.97),
+    0 8px 22px rgba(0,0,0,0.94),
+    0 22px 60px rgba(0,0,0,0.88),
+    0 46px 96px rgba(0,0,0,0.70),
+    0 0 65px rgba(0,184,217,0.016),
+    0 0 0 1px rgba(0,184,217,0.028),
+    inset 0 1px 0 rgba(0,184,217,0.090),
+    inset 0 -1px 0 rgba(0,0,0,0.96),
+    inset 0 0 90px rgba(0,75,112,0.007) !important;
+  transform: translateY(-2px) !important;
+}
+
+.gc:hover::before {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,184,217,0.16) 16%,
+    rgba(145,196,218,0.050) 50%,
+    rgba(0,184,217,0.16) 84%,
+    transparent 100%
+  ) !important;
+}
+
+/* Color tinted variants — depth-matched */
+.gc-grn {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.014) 0px, transparent 1px),
+    linear-gradient(151deg, rgba(1,13,8,0.982), rgba(0,7,4,0.995)) !important;
+  border-color: rgba(0,201,103,0.080) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.96), 0 10px 34px rgba(0,0,0,0.84), 0 28px 68px rgba(0,0,0,0.66),
+    0 0 26px rgba(0,201,103,0.036), inset 0 1px 0 rgba(0,201,103,0.13) !important;
+}
+.gc-red {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.012) 0px, transparent 1px),
+    linear-gradient(151deg, rgba(13,1,4,0.982), rgba(8,0,2,0.995)) !important;
+  border-color: rgba(232,48,78,0.078) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.96), 0 10px 34px rgba(0,0,0,0.84), 0 28px 68px rgba(0,0,0,0.66),
+    0 0 22px rgba(232,48,78,0.034), inset 0 1px 0 rgba(232,48,78,0.11) !important;
+}
+.gc-gold {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.014) 0px, transparent 1px),
+    linear-gradient(151deg, rgba(11,7,0,0.982), rgba(7,4,0,0.995)) !important;
+  border-color: rgba(212,152,0,0.088) !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.96), 0 10px 34px rgba(0,0,0,0.84), 0 28px 68px rgba(0,0,0,0.66),
+    0 0 30px rgba(212,152,0,0.046), inset 0 1px 0 rgba(212,152,0,0.15) !important;
+}
+
+/* ── 3. WORKSPACE PANELS — void-black, deepest layer ── */
+.ws-prob {
+  background: rgba(0,0,4,0.994) !important;
+  border-right: 1px solid rgba(0,184,217,0.018) !important;
+  box-shadow:
+    inset -14px 0 60px rgba(0,0,0,0.60),
+    inset 0 0 28px rgba(0,0,0,0.34) !important;
+}
+.ws-ap, .ws-hint {
+  background: rgba(0,0,4,0.994) !important;
+  border-left: 1px solid rgba(0,184,217,0.015) !important;
+  box-shadow:
+    inset 14px 0 60px rgba(0,0,0,0.54),
+    inset 0 0 28px rgba(0,0,0,0.30) !important;
+}
+.ws-ed, .ws-editor { background: rgba(0,0,3,0.9994) !important; }
+.term, .ed-terminal {
+  background: rgba(0,0,2,0.9988) !important;
+  border-top: 1px solid rgba(0,184,217,0.015) !important;
+}
+
+/* ── 4. TOPBAR — above workspace, below cards ── */
+.tb {
+  background: linear-gradient(90deg,
+    rgba(0,3,10,0.998) 0%,
+    rgba(0,5,14,0.994) 44%,
+    rgba(0,6,17,0.992) 68%,
+    rgba(0,3,11,0.998) 100%
+  ) !important;
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.84),
+    0 3px 14px rgba(0,0,0,0.62),
+    0 10px 34px rgba(0,0,0,0.38),
+    inset 0 -1px 0 rgba(0,184,217,0.034) !important;
+}
+.tb::before {
+  background: linear-gradient(90deg,
+    rgba(0,184,217,0.024) 0%,
+    rgba(0,184,217,0.010) 35%,
+    transparent 58%,
+    transparent 100%
+  ) !important;
+}
+.tb::after {
+  background: linear-gradient(90deg,
+    rgba(0,184,217,0.12) 0%,
+    rgba(0,184,217,0.085) 28%,
+    rgba(95,152,178,0.020) 50%,
+    rgba(0,184,217,0.060) 72%,
+    transparent 100%
+  ) !important;
+}
+
+/* ── 5. SCREEN NAV — deepest chrome ── */
+.snav {
+  background: rgba(0,0,3,0.9996) !important;
+  border-bottom: 1px solid rgba(0,184,217,0.055) !important;
+}
+.snav::after {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0,184,217,0.16),
+    rgba(120,168,192,0.028),
+    rgba(0,184,217,0.16),
+    transparent
+  ) !important;
+}
+
+/* ── 6. SIDEBAR DETAILS — breathing room, restraint ── */
+.sb::after {
+  background: linear-gradient(176deg,
+    rgba(0,184,217,0.092) 0%,
+    rgba(0,184,217,0.024) 26%,
+    rgba(0,184,217,0.005) 60%,
+    transparent 100%
+  ) !important;
+}
+
+/* Inactive nav items — deeply recede */
+.ni       { color: rgba(245,247,250,0.20) !important; }
+.ni svg   { opacity: 0.26 !important; }
+.ni:hover { color: rgba(245,247,250,0.58) !important; background: rgba(0,184,217,0.018) !important; }
+.ni:hover svg { opacity: 0.48 !important; }
+
+/* Active nav — the one bright thing in the sidebar */
+.ni.on {
+  color: var(--cy2) !important;
+  background: linear-gradient(90deg, rgba(0,184,217,0.080), rgba(0,184,217,0.022), transparent) !important;
+  border-left-color: rgba(0,184,217,0.68) !important;
+  text-shadow: 0 0 11px rgba(0,184,217,0.32) !important;
+  box-shadow: inset 1px 0 0 rgba(0,184,217,0.040) !important;
+}
+.ni.on svg { filter: drop-shadow(0 0 3px rgba(0,184,217,0.38)) !important; opacity: 0.90 !important; }
+
+/* Concept items */
+.ci      { color: rgba(245,247,250,0.15) !important; }
+.ci:hover{ color: rgba(245,247,250,0.50) !important; }
+.ci.on   { color: rgba(245,247,250,0.80) !important; }
+
+/* Section labels — architectural, near-invisible */
+.nsect { color: rgba(245,247,250,0.10) !important; letter-spacing: 0.26em !important; }
+
+/* User bar */
+.ubar { background: rgba(0,0,4,0.55) !important; border-top-color: rgba(0,184,217,0.026) !important; }
+
+/* ── 7. TEXT WARMTH — primary text toward rgb(245,247,250) ──
+   Removes pure white harshness; more mature, scholarly reading. */
+
+/* Primary text */
+body, .dv, .dk, .tb-bc span, .clbl, .pi-nm, .ctb-type, .fb-v, .seq-v,
+.rem-title, .cq-lbl, .whn-title, .hero-title, .st, .hint-panel-title,
+.fb-col-title, .wl-concept, .goal-lbl {
+  color: rgb(245,247,250) !important;
+}
+
+/* KPI / stat values — warm near-white */
+.kpi-val, .stat-val, .sval {
+  color: rgb(246,248,251) !important;
+}
+
+/* Active cyan values retain color */
+.kpi-val.c, .stat-val.c, .sval.c, .cur-val, .dv.c { color: var(--cy2) !important; }
+.kpi-val.g, .stat-val.g, .dv.g { color: var(--grn) !important; }
+.kpi-val.a, .stat-val.a, .dv.a { color: var(--amb) !important; }
+.kpi-val.r, .stat-val.r, .dv.r { color: var(--red) !important; }
+
+/* Body / secondary text — slightly subdued warm */
+.dk, .seq-v, .fb-v, .tc-detail, .whn-body, .rem-body, .cq-lbl,
+.hero-sub, .cl-desc, .cl-meta, .ss {
+  color: rgba(245,247,250,0.55) !important;
+}
+
+/* Metadata — quiet, recedes */
+.kpi-sub, .stat-sub, .slbl, .ur, .atm, .eng-k, .tb-sub,
+.pi-pct, .seq-k, .tc-time, .tl-time, .chart-day, .chart-bar-val,
+.rec-item {
+  color: rgba(245,247,250,0.22) !important;
+}
+
+/* Card section labels — deepest quiet */
+.clbl {
+  font-size: 7px !important;
+  letter-spacing: 0.28em !important;
+  color: rgba(245,247,250,0.16) !important;
+  margin-bottom: 16px !important;
+}
+
+/* Section labels */
+.nsect, .ap-t, .ai-header, .ai-panel-title, .panel-title, .seq-hdr {
+  color: rgba(245,247,250,0.13) !important;
+  letter-spacing: 0.26em !important;
+  font-size: 7.5px !important;
+}
+.seq-hdr {
+  color: var(--cy) !important;
+  opacity: 0.55 !important;
+}
+
+/* ── 8. STAT/KPI CARDS — secondary surface, recedes ── */
+.stat-card, .kpi {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.010) 0px, transparent 1px),
+    linear-gradient(151deg, rgba(3,7,18,0.984), rgba(1,4,10,0.996)) !important;
+  border: 1px solid rgba(0,184,217,0.025) !important;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.006),
+    0 1px 3px rgba(0,0,0,0.97),
+    0 5px 18px rgba(0,0,0,0.88),
+    0 16px 44px rgba(0,0,0,0.72),
+    inset 0 1px 0 rgba(0,184,217,0.026),
+    inset 0 -1px 0 rgba(0,0,0,0.94) !important;
+}
+.stat-card::before, .kpi::before {
+  background: linear-gradient(90deg, transparent, rgba(0,184,217,0.060), transparent) !important;
+}
+
+/* ── 9. ACTIVE INTELLIGENCE — only these may glow ── */
+
+/* Current concept circle */
+.pp-circ.c, .cp-circ.c, .pcirc.c {
+  box-shadow: var(--gcx3), inset 0 0 14px rgba(0,184,217,0.065) !important;
+  animation: circ-glow 3.4s ease-in-out infinite !important;
+}
+
+/* Mastered circle — settled, quiet confidence */
+.pp-circ.m, .cp-circ.m, .pcirc.m {
+  box-shadow: 0 0 9px rgba(0,201,103,0.12), 0 0 24px rgba(0,201,103,0.036) !important;
+}
+
+/* Mastery hero */
+.mastery-hero {
+  box-shadow: 0 0 55px rgba(0,232,122,0.10), inset 0 1px 0 rgba(0,232,122,0.28) !important;
+}
+.mh-title {
+  text-shadow: 0 0 14px rgba(0,232,122,0.52), 0 0 35px rgba(0,232,122,0.20) !important;
+}
+
+/* Primary CTA — the one button that glows */
+.btn-pri {
+  box-shadow:
+    0 0 7px rgba(0,184,217,0.12),
+    0 0 20px rgba(0,184,217,0.042),
+    inset 0 1px 0 rgba(255,255,255,0.040) !important;
+}
+.btn-pri:hover {
+  box-shadow: var(--gcx3), inset 0 1px 0 rgba(255,255,255,0.052) !important;
+}
+.btn-grn {
+  box-shadow: 0 0 6px rgba(0,201,103,0.10), inset 0 1px 0 rgba(255,255,255,0.030) !important;
+}
+.btn-grn:hover {
+  box-shadow: 0 0 14px rgba(0,201,103,0.38), 0 0 35px rgba(0,201,103,0.14), inset 0 1px 0 rgba(255,255,255,0.040) !important;
+}
+
+/* Resume CTA */
+.btn-res {
+  background: linear-gradient(135deg, rgba(0,184,217,0.095), rgba(0,200,180,0.12)) !important;
+  border-color: rgba(0,184,217,0.16) !important;
+  box-shadow: var(--gcx2), inset 0 0 12px rgba(0,184,217,0.038) !important;
+}
+.btn-res:hover {
+  border-color: rgba(0,184,217,0.34) !important;
+  box-shadow: var(--gcx3) !important;
+}
+
+/* Progress bar fills — active path glows; track is shadow */
+.pb-cy, .pbar-c, .wl-progress-fill {
+  box-shadow: 0 0 6px rgba(0,184,217,0.24), 0 0 16px rgba(0,184,217,0.07) !important;
+}
+.pb-gn, .pbar-g, .acc-fill.hi {
+  box-shadow: 0 0 5px rgba(0,201,103,0.20) !important;
+}
+
+/* AI reasoning panel */
+.air {
+  background: rgba(0,184,217,0.032) !important;
+  border: 1.5px solid rgba(0,184,217,0.078) !important;
+  box-shadow: 0 0 14px rgba(0,184,217,0.040), inset 0 1px 0 rgba(0,184,217,0.064) !important;
+}
+
+/* Active screen nav button */
+.sbtn.on {
+  box-shadow:
+    0 0 5px rgba(0,184,217,0.10),
+    0 0 14px rgba(0,184,217,0.038),
+    inset 0 0 7px rgba(0,184,217,0.020) !important;
+  text-shadow: 0 0 12px rgba(0,184,217,0.46) !important;
+}
+
+/* Current badge */
+.cur-badge {
+  background: rgba(0,184,217,0.040) !important;
+  border-color: rgba(0,184,217,0.100) !important;
+  box-shadow: 0 0 4px rgba(0,184,217,0.060), inset 0 0 9px rgba(0,184,217,0.018) !important;
+}
+.cur-val { text-shadow: 0 0 12px rgba(0,184,217,0.28) !important; }
+
+/* Streak badge */
+.stk-badge {
+  background: rgba(212,152,0,0.068) !important;
+  border-color: rgba(212,152,0,0.20) !important;
+  box-shadow: 0 0 4px rgba(212,152,0,0.12) !important;
+}
+
+/* ── 10. PASSIVE ELEMENTS — reduce glow on inactive badges/bars/dots ── */
+
+/* Inactive dots — shadow only, no glow */
+.ldot.c { box-shadow: 0 0 3px rgba(0,184,217,0.08), 0 0 7px rgba(0,184,217,0.022) !important; }
+.ldot.g { box-shadow: 0 0 3px rgba(0,201,103,0.10) !important; }
+.ldot.r { box-shadow: 0 0 2px rgba(232,48,78,0.09) !important; }
+.ldot.a { box-shadow: 0 0 2px rgba(212,152,0,0.09) !important; }
+.cdot.c { box-shadow: 0 0 3px rgba(0,184,217,0.09) !important; }
+.cdot.g { box-shadow: 0 0 2px rgba(0,201,103,0.10) !important; }
+
+/* Inactive badges — flat, no glow */
+.b-grn { box-shadow: none !important; }
+.b-cy  { box-shadow: none !important; }
+.b-red { box-shadow: none !important; }
+.b-amb { box-shadow: none !important; }
+
+/* Progress bar tracks */
+.pb-wrap, .pbar-w { background: rgba(255,255,255,0.024) !important; }
+
+/* Matrix cells — muted, academic */
+.mx-hi { background: rgba(0,201,103,0.10) !important; }
+.mx-md { background: rgba(0,184,217,0.07) !important; }
+.mx-lo { background: rgba(232,48,78,0.08) !important; }
+.mx-am { background: rgba(212,152,0,0.07) !important; }
+
+/* Corner brackets */
+.cb { border-color: rgba(0,184,217,0.082) !important; }
+.gc:hover .cb { border-color: rgba(0,184,217,0.18) !important; box-shadow: 0 0 3px rgba(0,184,217,0.072) !important; }
+
+/* Holographic shimmer — near-invisible material sheen */
+.hs {
+  background: linear-gradient(116deg,
+    transparent 28%, rgba(0,184,217,0.007) 50%, transparent 72%
+  ) !important;
+  animation-duration: 16s !important;
+}
+
+/* Scan elements — atmospheric, barely present */
+.cybeam {
+  background: linear-gradient(90deg,
+    transparent 0%, transparent 15%,
+    rgba(0,184,217,0.090) 37%, rgba(0,184,217,0.22) 50%,
+    rgba(0,184,217,0.090) 63%, transparent 85%
+  ) !important;
+  box-shadow: 0 0 6px rgba(0,184,217,0.042) !important;
+}
+.scanl {
+  background: linear-gradient(90deg,
+    transparent, rgba(0,184,217,0.012), rgba(0,184,217,0.034),
+    rgba(0,184,217,0.012), transparent
+  ) !important;
+}
+
+/* Atmospheric glows — environmental only */
+.a-glow.g1 {
+  background: radial-gradient(ellipse,
+    rgba(0,92,138,0.042) 0%, rgba(0,68,106,0.015) 32%, rgba(0,40,76,0.005) 54%, transparent 66%
+  ) !important;
+}
+.a-glow.g2 {
+  background: radial-gradient(ellipse,
+    rgba(26,16,60,0.055) 0%, rgba(12,7,36,0.020) 42%, transparent 62%
+  ) !important;
+}
+.a-glow.g3 {
+  background: radial-gradient(ellipse,
+    rgba(0,130,118,0.030) 0%, rgba(0,105,96,0.009) 46%, transparent 62%
+  ) !important;
+}
+
+/* ── 11. SCROLLBARS — surgical restraint ── */
+.cnt::-webkit-scrollbar { width: 1.5px !important; }
+.cnt::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0,184,217,0.18), rgba(0,184,217,0.048)) !important;
+}
+
+/* ── 12. KEYFRAMES — measured cinematic timing ── */
+@keyframes circ-glow {
+  0%, 100% { box-shadow: 0 0 9px rgba(0,184,217,0.22), 0 0 22px rgba(0,184,217,0.07); }
+  50%       { box-shadow: 0 0 18px rgba(0,184,217,0.36), 0 0 44px rgba(0,184,217,0.11); }
+}
+@keyframes bar-glw {
+  0%, 100% { box-shadow: 0 0 4px rgba(0,184,217,0.14); }
+  50%       { box-shadow: 0 0 10px rgba(0,184,217,0.32), 0 0 22px rgba(0,184,217,0.08); }
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.44; transform: scale(0.74); }
+}
+@keyframes beam-pulse {
+  0%, 100% { opacity: 0.36; }
+  50%       { opacity: 0.84; }
+}
+
+/* ════ END PREMIUM POLISH PASS ════ */
 </style>
 
 <!-- ══════════════════════════════════════════════════════════
