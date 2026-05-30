@@ -2889,13 +2889,13 @@ button{font-family:var(--ff-b);border:none;cursor:pointer;transition:all .2s;}
 .air-hdr{display:flex;align-items:center;gap:6px;font-size:9.5px;font-weight:700;color:var(--cy2);margin-bottom:8px;text-shadow:var(--gcx2);}
 .air-txt{font-size:9.5px;color:rgba(255,255,255,0.44);margin-bottom:8px;line-height:1.55;}
 .air-cod{font-family:var(--ff-m);color:var(--cy2);font-size:9.5px;text-shadow:var(--gcx2);}
-.cr-row{display:flex;align-items:center;gap:5px;margin-top:5px;}
-.cr-l{font-size:8.5px;color:rgba(255,255,255,0.28);width:54px;}
-.cr-b{flex:1;height:3px;background:rgba(255,255,255,0.04);border-radius:2px;overflow:hidden;}
+.cr-row{display:flex;align-items:center;gap:7px;margin-top:6px;}
+.cr-l{font-size:8.5px;color:rgba(255,255,255,0.28);min-width:68px;flex-shrink:0;white-space:nowrap;}
+.cr-b{flex:1;height:3px;background:rgba(255,255,255,0.07);border-radius:2px;overflow:hidden;min-width:0;}
 .cr-f{height:100%;border-radius:2px;}
 .cr-f.g{background:linear-gradient(90deg,var(--tl),var(--grn));box-shadow:var(--ggn);}
 .cr-f.a{background:linear-gradient(90deg,var(--amb),var(--amb2));box-shadow:var(--gamb);}
-.cr-p{font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.62);min-width:24px;text-align:right;}
+.cr-p{font-size:8.5px;font-weight:700;color:rgba(255,255,255,0.62);min-width:28px;text-align:right;flex-shrink:0;}
 .hm{background:rgba(0,0,0,0.24);border:1px solid rgba(255,255,255,0.06);border-radius:7px;padding:10px 12px;}
 .hm-c{font-family:var(--ff-m);font-size:12px;color:var(--cy3);margin-bottom:6px;text-shadow:var(--gcx2);}
 .hm-t{font-size:9.5px;color:rgba(255,255,255,0.38);line-height:1.55;}
@@ -11779,6 +11779,9 @@ html.light-mode body,
 /* .cr-l (code review labels) */
 .cr-l {
   color: rgba(255,255,255,0.40) !important;
+  min-width: 68px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
 }
 
 /* .cmi-cd (concept mini description) */
@@ -12443,6 +12446,220 @@ html.light-mode body,
 
 /* ══ END COLLAPSIBLE TOP NAV SYSTEM ══ */
 
+
+/* ══════════════════════════════════════════════════════════════════════
+   ████  GLOBAL SCREEN SCROLLBAR FIX  ████
+   Fixes clipped content on: Dashboard, Adaptive AI, Mastered,
+   Concept Review, Performance, Adaptive Report, and all .cnt screens.
+   Root cause: overflow:hidden on .scr and html/body blocks scrolling.
+══════════════════════════════════════════════════════════════════════ */
+
+/* ── Allow body/html to participate in scroll layout ── */
+html, body {
+  overflow: hidden !important; /* keep fixed layout — scrolling happens inside .cnt */
+}
+
+/* ── .scr: flex column, let .cnt grow and scroll ── */
+.scr {
+  display: none;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden !important;   /* scr itself clips; cnt inside scrolls */
+  height: 100%;
+  min-height: 0;                 /* critical: allows flex child to shrink below content size */
+}
+.scr.on {
+  display: flex !important;
+}
+
+/* ── .cnt: the primary scroll container for every screen ── */
+.cnt {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;      /* lets flex shrink so scrollbar appears */
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 14px 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  /* Scrollbar */
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0,184,217,0.38) rgba(0,184,217,0.05) !important;
+}
+.cnt::-webkit-scrollbar        { width: 5px !important; }
+.cnt::-webkit-scrollbar-track  { background: rgba(0,184,217,0.04) !important; border-radius: 3px !important; }
+.cnt::-webkit-scrollbar-thumb  {
+  background: linear-gradient(180deg, rgba(0,184,217,0.48), rgba(0,184,217,0.22)) !important;
+  border-radius: 3px !important;
+}
+.cnt::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(0,184,217,0.72), rgba(0,184,217,0.44)) !important;
+}
+
+/* ── Specific problem screens: ensure nothing clips their .cnt ── */
+
+/* Dashboard (v3) */
+#scr-db { overflow: hidden !important; }
+#scr-db .cnt { overflow-y: auto !important; }
+
+/* Workspace */
+#scr-ws { overflow: hidden !important; }
+
+/* 4-screens */
+#scr-s1, #scr-s2, #scr-s3, #scr-s4 { overflow: hidden !important; }
+#scr-s1 .cnt, #scr-s2 .cnt,
+#scr-s3 .cnt, #scr-s4 .cnt { overflow-y: auto !important; }
+
+/* Cinematic screens: Correct, Incorrect, Mastered, Progression,
+   Concept Review, Performance, Adaptive Report */
+#s1, #s2, #s3, #s4, #s5, #s6, #s7 { overflow: hidden !important; }
+#s1 .cnt, #s2 .cnt, #s3 .cnt,
+#s4 .cnt, #s5 .cnt, #s6 .cnt,
+#s7 .cnt { overflow-y: auto !important; }
+
+/* ── Row cards: prevent horizontal overflow from breaking layout ── */
+.row {
+  flex-shrink: 0 !important;    /* don't let rows compress; let .cnt scroll past them */
+}
+
+/* ── Cards: never taller than their natural content ── */
+.gc, .stat-card, .kpi {
+  min-height: 0 !important;
+}
+
+/* ── Topbar always pinned, never scrolls away ── */
+.tb {
+  flex-shrink: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 50 !important;
+}
+
+/* ══ END GLOBAL SCREEN SCROLLBAR FIX ══ */
+
+
+/* ══════════════════════════════════════════════════════════════════════
+   ████  COLLAPSIBLE WORKSPACE PANELS  ████
+   • .ws-prob  — Question panel: visible by default, collapsible
+   • .ws-ap    — Adaptive panel: hidden by default, expandable
+   Smooth CSS transitions; editor fills freed space automatically.
+══════════════════════════════════════════════════════════════════════ */
+
+/* --- Panel transition foundation --- */
+.ws-prob,
+.ws-ap,
+.ws-hint {
+  transition:
+    width 0.30s cubic-bezier(.4,0,.2,1),
+    min-width 0.30s cubic-bezier(.4,0,.2,1),
+    opacity 0.22s ease,
+    padding 0.30s cubic-bezier(.4,0,.2,1) !important;
+  overflow: hidden !important;
+}
+
+/* --- Question panel COLLAPSED state --- */
+.ws-prob.panel-hidden {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-right: none !important;
+  opacity: 0 !important;
+}
+
+/* --- Adaptive panel HIDDEN state (default) --- */
+.ws-ap.panel-hidden,
+.ws-hint.panel-hidden {
+  width: 0 !important;
+  min-width: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-left: none !important;
+  opacity: 0 !important;
+}
+
+/* --- Toggle button strip on left edge of question panel --- */
+.ws-panel-toggle-strip {
+  position: absolute;
+  top: 0;
+  right: -20px;
+  width: 20px;
+  height: 100%;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* --- Question panel wrapper: relative so strip can be positioned --- */
+.ws-prob {
+  position: relative !important;
+}
+
+/* --- Topbar toggle buttons for panels --- */
+.ws-panel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.45);
+  transition: all .18s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ws-panel-btn:hover {
+  background: rgba(0,184,217,0.07);
+  border-color: rgba(0,184,217,0.22);
+  color: var(--cy2);
+}
+.ws-panel-btn.active {
+  background: rgba(0,184,217,0.10);
+  border-color: rgba(0,184,217,0.30);
+  color: var(--cy2);
+  box-shadow: 0 0 8px rgba(0,184,217,0.14);
+}
+.ws-panel-btn .btn-icon {
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* light-mode overrides */
+.light-mode .ws-panel-btn {
+  background: var(--bg-elevated) !important;
+  border-color: var(--border) !important;
+  color: var(--txt-muted) !important;
+}
+.light-mode .ws-panel-btn:hover {
+  border-color: var(--border-accent) !important;
+  color: var(--accent) !important;
+}
+.light-mode .ws-panel-btn.active {
+  background: var(--accent-dim) !important;
+  border-color: var(--border-accent) !important;
+  color: var(--accent) !important;
+  box-shadow: none !important;
+}
+
+/* ══ END COLLAPSIBLE PANEL CSS ══ */
+
+/* ── Override responsive breakpoint min-width for hidden panels ── */
+@media (max-width: 767px) {
+  .ws-prob.panel-hidden,
+  .ws-ap.panel-hidden,
+  .ws-hint.panel-hidden {
+    min-width: 0 !important;
+    width: 0 !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -12818,6 +13035,13 @@ html.light-mode body,
     <span style="color:rgba(255,255,255,0.55)">FOSSEE</span><span style="color:rgba(255,255,255,0.44)">›</span>
     <span style="color:rgba(255,255,255,0.55)">Workspace</span><span style="color:rgba(255,255,255,0.44)">›</span>
     <span class="cur-val" style="font-size:10.5px">C2: Basic Loops</span>
+    <!-- Panel toggle buttons -->
+    <button class="ws-panel-btn active" id="ws-btn-prob" onclick="toggleWsPanel('ws','prob')" title="Toggle Question Panel">
+      <span class="btn-icon">☰</span> Question
+    </button>
+    <button class="ws-panel-btn" id="ws-btn-ap" onclick="toggleWsPanel('ws','ap')" title="Toggle Adaptive Panel">
+      <span class="btn-icon">⚡</span> Adaptive
+    </button>
     <div class="tb-sp"></div>
     <button class="bn-run">▶ Run</button><button class="bn-stop">■ Stop</button>
     <button class="bn-out">↺ Reset</button><button class="bn-out">⌘ Format</button>
@@ -12829,7 +13053,7 @@ html.light-mode body,
     <span style="font-size:9.5px;color:rgba(255,255,255,0.55)">Python 3.11 · solution.py</span>
   </div>
   <div class="ws-layout">
-    <div class="ws-prob">
+    <div class="ws-prob" id="ws-prob-panel">
       <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.57)">Attempt 12</span></div>
       <div class="qnum">Question 12</div>
       <div class="stk-p"><span style="font-size:9.5px;color:var(--amb);margin-right:3px">Streak</span>
@@ -12881,7 +13105,7 @@ html.light-mode body,
         <div class="ttr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^</div>
       </div>
     </div>
-    <div class="ws-ap">
+    <div class="ws-ap panel-hidden" id="ws-ap-panel">
       <div style="display:flex;align-items:center"><div class="ap-t" style="margin-bottom:0">Adaptive Panel</div><div style="margin-left:auto"><div class="lv">• Live</div></div></div>
       <div><div class="ap-t" style="margin-top:3px">Current Error Focus</div>
         <div class="erfc"><div class="efc-hdr"><div class="efc-l">⊗ Error Focus</div><div class="efc-tg">Syntax</div></div>
@@ -13084,6 +13308,13 @@ html.light-mode body,
     <span style="color:rgba(255,255,255,0.55)">Workspace</span>
     <span style="color:rgba(255,255,255,0.44)">·</span>
     <span class="cur-val" style="font-size:11px">Hint Mode</span>
+    <!-- Panel toggle buttons -->
+    <button class="ws-panel-btn active" id="s2-btn-prob" onclick="toggleWsPanel('s2','prob')" title="Toggle Question Panel">
+      <span class="btn-icon">☰</span> Question
+    </button>
+    <button class="ws-panel-btn" id="s2-btn-hint" onclick="toggleWsPanel('s2','hint')" title="Toggle Hint Panel">
+      <span class="btn-icon">⚡</span> Adaptive Hints
+    </button>
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Topic</span><span class="cur-val">C2: Basic Loops</span></div>
     <div style="background:rgba(255,61,90,0.1);border:1px solid rgba(255,61,90,0.3);border-radius:5px;padding:4px 10px;font-size:10px;font-weight:700;color:var(--red);">Streak: 0</div>
@@ -13099,7 +13330,7 @@ html.light-mode body,
 
   <div class="ws-layout">
     <!-- LEFT: Problem Panel -->
-    <div class="ws-prob">
+    <div class="ws-prob" id="s2-prob-panel">
       <div class="ct-hdr">
         <div class="ctag">C2: Basic Loops</div>
         <div class="stag">Conceptual</div>
@@ -13171,7 +13402,7 @@ html.light-mode body,
     </div>
 
     <!-- RIGHT: Adaptive Hint System -->
-    <div class="ws-hint">
+    <div class="ws-hint panel-hidden" id="s2-hint-panel">
       <div class="hint-panel-title">
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="var(--cy)" stroke-width="1.5"><circle cx="8" cy="8" r="7"/><path d="M8 5v4M8 11v1"/></svg>
         Adaptive Hint System
@@ -14876,6 +15107,89 @@ goTo('login', '');
   });
 
 })();
+
+
+/* ─── COLLAPSIBLE WORKSPACE PANELS ─── */
+(function() {
+
+  /**
+   * Panel registry:
+   *   key: "workspaceId:panelType"
+   *   value: { panelEl, btnEl, defaultHidden }
+   *
+   * workspaceId: 'ws' (scr-ws)  |  's2' (scr-s2)
+   * panelType:   'prob' (question) | 'ap' (adaptive) | 'hint'
+   */
+
+  var panels = {
+    'ws:prob':  { panelId: 'ws-prob-panel',  btnId: 'ws-btn-prob',  hidden: false },
+    'ws:ap':    { panelId: 'ws-ap-panel',    btnId: 'ws-btn-ap',    hidden: true  },
+    's2:prob':  { panelId: 's2-prob-panel',  btnId: 's2-btn-prob',  hidden: false },
+    's2:hint':  { panelId: 's2-hint-panel',  btnId: 's2-btn-hint',  hidden: true  },
+  };
+
+  /**
+   * Toggle a workspace panel open/closed.
+   * @param {string} ws   - workspace key ('ws' | 's2')
+   * @param {string} type - panel type ('prob' | 'ap' | 'hint')
+   */
+  window.toggleWsPanel = function(ws, type) {
+    var key = ws + ':' + type;
+    var cfg = panels[key];
+    if (!cfg) return;
+
+    var panelEl = document.getElementById(cfg.panelId);
+    var btnEl   = document.getElementById(cfg.btnId);
+    if (!panelEl) return;
+
+    cfg.hidden = !cfg.hidden;
+
+    if (cfg.hidden) {
+      panelEl.classList.add('panel-hidden');
+      if (btnEl) btnEl.classList.remove('active');
+    } else {
+      panelEl.classList.remove('panel-hidden');
+      if (btnEl) btnEl.classList.add('active');
+    }
+  };
+
+  /* On load: ensure initial state matches registry */
+  document.addEventListener('DOMContentLoaded', function() {
+    Object.keys(panels).forEach(function(key) {
+      var cfg = panels[key];
+      var panelEl = document.getElementById(cfg.panelId);
+      var btnEl   = document.getElementById(cfg.btnId);
+      if (!panelEl) return;
+
+      if (cfg.hidden) {
+        panelEl.classList.add('panel-hidden');
+        if (btnEl) btnEl.classList.remove('active');
+      } else {
+        panelEl.classList.remove('panel-hidden');
+        if (btnEl) btnEl.classList.add('active');
+      }
+    });
+  });
+
+  /* Also run immediately in case DOM is already ready */
+  if (document.readyState !== 'loading') {
+    Object.keys(panels).forEach(function(key) {
+      var cfg = panels[key];
+      var panelEl = document.getElementById(cfg.panelId);
+      var btnEl   = document.getElementById(cfg.btnId);
+      if (!panelEl) return;
+      if (cfg.hidden) {
+        panelEl.classList.add('panel-hidden');
+        if (btnEl) btnEl.classList.remove('active');
+      } else {
+        panelEl.classList.remove('panel-hidden');
+        if (btnEl) btnEl.classList.add('active');
+      }
+    });
+  }
+
+})();
+
 </script>
 </body>
 </html>
