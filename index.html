@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8552,6 +8551,93 @@ body, .dv, .dk, .tb-bc span, .clbl, .pi-nm, .ctb-type, .fb-v, .seq-v,
 }
 
 /* ════ END PREMIUM POLISH PASS ════ */
+
+/* ════════════════════════════════════════════════════════════
+   TEXT VISIBILITY IMPROVEMENT PASS
+   Purpose: improve readability of all low-contrast text.
+   Only text color/opacity values are changed.
+   No layout, spacing, or structural changes.
+════════════════════════════════════════════════════════════ */
+
+/* Level 1 — Page titles, major metrics, concept titles */
+.cl-title { color: rgba(255,255,255,0.97) !important; }
+.st { color: rgba(255,255,255,0.96) !important; }
+.hero-title { color: rgba(255,255,255,0.96) !important; }
+.tb-title { color: rgba(255,255,255,0.96) !important; }
+.mh-title { color: var(--grn) !important; }
+.stat-val { color: rgba(255,255,255,0.94) !important; }
+.kpi-val { color: rgba(255,255,255,0.94) !important; }
+
+/* Level 2 — Section headings, card headings, panel titles */
+.clbl { color: rgba(255,255,255,0.50) !important; }
+.cl-sub { color: var(--cy2) !important; opacity: 1 !important; }
+.nsect { color: rgba(255,255,255,0.42) !important; }
+.ap-t { color: rgba(255,255,255,0.42) !important; }
+.ai-panel-title, .panel-title { color: rgba(255,255,255,0.42) !important; }
+.seq-hdr { color: var(--cy2) !important; }
+.fb-col-title { color: rgba(255,255,255,0.92) !important; }
+.whn-title { color: rgba(255,255,255,0.82) !important; }
+
+/* Level 3 — Descriptions, recommendations, supporting info */
+.cl-desc { color: rgba(255,255,255,0.60) !important; }
+.cl-meta { color: rgba(255,255,255,0.55) !important; }
+.hero-sub { color: rgba(255,255,255,0.60) !important; }
+.ss { color: rgba(255,255,255,0.55) !important; }
+.dk { color: rgba(255,255,255,0.65) !important; }
+.dv { color: rgba(255,255,255,0.88) !important; }
+.tb-bc { color: rgba(255,255,255,0.52) !important; }
+.tb-bc span { color: rgba(255,255,255,0.80) !important; }
+.traj-note { color: rgba(255,255,255,0.52) !important; }
+.algo-note { color: rgba(255,255,255,0.52) !important; }
+.rem-body { color: rgba(255,255,255,0.60) !important; }
+.whn-body { color: rgba(255,255,255,0.58) !important; }
+.mh-sub { color: rgba(255,255,255,0.75) !important; }
+.seq-k { color: rgba(255,255,255,0.50) !important; }
+.seq-v { color: rgba(255,255,255,0.78) !important; }
+.fb-k { color: rgba(255,255,255,0.52) !important; }
+.fb-v { color: rgba(255,255,255,0.82) !important; }
+.tl-lbl { color: rgba(255,255,255,0.60) !important; }
+.cp-nm { color: rgba(255,255,255,0.72) !important; }
+.cq-lbl { color: rgba(255,255,255,0.78) !important; }
+.rg-item { color: rgba(255,255,255,0.82) !important; }
+.rg-note { color: rgba(255,255,255,0.52) !important; }
+.tc-detail { color: rgba(255,255,255,0.60) !important; }
+.pi-nm { color: rgba(255,255,255,0.80) !important; }
+
+/* Level 4 — Metadata, helper text, timestamps, secondary labels */
+.atm { color: rgba(255,255,255,0.38) !important; }
+.stat-lbl { color: rgba(255,255,255,0.42) !important; }
+.kpi-lbl { color: rgba(255,255,255,0.42) !important; }
+.stat-sub { color: rgba(255,255,255,0.38) !important; }
+.kpi-sub { color: rgba(255,255,255,0.38) !important; }
+.tl-time { color: rgba(255,255,255,0.38) !important; }
+.eng-k { color: rgba(255,255,255,0.42) !important; }
+.pi-pct { color: rgba(255,255,255,0.42) !important; }
+.slbl { color: rgba(255,255,255,0.52) !important; }
+.ni { color: rgba(255,255,255,0.50) !important; }
+.ni:hover { color: rgba(255,255,255,0.78) !important; }
+.ci { color: rgba(255,255,255,0.48) !important; }
+.ci:hover { color: rgba(255,255,255,0.74) !important; }
+.ci.on { color: rgba(255,255,255,0.90) !important; }
+.un { color: rgba(255,255,255,0.88) !important; }
+.ur { color: rgba(255,255,255,0.48) !important; }
+.sbtn { color: rgba(255,255,255,0.58) !important; }
+.snav-lbl { color: rgba(255,255,255,0.45) !important; }
+.cur-lbl { color: rgba(255,255,255,0.55) !important; }
+
+/* Inline low-contrast style overrides — dashboard card text */
+/* These classes are used in inline styles; we increase their contrast globally */
+.mx-table th { color: rgba(255,255,255,0.55) !important; }
+.mx-table .row-lbl { color: rgba(200,215,230,0.55) !important; }
+.eem-name { color: rgba(255,255,255,0.60) !important; }
+.chart-day { color: rgba(255,255,255,0.50) !important; }
+.chart-bar-val { color: rgba(255,255,255,0.62) !important; }
+
+/* Light mode text — ensure readability */
+.light-mode .cl-desc { color: rgba(0,0,0,0.62) !important; }
+.light-mode .cl-meta { color: rgba(0,0,0,0.55) !important; }
+
+/* ════ END TEXT VISIBILITY IMPROVEMENT PASS ════ */
 </style>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -13191,6 +13277,158 @@ html, body {
   }
 }
 
+/* ════════════════════════════════════════════════════════════
+   GLOBAL TEXT VISIBILITY — NEAR-WHITE DARK MODE PASS
+   ONLY text color opacity values are changed.
+   No layout, spacing, backgrounds, borders, or structure changed.
+════════════════════════════════════════════════════════════ */
+
+/* ── LEVEL 1: Main titles, major metrics ── */
+.tb-title,
+.cl-title,
+.st,
+.hero-title,
+.stat-val,
+.kpi-val,
+.sval,
+.mh-title,
+.acc-pct,
+.fb-col-title,
+.rem-title,
+.wl-concept,
+.goal-lbl,
+.hint-panel-title,
+.algo-val { color: rgba(255,255,255,0.97) !important; }
+
+/* ── LEVEL 2: Section headings, card labels, ALL uppercase labels ── */
+.clbl,
+.cl-sub,
+.nsect,
+.ap-t,
+.ai-panel-title,
+.panel-title,
+.seq-hdr,
+.stl,
+.hs-lbl,
+.exh,
+.ep-key,
+.kpi-lbl,
+.stat-lbl,
+.fb-k,
+.pi-lbl,
+.whn-title,
+.acc-sub-lbl,
+.rg-label,
+.traj-key,
+.algo-key,
+.ctb-type,
+.marr,
+[class*="lbl"],
+[class*="label"] { color: rgba(255,255,255,0.92) !important; font-weight: 600; }
+
+/* Restore accent-colored labels */
+.rg-label.imm { color: var(--cy2) !important; }
+.rg-label.sht { color: var(--amb) !important; }
+.rg-label.avd { color: var(--red) !important; }
+.rg-label.alr { color: var(--in3) !important; }
+.rg-label.rem { color: var(--grn) !important; }
+
+/* ── LEVEL 3: Descriptions, body text, analytics ── */
+.cl-desc,
+.cl-meta,
+.hero-sub,
+.ss,
+.dk,
+.seq-v,
+.seq-row,
+.fb-v,
+.whn-body,
+.rem-body,
+.tc-detail,
+.traj-val,
+.traj-note,
+.algo-note,
+.rg-note,
+.rg-item,
+.aih-txt,
+.air-txt,
+.hm-t,
+.efc-d,
+.acc-sub,
+.rel-item,
+.io-lbl,
+.act-item { color: rgba(255,255,255,0.88) !important; }
+
+/* ── LEVEL 4: Secondary / metadata ── */
+.atm,
+.tl-time,
+.tl-lbl,
+.ur,
+.stat-sub,
+.kpi-sub,
+.pi-pct,
+.cp-nm,
+.csub,
+.mh-meta,
+.tb-sub,
+.chart-day,
+.chart-bar-val,
+.ms-note,
+.eng-k,
+.eng-v,
+.eem-name,
+.ctxt small,
+.cmi,
+.cmi-cd,
+.pst,
+.pp-status,
+.sd.em,
+.ski.em,
+.slbl { color: rgba(255,255,255,0.78) !important; }
+
+/* ── NAV ITEMS ── */
+.ni { color: rgba(255,255,255,0.82) !important; }
+.ni:hover { color: rgba(255,255,255,0.97) !important; }
+.ni.on { color: var(--cy2) !important; }
+.ci { color: rgba(255,255,255,0.82) !important; }
+.ci:hover { color: rgba(255,255,255,0.97) !important; }
+.ci.on { color: rgba(255,255,255,0.97) !important; }
+.sbtn { color: rgba(255,255,255,0.82) !important; }
+.snav-lbl { color: rgba(255,255,255,0.75) !important; }
+.cur-lbl { color: rgba(255,255,255,0.82) !important; }
+.un { color: rgba(255,255,255,0.97) !important; }
+
+/* ── BREADCRUMBS / TOPBAR ── */
+.tb-bc { color: rgba(255,255,255,0.78) !important; }
+.tb-bc span { color: rgba(255,255,255,0.95) !important; }
+
+/* ── DATA ROWS ── */
+.dk { color: rgba(255,255,255,0.88) !important; }
+.dv { color: rgba(255,255,255,0.97) !important; }
+
+/* ── MATRIX HEADERS ── */
+.mx-table th { color: rgba(255,255,255,0.88) !important; font-weight: 600; }
+.mx-table .row-lbl { color: rgba(255,255,255,0.85) !important; }
+.mx-em { color: rgba(255,255,255,0.72) !important; }
+
+/* ── CONCEPT PATH ── */
+.cp-nm { color: rgba(255,255,255,0.88) !important; }
+.cp-pct.l { color: rgba(255,255,255,0.72) !important; }
+
+/* ── TIMELINE ── */
+.tl-lbl { color: rgba(255,255,255,0.88) !important; }
+.tl-time { color: rgba(255,255,255,0.72) !important; }
+
+/* ── SEQUENCER ── */
+.seq-k { color: rgba(255,255,255,0.82) !important; }
+.seq-v { color: rgba(255,255,255,0.92) !important; }
+
+/* ── CODE LINE NUMBERS ── */
+.ln { color: rgba(255,255,255,0.55) !important; }
+.cm { color: rgba(255,255,255,0.65) !important; }
+
+/* ════ END NEAR-WHITE DARK MODE PASS ════ */
+
 </style>
 </head>
 <body>
@@ -13467,7 +13705,7 @@ html, body {
     <span class="tb-title">Dashboard</span><div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Current</span><span class="cur-val">C2: Basic Loops</span></div>
     <div class="stk-badge">🔥 3</div>
-    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.52)">Student</span></div>
+    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.85)">Student</span></div>
   </div>
   <div class="cnt">
 
@@ -13486,19 +13724,21 @@ html, body {
         <!-- ① CURRENT CONCEPT -->
         <div style="margin-bottom:18px;">
           <div class="cl-sub" style="margin-bottom:5px;">Currently Studying</div>
-          <div class="cl-title" style="margin-bottom:4px;">C2: Basic Loops</div>
-          <div class="cl-desc">for / while loop patterns · Question <strong style="color:rgba(255,255,255,0.72)">#12</strong></div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="cl-title" style="margin-bottom:4px;">C2: Basic Loops</div>
+            <button class="btn-res" style="flex-shrink:0;font-size:13px;padding:14px 26px;letter-spacing:0.07em;">
+              Resume Session →
+            </button>
+          </div>
+          <div class="cl-desc">for / while loop patterns · Question <strong style="color:rgba(255,255,255,0.88)">#12</strong></div>
         </div>
-         <!-- ⑤ NEXT MILESTONE + ⑥ RESUME SESSION BUTTON -->
+         <!-- ⑤ NEXT MILESTONE -->
          <div style="display:flex;align-items:center;gap:12px;margin-top:18px;">
           <div style="flex:1;background:rgba(0,184,217,0.04);border:1px solid rgba(0,184,217,0.10);border-radius:8px;padding:11px 14px;">
-            <div style="font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:4px;">Next Milestone</div>
+            <div style="font-size:8px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:4px;">Next Milestone</div>
             <div style="font-size:12.5px;color:rgba(255,255,255,0.84);font-weight:600;margin-bottom:3px;">Reach 60% Completion</div>
             <div style="font-size:10.5px;color:var(--cy);font-weight:500;">3 Questions Remaining</div>
           </div>
-          <button class="btn-res" style="flex-shrink:0;font-size:13px;padding:14px 26px;letter-spacing:0.07em;">
-            Resume Session →
-          </button>
         </div>
         <!-- separator -->
         <div style="height:1px;background:rgba(0,184,217,0.07);margin-bottom:18px;"></div>
@@ -13516,13 +13756,13 @@ html, body {
             <div class="csub">Q12 / ~26 total</div>
           </div>
           <div style="flex:1;">
-            <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:8px;font-weight:600;">Completion</div>
+            <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:8px;font-weight:600;">Completion</div>
             <div style="margin-bottom:8px;">
               <div class="pbar-w" style="height:5px;border-radius:3px;margin-bottom:5px;">
                 <div class="pbar-f pbar-c" style="width:45%;height:100%;border-radius:3px;"></div>
               </div>
               <div style="display:flex;justify-content:space-between;align-items:center;">
-                <span style="font-size:9.5px;color:rgba(255,255,255,0.35);">45% complete</span>
+                <span style="font-size:9.5px;color:rgba(255,255,255,0.88);">45% complete</span>
                 <span style="font-size:9.5px;color:var(--cy);font-weight:600;">55% remaining</span>
               </div>
             </div>
@@ -13530,17 +13770,17 @@ html, body {
               <div style="background:rgba(0,201,103,0.08);border:1px solid rgba(0,201,103,0.22);border-radius:5px;padding:5px 9px;flex:1;">
                 <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,201,103,0.65);margin-bottom:2px;">Previous</div>
                 <div style="font-size:11px;font-weight:700;color:var(--grn);">C1 · 100%</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.25);">Mastered</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.88);">Mastered</div>
               </div>
               <div style="background:rgba(0,184,217,0.06);border:1px solid rgba(0,184,217,0.14);border-radius:5px;padding:5px 9px;flex:1;">
                 <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(0,184,217,0.65);margin-bottom:2px;">Current</div>
                 <div style="font-size:11px;font-weight:700;color:var(--cy2);">C2 · 45%</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.25);">In Progress</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.88);">In Progress</div>
               </div>
               <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:5px;padding:5px 9px;flex:1;">
-                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.20);margin-bottom:2px;">Next Up</div>
-                <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.22);">C3</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.18);">Locked</div>
+                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Next Up</div>
+                <div style="font-size:11px;font-weight:700;color:rgba(255,255,255,0.88);">C3</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.85);">Locked</div>
               </div>
             </div>
           </div>
@@ -13551,7 +13791,7 @@ html, body {
 
         <!-- ③ CURRENT STREAK — highly visible -->
         <div style="margin-bottom:18px;">
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:10px;font-weight:600;">Current Streak</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:10px;font-weight:600;">Current Streak</div>
           <div style="display:flex;align-items:center;gap:14px;">
             <div style="background:rgba(212,152,0,0.08);border:1px solid rgba(212,152,0,0.25);border-radius:9px;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0;">
               <span style="font-size:24px;line-height:1;">🔥</span>
@@ -13565,10 +13805,10 @@ html, body {
                 <div style="width:26px;height:26px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.38);">✓</div>
                 <div style="width:26px;height:26px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.38);">✓</div>
                 <div style="width:26px;height:26px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9.5px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.38);">✓</div>
-                <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,0.18);"></div>
-                <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,0.18);"></div>
+                <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,0.85);"></div>
+                <div style="width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,0.85);"></div>
               </div>
-              <div style="font-size:10px;color:rgba(255,255,255,0.30);line-height:1.5;">Keep going — 2 more correct answers to extend your streak</div>
+              <div style="font-size:10px;color:rgba(255,255,255,0.88);line-height:1.5;">Keep going — 2 more correct answers to extend your streak</div>
             </div>
           </div>
         </div>
@@ -13578,11 +13818,11 @@ html, body {
 
         <!-- ④ CURRENT FOCUS -->
         <div style="margin-bottom:18px;">
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:9px;font-weight:600;">Current Focus</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:9px;font-weight:600;">Current Focus</div>
           <div style="background:rgba(255,61,90,0.05);border:1px solid rgba(255,61,90,0.13);border-radius:7px;padding:11px 14px;">
             <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--red2);opacity:0.85;margin-bottom:5px;">Focus Area</div>
             <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.82);margin-bottom:3px;">Loop Syntax Errors</div>
-            <div style="font-size:10.5px;color:rgba(255,255,255,0.34);">2 Consecutive Syntax Mistakes · Review <span style="color:var(--cy2);font-family:var(--ff-m);">range()</span> argument separators</div>
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.88);">2 Consecutive Syntax Mistakes · Review <span style="color:var(--cy2);font-family:var(--ff-m);">range()</span> argument separators</div>
           </div>
         </div>
 
@@ -13599,34 +13839,34 @@ html, body {
         <!-- INSIGHT CARD 1: Accuracy + Questions Answered + Correct -->
         <div class="gc" style="padding:16px 18px;">
           <div class="hs"></div>
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:12px;font-weight:600;">Today's Performance</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Today's Performance</div>
           <div style="display:flex;align-items:flex-end;gap:16px;">
             <div>
-              <div style="font-size:8px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.26);margin-bottom:3px;">Accuracy</div>
+              <div style="font-size:8px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:3px;">Accuracy</div>
               <div style="font-family:var(--ff-d);font-size:40px;font-weight:700;color:var(--grn);line-height:1;text-shadow:var(--ggn);">71%</div>
             </div>
             <div style="display:flex;gap:14px;padding-bottom:5px;margin-left:4px;">
               <div>
-                <div style="font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:2px;">Answered</div>
+                <div style="font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:2px;">Answered</div>
                 <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--cy2);line-height:1;text-shadow:var(--gcx);">7</div>
               </div>
               <div>
-                <div style="font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:2px;">Correct</div>
+                <div style="font-size:8px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:2px;">Correct</div>
                 <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--grn);line-height:1;text-shadow:var(--ggn);">5</div>
               </div>
             </div>
           </div>
-          <div class="dgoal" style="margin-top:10px;">⏱ Daily Goal — <strong style="color:rgba(255,255,255,0.72);">2 Questions Remaining</strong></div>
+          <div class="dgoal" style="margin-top:10px;">⏱ Daily Goal — <strong style="color:rgba(255,255,255,0.88);">2 Questions Remaining</strong></div>
         </div>
 
         <!-- INSIGHT CARD 2: Error Distribution -->
         <div class="gc" style="padding:16px 18px;">
           <div class="hs"></div>
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:12px;font-weight:600;">Error Distribution</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Error Distribution</div>
           <div style="margin-bottom:9px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.20);margin-bottom:2px;">Most Common</div>
+                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Most Common</div>
                 <div class="err-nm">Syntax Errors</div>
               </div>
               <span class="ecnt r" style="font-size:14px;">6</span>
@@ -13636,7 +13876,7 @@ html, body {
           <div style="margin-bottom:9px;">
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.20);margin-bottom:2px;">Secondary</div>
+                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Secondary</div>
                 <div class="err-nm">Conceptual Errors</div>
               </div>
               <span class="ecnt a" style="font-size:14px;">3</span>
@@ -13646,7 +13886,7 @@ html, body {
           <div>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.20);margin-bottom:2px;">Minor</div>
+                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Minor</div>
                 <div class="err-nm">Loop Logic</div>
               </div>
               <span class="ecnt c" style="font-size:14px;">1</span>
@@ -13658,21 +13898,21 @@ html, body {
         <!-- INSIGHT CARD 3: Learning Insights + Recommended Review -->
         <div class="gc" style="padding:16px 18px;flex:1;">
           <div class="hs"></div>
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:12px;font-weight:600;">Learning Insights</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Learning Insights</div>
 
           <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
             <div style="display:flex;align-items:flex-start;gap:9px;padding:9px 11px;background:rgba(255,61,90,0.04);border:1px solid rgba(255,61,90,0.10);border-radius:7px;">
               <span style="font-size:14px;flex-shrink:0;margin-top:1px;">⊗</span>
               <div>
                 <div style="font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.76);margin-bottom:2px;">Pattern: range() comma errors</div>
-                <div style="font-size:9.5px;color:rgba(255,255,255,0.30);line-height:1.5;">Seen in 73% of first-attempt loop errors. Argument separators are your recurring gap.</div>
+                <div style="font-size:9.5px;color:rgba(255,255,255,0.88);line-height:1.5;">Seen in 73% of first-attempt loop errors. Argument separators are your recurring gap.</div>
               </div>
             </div>
             <div style="display:flex;align-items:flex-start;gap:9px;padding:9px 11px;background:rgba(212,152,0,0.04);border:1px solid rgba(212,152,0,0.10);border-radius:7px;">
               <span style="font-size:14px;flex-shrink:0;margin-top:1px;">◎</span>
               <div>
                 <div style="font-size:10.5px;font-weight:600;color:rgba(255,255,255,0.76);margin-bottom:2px;">Conceptual gap: loop boundaries</div>
-                <div style="font-size:9.5px;color:rgba(255,255,255,0.30);line-height:1.5;">Off-by-one errors suggest the start/stop semantics of range() need reinforcement.</div>
+                <div style="font-size:9.5px;color:rgba(255,255,255,0.88);line-height:1.5;">Off-by-one errors suggest the start/stop semantics of range() need reinforcement.</div>
               </div>
             </div>
           </div>
@@ -13681,11 +13921,11 @@ html, body {
           <div style="height:1px;background:rgba(0,184,217,0.07);margin-bottom:12px;"></div>
 
           <!-- Recommended Review -->
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.22);margin-bottom:10px;font-weight:600;">Recommended Review</div>
+          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:10px;font-weight:600;">Recommended Review</div>
           <div style="background:rgba(0,184,217,0.04);border:1px solid rgba(0,184,217,0.11);border-radius:7px;padding:11px 13px;">
             <div style="font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cy);opacity:0.85;margin-bottom:5px;">Review Topic</div>
             <div style="font-size:12px;font-weight:600;color:rgba(255,255,255,0.82);margin-bottom:3px;">range() Function</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.34);">Argument syntax &amp; separators · <span style="font-family:var(--ff-m);color:var(--cy2);">range(start, stop, step)</span></div>
+            <div style="font-size:10px;color:rgba(255,255,255,0.88);">Argument syntax &amp; separators · <span style="font-family:var(--ff-m);color:var(--cy2);">range(start, stop, step)</span></div>
           </div>
         </div>
 
@@ -13695,7 +13935,7 @@ html, body {
     <!-- ════ LEARNING PATH — full-width section (untouched) ════ -->
     <div style="background:rgba(255,255,255,0.010);border:1px solid rgba(0,184,217,0.07);border-radius:10px;padding:12px 18px 8px;">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;">
-        <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.28);font-weight:600;display:flex;align-items:center;gap:7px;">
+        <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.88);font-weight:600;display:flex;align-items:center;gap:7px;">
           <div class="ldot c"></div>Learning Path Progression
         </div>
         <span style="font-size:8.5px;letter-spacing:0.1em;color:var(--cy2);background:rgba(0,184,217,0.06);border:1px solid rgba(0,184,217,0.12);padding:3px 9px;border-radius:4px;box-shadow:0 0 8px rgba(0,184,217,0.14),0 0 20px rgba(0,184,217,0.06)">6 CONCEPTS</span>
@@ -13720,8 +13960,8 @@ html, body {
 <!-- ════ WORKSPACE ════ -->
 <div class="scr" id="scr-ws">
   <div class="tb" style="font-size:10.5px;gap:5px;padding:0 10px">
-    <span style="color:rgba(255,255,255,0.55)">FOSSEE</span><span style="color:rgba(255,255,255,0.44)">›</span>
-    <span style="color:rgba(255,255,255,0.55)">Workspace</span><span style="color:rgba(255,255,255,0.44)">›</span>
+    <span style="color:rgba(255,255,255,0.85)">FOSSEE</span><span style="color:rgba(255,255,255,0.88)">›</span>
+    <span style="color:rgba(255,255,255,0.85)">Workspace</span><span style="color:rgba(255,255,255,0.88)">›</span>
     <span class="cur-val" style="font-size:10.5px">C2: Basic Loops</span>
     <!-- Panel toggle buttons -->
     <button class="ws-panel-btn active" id="ws-btn-prob" onclick="toggleWsPanel('ws','prob')" title="Toggle Question Panel">
@@ -13737,12 +13977,12 @@ html, body {
     <div class="ec-badge">+0 errors</div>
     <span style="color:var(--amb);font-size:11px;font-weight:700;text-shadow:var(--gamb)">= 3</span>
     <div class="av">RS</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.6)">Rahul Sharma</span>
-    <span style="font-size:9.5px;color:rgba(255,255,255,0.55)">Python 3.11 · solution.py</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.85)">Rahul Sharma</span>
+    <span style="font-size:9.5px;color:rgba(255,255,255,0.85)">Python 3.11 · solution.py</span>
   </div>
   <div class="ws-layout">
     <div class="ws-prob" id="ws-prob-panel">
-      <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.57)">Attempt 12</span></div>
+      <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.85)">Attempt 12</span></div>
       <div class="qnum">Question 12</div>
       <div class="stk-p"><span style="font-size:9.5px;color:var(--amb);margin-right:3px">Streak</span>
         <div class="sp-dot" style="background:var(--amb);box-shadow:var(--gamb)"></div>
@@ -13783,8 +14023,8 @@ html, body {
       </div>
       <div class="term">
         <div class="term-tabs"><div class="tt">Output</div><div class="tt">Terminal</div><div class="tt on">• SyntaxError</div>
-          <span style="margin-left:auto;color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer">Clear</span>
-          <span style="color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer;margin-left:8px">Copy</span>
+          <span style="margin-left:auto;color:rgba(255,255,255,0.88);font-size:9.5px;cursor:pointer">Clear</span>
+          <span style="color:rgba(255,255,255,0.88);font-size:9.5px;cursor:pointer;margin-left:8px">Copy</span>
         </div>
         <div><span class="tp">$</span> python3 solution.py</div>
         <div class="te">SyntaxError: invalid syntax</div>
@@ -13883,7 +14123,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Active</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">🔥 2</div>
-    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.52)">Student</span></div>
+    <div class="usr-badge"><div class="av">RS</div>Rahul Sharma<span style="font-size:9px;color:rgba(255,255,255,0.85)">Student</span></div>
   </div>
   <div class="cnt">
 
@@ -13946,7 +14186,7 @@ html, body {
         <div class="goal-progress-wrap">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
             <span style="font-size:10px;color:rgba(200,215,230,0.12);">Completed: 0 / 10</span>
-            <span style="font-size:10px;color:rgba(255,255,255,0.50);">0%</span>
+            <span style="font-size:10px;color:rgba(255,255,255,0.88);">0%</span>
           </div>
           <div class="goal-progress-bar"><div class="goal-fill" style="width:2%"></div></div>
         </div>
@@ -13993,8 +14233,8 @@ html, body {
 ════════════════════════════════════ -->
 <div class="scr" id="scr-s2">
   <div class="tb" style="font-size:10.5px;gap:6px;padding:0 14px;">
-    <span style="color:rgba(255,255,255,0.55)">Workspace</span>
-    <span style="color:rgba(255,255,255,0.44)">·</span>
+    <span style="color:rgba(255,255,255,0.85)">Workspace</span>
+    <span style="color:rgba(255,255,255,0.88)">·</span>
     <span class="cur-val" style="font-size:11px">Hint Mode</span>
     <!-- Panel toggle buttons -->
     <button class="ws-panel-btn active" id="s2-btn-prob" onclick="toggleWsPanel('s2','prob')" title="Toggle Question Panel">
@@ -14022,20 +14262,20 @@ html, body {
       <div class="ct-hdr">
         <div class="ctag">C2: Basic Loops</div>
         <div class="stag">Conceptual</div>
-        <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.57)">Attempt 13</span>
+        <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.85)">Attempt 13</span>
       </div>
       <div class="qnum">Question 13</div>
       <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px;">
-        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Streak: 0</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.85)">Streak: 0</span>
       </div>
 
       <div class="stl">Problem Statement</div>
       <div class="ptxt">Write a function that determines if a number is positive, negative, or zero using conditional statements.</div>
       <div style="margin-top:10px;display:grid;grid-template-columns:40px 1fr;gap:4px;">
-        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Input:</span>
-        <span style="font-size:10.5px;color:rgba(255,255,255,0.55);font-family:var(--ff-m)">A single integer n (−10⁶ ≤ n ≤ 10⁶)</span>
-        <span style="font-size:10px;color:rgba(255,255,255,0.55)">Output:</span>
-        <span style="font-size:10.5px;color:rgba(255,255,255,0.55);font-family:var(--ff-m)">Print 'Positive', 'Negative', or 'Zero'</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.85)">Input:</span>
+        <span style="font-size:10.5px;color:rgba(255,255,255,0.85);font-family:var(--ff-m)">A single integer n (−10⁶ ≤ n ≤ 10⁶)</span>
+        <span style="font-size:10px;color:rgba(255,255,255,0.85)">Output:</span>
+        <span style="font-size:10.5px;color:rgba(255,255,255,0.85);font-family:var(--ff-m)">Print 'Positive', 'Negative', or 'Zero'</span>
       </div>
       <div class="ex-box">
         <div class="exh">Example</div>
@@ -14079,7 +14319,7 @@ html, body {
         <div class="term-tabs">
           <div class="tt">Output</div>
           <div class="tt on">Terminal</div>
-          <span style="margin-left:auto;color:rgba(255,255,255,0.50);font-size:9.5px;cursor:pointer">Clear</span>
+          <span style="margin-left:auto;color:rgba(255,255,255,0.88);font-size:9.5px;cursor:pointer">Clear</span>
         </div>
         <div class="term-body">
           <div style="margin-bottom:4px;"><span class="tp">$</span><span class="tok"> python3 solution.py &lt; test1.txt</span></div>
@@ -14243,7 +14483,7 @@ html, body {
           <div class="acc-name">C1 Conditionals <span class="acc-pct">88%</span></div>
           <div class="acc-bar"><div class="acc-fill hi" style="width:88%"></div></div>
           <div style="display:flex;justify-content:space-between;margin-top:4px;">
-            <span style="font-size:9px;color:rgba(255,255,255,0.50)">24 questions</span>
+            <span style="font-size:9px;color:rgba(255,255,255,0.88)">24 questions</span>
             <div class="acc-sub-row" style="gap:6px;">
               <span style="font-size:8.5px;color:rgba(0,232,122,0.55)">Syn</span>
               <span style="font-size:8.5px;color:rgba(0,232,122,0.55)">Con</span>
@@ -14256,12 +14496,12 @@ html, body {
           <div class="acc-name">C2 Basic Loops <span class="acc-pct" style="color:var(--cy2)">72%</span></div>
           <div class="acc-bar"><div class="acc-fill mid" style="width:72%"></div></div>
           <div style="display:flex;justify-content:space-between;margin-top:4px;">
-            <span style="font-size:9px;color:rgba(255,255,255,0.50)">23 questions</span>
+            <span style="font-size:9px;color:rgba(255,255,255,0.88)">23 questions</span>
             <div style="display:flex;gap:6px;">
               <span style="font-size:8.5px;color:rgba(255,61,90,0.6)">Syn</span>
               <span style="font-size:8.5px;color:rgba(0,184,217,0.20)">Con</span>
               <span style="font-size:8.5px;color:rgba(0,184,217,0.20)">Loop</span>
-              <span style="font-size:8.5px;color:rgba(255,255,255,0.52)">Inp</span>
+              <span style="font-size:8.5px;color:rgba(255,255,255,0.85)">Inp</span>
             </div>
           </div>
         </div>
@@ -14561,7 +14801,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C2: Basic Loops</span></div>
     <div class="stk-badge">⚡ 4</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <!-- HERO -->
@@ -14603,22 +14843,22 @@ html, body {
         <div class="clbl"><div class="ldot c"></div>Adaptive Progression</div>
         <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.8);margin-bottom:8px;">C2: Basic Loops</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">
-          <span style="font-size:9.5px;color:rgba(255,255,255,0.55);width:38px;">Before</span>
+          <span style="font-size:9.5px;color:rgba(255,255,255,0.85);width:38px;">Before</span>
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-cy" style="width:55%"></div></div>
           <span style="font-size:10px;color:rgba(200,215,230,0.12);">55%</span>
         </div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <span style="font-size:9.5px;color:rgba(255,255,255,0.55);width:38px;">After</span>
+          <span style="font-size:9.5px;color:rgba(255,255,255,0.85);width:38px;">After</span>
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-gn" style="width:60%"></div></div>
           <span style="font-size:10px;color:var(--grn);text-shadow:var(--ggn2);">60%</span>
         </div>
-        <div style="font-size:9.5px;color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Mastery Streak</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.85);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:8px;">Mastery Streak</div>
         <div class="streak-dots" style="margin-bottom:12px;">
           <div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div><div class="sk-dot ok">✓</div>
         </div>
         <div style="background:rgba(0,232,122,0.07);border:1px solid rgba(0,232,122,0.22);border-radius:7px;padding:9px 12px;">
           <div style="font-size:10.5px;font-weight:700;color:var(--grn);text-shadow:var(--ggn2);margin-bottom:4px;">4/4 — MASTERY CHECK TRIGGERED!</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.36);">Min Attempts: 12/8 ✓ (eligible)</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.88);">Min Attempts: 12/8 ✓ (eligible)</div>
           <div style="font-size:9.5px;color:var(--amb2);margin-top:3px;font-weight:600;">Status: MASTERY EVALUATION PENDING</div>
         </div>
         <button class="btn-grn" style="width:100%;margin-top:12px;">Proceed to Mastery Check →</button>
@@ -14646,7 +14886,7 @@ html, body {
         </div>
         <div style="margin-top:12px;padding:9px 12px;background:rgba(0,184,217,0.03);border:1px solid rgba(0,184,217,0.10);border-radius:7px;">
           <div style="font-size:9.5px;font-weight:700;color:var(--cy2);margin-bottom:5px;">Feedback:</div>
-          <div style="font-size:10px;color:rgba(255,255,255,0.42);line-height:1.6;">Excellent edge case handling.<br>range(1, n+1) is idiomatic.<br>Consider: f-string for output.</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.88);line-height:1.6;">Excellent edge case handling.<br>range(1, n+1) is idiomatic.<br>Consider: f-string for output.</div>
         </div>
       </div>
     </div>
@@ -14682,7 +14922,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C2: Basic Loops</span></div>
     <div class="stk-badge-0">⚡ 0</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <!-- HERO RED -->
@@ -14693,7 +14933,7 @@ html, body {
           <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,61,90,0.12);border:2px solid rgba(255,61,90,0.5);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--red);box-shadow:var(--grd);">✗</div>
           <div>
             <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--red2);text-shadow:0 0 15px rgba(255,61,90,0.6);letter-spacing:0.04em;">Incorrect Answer</div>
-            <div style="font-size:10.5px;color:rgba(255,255,255,0.55);margin-top:2px;">3 of 5 test cases failed · Streak reset to 0</div>
+            <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-top:2px;">3 of 5 test cases failed · Streak reset to 0</div>
           </div>
         </div>
         <div class="stk-badge-0">Streak: 0</div>
@@ -14732,15 +14972,15 @@ html, body {
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot r"></div>Error Analysis</div>
         <div style="margin-bottom:10px;">
-          <div style="font-size:10.5px;color:rgba(255,255,255,0.38);margin-bottom:6px;">Error Type Detected:</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,0.88);margin-bottom:6px;">Error Type Detected:</div>
           <div class="err-type">⚠ Input Handling</div>
         </div>
         <div style="margin-bottom:12px;">
           <div style="font-size:9.5px;font-weight:700;color:var(--red2);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:5px;">Diagnostic:</div>
-          <div style="font-size:11px;color:rgba(255,255,255,0.42);line-height:1.6;">Your solution doesn't handle negative values of n. range() with negative step or no guard clause causes issues.</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.88);line-height:1.6;">Your solution doesn't handle negative values of n. range() with negative step or no guard clause causes issues.</div>
         </div>
         <div style="margin-bottom:10px;">
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Streak Impact:</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">Streak Impact:</div>
           <div class="streak-dots" style="margin-bottom:5px;">
             <div class="sk-dot em"></div><div class="sk-dot em"></div><div class="sk-dot em"></div><div class="sk-dot em"></div>
           </div>
@@ -14748,7 +14988,7 @@ html, body {
         </div>
         <div style="padding:9px 12px;background:rgba(255,61,90,0.05);border:1px solid rgba(255,61,90,0.18);border-radius:7px;">
           <div style="font-size:9.5px;font-weight:700;color:var(--red2);margin-bottom:3px;">Next Error Focus:</div>
-          <div style="font-size:10.5px;color:rgba(255,255,255,0.4);">Input validation → C2 error queue</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,0.88);">Input validation → C2 error queue</div>
         </div>
       </div>
 
@@ -14801,7 +15041,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div style="display:flex;align-items:center;gap:5px;background:rgba(0,232,122,0.1);border:1px solid rgba(0,232,122,0.32);border-radius:6px;padding:5px 11px;font-size:12px;font-weight:700;color:var(--grn);box-shadow:var(--ggn);">⬡ 0</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <!-- MASTERY HERO BANNER -->
@@ -14862,11 +15102,11 @@ html, body {
           <div style="font-family:var(--ff-d);font-size:16px;font-weight:700;color:rgba(255,255,255,0.9);margin-bottom:3px;">C3: Loops + Lists</div>
           <div style="font-size:8.5px;letter-spacing:0.18em;color:var(--grn);font-weight:700;text-shadow:var(--ggn2);">NOW UNLOCKED</div>
         </div>
-        <div style="font-size:9.5px;color:rgba(255,255,255,0.52);margin-bottom:7px;">Concepts remaining:</div>
+        <div style="font-size:9.5px;color:rgba(255,255,255,0.85);margin-bottom:7px;">Concepts remaining:</div>
         <div style="font-size:11px;color:var(--cy2);text-shadow:var(--gcx2);margin-bottom:5px;">▶ C3: Loops+Lists</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:3px;">○ C4: Nested Loops</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);margin-bottom:3px;">○ C5: Strings</div>
-        <div style="font-size:11px;color:rgba(255,255,255,0.55);">○ C6: Functions</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.85);margin-bottom:3px;">○ C4: Nested Loops</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.85);margin-bottom:3px;">○ C5: Strings</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.85);">○ C6: Functions</div>
       </div>
     </div>
 
@@ -14900,21 +15140,21 @@ html, body {
           <div class="cp-circ l">C4</div>
           <div class="cp-nm">Nested Loops</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
         <div class="cp-line"></div>
         <div class="cpath-node">
           <div class="cp-circ l">C5</div>
           <div class="cp-nm">Strings</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
         <div class="cp-line"></div>
         <div class="cpath-node">
           <div class="cp-circ l">C6</div>
           <div class="cp-nm">Functions</div>
           <div class="cp-pct l">0%</div>
-          <div style="font-size:7.5px;color:rgba(255,255,255,0.44);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
+          <div style="font-size:7.5px;color:rgba(255,255,255,0.88);text-transform:uppercase;letter-spacing:0.08em;margin-top:1px;">Locked</div>
         </div>
       </div>
       <div style="display:flex;gap:10px;margin-top:4px;">
@@ -14934,7 +15174,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">⚡ 2</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <div>
@@ -14952,48 +15192,48 @@ html, body {
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#1</div>
           <div class="tl-time">14:02</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Synt</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Synt</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#2</div>
           <div class="tl-time">14:08</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Synt</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Synt</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node fl">✗</div>
           <div class="tl-lbl">Q#3</div>
           <div class="tl-time">14:15</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Conc</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Conc</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#4</div>
           <div class="tl-time">14:22</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Conc</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Conc</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#5</div>
           <div class="tl-time">14:28</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Loop</div>
         </div>
         <div class="tl-seg">
           <div class="tl-line done"></div>
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#6</div>
           <div class="tl-time">14:35</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Loop</div>
         </div>
         <div class="tl-seg">
           <div class="tl-node ok">✓</div>
           <div class="tl-lbl">Q#7</div>
           <div class="tl-time">14:41</div>
-          <div style="font-size:8px;color:rgba(255,255,255,0.44);margin-top:1px;">Loop</div>
+          <div style="font-size:8px;color:rgba(255,255,255,0.88);margin-top:1px;">Loop</div>
         </div>
       </div>
     </div>
@@ -15003,27 +15243,27 @@ html, body {
       <div class="gc f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot c"></div>State Before Session</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">C3 Progress:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">C3 Progress:</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-cy" style="width:55%"></div></div>
           <span style="font-size:10.5px;color:rgba(200,215,230,0.16);min-width:28px;">55%</span>
         </div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">Active Error Type:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">Active Error Type:</div>
         <div class="b-amb badge" style="font-size:10px;padding:4px 11px;margin-bottom:12px;display:inline-block;">Syntax</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.55);">Note: Starting error focus: Syntax</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);">Note: Starting error focus: Syntax</div>
       </div>
 
       <div class="gc f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot g"></div>State After Session</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">C3 Progress:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">C3 Progress:</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <div class="pb-wrap" style="flex:1;"><div class="pb-fill pb-gn" style="width:70%"></div></div>
           <span style="font-size:10.5px;color:var(--grn);text-shadow:var(--ggn2);min-width:28px;">70%</span>
         </div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.57);margin-bottom:6px;">Active Error Type:</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">Active Error Type:</div>
         <div class="b-cy badge" style="font-size:10px;padding:4px 11px;margin-bottom:12px;display:inline-block;">Loop</div>
-        <div style="font-size:10.5px;color:rgba(255,255,255,0.55);margin-bottom:6px;">Note: Error focus updated: Loop</div>
+        <div style="font-size:10.5px;color:rgba(255,255,255,0.85);margin-bottom:6px;">Note: Error focus updated: Loop</div>
         <div style="font-size:11px;font-weight:700;color:var(--grn);text-shadow:var(--ggn2);">▲ 15% improvement this session</div>
       </div>
     </div>
@@ -15060,7 +15300,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">⚡ 1</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <div>
@@ -15072,7 +15312,7 @@ html, body {
     <div class="gc">
       <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
       <div class="clbl"><div class="ldot c"></div>C3: Error Type Exposure &amp; Accuracy</div>
-      <div style="display:flex;gap:8px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.50);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">
+      <div style="display:flex;gap:8px;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.88);padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:4px;">
         <span style="flex:0 0 90px;">Error Type</span>
         <span style="flex:0 0 30px;text-align:center;">Qs</span>
         <span style="flex:0 0 28px;text-align:center;">✓</span>
@@ -15155,7 +15395,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">⚡ 1</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <div>
@@ -15254,7 +15494,7 @@ html, body {
             <circle cx="480" cy="15" r="4" fill="#22e8ff" filter="drop-shadow(0 0 6px #00d4ff)"/>
           </svg>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,0.46);">
+        <div style="display:flex;justify-content:space-between;font-size:9px;color:rgba(255,255,255,0.88);">
           <span>Day 1</span><span>Today</span>
         </div>
       </div>
@@ -15265,34 +15505,34 @@ html, body {
         <div class="clbl"><div class="ldot g"></div>Session Accuracy Trend</div>
         <div style="display:flex;align-items:flex-end;gap:6px;height:100px;padding-bottom:4px;">
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.55);">60%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.85);">60%</span>
             <div style="width:100%;background:rgba(0,184,217,0.10);border-top:2px solid rgba(0,184,217,0.5);height:48px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">15</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">15</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.55);">68%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.85);">68%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.55);height:55px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">16</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">16</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.55);">72%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.85);">72%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.25);height:59px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">17</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">17</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.55);">74%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.85);">74%</span>
             <div style="width:100%;background:rgba(0,184,217,0.14);border-top:2px solid rgba(0,184,217,0.28);height:61px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">18</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">18</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
-            <span style="font-size:8px;color:rgba(255,255,255,0.55);">70%</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.85);">70%</span>
             <div style="width:100%;background:rgba(0,184,217,0.12);border-top:2px solid rgba(0,184,217,0.55);height:57px;border-radius:3px 3px 0 0;"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">19</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">19</span>
           </div>
           <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:3px;">
             <span style="font-size:8px;color:var(--grn);text-shadow:var(--ggn2);">78%</span>
             <div style="width:100%;background:rgba(0,232,122,0.2);border-top:2px solid rgba(0,232,122,0.6);height:68px;border-radius:3px 3px 0 0;box-shadow:0 -4px 14px rgba(0,232,122,0.3);"></div>
-            <span style="font-size:8px;color:rgba(255,255,255,0.44);">20</span>
+            <span style="font-size:8px;color:rgba(255,255,255,0.88);">20</span>
           </div>
         </div>
       </div>
@@ -15309,7 +15549,7 @@ html, body {
     <div class="tb-sp"></div>
     <div class="cur-badge"><span class="cur-lbl">Concept</span><span class="cur-val">C3: Loops+Lists</span></div>
     <div class="stk-badge">⚡ 2</div>
-    <span style="font-size:11px;color:rgba(255,255,255,0.4)">Rahul Sharma</span>
+    <span style="font-size:11px;color:rgba(255,255,255,0.88)">Rahul Sharma</span>
   </div>
   <div class="cnt">
     <div>
