@@ -14321,6 +14321,119 @@ html, body {
   </div>
   <div class="cnt">
 
+    <!-- ════ LEARNING PATH PROGRESSION — TOP HERO SECTION ════ -->
+    <div style="
+      background: linear-gradient(135deg, rgba(0,184,217,0.07) 0%, rgba(0,168,152,0.04) 50%, rgba(79,82,196,0.05) 100%);
+      border: 1px solid rgba(0,184,217,0.18);
+      border-radius: 12px;
+      padding: 16px 22px 14px;
+      margin-bottom: 14px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    ">
+      <!-- subtle glow overlay -->
+      <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:600px;height:80px;background:radial-gradient(ellipse,rgba(0,184,217,0.10) 0%,transparent 70%);pointer-events:none;"></div>
+
+      <!-- header row -->
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div class="ldot c"></div>
+          <span style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.70);font-weight:600;">Learning Path Progression</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:9px;color:rgba(255,255,255,0.40);">C2: Basic Loops · Q12 of ~26</span>
+          <span style="font-size:8.5px;letter-spacing:0.1em;color:var(--cy2);background:rgba(0,184,217,0.08);border:1px solid rgba(0,184,217,0.18);padding:3px 10px;border-radius:4px;box-shadow:0 0 10px rgba(0,184,217,0.18),0 0 24px rgba(0,184,217,0.07);">6 CONCEPTS</span>
+        </div>
+      </div>
+
+      <!-- progress nodes row -->
+      <div style="display:flex;align-items:flex-start;padding:2px 0 2px;position:relative;">
+
+        <!-- C1: Mastered -->
+        <div class="pn" style="position:relative;">
+          <div style="position:relative;">
+            <div class="pcirc m" style="width:52px;height:52px;font-size:15px;">C1</div>
+            <!-- checkmark badge -->
+            <div style="position:absolute;bottom:-2px;right:-2px;width:16px;height:16px;background:var(--grn);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;color:#000;font-weight:700;border:2px solid rgba(3,7,18,0.9);box-shadow:0 0 8px rgba(0,201,103,0.5);">✓</div>
+          </div>
+          <div class="plbl" style="font-size:10px;color:rgba(255,255,255,0.65);margin-top:8px;">Conditionals</div>
+          <div class="ppct m" style="font-size:9px;margin-top:1px;">100%</div>
+          <div style="font-size:8px;color:var(--grn);text-transform:uppercase;letter-spacing:0.10em;margin-top:2px;text-shadow:0 0 8px rgba(0,201,103,0.35);">Mastered</div>
+        </div>
+
+        <!-- line: mastered → current -->
+        <div class="pline dn" style="margin-top:25px;"></div>
+
+        <!-- C2: In Progress (active / highlighted) -->
+        <div class="pn" style="position:relative;">
+          <!-- active glow halo -->
+          <div style="position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:70px;height:70px;border-radius:50%;background:radial-gradient(ellipse,rgba(0,184,217,0.18) 0%,transparent 70%);pointer-events:none;"></div>
+          <div class="pcirc c" style="width:52px;height:52px;font-size:15px;position:relative;z-index:1;">C2</div>
+          <div class="plbl" style="font-size:10px;color:var(--cy3);margin-top:8px;text-shadow:0 0 10px rgba(0,184,217,0.30);">Basic Loops</div>
+          <!-- mini progress bar under label -->
+          <div style="width:52px;height:3px;background:rgba(0,184,217,0.12);border-radius:2px;margin:4px auto 2px;overflow:hidden;">
+            <div style="width:45%;height:100%;background:linear-gradient(90deg,var(--cy),var(--cy2));border-radius:2px;box-shadow:0 0 6px rgba(0,184,217,0.50);"></div>
+          </div>
+          <div class="ppct c" style="font-size:9px;">45%</div>
+          <div style="font-size:8px;color:var(--cy);text-transform:uppercase;letter-spacing:0.10em;margin-top:2px;text-shadow:0 0 8px rgba(0,184,217,0.35);">In Progress</div>
+        </div>
+
+        <!-- line: current → locked -->
+        <div class="pline" style="margin-top:25px;"></div>
+
+        <!-- C3: Locked -->
+        <div class="pn">
+          <div class="pcirc l" style="width:52px;height:52px;font-size:15px;position:relative;">C3
+            <div style="position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.20);">🔒</div>
+          </div>
+          <div class="plbl" style="font-size:10px;margin-top:8px;">Lists+Loops</div>
+          <div class="ppct l" style="font-size:9px;margin-top:1px;">0%</div>
+          <div class="pst" style="font-size:8px;margin-top:2px;">Locked</div>
+        </div>
+
+        <!-- line -->
+        <div class="pline" style="margin-top:25px;opacity:0.5;"></div>
+
+        <!-- C4: Locked -->
+        <div class="pn">
+          <div class="pcirc l" style="width:52px;height:52px;font-size:15px;position:relative;">C4
+            <div style="position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.20);">🔒</div>
+          </div>
+          <div class="plbl" style="font-size:10px;margin-top:8px;">Nested Loops</div>
+          <div class="ppct l" style="font-size:9px;margin-top:1px;">0%</div>
+          <div class="pst" style="font-size:8px;margin-top:2px;">Locked</div>
+        </div>
+
+        <!-- line -->
+        <div class="pline" style="margin-top:25px;opacity:0.35;"></div>
+
+        <!-- C5: Locked -->
+        <div class="pn">
+          <div class="pcirc l" style="width:52px;height:52px;font-size:15px;position:relative;">C5
+            <div style="position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.20);">🔒</div>
+          </div>
+          <div class="plbl" style="font-size:10px;margin-top:8px;">Strings</div>
+          <div class="ppct l" style="font-size:9px;margin-top:1px;">0%</div>
+          <div class="pst" style="font-size:8px;margin-top:2px;">Locked</div>
+        </div>
+
+        <!-- line -->
+        <div class="pline" style="margin-top:25px;opacity:0.20;"></div>
+
+        <!-- C6: Locked -->
+        <div class="pn">
+          <div class="pcirc l" style="width:52px;height:52px;font-size:15px;position:relative;">C6
+            <div style="position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.20);">🔒</div>
+          </div>
+          <div class="plbl" style="font-size:10px;margin-top:8px;">Functions</div>
+          <div class="ppct l" style="font-size:9px;margin-top:1px;">0%</div>
+          <div class="pst" style="font-size:8px;margin-top:2px;">Locked</div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- ════ TWO PRIMARY COLUMNS ════ -->
     <div class="row" style="align-items:stretch;">
 
@@ -14544,28 +14657,6 @@ html, body {
       </div><!-- end right column -->
     </div>
 
-    <!-- ════ LEARNING PATH — full-width section (untouched) ════ -->
-    <div style="background:rgba(255,255,255,0.010);border:1px solid rgba(0,184,217,0.07);border-radius:10px;padding:12px 18px 8px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;">
-        <div style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.88);font-weight:600;display:flex;align-items:center;gap:7px;">
-          <div class="ldot c"></div>Learning Path Progression
-        </div>
-        <span style="font-size:8.5px;letter-spacing:0.1em;color:var(--cy2);background:rgba(0,184,217,0.06);border:1px solid rgba(0,184,217,0.12);padding:3px 9px;border-radius:4px;box-shadow:0 0 8px rgba(0,184,217,0.14),0 0 20px rgba(0,184,217,0.06)">6 CONCEPTS</span>
-      </div>
-      <div style="display:flex;align-items:flex-start;padding:6px 0 4px;">
-        <div class="pn"><div class="pcirc m">C1</div><div class="plbl">Conditionals</div><div class="ppct m">100%</div><div class="pst">Mastered</div></div>
-        <div class="pline dn"></div>
-        <div class="pn"><div class="pcirc c">C2</div><div class="plbl">Basic Loops</div><div class="ppct c">45%</div><div class="pst">In Progress</div></div>
-        <div class="pline"></div>
-        <div class="pn"><div class="pcirc l">C3</div><div class="plbl">Lists+Loops</div><div class="ppct l">0%</div><div class="pst">Locked</div></div>
-        <div class="pline"></div>
-        <div class="pn"><div class="pcirc l">C4</div><div class="plbl">Nested Loops</div><div class="ppct l">0%</div><div class="pst">Locked</div></div>
-        <div class="pline"></div>
-        <div class="pn"><div class="pcirc l">C5</div><div class="plbl">Strings</div><div class="ppct l">0%</div><div class="pst">Locked</div></div>
-        <div class="pline"></div>
-        <div class="pn"><div class="pcirc l">C6</div><div class="plbl">Functions</div><div class="ppct l">0%</div><div class="pst">Locked</div></div>
-      </div>
-    </div>
   </div>
 </div>
 
