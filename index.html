@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14172,97 +14170,85 @@ html.light-mode .tb,
    MOBILE CORE — viewport & scroll foundation
 ══════════════════════════════════════════════ */
 
-/* Allow scroll on small screens; keep overflow:hidden only on desktop */
 @media (max-width: 768px) {
   html, body {
-    overflow: auto !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
     height: auto !important;
     min-height: 100% !important;
     font-size: 14px !important;
   }
 
-  /* All file-wrap sections flow naturally */
-  .file-wrap {
+  /* ── ROUTING SYSTEM COMPATIBILITY ──
+     JS routing toggles .on class; display:none/flex is preserved.
+     We override position:fixed → relative and unlock overflow.
+     Must beat: #sec-login.on { position:fixed }, .app.file-wrap { position:fixed }
+  */
+
+  .file-wrap,
+  .file-wrap.on {
     position: relative !important;
     inset: auto !important;
+    top: auto !important;
     width: 100% !important;
     height: auto !important;
-    min-height: 100svh !important;
+    min-height: calc(100svh - 42px) !important;
+    overflow: visible !important;
   }
 
-  /* App shell: no fixed inset */
-  .app {
-    position: relative !important;
-    inset: auto !important;
-    top: 0 !important;
-    height: auto !important;
-    min-height: 100svh !important;
-    flex-direction: column !important;
-  }
+  /* Login: override fixed+hidden, keep display toggled by JS */
+  #sec-login        { display: none !important; position: relative !important; overflow: visible !important; top: auto !important; z-index: auto !important; }
+  #sec-login.on     { display: flex !important; flex-direction: column !important; position: relative !important; overflow: visible !important; top: auto !important; }
+  #sec-login .page  { height: auto !important; min-height: calc(100svh - 42px) !important; overflow: visible !important; }
+
+  /* App sections: override fixed positioning */
+  .app, .app.file-wrap               { position: relative !important; top: auto !important; overflow: visible !important; height: auto !important; min-height: calc(100svh - 42px) !important; display: none !important; flex-direction: column !important; }
+  .app.file-wrap.on                  { display: flex !important; }
+
+  /* Screens inside apps: overflow-y:auto so they scroll on mobile */
+  .scr                               { overflow: visible !important; height: auto !important; }
+  .scr.on                            { display: flex !important; flex-direction: column !important; overflow: visible !important; height: auto !important; }
 
   /* Atmospheric layers stay fixed (decorative only) */
   #atm-grain, #atm-haze, .a-glow, .cybeam, .scanl, #bg-cvs {
     position: fixed !important;
     pointer-events: none !important;
   }
-}
 
-/* ══════════════════════════════════════════════
-   SCREEN NAV — horizontal scroll strip on mobile
-══════════════════════════════════════════════ */
-
-@media (max-width: 768px) {
+  /* snav sticky at top */
   .snav {
     position: sticky !important;
     top: 0 !important;
     z-index: 300 !important;
-    padding: 6px 10px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 4px !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch !important;
-    scrollbar-width: none !important;
-    white-space: nowrap !important;
-    flex-wrap: nowrap !important;
   }
-  .snav::-webkit-scrollbar { display: none !important; }
+}
 
-  /* snav-body becomes inline flex */
-  .snav-body {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    gap: 4px !important;
-    flex-wrap: nowrap !important;
-  }
+/* ══════════════════════════════════════════════
+   SCREEN NAV — mobile dropdown panel
+══════════════════════════════════════════════ */
 
-  .snav-trigger {
-    display: none !important; /* no need for toggle — always visible */
-  }
-
-  .snav-lbl {
-    font-size: 9px !important;
-    white-space: nowrap !important;
-  }
-
-  .snav-sep {
-    font-size: 8px !important;
-    padding: 0 4px !important;
-    white-space: nowrap !important;
-    color: rgba(0,184,217,0.5) !important;
-  }
-
-  .sbtn {
-    font-size: 9.5px !important;
+@media (max-width: 768px) {
+  /* snav bar itself — slim single row */
+  .snav {
     padding: 5px 10px !important;
-    min-height: 28px !important;
-    white-space: nowrap !important;
+    height: auto !important;
+    min-height: 38px !important;
+    overflow: visible !important; /* allow dropdown to hang below */
+    flex-wrap: nowrap !important;
+    gap: 6px !important;
+    align-items: center !important;
+  }
+
+  /* Keep the "click" trigger visible and make it bigger for touch */
+  .snav-trigger {
+    display: flex !important;
+    height: 30px !important;
+    padding: 0 14px !important;
+    font-size: 11px !important;
     flex-shrink: 0 !important;
   }
 
-  /* Theme toggle repositioned to avoid snav overlap */
+  /* Theme toggle — pinned right, doesn't scroll */
   #theme-toggle {
     position: fixed !important;
     top: 6px !important;
@@ -14270,6 +14256,70 @@ html.light-mode .tb,
     z-index: 9999 !important;
     width: 32px !important;
     height: 32px !important;
+  }
+
+  /* snav-body: becomes a full-width dropdown panel below the bar */
+  .snav-body {
+    position: fixed !important;
+    top: 38px !important;   /* sit just below the snav bar */
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(2,5,14,0.998) !important;
+    border-bottom: 1px solid rgba(0,184,217,0.18) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    z-index: 299 !important;
+    /* Layout: wrapping grid of buttons */
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 4px !important;
+    padding: 10px 12px 12px !important;
+    /* Hidden by default — same opacity/max-height trick */
+    opacity: 0 !important;
+    max-height: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    transition: opacity 0.22s ease, max-height 0.30s cubic-bezier(.4,0,.2,1), padding 0.22s ease !important;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+
+  /* Expanded state */
+  .snav.expanded .snav-body {
+    opacity: 1 !important;
+    max-height: 60vh !important;
+    padding: 10px 12px 14px !important;
+    overflow-y: auto !important;
+    pointer-events: auto !important;
+  }
+
+  /* Buttons inside dropdown: touch-friendly pill shape */
+  .snav-body .sbtn {
+    font-size: 11px !important;
+    padding: 7px 14px !important;
+    min-height: 34px !important;
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Section separators become inline labels */
+  .snav-body .snav-sep {
+    font-size: 8px !important;
+    padding: 2px 6px !important;
+    white-space: nowrap !important;
+    align-self: center !important;
+    color: rgba(0,184,217,0.55) !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  /* FOSSEE ACE label — hide on mobile to save space */
+  .snav-body .snav-lbl {
+    display: none !important;
   }
 }
 
@@ -14425,7 +14475,13 @@ html.light-mode .tb,
 ══════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
+  /* Screens inside apps scroll their content */
   .scr {
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  .scr.on {
     display: flex !important;
     flex-direction: column !important;
     overflow: visible !important;
@@ -14433,11 +14489,12 @@ html.light-mode .tb,
   }
 
   .cnt {
-    padding: 12px 12px 80px !important; /* bottom padding for FAB */
+    padding: 12px 12px 80px !important;
     overflow-y: visible !important;
     overflow-x: hidden !important;
     height: auto !important;
     gap: 10px !important;
+    flex: none !important;
   }
 
   /* All .row containers stack vertically */
@@ -14915,6 +14972,13 @@ html.light-mode .tb,
   .light-mode .ws-ap::before,
   .light-mode .ws-hint::before {
     background: rgba(120,80,40,0.22) !important;
+  }
+
+  /* Light mode dropdown panel */
+  .light-mode .snav-body {
+    background: rgba(247,245,241,0.98) !important;
+    border-bottom-color: rgba(180,140,90,0.16) !important;
+    backdrop-filter: blur(20px) !important;
   }
 
   /* Mobile hamburger in light mode */
