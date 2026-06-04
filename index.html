@@ -13144,6 +13144,16 @@ html, body {
 /* ── Cards: never taller than their natural content ── */
 .gc, .stat-card, .kpi {
   min-height: 0 !important;
+  flex-shrink: 0 !important; /* fix: don't compress cards — let .cnt scroll instead */
+}
+
+/* ── Catch-all: every direct child of .cnt should use its natural height ──
+   Without flex-shrink:0, the flex algorithm compresses items to fit .cnt's
+   height rather than letting them overflow and trigger the scrollbar.
+   This does NOT affect workspace panels (.ws-layout children) since those
+   screens use .ws-prob / .ws-ap / .ws-hint, not .cnt. ── */
+.cnt > * {
+  flex-shrink: 0 !important;
 }
 
 /* ── Topbar always pinned, never scrolls away ── */
