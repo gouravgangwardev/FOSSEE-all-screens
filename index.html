@@ -15287,7 +15287,7 @@ html.light-mode .tb,
       <div class="f2" style="display:flex;flex-direction:column;gap:12px;">
 
         <!-- INSIGHT CARD 1: Accuracy + Questions Answered + Correct -->
-        <div class="gc" style="padding:16px 18px;">
+        <div class="gc gc-grn" style="padding:16px 18px;">
           <div class="hs"></div>
           <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Today's Performance</div>
           <div style="display:flex;align-items:flex-end;gap:16px;">
@@ -15310,43 +15310,51 @@ html.light-mode .tb,
         </div>
 
         <!-- INSIGHT CARD 2: Error Distribution -->
-        <div class="gc" style="padding:16px 18px;">
+        <div class="gc gc-red err-dist-card" style="padding:16px 18px;">
           <div class="hs"></div>
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Error Distribution</div>
+          <!-- header row -->
+          <div style="display:flex;align-items:center;gap:7px;margin-bottom:13px;">
+            <div style="width:6px;height:6px;border-radius:50%;background:var(--red2);box-shadow:0 0 8px rgba(232,48,78,0.70);animation:dot-pulse 2s ease-in-out infinite;flex-shrink:0;"></div>
+            <div class="err-dist-title" style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;font-weight:700;">Error Distribution</div>
+            <div style="margin-left:auto;background:rgba(232,48,78,0.10);border:1px solid rgba(232,48,78,0.28);border-radius:4px;padding:2px 7px;font-size:8.5px;font-weight:700;color:var(--red2);letter-spacing:0.06em;">10 Total</div>
+          </div>
+          <!-- Syntax Errors row -->
           <div style="margin-bottom:9px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Most Common</div>
+                <div class="err-dist-cat primary">⬛ Most Common</div>
                 <div class="err-nm">Syntax Errors</div>
               </div>
-              <span class="ecnt r" style="font-size:14px;">6</span>
+              <span class="ecnt r">6</span>
             </div>
             <div class="ebar"><div class="ebf r" style="width:86%"></div></div>
           </div>
+          <!-- Conceptual Errors row -->
           <div style="margin-bottom:9px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Secondary</div>
+                <div class="err-dist-cat secondary">◈ Secondary</div>
                 <div class="err-nm">Conceptual Errors</div>
               </div>
-              <span class="ecnt a" style="font-size:14px;">3</span>
+              <span class="ecnt a">3</span>
             </div>
             <div class="ebar"><div class="ebf a" style="width:46%"></div></div>
           </div>
+          <!-- Loop Logic row -->
           <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
               <div>
-                <div style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.85);margin-bottom:2px;">Minor</div>
+                <div class="err-dist-cat minor">◎ Minor</div>
                 <div class="err-nm">Loop Logic</div>
               </div>
-              <span class="ecnt c" style="font-size:14px;">1</span>
+              <span class="ecnt c">1</span>
             </div>
             <div class="ebar"><div class="ebf c" style="width:18%"></div></div>
           </div>
         </div>
 
         <!-- INSIGHT CARD 3: Learning Insights + Recommended Review -->
-        <div class="gc" style="padding:16px 18px;flex:1;">
+        <div class="gc gc-gold" style="padding:16px 18px;flex:1;">
           <div class="hs"></div>
           <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.88);margin-bottom:12px;font-weight:600;">Learning Insights</div>
 
@@ -15671,7 +15679,7 @@ html.light-mode .tb,
       <!-- Right column: Current Goal + compact stats -->
       <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
         <!-- ══ LEVEL 2: CURRENT GOAL (compact) ══ -->
-        <div class="gc" style="padding:14px 16px;">
+        <div class="gc gc-gold" style="padding:14px 16px;">
           <div class="clbl" style="margin-bottom:10px;"><div class="ldot a"></div>Today's Goal</div>
           <div class="goal-compact-row">
             <span class="goal-compact-label">10 Questions</span>
@@ -16507,7 +16515,7 @@ html.light-mode .tb,
     </div>
 
     <!-- Next Steps -->
-    <div class="gc">
+    <div class="gc gc-gold">
       <div class="hs"></div>
       <div class="clbl"><div class="ldot a"></div>Next Steps</div>
       <div class="btn-row">
@@ -16545,7 +16553,7 @@ html.light-mode .tb,
 
     <div class="row">
       <!-- Mastery Summary -->
-      <div class="gc f1">
+      <div class="gc gc-grn f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot g"></div>Mastery Summary</div>
         <div class="dr"><span class="dk">Total Questions</span><span class="dv c">24</span></div>
@@ -16583,7 +16591,7 @@ html.light-mode .tb,
       </div>
 
       <!-- What Just Unlocked -->
-      <div class="gc f1">
+      <div class="gc gc-grn f1">
         <div class="hs"></div><div class="cb tl"></div><div class="cb tr"></div>
         <div class="clbl"><div class="ldot g"></div>What Just Unlocked</div>
         <div style="background:linear-gradient(135deg,rgba(0,232,122,0.1),rgba(0,200,180,0.06));border:1.5px solid rgba(0,232,122,0.38);border-radius:9px;padding:14px;text-align:center;margin-bottom:12px;box-shadow:0 0 20px rgba(0,232,122,0.1);">
@@ -17068,7 +17076,7 @@ html.light-mode .tb,
     </div>
 
     <!-- Recommended Actions — Level 1 primary CTA -->
-    <div class="gc" style="padding:14px 18px;">
+    <div class="gc gc-grn" style="padding:14px 18px;">
       <div class="hs"></div>
       <div class="clbl"><div class="ldot g"></div>Recommended Actions</div>
       <div class="btn-row">
@@ -17082,32 +17090,44 @@ html.light-mode .tb,
     <!-- ═══ LEVEL 3: Expandable Detail Sections ═══ -->
 
     <!-- Error Distribution -->
-    <div class="ace-section-collapse">
+    <div class="ace-section-collapse err-dist-collapse">
       <button class="ace-collapse-trigger" onclick="aceToggleCollapse(this)">
-        Error Distribution
+        <span style="display:flex;align-items:center;gap:7px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--red2);box-shadow:0 0 7px rgba(232,48,78,0.70);display:inline-block;animation:dot-pulse 2s ease-in-out infinite;flex-shrink:0;"></span>
+          Error Distribution
+        </span>
         <span class="ace-chev">▾</span>
       </button>
       <div class="ace-collapse-body">
         <div class="row" style="gap:12px;">
           <div style="flex:1;">
             <div style="margin-bottom:9px;">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-                <div><div style="font-size:10px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Most Common</div><div class="err-nm">Syntax Errors</div></div>
-                <span class="ecnt r" style="font-size:14px;">6</span>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div>
+                  <div class="err-dist-cat primary">⬛ Most Common</div>
+                  <div class="err-nm">Syntax Errors</div>
+                </div>
+                <span class="ecnt r">6</span>
               </div>
               <div class="ebar"><div class="ebf r" style="width:86%"></div></div>
             </div>
             <div style="margin-bottom:9px;">
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-                <div><div style="font-size:10px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Secondary</div><div class="err-nm">Conceptual Errors</div></div>
-                <span class="ecnt a" style="font-size:14px;">3</span>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div>
+                  <div class="err-dist-cat secondary">◈ Secondary</div>
+                  <div class="err-nm">Conceptual Errors</div>
+                </div>
+                <span class="ecnt a">3</span>
               </div>
               <div class="ebar"><div class="ebf a" style="width:46%"></div></div>
             </div>
             <div>
-              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-                <div><div style="font-size:10px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:2px;">Minor</div><div class="err-nm">Loop Logic</div></div>
-                <span class="ecnt c" style="font-size:14px;">1</span>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                <div>
+                  <div class="err-dist-cat minor">◎ Minor</div>
+                  <div class="err-nm">Loop Logic</div>
+                </div>
+                <span class="ecnt c">1</span>
               </div>
               <div class="ebar"><div class="ebf c" style="width:18%"></div></div>
             </div>
@@ -17117,7 +17137,7 @@ html.light-mode .tb,
     </div>
 
     <!-- AI Decision Analysis (was Sequencer Log) -->
-    <div class="ace-section-collapse">
+    <div class="ace-section-collapse ace-section-indigo">
       <button class="ace-collapse-trigger" onclick="aceToggleCollapse(this)">
         Detailed AI Analysis
         <span class="ace-chev">▾</span>
@@ -17171,7 +17191,7 @@ html.light-mode .tb,
     </div>
 
     <!-- Concept Path Details -->
-    <div class="ace-section-collapse">
+    <div class="ace-section-collapse ace-section-gold">
       <button class="ace-collapse-trigger" onclick="aceToggleCollapse(this)">
         Concept Path Details
         <span class="ace-chev">▾</span>
@@ -20930,5 +20950,464 @@ html.light-mode body,
 .light-mode .lp-pill-dot    { background: #0772a0 !important; box-shadow: none !important; }
 
 /* ════ END MOBILE ACTIVE CONCEPT PILL ════ */
+
+/* ═══════════════════════════════════════════════════════════════
+   UPGRADE: ERROR DISTRIBUTION — REDDISH THEME
+   Applies crimson identity to both the insight card and the
+   ACE collapsible section. Architecture untouched.
+═══════════════════════════════════════════════════════════════ */
+
+/* ── Error Distribution card (insight panel) ─────────────────── */
+.err-dist-card {
+  background: linear-gradient(135deg,
+    rgba(22,4,10,0.97) 0%,
+    rgba(16,3,8,0.98) 60%,
+    rgba(10,2,5,0.99) 100%
+  ) !important;
+  border-color: rgba(232,48,78,0.28) !important;
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.72),
+    0 12px 40px rgba(0,0,0,0.62),
+    0 0 40px rgba(232,48,78,0.10),
+    inset 0 1px 0 rgba(232,48,78,0.22) !important;
+}
+.err-dist-card::before {
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(232,48,78,0.55),
+    rgba(255,130,140,0.20),
+    rgba(232,48,78,0.55),
+    transparent
+  ) !important;
+}
+.err-dist-card::after {
+  background: linear-gradient(180deg, rgba(232,48,78,0.05), transparent) !important;
+}
+
+/* Card title */
+.err-dist-title {
+  color: var(--red2) !important;
+  text-shadow: 0 0 14px rgba(232,48,78,0.38), 0 0 32px rgba(232,48,78,0.14);
+  letter-spacing: 0.22em;
+  font-weight: 700;
+}
+
+/* ── Bars — taller, animated fill, warmer glow ───────────────── */
+.err-dist-card .ebar {
+  height: 5px !important;
+  background: rgba(232,48,78,0.08) !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  margin-bottom: 11px !important;
+}
+.err-dist-card .ebf.r {
+  background: linear-gradient(90deg,
+    #7a0a1c,
+    var(--red),
+    var(--red2),
+    #ff8096
+  ) !important;
+  box-shadow: 0 0 10px rgba(232,48,78,0.55), 0 0 20px rgba(232,48,78,0.22) !important;
+  animation: err-bar-glow 3s ease-in-out infinite !important;
+}
+.err-dist-card .ebf.a {
+  background: linear-gradient(90deg, #7a4500, var(--amb), var(--amb2)) !important;
+  box-shadow: 0 0 8px rgba(212,152,0,0.45) !important;
+}
+.err-dist-card .ebf.c {
+  background: linear-gradient(90deg, rgba(0,100,80,0.8), var(--tl), var(--cy)) !important;
+  box-shadow: 0 0 8px rgba(0,184,217,0.22) !important;
+}
+
+/* Subtle pulse on the dominant (red) bar */
+@keyframes err-bar-glow {
+  0%,100% { box-shadow: 0 0 10px rgba(232,48,78,0.55), 0 0 20px rgba(232,48,78,0.22); }
+  50%      { box-shadow: 0 0 16px rgba(232,48,78,0.75), 0 0 34px rgba(232,48,78,0.34), 0 0 60px rgba(232,48,78,0.10); }
+}
+
+/* Count labels */
+.err-dist-card .ecnt.r {
+  font-size: 22px !important;
+  color: var(--red2) !important;
+  text-shadow: 0 0 14px rgba(232,48,78,0.70), 0 0 30px rgba(232,48,78,0.28) !important;
+}
+.err-dist-card .ecnt.a { font-size: 22px !important; }
+.err-dist-card .ecnt.c { font-size: 22px !important; }
+
+/* Error name labels */
+.err-dist-card .err-nm {
+  font-size: 13px !important;
+  color: rgba(255,220,224,0.82) !important;
+  font-weight: 600 !important;
+}
+
+/* Category label chip (Most Common / Secondary / Minor) */
+.err-dist-cat {
+  font-size: 7.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 3px;
+}
+.err-dist-cat.primary { color: var(--red2); }
+.err-dist-cat.secondary { color: var(--amb2); }
+.err-dist-cat.minor { color: var(--cy3); }
+
+/* ── ACE Report: Error Distribution collapse section ─────────── */
+.ace-section-collapse.err-dist-collapse {
+  border-color: rgba(232,48,78,0.26) !important;
+  background: linear-gradient(135deg,
+    rgba(20,3,8,0.60) 0%,
+    rgba(14,2,6,0.40) 100%
+  );
+  box-shadow: 0 0 22px rgba(232,48,78,0.07), inset 0 1px 0 rgba(232,48,78,0.12);
+}
+.ace-section-collapse.err-dist-collapse .ace-collapse-trigger {
+  color: var(--red2) !important;
+  background: rgba(232,48,78,0.05) !important;
+  text-shadow: 0 0 16px rgba(232,48,78,0.30);
+  border-bottom: 1px solid rgba(232,48,78,0.10);
+}
+.ace-section-collapse.err-dist-collapse .ace-collapse-trigger:hover {
+  background: rgba(232,48,78,0.09) !important;
+  color: #ff8096 !important;
+}
+.ace-section-collapse.err-dist-collapse .ace-collapse-trigger .ace-chev {
+  color: var(--red2) !important;
+  text-shadow: 0 0 10px rgba(232,48,78,0.50);
+}
+.ace-section-collapse.err-dist-collapse .ace-collapse-body {
+  background: rgba(14,2,6,0.30) !important;
+}
+.ace-section-collapse.err-dist-collapse .ebar {
+  height: 5px !important;
+  background: rgba(232,48,78,0.08) !important;
+  border-radius: 3px !important;
+  margin-bottom: 11px !important;
+}
+.ace-section-collapse.err-dist-collapse .ebf.r {
+  background: linear-gradient(90deg, #7a0a1c, var(--red), var(--red2), #ff8096) !important;
+  box-shadow: 0 0 10px rgba(232,48,78,0.55), 0 0 22px rgba(232,48,78,0.20) !important;
+  animation: err-bar-glow 3s ease-in-out infinite !important;
+}
+.ace-section-collapse.err-dist-collapse .ecnt.r {
+  color: var(--red2) !important;
+  text-shadow: 0 0 14px rgba(232,48,78,0.65) !important;
+  font-size: 20px !important;
+}
+.ace-section-collapse.err-dist-collapse .err-nm {
+  color: rgba(255,215,220,0.82) !important;
+  font-weight: 600 !important;
+}
+
+/* ── General dashboard upgrades — subtle but noticeable ──────── */
+
+/* Sharper card hover lift */
+.gc:hover {
+  transform: translateY(-2px) !important;
+  transition: all 0.22s cubic-bezier(.4,0,.2,1) !important;
+}
+
+/* Slightly taller error bars globally */
+.ebar {
+  height: 4px !important;
+  border-radius: 3px !important;
+}
+
+/* Brighter primary metric values */
+.kpi-val, .stat-val {
+  letter-spacing: -0.01em;
+}
+
+/* Better sidebar active item glow */
+.ni.on {
+  box-shadow: inset 3px 0 12px rgba(0,184,217,0.06) !important;
+}
+
+/* Refined topbar separator */
+.tb::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0,184,217,0.35),
+    rgba(200,215,230,0.12),
+    rgba(0,184,217,0.35),
+    transparent
+  ) !important;
+  height: 1.5px !important;
+}
+
+/* ════ END UPGRADE: ERROR DISTRIBUTION ════ */
+
+/* ════════════════════════════════════════════
+   COLOUR FEEL SYSTEM — per image spec
+   Green  → gc-grn cards (already done ✓)
+   Red    → gc-red cards (already done ✓)
+   Gold   → gc-gold cards (already done ✓)
+   Indigo → NEW gc-indigo variant
+   Neutral → base gc (keep as-is)
+
+   Below: add gc-indigo variant + apply feels
+   to specific named cards via :has() selectors
+════════════════════════════════════════════ */
+
+/* ── Indigo card variant (new) ─────────────── */
+.gc-indigo {
+  background: linear-gradient(135deg, rgba(8,8,28,0.97), rgba(5,5,20,0.98)) !important;
+  border-color: rgba(111,115,220,0.22) !important;
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.72),
+    0 12px 40px rgba(0,0,0,0.62),
+    0 20px 60px rgba(0,0,0,0.32),
+    0 0 44px rgba(111,115,220,0.10),
+    inset 0 1px 0 rgba(111,115,220,0.28) !important;
+}
+.gc-indigo::before {
+  background: linear-gradient(90deg, transparent, rgba(111,115,220,0.55), rgba(200,200,255,0.18), rgba(111,115,220,0.55), transparent) !important;
+}
+.gc-indigo::after {
+  background: linear-gradient(180deg, rgba(111,115,220,0.045), transparent) !important;
+}
+.gc-indigo:hover {
+  border-color: rgba(111,115,220,0.36) !important;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.82),
+    0 18px 55px rgba(0,0,0,0.72),
+    0 0 0 1px rgba(111,115,220,0.12),
+    0 0 55px rgba(111,115,220,0.08),
+    inset 0 1px 0 rgba(111,115,220,0.32) !important;
+}
+.gc-indigo:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(111,115,220,0.70), rgba(220,220,255,0.22), rgba(111,115,220,0.70), transparent) !important;
+}
+
+/* indigo ldot */
+.ldot.in {
+  background: var(--in2);
+  box-shadow: 0 0 8px rgba(107,110,216,0.40), 0 0 20px rgba(107,110,216,0.16);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+
+/* ── DASHBOARD SCREEN — Card colour feels ─── */
+
+/* Today's Performance → green feel */
+.gc:has(> .hs + div[style*="Today's Performance"]),
+.gc:has(> div[style*="Today's Performance"]) {
+  background: linear-gradient(135deg, rgba(2,18,12,0.97), rgba(1,12,8,0.98)) !important;
+  border-color: rgba(0,201,103,0.15) !important;
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.72),
+    0 12px 40px rgba(0,0,0,0.62),
+    0 0 36px rgba(0,232,122,0.07),
+    inset 0 1px 0 rgba(0,232,122,0.18) !important;
+}
+.gc:has(> .hs + div[style*="Today's Performance"])::before,
+.gc:has(> div[style*="Today's Performance"])::before {
+  background: linear-gradient(90deg, transparent, rgba(0,232,122,0.45), rgba(255,255,255,0.14), rgba(0,232,122,0.45), transparent) !important;
+}
+.gc:has(> .hs + div[style*="Today's Performance"])::after,
+.gc:has(> div[style*="Today's Performance"])::after {
+  background: linear-gradient(180deg, rgba(0,232,122,0.03), transparent) !important;
+}
+
+/* Learning Insights + Recommended Review → gold feel */
+.gc:has(> .hs + div[style*="Learning Insights"]),
+.gc:has(> div[style*="Learning Insights"]) {
+  background: linear-gradient(135deg, rgba(18,12,2,0.97), rgba(12,8,1,0.98)) !important;
+  border-color: rgba(212,152,0,0.18) !important;
+  box-shadow:
+    0 4px 14px rgba(0,0,0,0.72),
+    0 12px 40px rgba(0,0,0,0.62),
+    0 0 42px rgba(255,184,0,0.08),
+    inset 0 1px 0 rgba(255,184,0,0.22) !important;
+}
+.gc:has(> .hs + div[style*="Learning Insights"])::before,
+.gc:has(> div[style*="Learning Insights"])::before {
+  background: linear-gradient(90deg, transparent, rgba(255,184,0,0.55), rgba(255,255,220,0.18), rgba(255,184,0,0.55), transparent) !important;
+}
+.gc:has(> .hs + div[style*="Learning Insights"])::after,
+.gc:has(> div[style*="Learning Insights"])::after {
+  background: linear-gradient(180deg, rgba(255,184,0,0.035), transparent) !important;
+}
+
+/* Today's Goal (ldot.a) → applied via gc-gold class directly */
+
+/* ── INCORRECT ANSWER SCREEN ─────────────── */
+
+/* Adaptive Response (ldot.c) → neutral/cyan — keep base but boost slightly */
+/* Already neutral per spec — leave base gc */
+
+/* Next Steps (ldot.a) → already handled by gold :has(.ldot.a) rule above */
+
+/* ── CORRECT/MASTERED SCREEN ─────────────── */
+
+/* Mastery Summary (ldot.g) → applied via gc-grn class directly */
+
+/* Error Type Journey (ldot.c) → base neutral — fine as-is */
+/* Overall Platform Progress (ldot.c) → base neutral — fine as-is */
+
+/* ── ACE REPORT ──────────────────────────── */
+
+/* Recommended Actions (ldot.g) → already caught by .gc:has(.ldot.g) */
+
+/* AI Decision Analysis collapse → indigo feel */
+.ace-section-collapse:has(.seq-log),
+.ace-section-collapse:has(.seq-hdr) {
+  border-color: rgba(111,115,220,0.22) !important;
+  background: linear-gradient(135deg, rgba(8,8,28,0.60) 0%, rgba(5,5,20,0.40) 100%) !important;
+  box-shadow: 0 0 22px rgba(111,115,220,0.07), inset 0 1px 0 rgba(111,115,220,0.12) !important;
+}
+.ace-section-collapse:has(.seq-log) .ace-collapse-trigger,
+.ace-section-collapse:has(.seq-hdr) .ace-collapse-trigger {
+  color: var(--in2) !important;
+  background: rgba(111,115,220,0.05) !important;
+  text-shadow: 0 0 16px rgba(107,110,216,0.28) !important;
+  border-bottom: 1px solid rgba(111,115,220,0.10) !important;
+}
+.ace-section-collapse:has(.seq-log) .ace-collapse-trigger:hover,
+.ace-section-collapse:has(.seq-hdr) .ace-collapse-trigger:hover {
+  background: rgba(111,115,220,0.09) !important;
+  color: var(--in3) !important;
+}
+.ace-section-collapse:has(.seq-log) .ace-chev,
+.ace-section-collapse:has(.seq-hdr) .ace-chev {
+  color: var(--in2) !important;
+}
+.ace-section-collapse:has(.seq-log) .ace-collapse-body,
+.ace-section-collapse:has(.seq-hdr) .ace-collapse-body {
+  background: rgba(5,5,20,0.28) !important;
+}
+/* Indigo left-border accent on seq-log */
+.seq-log::before {
+  background: linear-gradient(180deg, var(--in2), var(--in)) !important;
+  box-shadow: 0 0 8px rgba(107,110,216,0.22), 0 0 20px rgba(107,110,216,0.10) !important;
+}
+.seq-hdr {
+  color: var(--in2) !important;
+  text-shadow: 0 0 14px rgba(107,110,216,0.42) !important;
+}
+
+/* Historical Performance collapse → neutral/cyan keep-as-is — already base */
+
+/* Concept Path Details collapse → gold feel */
+.ace-section-collapse:has(.pcirc),
+.ace-section-collapse:has(.cpath) {
+  border-color: rgba(212,152,0,0.20) !important;
+  background: linear-gradient(135deg, rgba(18,12,2,0.55) 0%, rgba(12,8,1,0.36) 100%) !important;
+  box-shadow: 0 0 22px rgba(212,152,0,0.06), inset 0 1px 0 rgba(212,152,0,0.10) !important;
+}
+.ace-section-collapse:has(.pcirc) .ace-collapse-trigger,
+.ace-section-collapse:has(.cpath) .ace-collapse-trigger {
+  color: var(--amb2) !important;
+  background: rgba(212,152,0,0.04) !important;
+  text-shadow: 0 0 16px rgba(212,152,0,0.28) !important;
+  border-bottom: 1px solid rgba(212,152,0,0.08) !important;
+}
+.ace-section-collapse:has(.pcirc) .ace-collapse-trigger:hover,
+.ace-section-collapse:has(.cpath) .ace-collapse-trigger:hover {
+  background: rgba(212,152,0,0.08) !important;
+  color: #f5d060 !important;
+}
+.ace-section-collapse:has(.pcirc) .ace-chev,
+.ace-section-collapse:has(.cpath) .ace-chev {
+  color: var(--amb2) !important;
+}
+.ace-section-collapse:has(.pcirc) .ace-collapse-body,
+.ace-section-collapse:has(.cpath) .ace-collapse-body {
+  background: rgba(12,8,1,0.26) !important;
+}
+
+/* gc-grn / gc-gold already target Recommended Actions & Mastery */
+/* Make sure gc-grn mastery card on correct screen keeps its special pulse */
+.gc.gc-grn {
+  background: linear-gradient(135deg,rgba(2,22,14,0.97),rgba(1,14,9,0.98)) !important;
+  border-color: rgba(0,201,103,0.22) !important;
+}
+
+/* ── Boost hover glow per colour feel ──────── */
+.gc:has(.ldot.g):hover {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.82),
+    0 18px 55px rgba(0,0,0,0.72),
+    0 0 55px rgba(0,232,122,0.10),
+    inset 0 1px 0 rgba(0,232,122,0.26) !important;
+}
+.gc:has(.ldot.a):hover {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.82),
+    0 18px 55px rgba(0,0,0,0.72),
+    0 0 55px rgba(255,184,0,0.10),
+    inset 0 1px 0 rgba(255,184,0,0.28) !important;
+}
+.gc:has(> .hs + div[style*="Today's Performance"]):hover,
+.gc:has(> div[style*="Today's Performance"]):hover {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.82),
+    0 18px 55px rgba(0,0,0,0.72),
+    0 0 55px rgba(0,232,122,0.10),
+    inset 0 1px 0 rgba(0,232,122,0.24) !important;
+}
+.gc:has(> .hs + div[style*="Learning Insights"]):hover,
+.gc:has(> div[style*="Learning Insights"]):hover {
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.82),
+    0 18px 55px rgba(0,0,0,0.72),
+    0 0 55px rgba(255,184,0,0.10),
+    inset 0 1px 0 rgba(255,184,0,0.26) !important;
+}
+
+
+/* ── Named ace-section colour classes ─────── */
+.ace-section-indigo {
+  border-color: rgba(111,115,220,0.22) !important;
+  background: linear-gradient(135deg, rgba(8,8,28,0.60) 0%, rgba(5,5,20,0.40) 100%) !important;
+  box-shadow: 0 0 22px rgba(111,115,220,0.07), inset 0 1px 0 rgba(111,115,220,0.12) !important;
+}
+.ace-section-indigo .ace-collapse-trigger {
+  color: var(--in2) !important;
+  background: rgba(111,115,220,0.05) !important;
+  text-shadow: 0 0 16px rgba(107,110,216,0.28) !important;
+  border-bottom-color: rgba(111,115,220,0.10) !important;
+}
+.ace-section-indigo .ace-collapse-trigger:hover {
+  background: rgba(111,115,220,0.09) !important;
+  color: var(--in3) !important;
+}
+.ace-section-indigo .ace-chev {
+  color: var(--in2) !important;
+}
+.ace-section-indigo .ace-collapse-body {
+  background: rgba(5,5,20,0.28) !important;
+}
+
+.ace-section-gold {
+  border-color: rgba(212,152,0,0.20) !important;
+  background: linear-gradient(135deg, rgba(18,12,2,0.55) 0%, rgba(12,8,1,0.36) 100%) !important;
+  box-shadow: 0 0 22px rgba(212,152,0,0.06), inset 0 1px 0 rgba(212,152,0,0.10) !important;
+}
+.ace-section-gold .ace-collapse-trigger {
+  color: var(--amb2) !important;
+  background: rgba(212,152,0,0.04) !important;
+  text-shadow: 0 0 16px rgba(212,152,0,0.28) !important;
+  border-bottom-color: rgba(212,152,0,0.08) !important;
+}
+.ace-section-gold .ace-collapse-trigger:hover {
+  background: rgba(212,152,0,0.08) !important;
+  color: #f5d060 !important;
+}
+.ace-section-gold .ace-chev {
+  color: var(--amb2) !important;
+}
+.ace-section-gold .ace-collapse-body {
+  background: rgba(12,8,1,0.26) !important;
+}
+
+/* ── Refine: remove overbroad :has(.ldot.a) rule — rely on direct gc-gold class ── */
+/* The gold feel is applied via gc-gold class directly on specific cards */
+/* Remove the broad :has(.ldot.a) rule since it can over-apply */
+
+/* ════ END COLOUR FEEL SYSTEM ════ */
 
 </style>
