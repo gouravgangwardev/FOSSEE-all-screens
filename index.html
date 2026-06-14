@@ -15616,7 +15616,7 @@ html.light-mode .tb,
       <div class="mst-card4 ryg-card ryg-focus" style="padding:0;overflow:hidden;">
         <div class="ryg-header">
           <div style="flex:1;min-width:180px;">
-            <div class="mst-eyebrow" style="margin-bottom:4px;letter-spacing:0.10em;font-size:10px;font-weight:600;color:rgba(255,255,255,0.38);"><div class="mst-dot mst-dot-muted"></div> Review Your Growth</div>
+            <div class="mst-eyebrow" style="margin-bottom:4px;letter-spacing:0.10em;font-weight:600;color:rgba(255,255,255,0.38);"><div class="mst-dot mst-dot-muted"></div> Review Your Growth</div>
             <div class="ryg-insight" id="ryg-insight">Accuracy improved by 4% compared with yesterday — strongest performance in midday sessions.</div>
           </div>
           <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
@@ -17800,12 +17800,12 @@ function renderRYGChart(period) {
   /* Subtle horizontal gridlines */
   [[chartYTop, valMax], [cy((valMax+valMin)/2), Math.round((valMax+valMin)/2)], [chartYBot, valMin]].forEach(function(g) {
     svg += '<line x1="' + lm + '" y1="' + g[0] + '" x2="' + chartXEnd + '" y2="' + g[0] + '" stroke="rgba(255,255,255,0.045)" stroke-width="1"/>';
-    svg += '<text x="' + (lm - 6) + '" y="' + (g[0] + 3.5) + '" font-size="9" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="\'JetBrains Mono\',monospace">' + Math.round(g[1]) + '%</text>';
+    svg += '<text x="' + (lm - 6) + '" y="' + (g[0] + 3.5) + '" font-size="8" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="\'JetBrains Mono\',monospace">' + Math.round(g[1]) + '%</text>';
   });
 
   /* AVG dashed line */
   svg += '<line x1="' + chartXStart + '" y1="' + chartAvgY + '" x2="' + chartXEnd + '" y2="' + chartAvgY + '" stroke="rgba(255,255,255,0.13)" stroke-width="1" stroke-dasharray="3,5" class="ryg-avg-line"/>';
-  svg += '<text x="' + (chartXEnd - 4) + '" y="' + (chartAvgY - 5) + '" font-size="8.5" fill="rgba(255,255,255,0.28)" text-anchor="end" letter-spacing="1" font-family="\'JetBrains Mono\',monospace" class="ryg-avg-label">AVG ' + avgVal + '%</text>';
+  svg += '<text x="' + (chartXEnd - 4) + '" y="' + (chartAvgY - 5) + '" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="end" letter-spacing="1" font-family="\'JetBrains Mono\',monospace" class="ryg-avg-label">AVG ' + avgVal + '%</text>';
 
   /* Area fill */
   var areaD = 'M ' + chartCoords[0].x + ',' + chartCoords[0].y;
@@ -17822,15 +17822,15 @@ function renderRYGChart(period) {
   chartCoords.forEach(function(c, i) {
     const delay = (0.55 + i * 0.09).toFixed(2);
     if (c === chartPeak) {
-      svg += '<text x="' + c.x + '" y="' + (c.y - 8) + '" font-size="10" font-weight="700" fill="#00c967" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
+      svg += '<text x="' + c.x + '" y="' + (c.y - 8) + '" font-size="9" font-weight="700" fill="#00c967" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
     } else if (c === chartLow) {
-      svg += '<text x="' + c.x + '" y="' + (c.y + 14) + '" font-size="10" font-weight="700" fill="rgba(240,89,110,0.90)" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
+      svg += '<text x="' + c.x + '" y="' + (c.y + 14) + '" font-size="9" font-weight="700" fill="rgba(240,89,110,0.90)" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
     }
   });
 
   /* X-axis session labels */
   chartCoords.forEach(function(c) {
-    svg += '<text x="' + c.x + '" y="' + (chartYBot + 14) + '" font-size="9" fill="rgba(255,255,255,0.22)" text-anchor="middle" font-family="\'Space Grotesk\',sans-serif">' + c.label + '</text>';
+    svg += '<text x="' + c.x + '" y="' + (chartYBot + 14) + '" font-size="8" fill="rgba(255,255,255,0.22)" text-anchor="middle" font-family="\'Space Grotesk\',sans-serif">' + c.label + '</text>';
   });
 
   /* Unit caption */
@@ -22531,7 +22531,7 @@ html.light-mode body,
   display:flex; align-items:center; gap:6px; font-size:10px;
   color:rgba(255,255,255,0.32); font-weight:500; white-space:nowrap;
 }
-.ryg-chart-meta-item strong { color:rgba(255,255,255,0.78); font-weight:600; font-family:var(--ff-d); font-size:11px; }
+.ryg-chart-meta-item strong { color:rgba(255,255,255,0.78); font-weight:600; font-family:var(--ff-d); font-size:10px; }
 .ryg-chart-meta-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
 .ryg-chart-meta-dot.peak { background:var(--grn); box-shadow:var(--ggn2); }
 .ryg-chart-meta-dot.avg { background:rgba(255,255,255,0.25); }
@@ -23684,5 +23684,453 @@ html.light-mode body,
 .light-mode .err-row2-pct { color: var(--txt-muted); }
 
 /* ════ END MASTERY EXPERIENCE SYSTEM ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   MENTOR-REVIEW REFINEMENT PASS
+   Lighting hierarchy · surface depth · typography · KPI dominance ·
+   mentor storytelling · header polish · analytics authority ·
+   heatmap clarity · micro-interactions
+   Additive only — preserves layout, structure, responsiveness, JS.
+══════════════════════════════════════════════════════════════════ */
+
+/* ── PASS 1+2 · LIGHTING & SURFACE DEPTH ─────────────────────────────
+   L1 background / L2 standard cards / L3 important cards / L4 hero */
+
+/* L4 — Hero stays the brightest, most "front" surface; add a soft
+   top-light sheen so it reads as a raised glass panel. */
+#scr-db .mst-hero {
+  background:
+    radial-gradient(ellipse 70% 60% at 14% 8%, rgba(0,184,217,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 100% 100%, rgba(0,168,152,0.07) 0%, transparent 65%),
+    linear-gradient(180deg, rgba(255,255,255,0.022) 0%, rgba(255,255,255,0.004) 9%, transparent 26%),
+    linear-gradient(152deg, rgba(7,16,31,0.97), rgba(3,8,18,0.99));
+  box-shadow:
+    0 1px 0 rgba(0,184,217,0.24) inset,
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 24px 70px rgba(0,0,0,0.55),
+    0 0 120px rgba(0,184,217,0.05);
+}
+
+/* L3 — Important cards (Tier 2/3): slightly more lift + edge highlight
+   than L2, clearly secondary to the hero. */
+#scr-db .mst-card2,
+#scr-db .mst-card3 {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.016) 0%, transparent 16%),
+    linear-gradient(160deg, rgba(10,20,38,0.92), rgba(5,11,22,0.97));
+  box-shadow:
+    0 16px 40px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: border-color 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1), transform 0.22s cubic-bezier(.4,0,.2,1);
+}
+#scr-db .mst-card2:hover,
+#scr-db .mst-card3:hover {
+  border-color: rgba(0,184,217,0.16);
+  box-shadow:
+    0 20px 48px rgba(0,0,0,0.50),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  transform: translateY(-2px);
+}
+
+/* L2 — Standard / supporting cards (Tier 4): quieter, recedes behind
+   L3, no hover lift so attention isn't pulled away from analytics. */
+#scr-db .mst-card4 {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.010) 0%, transparent 14%),
+    linear-gradient(165deg, rgba(5,9,18,0.85), rgba(2,4,9,0.92));
+  box-shadow:
+    0 8px 22px rgba(0,0,0,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+#scr-db .mst-card4.err-dist-card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.008) 0%, transparent 14%),
+    linear-gradient(165deg, rgba(28,10,14,0.85), rgba(12,5,8,0.92)) !important;
+}
+
+/* L1 — Journey strip sits just under the hero; subtle top sheen to
+   match the hero's material without competing for focus. */
+#scr-db .mst-journey-collapsible {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.014) 0%, transparent 18%),
+    linear-gradient(160deg, rgba(10,20,38,0.92), rgba(5,11,22,0.97));
+}
+
+/* ── PASS 3 · TYPOGRAPHY HIERARCHY ───────────────────────────────────
+   Sharpen the gap between hero metric, secondary metrics, labels,
+   and supporting copy without adding new sizes or noise. */
+
+/* Hero title: slightly tighter tracking + heavier presence */
+#scr-db .mst-hero-title {
+  letter-spacing: 0.01em;
+  font-weight: 700;
+}
+/* Hero subtitle: clearly "supporting text" register */
+#scr-db .mst-hero-sub {
+  font-weight: 300;
+  color: rgba(255,255,255,0.40);
+  letter-spacing: 0.005em;
+}
+/* Eyebrow labels: consistent quiet authority across all sections */
+#scr-db .mst-eyebrow {
+  color: rgba(255,255,255,0.46);
+}
+/* Section sub-labels recede slightly further than card labels */
+#scr-db .mst-section-sub {
+  color: rgba(255,255,255,0.28);
+  font-weight: 300;
+}
+/* Card2/3 titles (rank name, campus name) gain weight to anchor the
+   card visually before the supporting numbers */
+#scr-db .mst-rank-name {
+  letter-spacing: 0.005em;
+}
+/* Mentor pattern names: clearer "headline" weight vs. its percentage */
+#scr-db .mst-mp-name {
+  font-weight: 650;
+  letter-spacing: 0.005em;
+}
+/* Supporting captions throughout: unify at a slightly dimmer, smaller
+   register so primary numbers win the eye every time */
+#scr-db .mst-progress-caption,
+#scr-db .mst-orb-caption,
+#scr-db .mst-momentum-best,
+#scr-db .mst-campus-meta {
+  font-weight: 300;
+}
+
+/* ── PASS 4 · KPI HIERARCHY ───────────────────────────────────────────
+   Make the hero's "Mastered %" orb the unmistakable dominant metric;
+   step down the hero stat row; keep tier-2 numbers clearly secondary. */
+
+/* Orb is the single most important number on the page — give it a
+   touch more presence and a cleaner glow separation from its label */
+#scr-db .mst-orb-pct {
+  font-size: 48px;
+  text-shadow: 0 0 14px rgba(0,184,217,0.30), 0 0 36px rgba(0,184,217,0.12);
+}
+#scr-db .mst-orb-lbl {
+  color: var(--cy3);
+  font-weight: 700;
+}
+
+/* Hero stat row (Attempts / Streak / Accuracy): clearly secondary to
+   the orb — slightly reduced weight on the label keeps numbers as the
+   read, while values stay legible */
+#scr-db .mst-hero-stats .mst-stat-val {
+  font-size: 27px;
+}
+#scr-db .mst-hero-stats .mst-stat-lbl {
+  font-weight: 700;
+  letter-spacing: 0.22em;
+}
+
+/* Tier-2 hero numbers (rank progress %, streak count) read as
+   "important but not THE metric" — slightly smaller than the orb,
+   larger than tier-4 numbers, with quieter glow */
+#scr-db .mst-momentum-num {
+  font-size: 42px;
+}
+
+/* Tier-4 numeric values (error counts, review stats) recede further —
+   tightened so they don't visually compete with tier-2/3 metrics */
+#scr-db .mst-card4 .ecnt,
+#scr-db .err-row2-meta .ecnt {
+  font-size: 16px;
+}
+
+/* ── PASS 5 · MENTOR INSIGHTS — STORYTELLING REFINEMENT ──────────────
+   Give each pattern a clearer "what / why / how / benefit" rhythm by
+   relabeling the existing two-column grid into a three-part narrative
+   strip, and adding a quiet "expected benefit" line beneath it. This
+   reuses the existing .mst-mp-grid structure — no markup changes. */
+
+#scr-db .mst-mentor-head {
+  margin-bottom: 22px;
+}
+#scr-db .mst-mentor-badge {
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+/* Slightly more breathing room between "what happened" (name+pct)
+   and the "why / how" grid so the narrative beats feel distinct */
+#scr-db .mst-mp-sub {
+  margin-bottom: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.32);
+}
+/* The grid becomes the "why it happened / how to improve" pairing —
+   add a subtle left accent per column so each reads as its own beat */
+#scr-db .mst-mp-grid {
+  gap: 18px;
+  padding: 14px 16px;
+  background: rgba(0,0,0,0.26);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+#scr-db .mst-mp-col {
+  position: relative;
+  padding-left: 14px;
+  border-left: 2px solid rgba(255,255,255,0.06);
+}
+#scr-db .mst-mp-col:first-child {
+  border-left-color: rgba(232,48,78,0.22);
+}
+#scr-db .mst-mp-col:last-child {
+  border-left-color: rgba(0,184,217,0.22);
+}
+#scr-db .mst-mp-col-lbl {
+  color: rgba(255,255,255,0.32);
+}
+/* First column relabel cue: "Impact" already communicates *why it
+   matters*; nudge its copy color toward the alert tone so the
+   mentor's diagnosis (why it happened) feels distinct from the
+   prescription (how to improve). */
+#scr-db .mst-mentor-pattern:first-of-type .mst-mp-col:first-child .mst-mp-col-val {
+  color: rgba(255,255,255,0.64);
+}
+/* Second column ("Mentor Says") is the prescriptive voice — warm it
+   slightly so it feels like guidance, not a log line */
+#scr-db .mst-mp-col-val.mono {
+  letter-spacing: 0.01em;
+}
+
+/* ── PASS 6 · SECTION HEADERS ──────────────────────────────────────── */
+
+/* Topbar title: more deliberate spacing, slightly dimmer so the hero
+   content remains the visual entry point */
+#scr-db .tb .tb-title {
+  color: rgba(255,255,255,0.88);
+}
+
+/* Analytics divider: feels like a deliberate chapter break rather than
+   a thin rule — widen the breathing room around it */
+#scr-db .mst-analytics-divider {
+  margin: 10px 0 2px;
+}
+#scr-db .mst-analytics-divider-lbl {
+  color: rgba(255,255,255,0.26);
+  font-weight: 700;
+}
+
+/* Journey toggle path: read as contextual framing rather than raw
+   metadata */
+#scr-db .mst-journey-toggle-path {
+  color: rgba(255,255,255,0.34);
+  font-weight: 300;
+}
+#scr-db .mst-journey-toggle-current {
+  font-weight: 300;
+}
+
+/* Practice Journey section head: align weight with mst-section-sub
+   refinement above for consistency across all section intros */
+#scr-db .pj-section .mst-section-sub {
+  font-weight: 300;
+}
+
+/* ── PASS 7 · ANALYTICS AUTHORITY (Review Your Growth) ───────────────
+   Strengthen the chart as the focal point of the analytics tier:
+   slightly larger surface contrast, clearer meta readout, calmer tab
+   rest-state so the active tab and chart dominate. */
+
+#scr-db .ryg-chart-box {
+  background: rgba(255,255,255,0.026);
+  border-color: rgba(255,255,255,0.07);
+}
+#scr-db .ryg-chart-title {
+  color: rgba(255,255,255,0.34);
+  font-weight: 600;
+}
+#scr-db .ryg-chart-meta-item strong {
+  font-size: 10px;
+}
+/* Quieten inactive tabs further so the active period reads instantly */
+#scr-db .ryg-tab {
+  color: rgba(255,255,255,0.24);
+}
+#scr-db .ryg-tab.on {
+  box-shadow: 0 0 0 1px rgba(0,184,217,0.06) inset;
+}
+/* Insight line: give it slightly more presence as the analytic
+   "headline" for this section */
+#scr-db .ryg-insight {
+  color: rgba(255,255,255,0.54);
+}
+#scr-db .ryg-insight strong, #scr-db .ryg-insight b {
+  color: rgba(255,255,255,0.88);
+}
+
+/* ── PASS 8 · PRACTICE JOURNEY / HEATMAP READABILITY ──────────────────
+   Improve heatmap legibility and information density without altering
+   its structure: clearer cell contrast steps, calmer hover, tighter
+   axis alignment. */
+
+#scr-db .pj-heatmap-hdr {
+  margin-bottom: 16px;
+}
+#scr-db .pj-heatmap-title {
+  color: rgba(255,255,255,0.40);
+}
+/* Slightly higher contrast between levels so the rhythm of practice
+   is scannable at a glance */
+#scr-db .pj-cell.lv1 {
+  background: rgba(0,184,217,0.20);
+  border-color: rgba(0,184,217,0.22);
+}
+#scr-db .pj-cell.lv2 {
+  background: rgba(0,184,217,0.46);
+  border-color: rgba(0,184,217,0.42);
+}
+#scr-db .pj-cell.lv3 {
+  background: rgba(0,184,217,0.82);
+  border-color: rgba(0,184,217,0.70);
+}
+/* Calmer, more "precise instrument" hover — less jump, more focus ring */
+#scr-db .pj-cell:hover {
+  transform: scale(1.18);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.30), 0 2px 8px rgba(0,0,0,0.50);
+}
+/* Day-axis labels: align baseline more precisely with cell rows */
+#scr-db .pj-day-lbl {
+  color: rgba(255,255,255,0.34);
+  font-weight: 500;
+}
+/* Insight + consistency badge row: tie language to "Practice" framing */
+#scr-db .pj-insight strong {
+  color: rgba(255,255,255,0.78);
+}
+
+/* ── PASS 9 · MICRO-INTERACTIONS ──────────────────────────────────────
+   Fast, smooth, invisible-but-premium. All transitions align to the
+   existing cubic-bezier(.4,0,.2,1) language already used sitewide. */
+
+#scr-db .mst-action,
+#scr-db .mst-milestone,
+#scr-db .mst-pip,
+#scr-db .mst-jnode-dot {
+  transition: border-color 0.18s cubic-bezier(.4,0,.2,1),
+              background 0.18s cubic-bezier(.4,0,.2,1),
+              box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+              transform 0.18s cubic-bezier(.4,0,.2,1);
+}
+#scr-db .mst-action:hover {
+  transform: translateY(-1px);
+}
+#scr-db .mst-resume-btn {
+  transition: transform 0.18s cubic-bezier(.4,0,.2,1),
+              box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+              border-color 0.18s cubic-bezier(.4,0,.2,1);
+}
+#scr-db .ryg-tab,
+#scr-db .ryg-toggle-btn,
+#scr-db .mst-journey-toggle-chevron {
+  transition: all 0.16s cubic-bezier(.4,0,.2,1);
+}
+#scr-db .pj-stat-card {
+  transition: background 0.18s cubic-bezier(.4,0,.2,1),
+              border-color 0.18s cubic-bezier(.4,0,.2,1),
+              box-shadow 0.20s cubic-bezier(.4,0,.2,1),
+              transform 0.18s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── PASS 10 · FINAL AUDIT — SMALL BALANCE ADJUSTMENTS ────────────────
+   Empty-space and rhythm tightening across tiers; no structural change. */
+
+#scr-db .mst-tier2-row,
+#scr-db .mst-tier3-row {
+  gap: 20px;
+}
+#scr-db .mst-hero-actions {
+  gap: 16px;
+}
+
+/* ── LIGHT MODE — carry the same hierarchy logic ──────────────────── */
+.light-mode #scr-db .mst-hero {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 22%),
+    #FFFAF0 !important;
+}
+.light-mode #scr-db .mst-card2,
+.light-mode #scr-db .mst-card3 {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 22%),
+    var(--bg-surface) !important;
+}
+.light-mode #scr-db .mst-card2:hover,
+.light-mode #scr-db .mst-card3:hover {
+  border-color: var(--accent-line) !important;
+  transform: translateY(-2px);
+}
+.light-mode #scr-db .mst-hero-sub { color: var(--txt-muted) !important; }
+.light-mode #scr-db .mst-eyebrow { color: var(--txt-muted) !important; }
+.light-mode #scr-db .mst-section-sub { color: var(--txt-dim) !important; }
+.light-mode #scr-db .ryg-insight { color: var(--txt-body) !important; }
+.light-mode #scr-db .ryg-insight strong, .light-mode #scr-db .ryg-insight b { color: var(--txt-heading) !important; }
+
+/* ── RESPONSIVE — preserve hierarchy at smaller breakpoints ─────────── */
+@media (max-width: 980px) {
+  #scr-db .mst-orb-pct { font-size: 40px; }
+}
+@media (max-width: 720px) {
+  #scr-db .mst-orb-pct { font-size: 36px; }
+  #scr-db .mst-hero-stats .mst-stat-val { font-size: 22px; }
+}
+
+/* ════ END MENTOR-REVIEW REFINEMENT PASS ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   SECTION LABEL SIZE BUMP
+   Learning Journey · Learning Mastery · Momentum · Mentor Insights ·
+   Error Distribution · Recommended Review · Your Practice Journey ·
+   Activity Heatmap · Review Your Growth
+══════════════════════════════════════════════════════════════════ */
+
+/* Learning Journey (toggle label) */
+#scr-db .mst-journey-toggle-lbl {
+  font-size: 16px !important;
+}
+
+/* Learning Mastery / Momentum (card2 labels) */
+#scr-db .mst-card2-lbl {
+  font-size: 15px !important;
+}
+
+/* Mentor Insights / Your Practice Journey (eyebrows) */
+#scr-db .mst-eyebrow {
+  font-size: 16px !important;
+}
+
+/* Error Distribution title */
+#scr-db .err-dist-title,
+#scr-db .err-dist-title .err-nm {
+  font-size: 15px !important;
+}
+
+/* Recommended Review (card4 label) */
+#scr-db .mst-card4-lbl {
+  font-size: 14px !important;
+}
+
+/* Activity Heatmap title */
+#scr-db .pj-heatmap-title {
+  font-size: 14px !important;
+}
+
+/* Review Your Growth (eyebrow with inline override) */
+#scr-db .ryg-header .mst-eyebrow {
+  font-size: 17px !important;
+  letter-spacing: 0.18em !important;
+}
+
+@media (max-width: 720px) {
+  #scr-db .mst-journey-toggle-lbl,
+  #scr-db .mst-eyebrow,
+  #scr-db .mst-card2-lbl {
+    font-size: 13px !important;
+  }
+}
+
+/* ════ END SECTION LABEL SIZE BUMP ════ */
+
 </style>
 
