@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +40,7 @@
   --in:#4f52c4;       /* desaturated indigo */
   --in2:#6b6ed8;      /* mid indigo */
   --in3:#9096e8;      /* pale indigo — soft periwinkle */
+  --gvio2:0 0 5px rgba(124,128,224,0.30),0 0 16px rgba(124,128,224,0.12);
 
   /* ─── STATUS COLORS — reduced intensity ─── */
   --grn:#00c967;      /* emerald — premium not neon */
@@ -15080,332 +15078,348 @@ html.light-mode .tb,
   <div class="cnt">
 
     <!-- ═══════════════════════════════════════════════════════
-         S1 · CURRICULUM PROGRESS RAIL
+         1 · CURRENT LEARNING MISSION — HERO
     ═══════════════════════════════════════════════════════ -->
-    <div class="cpr-rail gc" style="padding:16px 20px;flex-shrink:0;">
-      <div class="hs"></div>
-      <!-- Rail Header -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="ldot c"></div>
-          <span style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.60);font-weight:700;">Curriculum Progress Rail</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span style="font-size:9px;color:rgba(255,255,255,0.36);">1 of 6 Completed &nbsp;·&nbsp; 1 Active &nbsp;·&nbsp; 4 Upcoming</span>
-          <span style="font-size:8.5px;letter-spacing:0.10em;color:var(--cy2);background:rgba(0,184,217,0.08);border:1px solid rgba(0,184,217,0.18);padding:3px 10px;border-radius:4px;font-weight:700;">6 MODULES</span>
+    <div class="mst-hero">
+      <svg width="0" height="0" style="position:absolute;">
+        <defs>
+          <linearGradient id="mst-orb-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00a898"/>
+            <stop offset="100%" stop-color="#00b8d9"/>
+          </linearGradient>
+        </defs>
+      </svg>
+
+      <div class="mst-hero-top">
+        <div class="mst-eyebrow"><span class="mst-pulse-dot"></span> Current Learning Mission</div>
+        <div class="mst-hero-path">
+          <span class="mst-hero-path-name">Frontend Mastery Path</span>
+          <span class="mst-hero-path-sep">·</span>
+          <span class="mst-hero-path-step">Module 2 of 6</span>
         </div>
       </div>
-      <!-- Concept Cards -->
-      <div class="cpr-cards-row">
-        <!-- C1: Completed -->
-        <div class="cpr-card cpr-completed">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
-            <span class="cpr-id">C1</span>
-            <span class="cpr-badge-done">✓ COMPLETED</span>
+
+      <div class="mst-hero-grid">
+        <div class="mst-hero-main">
+          <h1 class="mst-hero-title">Basic Loops</h1>
+          <p class="mst-hero-sub">for / while loop patterns — building the foundation of repetition and control flow.</p>
+
+          <div class="mst-hero-stats">
+            <div class="mst-stat">
+              <div class="mst-stat-val">12</div>
+              <div class="mst-stat-lbl">Attempts</div>
+            </div>
+            <div class="mst-stat-sep"></div>
+            <div class="mst-stat">
+              <div class="mst-stat-val amb">3</div>
+              <div class="mst-stat-lbl">Day Streak</div>
+            </div>
+            <div class="mst-stat-sep"></div>
+            <div class="mst-stat">
+              <div class="mst-stat-val grn">73%</div>
+              <div class="mst-stat-lbl">Accuracy</div>
+            </div>
           </div>
-          <div class="cpr-name">Conditionals</div>
+
+          <button class="mst-resume-btn" onclick="sw('ws')">
+            <span class="mst-resume-icon">▶</span>
+            <span class="mst-resume-copy">
+              <span class="mst-resume-title">Resume Learning Session</span>
+              <span class="mst-resume-sub">Continue from Question #12 — range() separator</span>
+            </span>
+            <span class="mst-resume-arrow">→</span>
+          </button>
         </div>
-        <!-- C2: Active -->
-        <div class="cpr-card cpr-active">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:5px;">
-            <span class="cpr-id cpr-id-active">C2</span>
-            <span class="cpr-badge-active">ACTIVE</span>
+
+        <div class="mst-hero-orb">
+          <svg class="mst-orb-svg" viewBox="0 0 220 220">
+            <circle class="mst-orb-track" cx="110" cy="110" r="92"/>
+            <circle class="mst-orb-track-inner" cx="110" cy="110" r="78"/>
+            <circle class="mst-orb-fill" cx="110" cy="110" r="92"/>
+          </svg>
+          <div class="mst-orb-center">
+            <div class="mst-orb-pct">45<span>%</span></div>
+            <div class="mst-orb-lbl">Mastered</div>
           </div>
-          <div class="cpr-name cpr-name-active">Basic Loops</div>
-          <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--cy2);line-height:1;margin-top:6px;text-shadow:var(--gcx);">45%</div>
-          <div style="height:2.5px;background:rgba(0,184,217,0.10);border-radius:2px;margin-top:7px;overflow:hidden;">
-            <div style="width:45%;height:100%;background:linear-gradient(90deg,var(--tl),var(--cy));border-radius:2px;box-shadow:0 0 6px rgba(0,184,217,0.45);"></div>
+          <div class="mst-orb-caption">15% to next checkpoint</div>
+        </div>
+      </div>
+
+      <!-- Action row -->
+      <div class="mst-hero-actions">
+        <div class="mst-action">
+          <div class="mst-action-icon">⊙</div>
+          <div class="mst-action-body">
+            <div class="mst-action-lbl">Next Milestone</div>
+            <div class="mst-action-title">Reach 60% Completion</div>
           </div>
         </div>
-        <!-- C3: Upcoming -->
-        <div class="cpr-card cpr-upcoming">
-          <div style="margin-bottom:5px;"><span class="cpr-id">C3</span></div>
-          <div class="cpr-name">Lists + Loops</div>
-          <div class="cpr-upcoming-lbl">UPCOMING</div>
+        <div class="mst-action accent-grn">
+          <div class="mst-action-icon">▶</div>
+          <div class="mst-action-body">
+            <div class="mst-action-lbl">Recommended Next Action</div>
+            <div class="mst-action-title">Resume Question #12</div>
+            <div class="mst-action-detail">range() separator &nbsp;·&nbsp; Loop type</div>
+          </div>
         </div>
-        <!-- C4: Upcoming -->
-        <div class="cpr-card cpr-upcoming">
-          <div style="margin-bottom:5px;"><span class="cpr-id">C4</span></div>
-          <div class="cpr-name">Nested Loops</div>
-          <div class="cpr-upcoming-lbl">UPCOMING</div>
-        </div>
-        <!-- C5: Upcoming -->
-        <div class="cpr-card cpr-upcoming">
-          <div style="margin-bottom:5px;"><span class="cpr-id">C5</span></div>
-          <div class="cpr-name">Strings</div>
-          <div class="cpr-upcoming-lbl">UPCOMING</div>
-        </div>
-        <!-- C6: Upcoming -->
-        <div class="cpr-card cpr-upcoming">
-          <div style="margin-bottom:5px;"><span class="cpr-id">C6</span></div>
-          <div class="cpr-name">Functions</div>
-          <div class="cpr-upcoming-lbl">UPCOMING</div>
+        <div class="mst-action accent-amb">
+          <div class="mst-action-icon">★</div>
+          <div class="mst-action-body">
+            <div class="mst-action-lbl">After This</div>
+            <div class="mst-action-title">Review Previous Mistake</div>
+            <div class="mst-action-detail mono">range(start, stop, step) syntax</div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
-         S2 · CURRENT CONCEPT — HERO CARD
+         1B · LEARNING JOURNEY — collapsible roadmap strip
     ═══════════════════════════════════════════════════════ -->
-    <div class="gc cc-hero" style="padding:32px 36px;flex-shrink:0;">
-      <div class="hs"></div>
-      <div class="cb tl"></div><div class="cb tr"></div>
-      <!-- Label + Resume button row -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="ldot c"></div>
-          <span style="font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.55);font-weight:700;">Current Concept</span>
+    <div class="mst-journey-collapsible" id="mst-journey-card">
+      <button class="mst-journey-toggle" onclick="toggleMstJourney()">
+        <div class="mst-journey-toggle-left">
+          <span class="mst-pulse-dot"></span>
+          <span class="mst-journey-toggle-lbl">Learning Journey</span>
+          <span class="mst-journey-toggle-path">Frontend Mastery Path — 6 modules</span>
         </div>
-        <button class="btn-res" onclick="sw('ws')" style="font-size:14px;padding:15px 34px;letter-spacing:0.07em;display:flex;align-items:center;gap:9px;">
-          <span style="font-size:13px;">▶</span> Resume Session
-        </button>
-      </div>
-      <!-- Title + Subtitle -->
-      <div style="margin-bottom:26px;">
-        <div style="font-family:var(--ff-d);font-size:42px;font-weight:700;color:rgba(255,255,255,0.98);letter-spacing:0.03em;line-height:1.05;margin-bottom:8px;">C2: Basic Loops</div>
-        <div style="font-size:17px;color:rgba(255,255,255,0.38);font-weight:300;letter-spacing:0.01em;">for / while loop patterns</div>
-      </div>
-      <!-- Stats Row: Attempts / Streak / Accuracy -->
-      <div class="cc-stats-row" style="background:rgba(0,0,0,0.30);border:1px solid rgba(0,184,217,0.10);border-radius:10px;margin-bottom:26px;">
-        <div class="cc-stat-item">
-          <div class="cc-stat-val">12</div>
-          <div class="cc-stat-lbl">Attempts</div>
+        <div class="mst-journey-toggle-right">
+          <span class="mst-journey-toggle-current">Currently on <b>Basic Loops</b> · 45%</span>
+          <span class="mst-journey-toggle-chevron" id="mst-journey-chevron">▾</span>
         </div>
-        <div class="cc-stat-div"></div>
-        <div class="cc-stat-item">
-          <div class="cc-stat-val" style="color:var(--amb);text-shadow:var(--gamb);">🔥 3</div>
-          <div class="cc-stat-lbl">Streak</div>
+      </button>
+
+      <div class="mst-journey-body" id="mst-journey-body">
+        <div class="mst-journey-path">
+          <div class="mst-journey-line"></div>
+          <div class="mst-journey-line-fill" style="width:29%;"></div>
+          <div class="mst-journey-nodes">
+            <div class="mst-jnode done">
+              <div class="mst-jnode-dot">✓</div>
+              <div><div class="mst-jnode-name">Conditionals</div><div class="mst-jnode-tag">Completed</div></div>
+            </div>
+            <div class="mst-jnode current">
+              <div class="mst-jnode-dot">▶</div>
+              <div><div class="mst-jnode-name">Basic Loops</div><div class="mst-jnode-tag">45% · Current</div></div>
+            </div>
+            <div class="mst-jnode">
+              <div class="mst-jnode-dot">3</div>
+              <div><div class="mst-jnode-name">Lists + Loops</div><div class="mst-jnode-tag">Next</div></div>
+            </div>
+            <div class="mst-jnode">
+              <div class="mst-jnode-dot">4</div>
+              <div><div class="mst-jnode-name">Nested Loops</div><div class="mst-jnode-tag">Upcoming</div></div>
+            </div>
+            <div class="mst-jnode">
+              <div class="mst-jnode-dot">5</div>
+              <div><div class="mst-jnode-name">Strings</div><div class="mst-jnode-tag">Upcoming</div></div>
+            </div>
+            <div class="mst-jnode">
+              <div class="mst-jnode-dot">6</div>
+              <div><div class="mst-jnode-name">Functions</div><div class="mst-jnode-tag">Upcoming</div></div>
+            </div>
+          </div>
         </div>
-        <div class="cc-stat-div"></div>
-        <div class="cc-stat-item">
-          <div class="cc-stat-val" style="color:var(--grn);text-shadow:var(--ggn);">73%</div>
-          <div class="cc-stat-lbl">Accuracy</div>
-        </div>
-      </div>
-      <!-- Three Action Boxes -->
-      <div class="cc-actions-row">
-        <!-- Next Milestone -->
-        <div class="cc-action-box" style="border-color:rgba(0,184,217,0.12);">
-          <div class="cc-action-icon">⊙</div>
-          <div class="cc-action-lbl">Next Milestone</div>
-          <div class="cc-action-title">Reach 60% Completion</div>
-        </div>
-        <!-- Recommended Next Action -->
-        <div class="cc-action-box" style="border-color:rgba(0,201,103,0.14);background:rgba(0,201,103,0.025);">
-          <div class="cc-action-icon" style="color:var(--grn);">▶</div>
-          <div class="cc-action-lbl">Recommended Next Action</div>
-          <div class="cc-action-title">Resume Question #12</div>
-          <div class="cc-action-detail">range() separator &nbsp;·&nbsp; Loop type</div>
-        </div>
-        <!-- After This -->
-        <div class="cc-action-box" style="border-color:rgba(212,152,0,0.14);background:rgba(212,152,0,0.025);">
-          <div class="cc-action-icon" style="color:var(--amb);">★</div>
-          <div class="cc-action-lbl">After This</div>
-          <div class="cc-action-title">Review Previous Mistake</div>
-          <div class="cc-action-detail" style="font-family:var(--ff-m);color:var(--cy2);font-size:9.5px;">range(start, stop, step) syntax</div>
-        </div>
+        <div class="mst-journey-note"><b>Reach 60% mastery</b> in Basic Loops to unlock Lists + Loops and continue your progression toward Functions.</div>
       </div>
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
-         S3 · MIDDLE TWO COLUMNS
+         2 · MASTERY · MOMENTUM · CAMPUS  (Tier 2)
     ═══════════════════════════════════════════════════════ -->
-    <div class="row" style="align-items:flex-start;">
+    <div class="mst-tier2-row">
 
-      <!-- LEFT COLUMN 60% — Next Milestone + Streak + Mentor Insight -->
-      <div class="f3" style="display:flex;flex-direction:column;gap:14px;">
-
-        <!-- Next Milestone Card -->
-        <div class="gc lvl-2" style="padding:20px 22px;">
-          <div class="hs"></div>
-          <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:14px;">Next Milestone</div>
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:rgba(0,184,217,0.08);border:1.5px solid rgba(0,184,217,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;color:var(--cy2);box-shadow:0 0 12px rgba(0,184,217,0.12);">⊙</div>
-            <div>
-              <div style="font-size:16px;font-weight:600;color:rgba(255,255,255,0.88);margin-bottom:4px;">Reach 60% Completion</div>
-              <div style="font-size:12.5px;color:var(--cy);font-weight:500;">3 Questions Remaining</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Current Streak Card -->
-        <div class="gc lvl-2" style="padding:20px 22px;">
-          <div class="hs"></div>
-          <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);font-weight:700;margin-bottom:14px;">Current Streak</div>
-          <div style="display:flex;align-items:center;gap:15px;">
-            <!-- Streak badge -->
-            <div style="background:rgba(212,152,0,0.08);border:1px solid rgba(212,152,0,0.25);border-radius:9px;padding:10px 15px;display:flex;align-items:center;gap:10px;flex-shrink:0;">
-              <span style="font-size:22px;line-height:1;">🔥</span>
-              <div>
-                <div style="font-family:var(--ff-d);font-size:30px;font-weight:700;color:var(--amb);line-height:1;text-shadow:var(--gamb);">3</div>
-                <div style="font-size:9px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(212,152,0,0.55);margin-top:1px;">Day Streak</div>
-              </div>
-            </div>
-            <!-- Day indicators + message -->
-            <div style="flex:1;">
-              <div style="display:flex;gap:5px;margin-bottom:10px;">
-                <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.28);">✓</div>
-                <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.28);">✓</div>
-                <div style="width:24px;height:24px;border-radius:50%;background:rgba(0,201,103,0.12);border:1.5px solid rgba(0,201,103,0.42);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--grn);box-shadow:0 0 10px rgba(0,201,103,0.28);">✓</div>
-                <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);"></div>
-                <div style="width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.09);"></div>
-              </div>
-              <div style="font-size:12px;color:rgba(255,255,255,0.46);line-height:1.55;">Keep going — 2 more correct answers to extend your streak</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mentor Insight Card -->
-        <div style="display:flex;align-items:center;gap:10px;padding:2px 0;">
-          <div style="flex:1;height:1px;background:rgba(255,255,255,0.04);"></div>
-          <span style="font-size:7.5px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.18);white-space:nowrap;">Pattern Analysis</span>
-          <div style="flex:1;height:1px;background:rgba(255,255,255,0.04);"></div>
-        </div>
-        <div class="gc lvl-3" style="padding:16px 18px;">
-          <div class="hs"></div>
-          <!-- Mentor Header -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:17px;">
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span style="color:var(--cy2);font-size:11px;text-shadow:var(--gcx2);">♦</span>
-              <span style="font-size:8px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.60);font-weight:700;">Mentor Insight</span>
-            </div>
-            <span style="font-size:8px;font-weight:700;background:rgba(0,184,217,0.08);border:1px solid rgba(0,184,217,0.18);border-radius:4px;padding:2px 9px;color:var(--cy2);letter-spacing:0.06em;">2 PATTERNS FOUND</span>
-          </div>
-
-          <!-- Pattern 1 -->
-          <div style="margin-bottom:14px;">
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:5px;">
-                <div style="width:5px;height:5px;border-radius:50%;background:var(--cy);flex-shrink:0;box-shadow:0 0 6px rgba(0,184,217,0.40);"></div>
-                <span style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.30);">Pattern</span>
-              </div>
-              <span style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.30);">Frequency</span>
-            </div>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;">
-              <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.80);">range() separator errors</div>
-              <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--cy2);text-shadow:var(--gcx);">73%</div>
-            </div>
-            <div style="font-size:8.5px;color:rgba(255,255,255,0.28);margin-bottom:9px;">of loop mistakes</div>
-            <div style="display:flex;gap:12px;padding:8px 12px;background:rgba(0,0,0,0.25);border-radius:6px;border:1px solid rgba(255,255,255,0.04);">
-              <div style="flex:1;">
-                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.26);margin-bottom:3px;">Impact</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.50);">Blocks iteration questions</div>
-              </div>
-              <div style="width:1px;background:rgba(255,255,255,0.05);flex-shrink:0;"></div>
-              <div style="flex:1;">
-                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.26);margin-bottom:3px;">Mentor Says</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.50);font-family:var(--ff-m);">Review range(start, stop, step)</div>
-              </div>
-            </div>
-          </div>
-
-          <div style="height:1px;background:rgba(0,184,217,0.06);margin-bottom:14px;"></div>
-
-          <!-- Pattern 2 -->
+      <!-- Learning Mastery -->
+      <div class="mst-card2">
+        <div class="mst-card2-lbl"><div class="mst-dot mst-dot-cy"></div> Learning Mastery</div>
+        <div class="mst-rank-row">
+          <div class="mst-rank-badge">⊙</div>
           <div>
-            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
-              <div style="display:flex;align-items:center;gap:5px;">
-                <div style="width:5px;height:5px;border-radius:50%;background:var(--amb);flex-shrink:0;box-shadow:0 0 6px rgba(212,152,0,0.40);"></div>
-                <span style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.30);">Pattern</span>
-              </div>
-              <span style="font-size:7.5px;letter-spacing:0.10em;text-transform:uppercase;color:rgba(255,255,255,0.30);">Frequency</span>
+            <div class="mst-rank-name">Loop Apprentice</div>
+            <div class="mst-rank-next">Next rank: <b>Loop Practitioner</b> at 60%</div>
+          </div>
+        </div>
+        <div class="mst-progress-track"><div class="mst-progress-fill" style="width:45%;"></div></div>
+        <div class="mst-progress-caption"><span>45% Mastered</span><span>3 questions to next rank</span></div>
+        <div class="mst-milestones">
+          <div class="mst-milestone done">
+            <div class="mst-milestone-icon">✓</div>
+            <div class="mst-milestone-lbl">Conditionals Mastered</div>
+          </div>
+          <div class="mst-milestone done">
+            <div class="mst-milestone-icon">✓</div>
+            <div class="mst-milestone-lbl">First Loop Solved</div>
+          </div>
+          <div class="mst-milestone">
+            <div class="mst-milestone-icon">○</div>
+            <div class="mst-milestone-lbl">60% Loop Mastery</div>
+          </div>
+          <div class="mst-milestone">
+            <div class="mst-milestone-icon">○</div>
+            <div class="mst-milestone-lbl">Functions Unlocked</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Momentum (Streak) -->
+      <div class="mst-card2">
+        <div class="mst-card2-lbl"><div class="mst-dot mst-dot-amb"></div> Momentum</div>
+        <div class="mst-momentum-top">
+          <div>
+            <div class="mst-momentum-num">3</div>
+            <div class="mst-momentum-unit">Day Streak</div>
+          </div>
+          <div class="mst-momentum-best">Longest run: <b>11 days</b><br/>Weekly rhythm: <b>5.3 days / wk</b></div>
+        </div>
+        <div class="mst-pips">
+          <div class="mst-pip done">✓</div>
+          <div class="mst-pip done">✓</div>
+          <div class="mst-pip done">✓</div>
+          <div class="mst-pip"></div>
+          <div class="mst-pip"></div>
+          <div class="mst-pip"></div>
+          <div class="mst-pip"></div>
+        </div>
+        <div class="mst-momentum-msg">Keep going — <b>2 more correct answers</b> extends today's momentum. Consistency compounds faster than intensity.</div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         3 · MENTOR INSIGHTS  (Tier 3)
+    ═══════════════════════════════════════════════════════ -->
+    <div class="mst-tier3-row mst-tier3-single">
+
+      <!-- Mentor Insights -->
+      <div class="mst-card3">
+        <div class="mst-mentor-head">
+          <div class="mst-eyebrow"><span style="color:var(--cy2);font-size:11px;">♦</span> Mentor Insights</div>
+          <span class="mst-mentor-badge">2 PATTERNS FOUND</span>
+        </div>
+
+        <div class="mst-mentor-pattern">
+          <div class="mst-mp-head">
+            <div class="mst-mp-name">range() separator errors</div>
+            <div class="mst-mp-pct cy">73%</div>
+          </div>
+          <div class="mst-mp-sub">of loop mistakes</div>
+          <div class="mst-mp-grid">
+            <div class="mst-mp-col">
+              <div class="mst-mp-col-lbl">Impact</div>
+              <div class="mst-mp-col-val">Blocks iteration questions</div>
             </div>
-            <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:2px;">
-              <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,0.80);">Off-by-one boundary errors</div>
-              <div style="font-family:var(--ff-d);font-size:22px;font-weight:700;color:var(--amb);text-shadow:var(--gamb);">41%</div>
-            </div>
-            <div style="font-size:8.5px;color:rgba(255,255,255,0.28);margin-bottom:9px;">of index errors</div>
-            <div style="display:flex;gap:12px;padding:8px 12px;background:rgba(0,0,0,0.25);border-radius:6px;border:1px solid rgba(255,255,255,0.04);">
-              <div style="flex:1;">
-                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.26);margin-bottom:3px;">Impact</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.50);">Fails list slicing tasks</div>
-              </div>
-              <div style="width:1px;background:rgba(255,255,255,0.05);flex-shrink:0;"></div>
-              <div style="flex:1;">
-                <div style="font-size:7.5px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.26);margin-bottom:3px;">Mentor Says</div>
-                <div style="font-size:10px;color:rgba(255,255,255,0.50);">Practice stop is exclusive rule</div>
-              </div>
+            <div class="mst-mp-col">
+              <div class="mst-mp-col-lbl">Mentor Says</div>
+              <div class="mst-mp-col-val mono">Review range(start, stop, step)</div>
             </div>
           </div>
         </div>
-      </div><!-- /left column -->
 
-      <!-- RIGHT COLUMN 40% — Error Distribution + Recommended Review -->
-      <div class="f2" style="display:flex;flex-direction:column;gap:14px;">
-
-        <!-- Error Distribution Card -->
-        <div class="gc gc-red err-dist-card lvl-3" style="padding:16px 18px;">
-          <div class="hs"></div>
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-            <div style="display:flex;align-items:center;gap:7px;">
-              <div style="width:6px;height:6px;border-radius:50%;background:var(--red2);box-shadow:0 0 8px rgba(232,48,78,0.50);animation:dot-pulse 2s ease-in-out infinite;flex-shrink:0;"></div>
-              <span class="err-dist-title" style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;font-weight:700;">Error Distribution</span>
+        <div class="mst-mentor-pattern">
+          <div class="mst-mp-head">
+            <div class="mst-mp-name">Off-by-one boundary errors</div>
+            <div class="mst-mp-pct amb">41%</div>
+          </div>
+          <div class="mst-mp-sub">of index errors</div>
+          <div class="mst-mp-grid">
+            <div class="mst-mp-col">
+              <div class="mst-mp-col-lbl">Impact</div>
+              <div class="mst-mp-col-val">Fails list slicing tasks</div>
             </div>
+            <div class="mst-mp-col">
+              <div class="mst-mp-col-lbl">Mentor Says</div>
+              <div class="mst-mp-col-val">Practice stop is exclusive rule</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         4 · ANALYTICS & REPORTS  (Tier 4 — supporting)
+    ═══════════════════════════════════════════════════════ -->
+    <div class="mst-analytics-divider">
+      <div class="mst-analytics-divider-line"></div>
+      <span class="mst-analytics-divider-lbl">Analytics &amp; Reports</span>
+      <div class="mst-analytics-divider-line"></div>
+    </div>
+
+    <div class="mst-analytics-wrap">
+
+      <!-- Error Distribution + Recommended Review -->
+      <div class="mst-tier4-row">
+        <div class="mst-card4 err-dist-card gc-red">
+          <div class="mst-card4-lbl" style="justify-content:space-between;">
+            <span class="err-dist-title" style="display:flex;align-items:center;gap:7px;">
+              <span style="width:6px;height:6px;border-radius:50%;background:var(--red2);box-shadow:0 0 8px rgba(232,48,78,0.50);animation:dot-pulse 2s ease-in-out infinite;display:inline-block;"></span>
+              Error Distribution
+            </span>
             <span style="font-size:8.5px;font-weight:700;background:rgba(232,48,78,0.10);border:1px solid rgba(232,48,78,0.28);border-radius:4px;padding:2px 8px;color:var(--red2);">14 TOTAL</span>
           </div>
-          <!-- Table header -->
-          <div style="display:grid;grid-template-columns:1fr 34px 46px;gap:6px;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:4px;">
+          <div style="display:flex;justify-content:space-between;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:8px;">
             <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Category</div>
-            <div style="font-size:7.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-align:center;">Cnt</div>
-            <div style="font-size:7.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-align:right;">Share</div>
+            <div style="font-size:7.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Count · Share</div>
           </div>
-          <!-- Row 1 — Syntax Errors -->
-          <div class="err-row">
-            <div>
-              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
-                <div class="err-nm" style="font-size:11px;">Syntax Errors</div>
-                <span style="font-size:7px;font-weight:700;letter-spacing:0.06em;background:rgba(232,48,78,0.12);border:1px solid rgba(232,48,78,0.25);border-radius:3px;padding:1px 6px;color:var(--red2);">MOST IMPACTFUL</span>
+          <div class="err-row2">
+            <div class="err-row2-top">
+              <div>
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                  <div class="err-nm" style="font-size:11.5px;">Syntax Errors</div>
+                  <span style="font-size:7px;font-weight:700;letter-spacing:0.06em;background:rgba(232,48,78,0.12);border:1px solid rgba(232,48,78,0.25);border-radius:3px;padding:1px 6px;color:var(--red2);">MOST IMPACTFUL</span>
+                </div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Missing colons, brackets, indentation</div>
               </div>
-              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Missing colons, brackets, indentation</div>
+              <div class="err-row2-meta">
+                <span class="ecnt r" style="font-family:var(--ff-d);font-weight:700;">6</span>
+                <span class="err-row2-pct">43%</span>
+              </div>
             </div>
-            <div style="text-align:center;font-family:var(--ff-d);font-size:17px;font-weight:700;color:var(--red2);">6</div>
-            <div>
-              <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.72);text-align:right;margin-bottom:4px;">43%</div>
-              <div class="ebar" style="height:3px;"><div class="ebf r" style="width:86%;height:3px;"></div></div>
-            </div>
+            <div class="ebar2"><div class="ebf2 r" style="width:43%;"></div></div>
           </div>
-          <!-- Row 2 — Concept Errors -->
-          <div class="err-row">
-            <div>
-              <div class="err-nm" style="font-size:11px;margin-bottom:2px;">Concept Errors</div>
-              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Misunderstood theory or definitions</div>
+          <div class="err-row2">
+            <div class="err-row2-top">
+              <div>
+                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Concept Errors</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Misunderstood theory or definitions</div>
+              </div>
+              <div class="err-row2-meta">
+                <span class="ecnt a" style="font-family:var(--ff-d);font-weight:700;color:var(--amb);">4</span>
+                <span class="err-row2-pct">29%</span>
+              </div>
             </div>
-            <div style="text-align:center;font-family:var(--ff-d);font-size:17px;font-weight:700;color:var(--amb);">4</div>
-            <div>
-              <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.72);text-align:right;margin-bottom:4px;">29%</div>
-              <div class="ebar" style="height:3px;"><div class="ebf a" style="width:58%;height:3px;"></div></div>
-            </div>
+            <div class="ebar2"><div class="ebf2 a" style="width:29%;"></div></div>
           </div>
-          <!-- Row 3 — Logic Errors -->
-          <div class="err-row">
-            <div>
-              <div class="err-nm" style="font-size:11px;margin-bottom:2px;">Logic Errors</div>
-              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Incorrect flow, off-by-one, conditions</div>
+          <div class="err-row2">
+            <div class="err-row2-top">
+              <div>
+                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Logic Errors</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Incorrect flow, off-by-one, conditions</div>
+              </div>
+              <div class="err-row2-meta">
+                <span class="ecnt c" style="font-family:var(--ff-d);font-weight:700;color:var(--cy2);">3</span>
+                <span class="err-row2-pct">21%</span>
+              </div>
             </div>
-            <div style="text-align:center;font-family:var(--ff-d);font-size:17px;font-weight:700;color:var(--cy2);">3</div>
-            <div>
-              <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.72);text-align:right;margin-bottom:4px;">21%</div>
-              <div class="ebar" style="height:3px;"><div class="ebf c" style="width:42%;height:3px;"></div></div>
-            </div>
+            <div class="ebar2"><div class="ebf2 c" style="width:21%;"></div></div>
           </div>
-          <!-- Row 4 — Runtime Errors -->
-          <div class="err-row" style="padding-bottom:0;border-bottom:none;">
-            <div>
-              <div class="err-nm" style="font-size:11px;margin-bottom:2px;">Runtime Errors</div>
-              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Crashes, null refs, type mismatches</div>
+          <div class="err-row2" style="margin-bottom:0;">
+            <div class="err-row2-top">
+              <div>
+                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Runtime Errors</div>
+                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Crashes, null refs, type mismatches</div>
+              </div>
+              <div class="err-row2-meta">
+                <span style="font-family:var(--ff-d);font-weight:700;color:rgba(255,255,255,0.40);">1</span>
+                <span class="err-row2-pct">7%</span>
+              </div>
             </div>
-            <div style="text-align:center;font-family:var(--ff-d);font-size:17px;font-weight:700;color:rgba(255,255,255,0.40);">1</div>
-            <div>
-              <div style="font-size:11.5px;font-weight:700;color:rgba(255,255,255,0.72);text-align:right;margin-bottom:4px;">7%</div>
-              <div class="ebar" style="height:3px;"><div class="ebf c" style="width:14%;height:3px;opacity:0.35;"></div></div>
-            </div>
+            <div class="ebar2"><div class="ebf2 gy" style="width:7%;"></div></div>
           </div>
         </div>
 
-        <!-- Recommended Review Card -->
-        <div class="gc lvl-2" style="padding:18px 20px;">
-          <div class="hs"></div>
-          <div style="font-size:8px;letter-spacing:0.20em;text-transform:uppercase;color:rgba(255,255,255,0.40);font-weight:700;margin-bottom:14px;">Recommended Review</div>
+        <div class="mst-card4">
+          <div class="mst-card4-lbl">Recommended Review</div>
           <div style="background:rgba(0,184,217,0.04);border:1px solid rgba(0,184,217,0.12);border-radius:8px;padding:14px 16px;">
             <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cy);opacity:0.80;margin-bottom:7px;font-weight:600;">Review Topic</div>
             <div style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.86);margin-bottom:5px;">range() Function</div>
@@ -15414,214 +15428,325 @@ html.light-mode .tb,
             <div style="font-size:9px;color:rgba(255,255,255,0.26);font-style:italic;">Paired with Currently Studying above</div>
           </div>
         </div>
+      </div>
 
-      </div><!-- /right column -->
+      <!-- Practice Journey -->
+      <div class="mst-card4 pj-section">
+        <div class="mst-section-head" style="margin-bottom:6px;">
+          <div class="mst-eyebrow"><div class="ldot c"></div> Your Practice Journey</div>
+          <span class="mst-section-sub">Mastery rhythm &nbsp;·&nbsp; last 16 weeks</span>
+        </div>
+
+        <div class="pj-insight-row">
+          <p class="pj-insight">Practiced on <strong>22 of the last 30 days</strong> — consistency is trending upward compared with last month.</p>
+          <div class="pj-consistency">
+            <span class="pj-consistency-dot"></span>
+            <span class="pj-consistency-lbl">Learning Momentum</span>
+            <span class="pj-consistency-val">Strengthening ↗</span>
+          </div>
+        </div>
+
+        <div class="pj-stat-grid">
+          <div class="pj-stat-card pj-c-violet" data-metric="current" onclick="pjToggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <div class="pj-stat-top">
+              <span class="pj-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+              <span class="pj-stat-lbl">Current Rhythm</span>
+              <span class="pj-stat-chev">⌄</span>
+            </div>
+            <div class="pj-stat-val">3<span class="pj-stat-unit">days</span></div>
+            <div class="pj-stat-sub">Keep the rhythm going</div>
+          </div>
+
+          <div class="pj-stat-card pj-c-amber" data-metric="longest" onclick="pjToggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <div class="pj-stat-top">
+              <span class="pj-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></span>
+              <span class="pj-stat-lbl">Longest Rhythm</span>
+              <span class="pj-stat-chev">⌄</span>
+            </div>
+            <div class="pj-stat-val">11<span class="pj-stat-unit">days</span></div>
+            <div class="pj-stat-sub">Your best run so far</div>
+          </div>
+
+          <div class="pj-stat-card pj-c-cyan" data-metric="days" onclick="pjToggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <div class="pj-stat-top">
+              <span class="pj-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></svg></span>
+              <span class="pj-stat-lbl">Days Practiced This Month</span>
+              <span class="pj-stat-chev">⌄</span>
+            </div>
+            <div class="pj-stat-val">22<span class="pj-stat-unit">/ 30</span></div>
+            <div class="pj-stat-sub">Progress toward full-month consistency</div>
+          </div>
+
+          <div class="pj-stat-card pj-c-emerald" data-metric="weekly" onclick="pjToggleCard(this)" tabindex="0" role="button" aria-expanded="false">
+            <div class="pj-stat-top">
+              <span class="pj-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span>
+              <span class="pj-stat-lbl">Weekly Practice Rhythm</span>
+              <span class="pj-stat-chev">⌄</span>
+            </div>
+            <div class="pj-stat-val">5.3<span class="pj-stat-unit">days / wk</span></div>
+            <div class="pj-stat-sub">Your consistency over the last 8 weeks</div>
+          </div>
+        </div>
+
+        <div class="pj-analytics-panel" id="pj-analytics-panel">
+          <div class="pj-analytics-inner">
+
+            <div class="pj-analytics-body" data-body="current">
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Current Streak Timeline</div>
+                <div class="pj-streak-row">
+                  <div class="pj-streak-dot on"></div><div class="pj-streak-dot on"></div><div class="pj-streak-dot"></div><div class="pj-streak-dot"></div><div class="pj-streak-dot on"></div><div class="pj-streak-dot on"></div><div class="pj-streak-dot"></div><div class="pj-streak-dot on"></div><div class="pj-streak-dot on"></div><div class="pj-streak-dot on"></div>
+                </div>
+                <div class="pj-analytics-block-note">Last 10 days · 3-day streak currently active</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Days to Personal Best</div>
+                <div class="pj-analytics-block-val">8 <span class="pj-stat-unit" style="font-size:10px;">days</span></div>
+                <div class="pj-pbar"><div class="pj-pbar-fill violet" style="width:27%;"></div></div>
+                <div class="pj-analytics-block-note">27% of the way to matching your 11-day record</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Recent Momentum</div>
+                <div class="pj-analytics-block-val">5 / 7</div>
+                <div class="pj-analytics-block-note">Practiced 5 of the last 7 days — momentum is building</div>
+              </div>
+            </div>
+
+            <div class="pj-analytics-body" data-body="longest">
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Personal Best Period</div>
+                <div class="pj-analytics-block-val">11 <span class="pj-stat-unit" style="font-size:10px;">days</span></div>
+                <div class="pj-analytics-block-note">Aug 3 – Aug 13 · your longest unbroken run</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Progress Toward Record</div>
+                <div class="pj-analytics-block-val">27%</div>
+                <div class="pj-pbar"><div class="pj-pbar-fill amber" style="width:27%;"></div></div>
+                <div class="pj-analytics-block-note">Current streak is at 3 of 11 days</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Historical Context</div>
+                <div class="pj-analytics-block-note" style="font-size:10px;">Set during the Functions &amp; Recursion module — your most focused stretch of practice to date.</div>
+              </div>
+            </div>
+
+            <div class="pj-analytics-body" data-body="days">
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Practiced vs Missed</div>
+                <div class="pj-analytics-block-val">22 <span class="pj-stat-unit" style="font-size:10px;">practiced</span></div>
+                <div class="pj-pbar"><div class="pj-pbar-fill cyan" style="width:73%;"></div></div>
+                <div class="pj-analytics-block-note">5 days missed so far this month</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Month-End Projection</div>
+                <div class="pj-analytics-block-val">~25 <span class="pj-stat-unit" style="font-size:10px;">/ 30</span></div>
+                <div class="pj-analytics-block-note">On pace for your strongest month yet</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Consistency</div>
+                <div class="pj-analytics-block-val">73%</div>
+                <div class="pj-analytics-block-note">Share of days practiced this month</div>
+              </div>
+            </div>
+
+            <div class="pj-analytics-body" data-body="weekly">
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Last 8 Weeks</div>
+                <div class="pj-weekbars">
+                  <div class="pj-weekbar" style="height:57%;"></div>
+                  <div class="pj-weekbar" style="height:71%;"></div>
+                  <div class="pj-weekbar" style="height:86%;"></div>
+                  <div class="pj-weekbar" style="height:71%;"></div>
+                  <div class="pj-weekbar" style="height:100%;"></div>
+                  <div class="pj-weekbar" style="height:71%;"></div>
+                  <div class="pj-weekbar" style="height:86%;"></div>
+                  <div class="pj-weekbar cur" style="height:71%;"></div>
+                </div>
+                <div class="pj-analytics-block-note">Days practiced per week, oldest → most recent</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Weekly Average</div>
+                <div class="pj-analytics-block-val">5.3 <span class="pj-stat-unit" style="font-size:10px;">days / wk</span></div>
+                <div class="pj-analytics-block-note">Across the last 8 weeks of activity</div>
+              </div>
+              <div class="pj-analytics-block">
+                <div class="pj-analytics-block-lbl">Trend Direction</div>
+                <div class="pj-analytics-block-val">↑ Up</div>
+                <div class="pj-analytics-block-note">From 4.6 days/wk the previous month</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pj-heatmap-hero">
+          <div class="pj-heatmap-hdr">
+            <span class="pj-heatmap-title">Activity Heatmap</span>
+            <span class="pj-heatmap-period">15-month view</span>
+          </div>
+          <div class="pj-heatmap-wrap">
+            <div class="pj-hm-inner">
+              <div class="pj-day-axis">
+                <div class="pj-day-lbl">Mon</div>
+                <div class="pj-day-lbl">Tue</div>
+                <div class="pj-day-lbl">Wed</div>
+                <div class="pj-day-lbl">Thu</div>
+                <div class="pj-day-lbl">Fri</div>
+                <div class="pj-day-lbl">Sat</div>
+                <div class="pj-day-lbl">Sun</div>
+              </div>
+              <div class="pj-weeks-area">
+                <div class="pj-month-labels" id="pj-month-labels"></div>
+                <div class="pj-weeks-row" id="pj-weeks-row"></div>
+              </div>
+            </div>
+            <div class="pj-legend">
+              <span class="pj-legend-lbl">Quiet</span>
+              <div class="pj-legend-cell lv0"></div>
+              <div class="pj-legend-cell lv1"></div>
+              <div class="pj-legend-cell lv2"></div>
+              <div class="pj-legend-cell lv3"></div>
+              <span class="pj-legend-lbl">Deep Practice</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review Your Growth -->
+      <div class="mst-card4 ryg-card ryg-focus" style="padding:0;overflow:hidden;">
+        <div class="ryg-header">
+          <div style="flex:1;min-width:180px;">
+            <div class="mst-eyebrow" style="margin-bottom:4px;letter-spacing:0.10em;font-size:10px;font-weight:600;color:rgba(255,255,255,0.38);"><div class="mst-dot mst-dot-muted"></div> Review Your Growth</div>
+            <div class="ryg-insight" id="ryg-insight">Accuracy improved by 4% compared with yesterday — strongest performance in midday sessions.</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+            <div class="ryg-tabs">
+              <button class="ryg-tab on" onclick="setRYGPeriod(this,'today')">Today</button>
+              <button class="ryg-tab" onclick="setRYGPeriod(this,'7d')">Last 7 Days</button>
+              <button class="ryg-tab" onclick="setRYGPeriod(this,'30d')">Last 30 Days</button>
+            </div>
+            <button class="ryg-toggle-btn" id="ryg-toggle-btn" onclick="toggleRYGAnalytics()">Show Detailed Analytics ▼</button>
+          </div>
+        </div>
+        <div class="ryg-body" id="ryg-body">
+          <div class="ryg-stats-row" id="ryg-stats-row">
+            <div class="ryg-stat-card ryg-c-emerald">
+              <div class="ryg-stat-top">
+                <div class="ryg-stat-lbl">Accuracy Trend</div>
+                <div class="ryg-stat-trend up" id="ryg-stat-0-trend">↑ 4%</div>
+              </div>
+              <div class="ryg-stat-val g" id="ryg-stat-0-val">71%</div>
+              <div class="ryg-stat-sub" id="ryg-stat-0-sub">vs. yesterday</div>
+              <div class="ryg-stat-note" id="ryg-stat-0-note">Based on your last 20 questions</div>
+            </div>
+            <div class="ryg-stat-card ryg-c-cyan">
+              <div class="ryg-stat-top">
+                <div class="ryg-stat-lbl">Questions Solved</div>
+                <div class="ryg-stat-trend up" id="ryg-stat-1-trend">↑ 2</div>
+              </div>
+              <div class="ryg-stat-val c" id="ryg-stat-1-val">7</div>
+              <div class="ryg-stat-sub" id="ryg-stat-1-sub">of 9 daily goal</div>
+              <div class="ryg-pbar"><div class="ryg-pbar-fill cyan" id="ryg-stat-1-bar" style="width:78%"></div></div>
+            </div>
+            <div class="ryg-stat-card ryg-c-violet">
+              <div class="ryg-stat-top">
+                <div class="ryg-stat-lbl">Correct Answers</div>
+                <div class="ryg-stat-trend up" id="ryg-stat-2-trend">↑ 1</div>
+              </div>
+              <div class="ryg-stat-val v" id="ryg-stat-2-val">5</div>
+              <div class="ryg-stat-sub" id="ryg-stat-2-sub">71% success rate</div>
+              <div class="ryg-stat-note" id="ryg-stat-2-note">2 incorrect of 7 attempted</div>
+            </div>
+            <div class="ryg-stat-card ryg-c-amber">
+              <div class="ryg-stat-top">
+                <div class="ryg-stat-lbl">Avg Daily Practice</div>
+                <div class="ryg-stat-trend up" id="ryg-stat-3-trend">↑ 0.6</div>
+              </div>
+              <div class="ryg-stat-val a" id="ryg-stat-3-val">5.4</div>
+              <div class="ryg-stat-sub" id="ryg-stat-3-sub">Qs / active day</div>
+              <div class="ryg-stat-note" id="ryg-stat-3-note">Steady rhythm this period</div>
+            </div>
+            <div class="ryg-stat-card ryg-c-rose">
+              <div class="ryg-stat-top">
+                <div class="ryg-stat-lbl">Learning Consistency</div>
+                <div class="ryg-stat-trend up" id="ryg-stat-4-trend">↑ 3%</div>
+              </div>
+              <div class="ryg-stat-val r" id="ryg-stat-4-val">86%</div>
+              <div class="ryg-stat-sub" id="ryg-stat-4-sub">6 of 7 days active</div>
+              <div class="ryg-pbar"><div class="ryg-pbar-fill rose" id="ryg-stat-4-bar" style="width:86%"></div></div>
+            </div>
+          </div>
+          <div class="row ryg-main-row" id="ryg-main-row" style="align-items:stretch;">
+            <div class="f2 ryg-chart-box" id="ryg-chart-box">
+              <div class="ryg-chart-hdr">
+                <span class="ryg-chart-title" id="ryg-chart-title">Accuracy by Session — Today</span>
+                <div class="ryg-chart-meta">
+                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot peak"></span>Peak <strong id="ryg-meta-peak">89%</strong></div>
+                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot avg"></span>Avg <strong id="ryg-meta-avg">76%</strong></div>
+                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot trend"></span><span id="ryg-meta-trend">Improving</span></div>
+                </div>
+              </div>
+              <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;overflow:visible;" id="ryg-chart-svg" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="ryg-area-fill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="rgba(0,190,220,0.20)"/>
+                    <stop offset="50%" stop-color="rgba(0,180,210,0.08)"/>
+                    <stop offset="100%" stop-color="rgba(0,170,200,0.00)"/>
+                  </linearGradient>
+                  <filter id="ryg-glow-cy" x="-80%" y="-80%" width="260%" height="260%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="ryg-glow-grn" x="-80%" y="-80%" width="260%" height="260%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                  <filter id="ryg-glow-red" x="-80%" y="-80%" width="260%" height="260%">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <g id="ryg-chart-content"></g>
+              </svg>
+            </div>
+            <div class="f1 slog-table-box ryg-hidden" id="ryg-analytics-panel">
+              <div class="slog-hdr">Session Log</div>
+              <div class="slog-col-hdr">
+                <span class="slog-ch">Session</span>
+                <span class="slog-ch">Questions</span>
+                <span class="slog-ch">Accuracy</span>
+              </div>
+              <div class="slog-row">
+                <span class="slog-session">Morning</span>
+                <span class="slog-q">3</span>
+                <span class="slog-acc">60%</span>
+              </div>
+              <div class="slog-row">
+                <span class="slog-session">Midday</span>
+                <span class="slog-q">2</span>
+                <span class="slog-acc g">80%</span>
+              </div>
+              <div class="slog-row">
+                <span class="slog-session">Afternoon</span>
+                <span class="slog-q">3</span>
+                <span class="slog-acc">67%</span>
+              </div>
+              <div class="slog-row">
+                <span class="slog-session" style="color:var(--cy2);">Current</span>
+                <span class="slog-q" style="color:rgba(255,255,255,0.25);">—</span>
+                <span class="slog-acc" style="color:rgba(255,255,255,0.25);">—</span>
+              </div>
+              <div class="slog-total-row">
+                <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.60);letter-spacing:0.06em;text-transform:uppercase;" id="ryg-slog-total-lbl">Today Avg</span>
+                <span></span>
+                <span style="font-size:13px;font-weight:700;color:var(--grn);text-align:right;text-shadow:var(--ggn2);" id="ryg-slog-total-val">71%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         S4 · YOUR PRACTICE JOURNEY
-    ═══════════════════════════════════════════════════════ -->
-    <div class="gc lvl-3" style="padding:16px 20px;flex-shrink:0;">
-      <div class="hs"></div>
-      <!-- Section Header -->
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
-        <div style="display:flex;align-items:center;gap:8px;">
-          <div class="ldot c"></div>
-          <span style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.48);font-weight:700;">Your Practice Journey</span>
-        </div>
-        <span style="font-size:9px;color:rgba(255,255,255,0.24);letter-spacing:0.06em;">Mastery rhythm &nbsp;·&nbsp; last 16 weeks</span>
-      </div>
-      <!-- Rhythm Stats Bar -->
-      <div class="pj-rhythm-bar" style="margin-bottom:20px;">
-        <div class="pj-stat">
-          <div class="pj-stat-lbl">Current Rhythm</div>
-          <div class="pj-stat-val">3 <span class="pj-stat-unit">days</span></div>
-          <div class="pj-stat-sub">Keep the rhythm going</div>
-        </div>
-        <div class="pj-stat-sep"></div>
-        <div class="pj-stat">
-          <div class="pj-stat-lbl">Longest Rhythm</div>
-          <div class="pj-stat-val">11 <span class="pj-stat-unit">days</span></div>
-          <div class="pj-stat-sub">Your best run so far</div>
-        </div>
-        <div class="pj-stat-sep"></div>
-        <div class="pj-stat">
-          <div class="pj-stat-lbl">Days Practiced This Month</div>
-          <div class="pj-stat-val">22 <span class="pj-stat-unit">/ 30</span></div>
-          <div class="pj-stat-sub">Progress toward full-month consistency</div>
-        </div>
-        <div class="pj-stat-sep"></div>
-        <div class="pj-stat">
-          <div class="pj-stat-lbl">Weekly Practice Rhythm</div>
-          <div class="pj-stat-val">5.3 <span class="pj-stat-unit">days / wk</span></div>
-          <div class="pj-stat-sub">Your consistency over the last 8 weeks</div>
-        </div>
-      </div>
-      <!-- Heatmap Calendar -->
-      <div class="pj-heatmap-wrap">
-        <div class="pj-hm-inner">
-          <!-- Day-of-week axis -->
-          <div class="pj-day-axis">
-            <div class="pj-day-lbl">Mon</div>
-            <div class="pj-day-lbl">Wed</div>
-            <div class="pj-day-lbl">Fri</div>
-          </div>
-          <!-- Weeks container (built by JS) -->
-          <div class="pj-weeks-area">
-            <div class="pj-month-labels" id="pj-month-labels"></div>
-            <div class="pj-weeks-row" id="pj-weeks-row"></div>
-          </div>
-        </div>
-        <!-- Legend -->
-        <div class="pj-legend">
-          <span class="pj-legend-lbl">Quiet</span>
-          <div class="pj-legend-cell" style="background:rgba(0,184,217,0.08);border:1px solid rgba(0,184,217,0.10);"></div>
-          <div class="pj-legend-cell" style="background:rgba(0,184,217,0.22);"></div>
-          <div class="pj-legend-cell" style="background:rgba(0,184,217,0.44);"></div>
-          <div class="pj-legend-cell" style="background:var(--cy);box-shadow:0 0 5px rgba(0,184,217,0.35);"></div>
-          <span class="pj-legend-lbl">Deep Practice</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ═══════════════════════════════════════════════════════
-         S5 · REVIEW YOUR GROWTH (collapsible analytics)
-    ═══════════════════════════════════════════════════════ -->
-    <div class="gc lvl-3" style="padding:0;overflow:hidden;flex-shrink:0;">
-      <div class="hs"></div>
-      <!-- Section Header (always visible) -->
-      <div class="ryg-header">
-        <div style="flex:1;min-width:180px;">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
-            <div class="ldot c"></div>
-            <span style="font-size:8px;letter-spacing:0.24em;text-transform:uppercase;color:rgba(255,255,255,0.60);font-weight:700;">Review Your Growth</span>
-          </div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.28);padding-left:14px;">A closer look at accuracy, practice volume &amp; consistency over time</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-          <div class="ryg-tabs">
-            <button class="ryg-tab on" onclick="setRYGPeriod(this,'today')">Today</button>
-            <button class="ryg-tab" onclick="setRYGPeriod(this,'7d')">Last 7 Days</button>
-            <button class="ryg-tab" onclick="setRYGPeriod(this,'30d')">Last 30 Days</button>
-          </div>
-          <button class="ryg-toggle-btn" id="ryg-toggle-btn" onclick="toggleRYGAnalytics()">Hide Detailed Analytics ▲</button>
-        </div>
-      </div>
-      <!-- Collapsible Analytics Body -->
-      <div class="ryg-body" id="ryg-body">
-        <!-- KPI Stats Row -->
-        <div class="ryg-stats-row">
-          <div class="ryg-stat-card">
-            <div class="ryg-stat-lbl">Accuracy Trend</div>
-            <div class="ryg-stat-val g">71%</div>
-            <div class="ryg-stat-sub">↑ 4% vs yesterday</div>
-            <div class="ryg-stat-note">Based on your last 20 questions</div>
-          </div>
-          <div class="ryg-stat-card">
-            <div class="ryg-stat-lbl">Questions Solved</div>
-            <div class="ryg-stat-val c">7</div>
-            <div class="ryg-stat-sub">of 9 daily goal</div>
-            <div class="ryg-stat-note">Progress toward today's goal</div>
-          </div>
-          <div class="ryg-stat-card">
-            <div class="ryg-stat-lbl">Correct Answers</div>
-            <div class="ryg-stat-val g">5</div>
-            <div class="ryg-stat-sub">2 incorrect today</div>
-            <div class="ryg-stat-note">Out of total attempted today</div>
-          </div>
-          <div class="ryg-stat-card">
-            <div class="ryg-stat-lbl">Avg Daily Practice</div>
-            <div class="ryg-stat-val c">5.4</div>
-            <div class="ryg-stat-sub">Qs / active day</div>
-            <div class="ryg-stat-note">Your daily practice average</div>
-          </div>
-          <div class="ryg-stat-card">
-            <div class="ryg-stat-lbl">Learning Consistency</div>
-            <div class="ryg-stat-val g">86%</div>
-            <div class="ryg-stat-sub">6 of 7 days active</div>
-            <div class="ryg-stat-note">Active days in selected period</div>
-          </div>
-        </div>
-        <!-- Chart + Session Log -->
-        <div class="row" style="align-items:stretch;">
-          <!-- Accuracy by Session — line chart -->
-          <div class="f2 ryg-chart-box">
-            <div class="ryg-chart-hdr">
-              <span class="ryg-chart-title">Accuracy by Session — Today</span>
-              <span class="ryg-chart-legend">— Accuracy %</span>
-            </div>
-            <svg viewBox="0 0 360 86" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:86px;overflow:visible;">
-              <!-- Grid lines -->
-              <line x1="20" y1="8" x2="354" y2="8" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-              <line x1="20" y1="33" x2="354" y2="33" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-              <line x1="20" y1="58" x2="354" y2="58" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-              <!-- Y labels -->
-              <text x="18" y="11" font-size="7" fill="rgba(255,255,255,0.24)" text-anchor="end">75%</text>
-              <text x="18" y="36" font-size="7" fill="rgba(255,255,255,0.24)" text-anchor="end">63%</text>
-              <text x="18" y="61" font-size="7" fill="rgba(255,255,255,0.24)" text-anchor="end">50%</text>
-              <!-- Area fill -->
-              <defs>
-                <linearGradient id="ryg-area-fill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="rgba(0,184,217,0.14)"/>
-                  <stop offset="100%" stop-color="rgba(0,184,217,0.01)"/>
-                </linearGradient>
-              </defs>
-              <path d="M 60,63 L 144,12 L 228,48 L 312,24 L 336,36 L 336,80 L 60,80 Z" fill="url(#ryg-area-fill)"/>
-              <!-- Line -->
-              <polyline points="60,63 144,12 228,48 312,24 336,36" fill="none" stroke="rgba(0,184,217,0.80)" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/>
-              <!-- Data points -->
-              <circle cx="60" cy="63" r="3.5" fill="rgba(3,7,18,0.9)" stroke="var(--cy)" stroke-width="1.5"/>
-              <circle cx="144" cy="12" r="3.5" fill="rgba(3,7,18,0.9)" stroke="var(--cy)" stroke-width="1.5"/>
-              <circle cx="228" cy="48" r="3.5" fill="rgba(3,7,18,0.9)" stroke="var(--cy)" stroke-width="1.5"/>
-              <circle cx="312" cy="24" r="3.5" fill="rgba(3,7,18,0.9)" stroke="var(--cy)" stroke-width="1.5"/>
-              <circle cx="336" cy="36" r="3.5" fill="rgba(3,7,18,0.9)" stroke="var(--cy)" stroke-width="1.5"/>
-              <!-- X labels -->
-              <text x="60" y="80" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="middle">S1</text>
-              <text x="144" y="80" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="middle">S2</text>
-              <text x="228" y="80" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="middle">S3</text>
-              <text x="312" y="80" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="middle">S4</text>
-              <text x="336" y="80" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="middle">S5</text>
-              <text x="188" y="86" font-size="6.5" fill="rgba(255,255,255,0.18)" text-anchor="middle" letter-spacing="2">SESSIONS</text>
-            </svg>
-          </div>
-          <!-- Session Log -->
-          <div class="f1 slog-table-box">
-            <div class="slog-hdr">Session Log</div>
-            <div class="slog-col-hdr">
-              <span class="slog-ch">Session</span>
-              <span class="slog-ch">Questions</span>
-              <span class="slog-ch">Accuracy</span>
-            </div>
-            <div class="slog-row">
-              <span class="slog-session">Morning</span>
-              <span class="slog-q">3</span>
-              <span class="slog-acc">60%</span>
-            </div>
-            <div class="slog-row">
-              <span class="slog-session">Midday</span>
-              <span class="slog-q">2</span>
-              <span class="slog-acc g">80%</span>
-            </div>
-            <div class="slog-row">
-              <span class="slog-session">Afternoon</span>
-              <span class="slog-q">3</span>
-              <span class="slog-acc">67%</span>
-            </div>
-            <div class="slog-row">
-              <span class="slog-session" style="color:var(--cy2);">Current</span>
-              <span class="slog-q" style="color:rgba(255,255,255,0.25);">—</span>
-              <span class="slog-acc" style="color:rgba(255,255,255,0.25);">—</span>
-            </div>
-            <div class="slog-total-row">
-              <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.60);letter-spacing:0.06em;text-transform:uppercase;">Today Avg</span>
-              <span></span>
-              <span style="font-size:13px;font-weight:700;color:var(--grn);text-align:right;text-shadow:var(--ggn2);">71%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
   </div><!-- /cnt -->
 </div>
 
@@ -17537,24 +17662,257 @@ function setPeriod(el, p) {
   el.classList.add('on');
 }
 
+/* ─── DASHBOARD: Review Your Growth — Accuracy chart data ─── */
+const RYG_CHART_DATA = {
+  today: {
+    title: 'Accuracy by Session — Today',
+    unit: 'SESSIONS',
+    points: [
+      { label: 'S1', value: 60 },
+      { label: 'S2', value: 88 },
+      { label: 'S3', value: 67 },
+      { label: 'S4', value: 80 },
+      { label: 'S5', value: 71 }
+    ]
+  },
+  '7d': {
+    title: 'Accuracy by Day — Last 7 Days',
+    unit: 'DAYS',
+    points: [
+      { label: 'Mon', value: 58 },
+      { label: 'Tue', value: 64 },
+      { label: 'Wed', value: 60 },
+      { label: 'Thu', value: 70 },
+      { label: 'Fri', value: 66 },
+      { label: 'Sat', value: 78 },
+      { label: 'Sun', value: 71 }
+    ]
+  },
+  '30d': {
+    title: 'Accuracy by Week — Last 30 Days',
+    unit: 'WEEKS',
+    points: [
+      { label: 'W1', value: 52 },
+      { label: 'W2', value: 58 },
+      { label: 'W3', value: 63 },
+      { label: 'W4', value: 69 },
+      { label: 'W5', value: 71 }
+    ]
+  }
+};
+
+/* ─── DASHBOARD: Review Your Growth — period-specific insight + KPI data ─── */
+const RYG_PERIOD_DATA = {
+  today: {
+    insight: '<strong>Today\'s performance remains steady</strong> — strongest accuracy during midday sessions.',
+    slogLabel: 'Today Avg',
+    stats: [
+      { val: '71%', trend: '↑ 4%', dir: 'up', sub: 'vs. yesterday', note: 'Based on your last 20 questions' },
+      { val: '7',   trend: '↑ 2',  dir: 'up', sub: 'of 9 daily goal', bar: 78 },
+      { val: '5',   trend: '↑ 1',  dir: 'up', sub: '71% success rate', note: '2 incorrect of 7 attempted' },
+      { val: '5.4', trend: '↑ 0.6', dir: 'up', sub: 'Qs / active day', note: 'Steady rhythm today' },
+      { val: '86%', trend: '↑ 3%', dir: 'up', sub: '6 of 7 days active', bar: 86 }
+    ]
+  },
+  '7d': {
+    insight: '<strong>Accuracy improved by 6%</strong> compared with the previous seven-day period.',
+    slogLabel: '7-Day Avg',
+    stats: [
+      { val: '67%', trend: '↑ 6%', dir: 'up', sub: 'vs. previous week', note: 'Based on this week\'s sessions' },
+      { val: '38',  trend: '↑ 9',  dir: 'up', sub: 'of 45 weekly goal', bar: 84 },
+      { val: '26',  trend: '↑ 7',  dir: 'up', sub: '68% success rate', note: '12 incorrect of 38 attempted' },
+      { val: '6.1', trend: '↑ 0.8', dir: 'up', sub: 'Qs / active day', note: 'Strong weekly momentum' },
+      { val: '91%', trend: '↑ 5%', dir: 'up', sub: '6 of 7 days active', bar: 91 }
+    ]
+  },
+  '30d': {
+    insight: '<strong>Strong consistency maintained</strong> this month while steadily improving accuracy.',
+    slogLabel: '30-Day Avg',
+    stats: [
+      { val: '63%', trend: '↑ 11%', dir: 'up', sub: 'vs. previous month', note: 'Based on this month\'s sessions' },
+      { val: '162', trend: '↑ 34', dir: 'up', sub: 'questions this month', bar: 90 },
+      { val: '103', trend: '↑ 28', dir: 'up', sub: '64% success rate', note: '59 incorrect of 162 attempted' },
+      { val: '5.8', trend: '↑ 0.4', dir: 'up', sub: 'Qs / active day', note: 'Sustained learning behavior' },
+      { val: '88%', trend: '↑ 6%', dir: 'up', sub: '26 of 30 days active', bar: 88 }
+    ]
+  }
+};
+
+/* ─── DASHBOARD: Review Your Growth — render the accuracy SVG chart ─── */
+function renderRYGChart(period) {
+  const data = RYG_CHART_DATA[period];
+  const content = document.getElementById('ryg-chart-content');
+  const titleEl = document.getElementById('ryg-chart-title');
+  if (!data || !content) return;
+  if (titleEl) titleEl.textContent = data.title;
+
+  const pts = data.points;
+  const n = pts.length;
+  const values = pts.map(function(p) { return p.value; });
+
+  /* Y scale — round outward to nice 5% steps, clamped 0–100 */
+  let valMax = Math.min(100, Math.ceil((Math.max.apply(null, values) + 5) / 5) * 5);
+  let valMin = Math.max(0, Math.floor((Math.min.apply(null, values) - 5) / 5) * 5);
+  if (valMax === valMin) valMax += 10;
+
+  /* Coordinate space — fits viewBox 0 0 600 180 cleanly */
+  const yTop = 18, yMid = 86, yBottom = 152, yBase = 168;
+  const xStart = 44, xEnd = 578;
+  const xStep = n > 1 ? (xEnd - xStart) / (n - 1) : 0;
+
+  function yFor(v) { return yTop + (valMax - v) / (valMax - valMin) * (yBottom - yTop); }
+
+  const coords = pts.map(function(p, i) {
+    return { x: xStart + i * xStep, y: yFor(p.value), label: p.label, value: p.value };
+  });
+
+  /* Chart intelligence: peak / lowest / average / trend */
+  const peak = coords.reduce(function(a, b) { return b.value > a.value ? b : a; });
+  const low  = coords.reduce(function(a, b) { return b.value < a.value ? b : a; });
+  const avgVal = Math.round(values.reduce(function(a, b) { return a + b; }, 0) / n);
+  const avgY = yFor(avgVal);
+  const trendUp = coords[n - 1].value >= coords[0].value;
+
+  /* Update chart meta readouts */
+  const peakEl = document.getElementById('ryg-meta-peak');
+  const avgEl = document.getElementById('ryg-meta-avg');
+  const trendEl = document.getElementById('ryg-meta-trend');
+  if (peakEl) peakEl.textContent = peak.value + '%';
+  if (avgEl) avgEl.textContent = avgVal + '%';
+  if (trendEl) trendEl.textContent = trendUp ? 'Improving' : 'Declining';
+
+  let svg = '';
+
+  /* Left margin for Y labels, right padding, top/bottom padding */
+  const lm = 38, rm = 12, pt = 20, pb = 36;
+  /* Re-derive coords using tighter margins */
+  const chartXStart = lm, chartXEnd = 600 - rm;
+  const chartYTop = pt, chartYBot = 180 - pb;
+  const chartXStep = n > 1 ? (chartXEnd - chartXStart) / (n - 1) : 0;
+  function cy(v) { return chartYTop + (valMax - v) / (valMax - valMin) * (chartYBot - chartYTop); }
+  const chartCoords = pts.map(function(p, i) {
+    return { x: chartXStart + i * chartXStep, y: cy(p.value), label: p.label, value: p.value };
+  });
+  const chartPeak = chartCoords.reduce(function(a,b){ return b.value>a.value?b:a; });
+  const chartLow  = chartCoords.reduce(function(a,b){ return b.value<a.value?b:a; });
+  const chartAvgY = cy(avgVal);
+
+  /* Subtle horizontal gridlines */
+  [[chartYTop, valMax], [cy((valMax+valMin)/2), Math.round((valMax+valMin)/2)], [chartYBot, valMin]].forEach(function(g) {
+    svg += '<line x1="' + lm + '" y1="' + g[0] + '" x2="' + chartXEnd + '" y2="' + g[0] + '" stroke="rgba(255,255,255,0.045)" stroke-width="1"/>';
+    svg += '<text x="' + (lm - 6) + '" y="' + (g[0] + 3.5) + '" font-size="9" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="\'JetBrains Mono\',monospace">' + Math.round(g[1]) + '%</text>';
+  });
+
+  /* AVG dashed line */
+  svg += '<line x1="' + chartXStart + '" y1="' + chartAvgY + '" x2="' + chartXEnd + '" y2="' + chartAvgY + '" stroke="rgba(255,255,255,0.13)" stroke-width="1" stroke-dasharray="3,5" class="ryg-avg-line"/>';
+  svg += '<text x="' + (chartXEnd - 4) + '" y="' + (chartAvgY - 5) + '" font-size="8.5" fill="rgba(255,255,255,0.28)" text-anchor="end" letter-spacing="1" font-family="\'JetBrains Mono\',monospace" class="ryg-avg-label">AVG ' + avgVal + '%</text>';
+
+  /* Area fill */
+  var areaD = 'M ' + chartCoords[0].x + ',' + chartCoords[0].y;
+  chartCoords.slice(1).forEach(function(c){ areaD += ' L ' + c.x + ',' + c.y; });
+  areaD += ' L ' + chartCoords[n-1].x + ',' + chartYBot + ' L ' + chartCoords[0].x + ',' + chartYBot + ' Z';
+  svg += '<path d="' + areaD + '" fill="url(#ryg-area-fill)" class="ryg-area-path"/>';
+
+  /* Main line — crisp, 1.5px, sharp joins */
+  var lineD = 'M ' + chartCoords[0].x + ',' + chartCoords[0].y;
+  chartCoords.slice(1).forEach(function(c){ lineD += ' L ' + c.x + ',' + c.y; });
+  svg += '<path d="' + lineD + '" fill="none" stroke="rgba(0,200,228,0.90)" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" class="ryg-line-path" pathLength="100"/>';
+
+  /* Peak & low labels */
+  chartCoords.forEach(function(c, i) {
+    const delay = (0.55 + i * 0.09).toFixed(2);
+    if (c === chartPeak) {
+      svg += '<text x="' + c.x + '" y="' + (c.y - 8) + '" font-size="10" font-weight="700" fill="#00c967" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
+    } else if (c === chartLow) {
+      svg += '<text x="' + c.x + '" y="' + (c.y + 14) + '" font-size="10" font-weight="700" fill="rgba(240,89,110,0.90)" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
+    }
+  });
+
+  /* X-axis session labels */
+  chartCoords.forEach(function(c) {
+    svg += '<text x="' + c.x + '" y="' + (chartYBot + 14) + '" font-size="9" fill="rgba(255,255,255,0.22)" text-anchor="middle" font-family="\'Space Grotesk\',sans-serif">' + c.label + '</text>';
+  });
+
+  /* Unit caption */
+  svg += '<text x="' + ((chartXStart + chartXEnd) / 2) + '" y="' + (chartYBot + 28) + '" font-size="7.5" fill="rgba(255,255,255,0.12)" text-anchor="middle" letter-spacing="3" font-family="\'Space Grotesk\',sans-serif">' + data.unit + '</text>';
+
+  content.innerHTML = svg;
+
+  /* Restart entrance animations on each render (period switch) */
+  content.querySelectorAll('.ryg-line-path, .ryg-area-path, .ryg-pt, .ryg-pt-halo, .ryg-pt-label, .ryg-avg-line, .ryg-avg-label').forEach(function(el) {
+    el.style.animation = 'none';
+    void el.offsetWidth;
+    el.style.animation = '';
+  });
+}
+
+/* ─── DASHBOARD: Review Your Growth — update KPI cards + insight for period ─── */
+function renderRYGStats(period) {
+  const pd = RYG_PERIOD_DATA[period];
+  if (!pd) return;
+
+  const insightEl = document.getElementById('ryg-insight');
+  if (insightEl) {
+    insightEl.style.opacity = '0';
+    setTimeout(function() {
+      insightEl.innerHTML = pd.insight;
+      insightEl.style.opacity = '1';
+    }, 160);
+  }
+
+  pd.stats.forEach(function(s, i) {
+    const valEl = document.getElementById('ryg-stat-' + i + '-val');
+    const trendEl = document.getElementById('ryg-stat-' + i + '-trend');
+    const subEl = document.getElementById('ryg-stat-' + i + '-sub');
+    const noteEl = document.getElementById('ryg-stat-' + i + '-note');
+    const barEl = document.getElementById('ryg-stat-' + i + '-bar');
+    if (valEl) valEl.textContent = s.val;
+    if (trendEl) {
+      trendEl.textContent = s.trend;
+      trendEl.classList.remove('up', 'down');
+      trendEl.classList.add(s.dir);
+    }
+    if (subEl) subEl.textContent = s.sub;
+    if (noteEl && s.note !== undefined) noteEl.textContent = s.note;
+    if (barEl && s.bar !== undefined) barEl.style.width = s.bar + '%';
+  });
+
+  const slogTotalLbl = document.getElementById('ryg-slog-total-lbl');
+  const slogTotalVal = document.getElementById('ryg-slog-total-val');
+  if (slogTotalLbl) slogTotalLbl.textContent = pd.slogLabel;
+  if (slogTotalVal) slogTotalVal.textContent = pd.stats[0].val;
+}
+
 /* ─── DASHBOARD: Review Your Growth period toggle ─── */
 function setRYGPeriod(el, period) {
   document.querySelectorAll('.ryg-tab').forEach(b => b.classList.remove('on'));
   el.classList.add('on');
+  renderRYGChart(period);
+  renderRYGStats(period);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function() { renderRYGChart('today'); });
+} else {
+  renderRYGChart('today');
+}
+
+/* ─── DASHBOARD: Toggle Learning Journey roadmap ─── */
+function toggleMstJourney() {
+  const card = document.getElementById('mst-journey-card');
+  if (!card) return;
+  card.classList.toggle('open');
 }
 
 /* ─── DASHBOARD: Toggle analytics body visibility ─── */
 function toggleRYGAnalytics() {
-  const body = document.getElementById('ryg-body');
-  const btn  = document.getElementById('ryg-toggle-btn');
-  if (!body || !btn) return;
-  if (body.style.display === 'none') {
-    body.style.display = '';
-    btn.textContent = 'Hide Detailed Analytics ▲';
-  } else {
-    body.style.display = 'none';
-    btn.textContent = 'Show Detailed Analytics ▼';
-  }
+  const card  = document.querySelector('.ryg-card');
+  const panel = document.getElementById('ryg-analytics-panel');
+  const btn   = document.getElementById('ryg-toggle-btn');
+  if (!card || !panel || !btn) return;
+  const collapsed = panel.classList.toggle('ryg-hidden');
+  card.classList.toggle('ryg-focus', collapsed);
+  btn.textContent = collapsed ? 'Show Detailed Analytics ▼' : 'Hide Detailed Analytics ▲';
 }
 
 /* ─── DASHBOARD: Practice Journey Heatmap ─── */
@@ -17566,7 +17924,8 @@ function toggleRYGAnalytics() {
     if (!weeksRow || !monthLabels) return;
 
     const WEEKS = 62; /* ~15 months of week columns */
-    const DAYS  = 3;  /* Mon / Wed / Fri only */
+    const DAYS  = 7;  /* every day, Mon through Sun */
+    const FUTURE_START = 57; /* weeks from here on haven't happened yet */
 
     /* Realistic intensity pattern (0=none,1=light,2=medium,3=deep) */
     const seed = [
@@ -17575,20 +17934,27 @@ function toggleRYGAnalytics() {
       3,3,2,1,1,2,2,3,3,2,1,0,1,2,3,2
     ];
 
-    /* Month label positions (week index → label) */
+    /* Month label positions (week index → label). Months at/after
+       FUTURE_START are marked "upcoming" — intentionally inactive,
+       not empty/unfinished. The upcoming label is anchored to the
+       right edge so its "Upcoming" tag never clips off-screen. */
     const monthMarks = [
       { w:0,  lbl:'DEC' }, { w:7,  lbl:'JAN' }, { w:14, lbl:'FEB' },
       { w:21, lbl:'APR' }, { w:27, lbl:'MAY' }, { w:33, lbl:'JUN' },
       { w:39, lbl:'JUL' }, { w:45, lbl:'AUG' }, { w:51, lbl:'SEP' },
-      { w:57, lbl:'OCT' }
+      { w:57, lbl:'OCT', upcoming:true }
     ];
 
     /* Build month label bar */
     monthMarks.forEach(function(m) {
       const span = document.createElement('span');
-      span.className = 'pj-month-lbl';
+      span.className = 'pj-month-lbl' + (m.upcoming ? ' upcoming' : '');
       span.textContent = m.lbl;
-      span.style.left = ((m.w / WEEKS) * 100) + '%';
+      if (m.upcoming) {
+        span.style.right = '0';
+      } else {
+        span.style.left = ((m.w / WEEKS) * 100) + '%';
+      }
       monthLabels.appendChild(span);
     });
 
@@ -17598,8 +17964,13 @@ function toggleRYGAnalytics() {
       col.className = 'pj-week-col';
       for (let d = 0; d < DAYS; d++) {
         const cell = document.createElement('div');
-        const intensity = seed[(w * DAYS + d) % seed.length];
-        cell.className = 'pj-cell lv' + intensity;
+        if (w >= FUTURE_START) {
+          cell.className = 'pj-cell future';
+          cell.title = 'Upcoming';
+        } else {
+          const intensity = seed[(w * DAYS + d) % seed.length];
+          cell.className = 'pj-cell lv' + intensity;
+        }
         col.appendChild(cell);
       }
       weeksRow.appendChild(col);
@@ -17611,6 +17982,46 @@ function toggleRYGAnalytics() {
     init();
   }
 })();
+
+/* ─── Practice Journey: expandable metric cards ─── */
+function pjToggleCard(el) {
+  const panel = document.getElementById('pj-analytics-panel');
+  if (!panel) return;
+  const inner = panel.querySelector('.pj-analytics-inner');
+  const metric = el.getAttribute('data-metric');
+  const wasExpanded = el.classList.contains('expanded');
+
+  document.querySelectorAll('.pj-stat-card').forEach(function(c) {
+    c.classList.remove('expanded');
+    c.setAttribute('aria-expanded', 'false');
+  });
+  document.querySelectorAll('.pj-analytics-body').forEach(function(b) {
+    b.classList.remove('active');
+  });
+
+  if (wasExpanded) {
+    panel.classList.remove('open');
+    panel.style.maxHeight = '0px';
+    return;
+  }
+
+  el.classList.add('expanded');
+  el.setAttribute('aria-expanded', 'true');
+  const body = panel.querySelector('.pj-analytics-body[data-body="' + metric + '"]');
+  if (body) body.classList.add('active');
+
+  panel.classList.add('open');
+  requestAnimationFrame(function() {
+    panel.style.maxHeight = (inner.scrollHeight + 4) + 'px';
+  });
+}
+
+window.addEventListener('resize', function() {
+  const panel = document.getElementById('pj-analytics-panel');
+  if (!panel || !panel.classList.contains('open')) return;
+  const inner = panel.querySelector('.pj-analytics-inner');
+  panel.style.maxHeight = (inner.scrollHeight + 4) + 'px';
+});
 
 
 (function() {
@@ -21302,9 +21713,9 @@ html.light-mode body,
 
 /* ── Bars — taller, animated fill, warmer glow ───────────────── */
 .err-dist-card .ebar {
-  height: 5px !important;
+  height: 9px !important;
   background: rgba(232,48,78,0.08) !important;
-  border-radius: 3px !important;
+  border-radius: 5px !important;
   overflow: hidden !important;
   margin-bottom: 11px !important;
 }
@@ -21332,6 +21743,43 @@ html.light-mode body,
   0%,100% { box-shadow: 0 0 10px rgba(232,48,78,0.55), 0 0 20px rgba(232,48,78,0.22); }
   50%      { box-shadow: 0 0 16px rgba(232,48,78,0.75), 0 0 34px rgba(232,48,78,0.34), 0 0 60px rgba(232,48,78,0.10); }
 }
+
+/* ── Error Distribution v2 — full-width proportional bars ──────── */
+.err-row2 { margin-bottom: 16px; }
+.err-row2-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; margin-bottom: 8px;
+}
+.err-row2-meta {
+  display: flex; align-items: baseline; gap: 8px; flex-shrink: 0;
+  font-size: 15px;
+}
+.err-row2-pct {
+  font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.46);
+  min-width: 32px; text-align: right;
+}
+.ebar2 {
+  height: 9px; border-radius: 5px; overflow: hidden;
+  background: rgba(255,255,255,0.05);
+}
+.ebf2 { height: 100%; border-radius: 5px; transition: width 0.6s ease; }
+.ebf2.r {
+  background: linear-gradient(90deg, #7a0a1c, var(--red), var(--red2), #ff8096);
+  box-shadow: 0 0 10px rgba(232,48,78,0.55), 0 0 20px rgba(232,48,78,0.22);
+  animation: err-bar-glow 3s ease-in-out infinite;
+}
+.ebf2.a {
+  background: linear-gradient(90deg, #7a4500, var(--amb), var(--amb2));
+  box-shadow: 0 0 8px rgba(212,152,0,0.45);
+}
+.ebf2.c {
+  background: linear-gradient(90deg, rgba(0,100,80,0.8), var(--tl), var(--cy));
+  box-shadow: 0 0 8px rgba(0,184,217,0.22);
+}
+.ebf2.gy {
+  background: rgba(255,255,255,0.18);
+}
+
 
 /* Count labels */
 .err-dist-card .ecnt.r {
@@ -21790,118 +22238,405 @@ html.light-mode body,
 
 /* ── Error Distribution table rows ── */
 .err-row {
-  display:grid; grid-template-columns:1fr 34px 46px;
+  display:grid; grid-template-columns:1fr 34px 110px;
   gap:6px; align-items:start; padding:9px 0;
   border-bottom:1px solid rgba(255,255,255,0.04);
 }
 .err-row:last-child { border-bottom:none; padding-bottom:0; }
 
-/* ── Practice Journey ── */
-.pj-rhythm-bar {
-  display:flex; gap:0; background:rgba(0,0,0,0.20);
-  border:1px solid rgba(255,255,255,0.05); border-radius:8px; overflow:hidden;
+/* ══════════════════════════════════════════════════════════════════
+   YOUR PRACTICE JOURNEY — Learning Consistency Intelligence
+══════════════════════════════════════════════════════════════════ */
+
+/* ── Insight + Consistency Intelligence row ── */
+.pj-insight-row {
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; flex-wrap:wrap; margin-bottom:18px;
 }
-.pj-stat { flex:1; padding:14px 16px; text-align:center; }
-.pj-stat-lbl { font-size:8px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.30); margin-bottom:5px; }
-.pj-stat-val { font-family:var(--ff-d); font-size:22px; font-weight:700; color:rgba(255,255,255,0.90); line-height:1; margin-bottom:4px; }
-.pj-stat-unit { font-size:12px; font-weight:500; color:rgba(255,255,255,0.42); }
-.pj-stat-sub { font-size:8.5px; color:rgba(255,255,255,0.26); line-height:1.4; }
-.pj-stat-sep { width:1px; background:rgba(255,255,255,0.06); align-self:stretch; flex-shrink:0; }
+.pj-insight {
+  font-size:11.5px; line-height:1.55; color:rgba(255,255,255,0.42);
+  flex:1; min-width:220px;
+}
+.pj-insight strong { color:rgba(255,255,255,0.70); font-weight:600; }
+.pj-consistency {
+  display:flex; align-items:center; gap:9px; flex-shrink:0;
+  background:rgba(0,184,217,0.05); border:1px solid rgba(0,184,217,0.14);
+  border-radius:20px; padding:6px 15px 6px 12px;
+}
+.pj-consistency-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--cy);
+  box-shadow:var(--gcx2); animation:dot-pulse 2.4s ease-in-out infinite; flex-shrink:0;
+}
+.pj-consistency-lbl {
+  font-size:8.5px; letter-spacing:0.16em; text-transform:uppercase;
+  color:rgba(255,255,255,0.34); font-weight:600;
+}
+.pj-consistency-val { font-size:11px; font-weight:700; color:var(--cy2); text-shadow:var(--gcx2); }
+
+/* ── Metric card grid (collapsed = compact supporting strip) ── */
+.pj-stat-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:10px;
+}
+.pj-stat-card {
+  background:rgba(0,0,0,0.20); border:1px solid rgba(255,255,255,0.05);
+  border-left:2.5px solid rgba(255,255,255,0.10);
+  border-radius:9px; padding:12px 14px; text-align:left; cursor:pointer;
+  transition:background .22s ease, border-color .22s ease, box-shadow .26s ease, transform .22s ease;
+  position:relative;
+}
+.pj-stat-card:hover { background:rgba(0,0,0,0.30); transform:translateY(-1px); }
+.pj-stat-card:focus-visible { outline:1px solid rgba(0,184,217,0.45); outline-offset:1px; }
+.pj-stat-top { display:flex; align-items:center; gap:7px; margin-bottom:9px; }
+.pj-stat-icon { width:13px; height:13px; flex-shrink:0; opacity:0.85; }
+.pj-stat-icon svg { width:100%; height:100%; }
+.pj-stat-card .pj-stat-lbl {
+  font-size:8px; letter-spacing:0.12em; text-transform:uppercase;
+  color:rgba(255,255,255,0.34); flex:1; margin-bottom:0; font-weight:600;
+  transition:color .22s ease;
+}
+.pj-stat-chev {
+  font-size:10px; line-height:1; color:rgba(255,255,255,0.20);
+  transition:transform .28s cubic-bezier(.4,0,.2,1), color .22s ease;
+}
+.pj-stat-card.expanded .pj-stat-chev { transform:rotate(180deg); color:rgba(255,255,255,0.50); }
+.pj-stat-card .pj-stat-val {
+  font-family:var(--ff-d); font-size:21px; font-weight:700;
+  color:rgba(255,255,255,0.90); line-height:1; margin-bottom:4px;
+}
+.pj-stat-card .pj-stat-unit { font-size:11px; font-weight:500; color:rgba(255,255,255,0.40); margin-left:4px; }
+.pj-stat-card .pj-stat-sub { font-size:8.5px; color:rgba(255,255,255,0.26); line-height:1.4; }
+
+/* Semantic accents — color communicates meaning, never fills the card */
+.pj-c-violet { border-left-color:rgba(124,128,224,0.42); }
+.pj-c-violet .pj-stat-icon { color:var(--in3); }
+.pj-c-violet:hover, .pj-c-violet.expanded { border-left-color:var(--in3); box-shadow:0 0 0 1px rgba(124,128,224,0.08), 0 10px 30px rgba(124,128,224,0.10); }
+.pj-c-violet.expanded .pj-stat-lbl { color:var(--in3); }
+.pj-c-violet.expanded .pj-stat-val { text-shadow:var(--gvio2); }
+
+.pj-c-amber { border-left-color:rgba(212,152,0,0.42); }
+.pj-c-amber .pj-stat-icon { color:var(--amb2); }
+.pj-c-amber:hover, .pj-c-amber.expanded { border-left-color:var(--amb2); box-shadow:0 0 0 1px rgba(212,152,0,0.08), 0 10px 30px rgba(212,152,0,0.10); }
+.pj-c-amber.expanded .pj-stat-lbl { color:var(--amb2); }
+.pj-c-amber.expanded .pj-stat-val { text-shadow:0 0 12px rgba(212,152,0,0.30); }
+
+.pj-c-cyan { border-left-color:rgba(0,184,217,0.42); }
+.pj-c-cyan .pj-stat-icon { color:var(--cy2); }
+.pj-c-cyan:hover, .pj-c-cyan.expanded { border-left-color:var(--cy2); box-shadow:0 0 0 1px rgba(0,184,217,0.08), 0 10px 30px rgba(0,184,217,0.10); }
+.pj-c-cyan.expanded .pj-stat-lbl { color:var(--cy2); }
+.pj-c-cyan.expanded .pj-stat-val { text-shadow:var(--gcx2); }
+
+.pj-c-emerald { border-left-color:rgba(0,201,103,0.42); }
+.pj-c-emerald .pj-stat-icon { color:var(--grn2); }
+.pj-c-emerald:hover, .pj-c-emerald.expanded { border-left-color:var(--grn2); box-shadow:0 0 0 1px rgba(0,201,103,0.08), 0 10px 30px rgba(0,201,103,0.10); }
+.pj-c-emerald.expanded .pj-stat-lbl { color:var(--grn2); }
+.pj-c-emerald.expanded .pj-stat-val { text-shadow:var(--ggn2); }
+
+/* ── Expanded analytics panel (between cards and heatmap) ── */
+.pj-analytics-panel {
+  max-height:0; opacity:0; overflow:hidden; margin-top:0;
+  transition:max-height .40s cubic-bezier(.4,0,.2,1), opacity .30s ease, margin-top .40s cubic-bezier(.4,0,.2,1);
+}
+.pj-analytics-panel.open { opacity:1; margin-top:12px; }
+.pj-analytics-inner {
+  background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.05);
+  border-radius:10px; padding:16px 18px;
+}
+.pj-analytics-body { display:none; gap:22px; flex-wrap:wrap; }
+.pj-analytics-body.active { display:flex; animation:pj-fade-in .32s ease; }
+@keyframes pj-fade-in { from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:translateY(0);} }
+.pj-analytics-block { flex:1; min-width:160px; }
+.pj-analytics-block-lbl {
+  font-size:8px; letter-spacing:0.16em; text-transform:uppercase;
+  color:rgba(255,255,255,0.30); font-weight:700; margin-bottom:9px;
+}
+.pj-analytics-block-val { font-family:var(--ff-d); font-size:19px; font-weight:700; color:rgba(255,255,255,0.90); margin-bottom:5px; line-height:1; }
+.pj-analytics-block-note { font-size:9.5px; color:rgba(255,255,255,0.36); line-height:1.55; }
+
+/* Streak timeline mini-cells */
+.pj-streak-row { display:flex; gap:4px; margin-bottom:9px; }
+.pj-streak-dot { width:14px; height:14px; border-radius:3px; background:rgba(255,255,255,0.045); border:1px solid rgba(255,255,255,0.06); }
+.pj-streak-dot.on { background:rgba(124,128,224,0.40); border-color:var(--in3); box-shadow:0 0 6px rgba(124,128,224,0.30); }
+
+/* Generic progress bar, tinted per semantic color */
+.pj-pbar { height:5px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; margin:7px 0; }
+.pj-pbar-fill { height:100%; border-radius:3px; }
+.pj-pbar-fill.violet { background:linear-gradient(90deg, var(--in), var(--in3)); box-shadow:var(--gvio2); }
+.pj-pbar-fill.amber { background:linear-gradient(90deg, var(--amb), var(--amb2)); box-shadow:var(--gamb); }
+.pj-pbar-fill.cyan { background:linear-gradient(90deg, var(--cyd), var(--cy)); box-shadow:var(--gcx2); }
+.pj-pbar-fill.emerald { background:linear-gradient(90deg, var(--grn), var(--grn3)); box-shadow:var(--ggn2); }
+
+/* Weekly breakdown mini-bars */
+.pj-weekbars { display:flex; align-items:flex-end; gap:5px; height:44px; margin-bottom:9px; }
+.pj-weekbar {
+  flex:1; min-height:4px; border-radius:2px 2px 0 0;
+  background:linear-gradient(180deg, var(--grn2), var(--grn));
+  box-shadow:0 0 6px rgba(0,201,103,0.18);
+}
+.pj-weekbar.cur { background:linear-gradient(180deg, var(--grn3), var(--grn2)); box-shadow:0 0 9px rgba(0,201,103,0.35); }
+
+/* ── Heatmap hero ── */
+.pj-heatmap-hero {
+  margin-top:20px; background:rgba(0,0,0,0.22);
+  border:1px solid rgba(0,184,217,0.07); border-radius:12px;
+  padding:18px 20px 16px;
+}
+.pj-heatmap-hdr { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.pj-heatmap-title { font-size:9px; letter-spacing:0.22em; text-transform:uppercase; color:rgba(255,255,255,0.36); font-weight:700; }
+.pj-heatmap-period { font-size:9.5px; color:rgba(255,255,255,0.22); }
 
 .pj-heatmap-wrap { overflow:hidden; }
-.pj-hm-inner { display:flex; gap:3px; }
-.pj-day-axis { width:30px; flex-shrink:0; display:flex; flex-direction:column; gap:3px; padding-top:18px; }
-.pj-day-lbl { font-size:8px; color:rgba(255,255,255,0.26); text-align:right; line-height:11px; height:11px; }
+.pj-hm-inner { display:flex; gap:5px; }
+.pj-day-axis { width:32px; flex-shrink:0; display:flex; flex-direction:column; gap:5px; padding-top:24px; }
+.pj-day-lbl { font-size:9px; color:rgba(255,255,255,0.30); text-align:right; line-height:14px; height:14px; }
 .pj-weeks-area { flex:1; overflow:hidden; }
-.pj-month-labels { display:flex; position:relative; height:16px; margin-bottom:4px; }
+.pj-month-labels { display:flex; position:relative; height:20px; margin-bottom:6px; }
 .pj-month-lbl {
-  position:absolute; font-size:8px; letter-spacing:0.10em;
-  color:rgba(255,255,255,0.28); text-transform:uppercase;
+  position:absolute; font-size:9px; letter-spacing:0.12em; font-weight:600;
+  color:rgba(255,255,255,0.32); text-transform:uppercase; white-space:nowrap;
 }
-.pj-weeks-row { display:flex; gap:3px; }
-.pj-week-col { display:flex; flex-direction:column; gap:3px; }
+.pj-month-lbl.upcoming { color:rgba(255,255,255,0.16); font-weight:500; text-align:right; }
+.pj-month-lbl.upcoming::after {
+  content:'· Upcoming'; margin-left:5px; font-size:7.5px; font-weight:500;
+  letter-spacing:0.10em; text-transform:uppercase; color:rgba(255,255,255,0.14);
+}
+.pj-weeks-row { display:flex; gap:5px; }
+.pj-week-col { display:flex; flex-direction:column; gap:5px; }
 .pj-cell {
-  width:11px; height:11px; border-radius:2px;
+  width:14px; height:14px; border-radius:3px;
   background:rgba(0,184,217,0.06); border:1px solid rgba(0,184,217,0.08); flex-shrink:0;
-  transition:all .12s;
+  transition:transform .14s ease, box-shadow .14s ease;
 }
-.pj-cell:hover { transform:scale(1.28); z-index:2; position:relative; }
-.pj-cell.lv0 { background:transparent; border-color:rgba(255,255,255,0.05); }
-.pj-cell.lv1 { background:rgba(0,184,217,0.18); border-color:rgba(0,184,217,0.18); }
-.pj-cell.lv2 { background:rgba(0,184,217,0.40); border-color:rgba(0,184,217,0.35); }
-.pj-cell.lv3 { background:rgba(0,184,217,0.72); border-color:rgba(0,184,217,0.60); box-shadow:0 0 5px rgba(0,184,217,0.28); }
-.pj-legend { display:flex; align-items:center; justify-content:flex-end; gap:6px; margin-top:10px; }
-.pj-legend-lbl { font-size:8.5px; color:rgba(255,255,255,0.28); }
-.pj-legend-cell { width:10px; height:10px; border-radius:2px; }
+.pj-cell:hover { transform:scale(1.30); z-index:2; position:relative; box-shadow:0 0 0 1px rgba(255,255,255,0.22), 0 4px 14px rgba(0,0,0,0.55); }
+.pj-cell.lv0 { background:rgba(255,255,255,0.025); border-color:rgba(255,255,255,0.05); }
+.pj-cell.lv1 { background:rgba(0,184,217,0.18); border-color:rgba(0,184,217,0.20); }
+.pj-cell.lv2 { background:rgba(0,184,217,0.42); border-color:rgba(0,184,217,0.38); box-shadow:0 0 4px rgba(0,184,217,0.14); }
+.pj-cell.lv3 { background:rgba(0,184,217,0.78); border-color:rgba(0,184,217,0.65); box-shadow:0 0 8px rgba(0,184,217,0.38), 0 0 18px rgba(0,184,217,0.14); }
+.pj-cell.future { background:transparent !important; border:1px dashed rgba(255,255,255,0.045) !important; box-shadow:none !important; }
+.pj-cell.future:hover { transform:none; box-shadow:none; }
+
+.pj-legend { display:flex; align-items:center; justify-content:flex-end; gap:7px; margin-top:14px; }
+.pj-legend-lbl { font-size:9px; color:rgba(255,255,255,0.30); }
+.pj-legend-cell { width:12px; height:12px; border-radius:3px; }
+.pj-legend-cell.lv0 { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.06); }
+.pj-legend-cell.lv1 { background:rgba(0,184,217,0.18); }
+.pj-legend-cell.lv2 { background:rgba(0,184,217,0.42); }
+.pj-legend-cell.lv3 { background:var(--cy); box-shadow:0 0 5px rgba(0,184,217,0.35); }
+
+@media (max-width: 980px) {
+  .pj-stat-grid { grid-template-columns:repeat(2,1fr); }
+  .pj-analytics-body { gap:16px; }
+  .pj-analytics-block { min-width:140px; }
+}
+@media (max-width: 640px) {
+  .pj-stat-grid { grid-template-columns:1fr; }
+  .pj-insight-row { flex-direction:column; align-items:flex-start; }
+}
 
 /* ── Review Your Growth ── */
 .ryg-header {
-  padding:16px 22px; display:flex; align-items:center; gap:12px;
-  flex-wrap:wrap; border-bottom:1px solid rgba(0,184,217,0.06);
+  padding:18px 24px; display:flex; align-items:center; gap:16px;
+  flex-wrap:wrap; border-bottom:1px solid rgba(0,184,217,0.07);
+  background:linear-gradient(180deg,rgba(0,184,217,0.025) 0%,transparent 100%);
 }
+.ryg-insight {
+  font-size:11px; color:rgba(255,255,255,0.48); padding-left:0;
+  letter-spacing:0.015em; line-height:1.55; font-weight:400;
+  transition:opacity .32s ease;
+}
+.ryg-insight strong, .ryg-insight b { color:rgba(255,255,255,0.80); font-weight:600; }
 .ryg-tabs {
-  display:flex; gap:3px; background:rgba(0,0,0,0.30);
-  border:1px solid rgba(255,255,255,0.07); border-radius:6px; padding:3px;
+  display:flex; gap:2px; background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.07); border-radius:7px; padding:3px;
 }
 .ryg-tab {
-  background:none; border:1px solid transparent; border-radius:4px;
-  color:rgba(255,255,255,0.34); font-size:10px; padding:4px 11px;
-  cursor:pointer; font-family:var(--ff-b); transition:all .18s; letter-spacing:0.04em;
+  background:none; border:1px solid transparent; border-radius:5px;
+  color:rgba(255,255,255,0.32); font-size:10px; padding:5px 13px;
+  cursor:pointer; font-family:var(--ff-b); transition:all .18s cubic-bezier(.4,0,.2,1);
+  letter-spacing:0.02em; font-weight:500;
 }
-.ryg-tab:hover { color:rgba(255,255,255,0.65); background:rgba(255,255,255,0.04); }
-.ryg-tab.on { color:var(--cy2); background:rgba(0,184,217,0.10); border-color:rgba(0,184,217,0.22); text-shadow:var(--gcx2); }
+.ryg-tab:hover { color:rgba(255,255,255,0.60); background:rgba(255,255,255,0.05); }
+.ryg-tab.on { color:var(--cy2); background:rgba(0,184,217,0.12); border-color:rgba(0,184,217,0.24); font-weight:600; }
 .ryg-toggle-btn {
-  font-size:9px; font-weight:600; letter-spacing:0.06em; color:rgba(255,255,255,0.40);
-  background:rgba(0,0,0,0.22); border:1px solid rgba(255,255,255,0.08);
-  border-radius:5px; padding:5px 12px; cursor:pointer; font-family:var(--ff-b);
+  font-size:9px; font-weight:500; letter-spacing:0.04em; color:rgba(255,255,255,0.32);
+  background:transparent; border:1px solid rgba(255,255,255,0.07);
+  border-radius:6px; padding:5px 12px; cursor:pointer; font-family:var(--ff-b);
   transition:all .18s; white-space:nowrap;
 }
-.ryg-toggle-btn:hover { color:rgba(255,255,255,0.68); border-color:rgba(255,255,255,0.14); }
-.ryg-body { padding:18px 22px; transition:all .28s; }
-.ryg-stats-row { display:flex; gap:10px; margin-bottom:16px; }
+.ryg-toggle-btn:hover { color:rgba(255,255,255,0.60); border-color:rgba(255,255,255,0.12); background:rgba(255,255,255,0.03); }
+.ryg-body { padding:20px 24px; transition:all .28s; }
+
+/* ── KPI cards v2 — larger numbers, accent rails, stronger hierarchy ── */
+.ryg-stats-row { display:flex; gap:8px; margin-bottom:16px; transition:gap .38s cubic-bezier(.4,0,.2,1); }
 .ryg-stat-card {
-  flex:1; background:rgba(0,0,0,0.22); border:1px solid rgba(0,184,217,0.07);
-  border-radius:8px; padding:13px 14px;
+  flex:1; min-width:0; position:relative; overflow:hidden;
+  background:rgba(255,255,255,0.028); border:1px solid rgba(255,255,255,0.06);
+  border-left:2px solid rgba(255,255,255,0.10);
+  border-radius:10px; padding:13px 14px;
+  transition:border-color .22s cubic-bezier(.4,0,.2,1), background .22s cubic-bezier(.4,0,.2,1), transform .22s cubic-bezier(.4,0,.2,1),
+             padding .38s cubic-bezier(.4,0,.2,1);
 }
-.ryg-stat-lbl { font-size:7.5px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.28); margin-bottom:5px; }
-.ryg-stat-val { font-family:var(--ff-d); font-size:25px; font-weight:700; color:rgba(255,255,255,0.88); line-height:1; margin-bottom:4px; }
+.ryg-stat-card:hover { background:rgba(255,255,255,0.04); transform:translateY(-1px); }
+.ryg-stat-top { display:flex; align-items:flex-start; justify-content:space-between; gap:6px; margin-bottom:7px; }
+.ryg-stat-lbl { font-size:9px; letter-spacing:0.05em; text-transform:uppercase; color:rgba(255,255,255,0.30); font-weight:500; }
+.ryg-stat-trend {
+  font-size:8px; font-weight:600; letter-spacing:0.01em; padding:2px 6px; border-radius:4px;
+  white-space:nowrap; flex-shrink:0;
+}
+.ryg-stat-trend.up { color:var(--grn); background:rgba(0,201,103,0.10); }
+.ryg-stat-trend.down { color:var(--red2); background:rgba(232,48,78,0.10); }
+.ryg-stat-val {
+  font-family:var(--ff-d); font-size:28px; font-weight:700;
+  color:rgba(255,255,255,0.90); line-height:1; margin-bottom:5px;
+  letter-spacing:0.01em;
+  transition:font-size .38s cubic-bezier(.4,0,.2,1);
+}
 .ryg-stat-val.g { color:var(--grn); text-shadow:var(--ggn); }
 .ryg-stat-val.c { color:var(--cy2); text-shadow:var(--gcx); }
-.ryg-stat-sub { font-size:9px; color:rgba(255,255,255,0.38); margin-bottom:2px; }
-.ryg-stat-note { font-size:8px; color:rgba(255,255,255,0.22); }
+.ryg-stat-val.v { color:var(--in3); text-shadow:var(--gvio2); }
+.ryg-stat-val.a { color:var(--amb2); text-shadow:var(--gamb); }
+.ryg-stat-val.r { color:#e08bb8; text-shadow:0 0 6px rgba(224,139,184,0.30),0 0 18px rgba(224,139,184,0.12); }
+.ryg-stat-sub { font-size:9.5px; color:rgba(255,255,255,0.36); margin-bottom:5px; font-weight:400; }
+.ryg-stat-note { font-size:8px; color:rgba(255,255,255,0.20); line-height:1.45; }
 
+/* Accent rails — left border per card meaning */
+.ryg-c-emerald { border-left-color:rgba(0,201,103,0.38); }
+.ryg-c-emerald:hover { border-left-color:rgba(0,201,103,0.65); }
+.ryg-c-cyan { border-left-color:rgba(0,184,217,0.38); }
+.ryg-c-cyan:hover { border-left-color:rgba(0,184,217,0.65); }
+.ryg-c-violet { border-left-color:rgba(124,128,224,0.38); }
+.ryg-c-violet:hover { border-left-color:rgba(124,128,224,0.65); }
+.ryg-c-amber { border-left-color:rgba(212,152,0,0.38); }
+.ryg-c-amber:hover { border-left-color:rgba(212,152,0,0.65); }
+.ryg-c-rose { border-left-color:rgba(224,139,184,0.38); }
+.ryg-c-rose:hover { border-left-color:rgba(224,139,184,0.65); }
+
+/* Progress bars for volume/consistency cards */
+.ryg-pbar { height:4px; border-radius:3px; background:rgba(255,255,255,0.06); overflow:hidden; margin-top:2px; }
+.ryg-pbar-fill { height:100%; border-radius:3px; transition:width .45s cubic-bezier(.4,0,.2,1); }
+.ryg-pbar-fill.cyan { background:linear-gradient(90deg,var(--cyd),var(--cy2)); box-shadow:0 0 8px rgba(0,184,217,0.30); }
+.ryg-pbar-fill.rose { background:linear-gradient(90deg,#a8568f,#e08bb8); box-shadow:0 0 8px rgba(224,139,184,0.28); }
+
+/* ── Chart — the visual hero ── */
+.ryg-main-row { transition:gap .38s cubic-bezier(.4,0,.2,1); display:flex; align-items:stretch; }
 .ryg-chart-box {
-  background:rgba(0,0,0,0.22); border:1px solid rgba(0,184,217,0.07);
-  border-radius:9px; padding:14px 16px;
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px; padding:16px 18px;
+  display:flex; flex-direction:column; flex:1; min-width:0;
+  transition:flex-grow .38s cubic-bezier(.4,0,.2,1), padding .38s cubic-bezier(.4,0,.2,1);
 }
-.ryg-chart-hdr { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-.ryg-chart-title { font-size:8px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.36); font-weight:600; }
-.ryg-chart-legend { font-size:8px; color:rgba(255,255,255,0.26); }
+.ryg-chart-hdr { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+.ryg-chart-title { font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.28); font-weight:500; }
+.ryg-chart-meta { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+.ryg-chart-meta-item {
+  display:flex; align-items:center; gap:6px; font-size:10px;
+  color:rgba(255,255,255,0.32); font-weight:500; white-space:nowrap;
+}
+.ryg-chart-meta-item strong { color:rgba(255,255,255,0.78); font-weight:600; font-family:var(--ff-d); font-size:11px; }
+.ryg-chart-meta-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+.ryg-chart-meta-dot.peak { background:var(--grn); box-shadow:var(--ggn2); }
+.ryg-chart-meta-dot.avg { background:rgba(255,255,255,0.25); }
+.ryg-chart-meta-dot.trend { background:var(--cy2); box-shadow:var(--gcx2); animation:ryg-trend-pulse 2.4s ease-in-out infinite; }
+@keyframes ryg-trend-pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%     { opacity:0.5; transform:scale(0.75); }
+}
+.ryg-chart-box #ryg-chart-svg { flex:1; width:100%; height:100%; min-height:180px; display:block; transition:min-height .38s cubic-bezier(.4,0,.2,1); }
+
+/* ── Chart entrance animations — dynamic, presentable draw-in ── */
+.ryg-line-path {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ryg-draw-line 1.1s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes ryg-draw-line {
+  to { stroke-dashoffset: 0; }
+}
+.ryg-area-path {
+  opacity: 0;
+  animation: ryg-fade-area .9s ease-out .35s forwards;
+}
+@keyframes ryg-fade-area {
+  to { opacity: 1; }
+}
+.ryg-pt, .ryg-pt-halo {
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+  transform: scale(0.3);
+  animation: ryg-pop-point .42s cubic-bezier(.34,1.56,.64,1) forwards;
+}
+@keyframes ryg-pop-point {
+  to { opacity: 1; transform: scale(1); }
+}
+.ryg-pt-label {
+  opacity: 0;
+  transform: translateY(4px);
+  transform-box: fill-box;
+  animation: ryg-rise-label .38s ease-out forwards;
+}
+@keyframes ryg-rise-label {
+  to { opacity: 1; transform: translateY(0); }
+}
+.ryg-avg-line, .ryg-avg-label {
+  opacity: 0;
+  animation: ryg-fade-area 1s ease-out .9s forwards;
+}
+.ryg-pt {
+  transition: r .18s ease, stroke-width .18s ease;
+  cursor: pointer;
+}
+.ryg-pt:hover {
+  r: 8.5;
+  filter: drop-shadow(0 0 6px rgba(0,184,217,0.45));
+}
+
+/* Expanded / focus-mode chart — analytics hidden */
+.ryg-card.ryg-focus .ryg-chart-box { flex-grow:1; }
+.ryg-card.ryg-focus .ryg-chart-box #ryg-chart-svg { min-height:200px; max-height:none; height:100%; }
+.ryg-card.ryg-focus .ryg-main-row { gap:0; }
+
+/* Focus mode — KPI row fully hides alongside the session log */
+.ryg-stats-row {
+  max-height:300px; opacity:1; overflow:hidden;
+  transition:max-height .38s cubic-bezier(.4,0,.2,1), opacity .26s ease, margin .38s cubic-bezier(.4,0,.2,1);
+}
+.ryg-card.ryg-focus .ryg-stats-row {
+  max-height:0; opacity:0; margin-bottom:0; pointer-events:none;
+}
 
 .slog-table-box {
-  background:rgba(0,0,0,0.22); border:1px solid rgba(0,184,217,0.07);
-  border-radius:9px; padding:14px 16px;
+  background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.06);
+  border-radius:12px; padding:16px 18px;
+  transition:opacity .26s cubic-bezier(.4,0,.2,1), transform .3s cubic-bezier(.4,0,.2,1),
+             max-width .38s cubic-bezier(.4,0,.2,1), margin .38s cubic-bezier(.4,0,.2,1),
+             padding .38s cubic-bezier(.4,0,.2,1), border-width .38s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
 }
-.slog-hdr { font-size:8px; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.36); font-weight:600; margin-bottom:12px; }
+.slog-table-box.ryg-hidden {
+  opacity:0; transform:translateX(8px) scale(0.98);
+  max-width:0; min-width:0; flex:0 0 0; padding:16px 0; margin:0;
+  border-width:0; pointer-events:none;
+}
+.slog-hdr { font-size:9px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.28); font-weight:500; margin-bottom:12px; }
 .slog-col-hdr {
   display:grid; grid-template-columns:1fr 52px 58px; gap:6px;
   padding-bottom:7px; border-bottom:1px solid rgba(255,255,255,0.05); margin-bottom:4px;
 }
-.slog-ch { font-size:8px; letter-spacing:0.10em; text-transform:uppercase; color:rgba(255,255,255,0.26); }
+.slog-ch { font-size:8px; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.22); font-weight:500; }
 .slog-ch:nth-child(2) { text-align:center; }
 .slog-ch:nth-child(3) { text-align:right; }
 .slog-row {
   display:grid; grid-template-columns:1fr 52px 58px; gap:6px;
-  padding:7px 0; border-bottom:1px solid rgba(255,255,255,0.04); align-items:center;
+  padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.035); align-items:center;
 }
 .slog-row:last-child { border-bottom:none; }
-.slog-session { font-size:11px; color:rgba(255,255,255,0.60); }
-.slog-q { font-size:11.5px; font-weight:600; color:rgba(255,255,255,0.72); text-align:center; }
-.slog-acc { font-size:11.5px; font-weight:700; color:rgba(255,255,255,0.72); text-align:right; }
+.slog-session { font-size:11px; color:rgba(255,255,255,0.52); font-weight:400; }
+.slog-q { font-size:11px; font-weight:500; color:rgba(255,255,255,0.60); text-align:center; }
+.slog-acc { font-size:11px; font-weight:600; color:rgba(255,255,255,0.62); text-align:right; }
 .slog-acc.g { color:var(--grn); text-shadow:var(--ggn2); }
 .slog-total-row {
   display:grid; grid-template-columns:1fr 52px 58px; gap:6px;
-  padding:7px 0 2px; border-top:1px solid rgba(255,255,255,0.07); margin-top:4px;
+  padding:8px 0 2px; border-top:1px solid rgba(255,255,255,0.07); margin-top:4px;
 }
 
 /* Light mode overrides for new components */
@@ -21923,18 +22658,91 @@ html.light-mode body,
 .light-mode .cc-action-title { color:#1E293B!important; }
 .light-mode .cc-action-detail { color:#64748B!important; }
 .light-mode .err-row { border-bottom-color:rgba(148,163,184,0.10)!important; }
-.light-mode .pj-rhythm-bar { background:rgba(0,0,0,0.04)!important; border-color:rgba(148,163,184,0.10)!important; }
-.light-mode .pj-stat-sep { background:rgba(148,163,184,0.12)!important; }
-.light-mode .pj-stat-lbl { color:#94A3B8!important; }
-.light-mode .pj-stat-val { color:#3D2B1F!important; }
-.light-mode .pj-stat-unit { color:#64748B!important; }
-.light-mode .pj-stat-sub { color:#64748B!important; }
+.light-mode .pj-insight { color:#64748B!important; }
+.light-mode .pj-insight strong { color:#1E293B!important; }
+.light-mode .pj-consistency { background:rgba(79,70,229,0.05)!important; border-color:rgba(79,70,229,0.16)!important; }
+.light-mode .pj-consistency-dot { background:#4F46E5!important; box-shadow:none!important; }
+.light-mode .pj-consistency-lbl { color:#94A3B8!important; }
+.light-mode .pj-consistency-val { color:#4F46E5!important; text-shadow:none!important; }
+.light-mode .pj-stat-card { background:rgba(0,0,0,0.02)!important; border-color:rgba(148,163,184,0.12)!important; }
+.light-mode .pj-stat-card:hover { background:rgba(0,0,0,0.04)!important; }
+.light-mode .pj-stat-card .pj-stat-lbl { color:#94A3B8!important; }
+.light-mode .pj-stat-card .pj-stat-val { color:#1E293B!important; }
+.light-mode .pj-stat-card .pj-stat-unit { color:#64748B!important; }
+.light-mode .pj-stat-card .pj-stat-sub { color:#64748B!important; }
+.light-mode .pj-stat-chev { color:#94A3B8!important; }
+.light-mode .pj-c-violet { border-left-color:rgba(79,70,229,0.40)!important; }
+.light-mode .pj-c-violet .pj-stat-icon { color:#4F46E5!important; }
+.light-mode .pj-c-violet:hover, .light-mode .pj-c-violet.expanded { border-left-color:#4F46E5!important; box-shadow:0 0 0 1px rgba(79,70,229,0.10)!important; }
+.light-mode .pj-c-violet.expanded .pj-stat-lbl { color:#4F46E5!important; }
+.light-mode .pj-c-amber { border-left-color:rgba(180,83,9,0.40)!important; }
+.light-mode .pj-c-amber .pj-stat-icon { color:#B45309!important; }
+.light-mode .pj-c-amber:hover, .light-mode .pj-c-amber.expanded { border-left-color:#B45309!important; box-shadow:0 0 0 1px rgba(180,83,9,0.10)!important; }
+.light-mode .pj-c-amber.expanded .pj-stat-lbl { color:#B45309!important; }
+.light-mode .pj-c-cyan { border-left-color:rgba(99,102,241,0.40)!important; }
+.light-mode .pj-c-cyan .pj-stat-icon { color:#6366F1!important; }
+.light-mode .pj-c-cyan:hover, .light-mode .pj-c-cyan.expanded { border-left-color:#6366F1!important; box-shadow:0 0 0 1px rgba(99,102,241,0.10)!important; }
+.light-mode .pj-c-cyan.expanded .pj-stat-lbl { color:#6366F1!important; }
+.light-mode .pj-c-emerald { border-left-color:rgba(15,118,110,0.40)!important; }
+.light-mode .pj-c-emerald .pj-stat-icon { color:#0F766E!important; }
+.light-mode .pj-c-emerald:hover, .light-mode .pj-c-emerald.expanded { border-left-color:#0F766E!important; box-shadow:0 0 0 1px rgba(15,118,110,0.10)!important; }
+.light-mode .pj-c-emerald.expanded .pj-stat-lbl { color:#0F766E!important; }
+.light-mode .pj-stat-card.expanded .pj-stat-val { text-shadow:none!important; }
+.light-mode .pj-analytics-inner { background:#FFFAF4!important; border-color:rgba(148,163,184,0.10)!important; }
+.light-mode .pj-analytics-block-lbl { color:#94A3B8!important; }
+.light-mode .pj-analytics-block-val { color:#1E293B!important; }
+.light-mode .pj-analytics-block-note { color:#64748B!important; }
+.light-mode .pj-pbar { background:rgba(148,163,184,0.18)!important; }
+.light-mode .pj-pbar-fill { box-shadow:none!important; }
+.light-mode .pj-pbar-fill.violet { background:#4F46E5!important; }
+.light-mode .pj-pbar-fill.amber { background:#B45309!important; }
+.light-mode .pj-pbar-fill.cyan { background:#6366F1!important; }
+.light-mode .pj-pbar-fill.emerald { background:#0F766E!important; }
+.light-mode .pj-streak-dot { background:rgba(148,163,184,0.14)!important; border-color:rgba(148,163,184,0.16)!important; }
+.light-mode .pj-streak-dot.on { background:rgba(79,70,229,0.45)!important; border-color:#4F46E5!important; box-shadow:none!important; }
+.light-mode .pj-weekbar { background:#0F766E!important; box-shadow:none!important; }
+.light-mode .pj-weekbar.cur { background:#14B8A6!important; }
+.light-mode .pj-heatmap-hero { background:rgba(0,0,0,0.02)!important; border-color:rgba(148,163,184,0.12)!important; }
+.light-mode .pj-heatmap-title { color:#94A3B8!important; }
+.light-mode .pj-heatmap-period { color:#CBD5E1!important; }
+.light-mode .pj-day-lbl { color:#94A3B8!important; }
+.light-mode .pj-month-lbl { color:#94A3B8!important; }
+.light-mode .pj-month-lbl.upcoming { color:#CBD5E1!important; }
+.light-mode .pj-month-lbl.upcoming::after { color:#CBD5E1!important; }
+.light-mode .pj-cell.future { border-color:rgba(148,163,184,0.14)!important; }
+.light-mode .pj-legend-lbl { color:#94A3B8!important; }
 .light-mode .ryg-tab.on { color:#4F46E5!important; background:rgba(79,70,229,0.08)!important; border-color:rgba(79,70,229,0.18)!important; text-shadow:none!important; }
+.light-mode .ryg-insight { color:#64748B!important; }
+.light-mode .ryg-insight strong, .light-mode .ryg-insight b { color:#4F46E5!important; }
 .light-mode .ryg-stat-card { background:#FFFAF4!important; border-color:rgba(148,163,184,0.10)!important; }
+.light-mode .ryg-stat-card:hover { background:#FFF6EB!important; }
+.light-mode .ryg-stat-lbl { color:#94A3B8!important; }
 .light-mode .ryg-stat-val { color:#3D2B1F!important; }
 .light-mode .ryg-stat-val.g { color:#0F766E!important; text-shadow:none!important; }
 .light-mode .ryg-stat-val.c { color:#4F46E5!important; text-shadow:none!important; }
-.light-mode .ryg-stat-sub { color:#64748B!important; }
+.light-mode .ryg-stat-val.v { color:#6366F1!important; text-shadow:none!important; }
+.light-mode .ryg-stat-val.a { color:#B45309!important; text-shadow:none!important; }
+.light-mode .ryg-stat-val.r { color:#BE5A8E!important; text-shadow:none!important; }
+.light-mode .ryg-stat-sub { color:#475569!important; }
+.light-mode .ryg-stat-note { color:#94A3B8!important; }
+.light-mode .ryg-stat-trend.up { color:#0F766E!important; background:rgba(15,118,110,0.08)!important; }
+.light-mode .ryg-stat-trend.down { color:#B03A4A!important; background:rgba(176,58,74,0.08)!important; }
+.light-mode .ryg-pbar { background:rgba(148,163,184,0.15)!important; }
+.light-mode .ryg-pbar-fill.cyan { background:#4F46E5!important; box-shadow:none!important; }
+.light-mode .ryg-pbar-fill.rose { background:#BE5A8E!important; box-shadow:none!important; }
+.light-mode .ryg-c-emerald { border-left-color:rgba(15,118,110,0.35)!important; }
+.light-mode .ryg-c-emerald:hover { border-left-color:#0F766E!important; }
+.light-mode .ryg-c-cyan { border-left-color:rgba(79,70,229,0.35)!important; }
+.light-mode .ryg-c-cyan:hover { border-left-color:#4F46E5!important; }
+.light-mode .ryg-c-violet { border-left-color:rgba(99,102,241,0.35)!important; }
+.light-mode .ryg-c-violet:hover { border-left-color:#6366F1!important; }
+.light-mode .ryg-c-amber { border-left-color:rgba(180,83,9,0.35)!important; }
+.light-mode .ryg-c-amber:hover { border-left-color:#B45309!important; }
+.light-mode .ryg-c-rose { border-left-color:rgba(190,90,142,0.35)!important; }
+.light-mode .ryg-c-rose:hover { border-left-color:#BE5A8E!important; }
+.light-mode .ryg-chart-meta-item { color:#94A3B8!important; }
+.light-mode .ryg-chart-meta-item strong { color:#1E293B!important; }
+.light-mode .ryg-chart-meta-dot.avg { background:#CBD5E1!important; }
 .light-mode .ryg-chart-box, .light-mode .slog-table-box { background:#FFFAF4!important; border-color:rgba(148,163,184,0.10)!important; }
 .light-mode .slog-session { color:#475569!important; }
 .light-mode .slog-q { color:#1E293B!important; }
@@ -21954,7 +22762,13 @@ html.light-mode body,
   .cc-actions-row { flex-direction:column; gap:8px; }
   .ryg-stats-row { flex-wrap:wrap; gap:8px; }
   .ryg-stat-card { flex:1 1 calc(50% - 4px); }
+  .ryg-stat-val { font-size:26px; }
+  .ryg-main-row { flex-direction:column; }
+  .ryg-card.ryg-focus .ryg-main-row { gap:0; }
+  .slog-table-box.ryg-hidden { max-width:none; flex-basis:0; }
+  .ryg-chart-meta { gap:10px; }
   .pj-stat { padding:10px 10px; }
+  .pj-stat-card { padding:10px 12px; }
 }
 
 </style>
@@ -22152,3 +22966,723 @@ html.light-mode body,
 
 /* ════ END HIERARCHY SYSTEM ════ */
 </style>
+
+
+<style>
+/* ══════════════════════════════════════════════════════════════════
+   MASTERY EXPERIENCE — PREMIUM DASHBOARD REDESIGN
+   Apple-level polish · Notion-level clarity · Brilliant-style focus
+   Same palette (navy / cyan / teal). New hierarchy, spacing, identity.
+══════════════════════════════════════════════════════════════════ */
+
+#scr-db .cnt {
+  gap: 28px !important;
+  padding: 22px 28px 40px !important;
+  width: 100%;
+}
+
+/* ── Shared section eyebrow / header style ─────────────────────── */
+.mst-eyebrow {
+  display: flex; align-items: center; gap: 9px;
+  font-family: var(--ff-d); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.26em; text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+}
+.mst-pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+  background: var(--cy);
+  box-shadow: 0 0 10px rgba(0,184,217,0.55), 0 0 24px rgba(0,184,217,0.22);
+  animation: mst-pulse 2.4s ease-in-out infinite;
+}
+@keyframes mst-pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%     { opacity: 0.55; transform: scale(0.78); }
+}
+
+/* Hierarchy-correct status dots — immune to global .ldot overrides */
+.mst-dot {
+  width: 6.5px; height: 6.5px; border-radius: 50%; flex-shrink: 0;
+}
+.mst-dot-cy {
+  background: #00b8d9;
+  box-shadow: 0 0 8px rgba(0,184,217,0.30), 0 0 18px rgba(0,184,217,0.12);
+}
+.mst-dot-amb {
+  background: #d49800;
+  box-shadow: 0 0 8px rgba(212,152,0,0.26), 0 0 18px rgba(212,152,0,0.10);
+}
+.mst-dot-muted {
+  background: rgba(255,255,255,0.22);
+  box-shadow: none;
+}
+.mst-section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px; flex-wrap: wrap;
+}
+.mst-section-sub {
+  font-family: var(--ff-b); font-size: 12px; color: rgba(255,255,255,0.30);
+  letter-spacing: 0.01em;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   1B · LEARNING JOURNEY — collapsible roadmap (below hero)
+══════════════════════════════════════════════════════════════════ */
+.mst-journey-collapsible {
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(10,20,38,0.92), rgba(5,11,22,0.97));
+  border: 1px solid rgba(0,184,217,0.10);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.40), inset 0 1px 0 rgba(255,255,255,0.04);
+  overflow: hidden;
+}
+.mst-journey-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; gap: 16px;
+  padding: 18px 26px;
+  background: none; border: none; cursor: pointer;
+  font-family: inherit; text-align: left;
+  transition: background 0.18s ease;
+}
+.mst-journey-toggle:hover { background: rgba(255,255,255,0.02); }
+.mst-journey-toggle-left {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.mst-journey-toggle-lbl {
+  font-family: var(--ff-d); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.78);
+}
+.mst-journey-toggle-path {
+  font-family: var(--ff-b); font-size: 12px; color: rgba(255,255,255,0.30);
+}
+.mst-journey-toggle-right {
+  display: flex; align-items: center; gap: 16px; flex-shrink: 0;
+}
+.mst-journey-toggle-current {
+  font-family: var(--ff-b); font-size: 12.5px; color: rgba(255,255,255,0.46);
+}
+.mst-journey-toggle-current b { color: var(--cy2); font-weight: 600; }
+.mst-journey-toggle-chevron {
+  display: flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(0,184,217,0.08); border: 1px solid rgba(0,184,217,0.18);
+  color: var(--cy2); font-size: 12px;
+  transition: transform 0.25s ease, background 0.18s ease;
+}
+.mst-journey-toggle:hover .mst-journey-toggle-chevron { background: rgba(0,184,217,0.14); }
+.mst-journey-collapsible.open .mst-journey-toggle-chevron { transform: rotate(180deg); }
+
+.mst-journey-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(.4,0,.2,1), padding 0.35s ease, opacity 0.25s ease;
+  opacity: 0;
+  padding: 0 26px;
+}
+.mst-journey-collapsible.open .mst-journey-body {
+  max-height: 420px;
+  opacity: 1;
+  padding: 4px 26px 26px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   1 · HERO — CURRENT LEARNING MISSION  (Tier 1, dominant)
+══════════════════════════════════════════════════════════════════ */
+.mst-hero {
+  position: relative;
+  border-radius: 22px;
+  padding: 44px 48px 36px;
+  background:
+    radial-gradient(ellipse 70% 60% at 14% 8%, rgba(0,184,217,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 70% at 100% 100%, rgba(0,168,152,0.07) 0%, transparent 65%),
+    linear-gradient(152deg, rgba(7,16,31,0.97), rgba(3,8,18,0.99));
+  border: 1px solid rgba(0,184,217,0.16);
+  box-shadow:
+    0 1px 0 rgba(0,184,217,0.22) inset,
+    0 24px 70px rgba(0,0,0,0.55),
+    0 0 120px rgba(0,184,217,0.05);
+  overflow: hidden;
+}
+.mst-hero::before {
+  content:'';
+  position: absolute; top: 0; left: 6%; right: 6%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,184,217,0.55), rgba(120,225,245,0.30), rgba(0,184,217,0.55), transparent);
+}
+
+.mst-hero-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 30px; flex-wrap: wrap; gap: 12px;
+}
+.mst-hero-path {
+  font-family: var(--ff-b); font-size: 12px; color: rgba(255,255,255,0.34);
+  letter-spacing: 0.04em;
+}
+.mst-hero-path-name { color: var(--cy2); font-weight: 600; }
+.mst-hero-path-sep  { margin: 0 8px; opacity: 0.4; }
+
+.mst-hero-grid {
+  display: grid; grid-template-columns: 1.55fr 1fr; gap: 48px; align-items: center;
+}
+
+.mst-hero-title {
+  font-family: var(--ff-d); font-weight: 700; letter-spacing: 0.02em;
+  font-size: 64px; line-height: 1.04; color: rgba(255,255,255,0.98);
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #ffffff 35%, var(--cy3) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.mst-hero-sub {
+  font-family: var(--ff-b); font-weight: 300; font-size: 16px; line-height: 1.6;
+  color: rgba(255,255,255,0.42); max-width: 46ch; margin-bottom: 30px;
+}
+
+.mst-hero-stats {
+  display: flex; align-items: center; gap: 26px; margin-bottom: 32px;
+}
+.mst-stat-val {
+  font-family: var(--ff-d); font-size: 28px; font-weight: 700;
+  color: rgba(255,255,255,0.92); line-height: 1;
+}
+.mst-stat-val.amb { color: var(--amb2); text-shadow: var(--gamb); }
+.mst-stat-val.grn { color: var(--grn); text-shadow: var(--ggn2); }
+.mst-stat-lbl {
+  font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.30); margin-top: 5px; font-weight: 600;
+}
+.mst-stat-sep { width: 1px; height: 38px; background: rgba(255,255,255,0.07); }
+
+.mst-resume-btn {
+  display: flex; align-items: center; gap: 18px;
+  width: 100%; max-width: 480px;
+  padding: 18px 26px;
+  border-radius: 14px; border: 1px solid rgba(0,184,217,0.40);
+  background: linear-gradient(120deg, rgba(0,184,217,0.16), rgba(0,168,152,0.10));
+  cursor: pointer; text-align: left;
+  box-shadow: 0 10px 34px rgba(0,184,217,0.16), inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.mst-resume-btn:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,184,217,0.65);
+  box-shadow: 0 14px 44px rgba(0,184,217,0.26), inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.mst-resume-icon {
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--cy), var(--tl));
+  color: #03121a; font-size: 14px;
+  box-shadow: 0 0 18px rgba(0,184,217,0.45);
+}
+.mst-resume-copy { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.mst-resume-title {
+  font-family: var(--ff-d); font-size: 16px; font-weight: 700;
+  letter-spacing: 0.04em; color: rgba(255,255,255,0.96);
+}
+.mst-resume-sub {
+  font-family: var(--ff-b); font-size: 11.5px; color: rgba(255,255,255,0.40);
+}
+.mst-resume-arrow {
+  font-size: 18px; color: var(--cy2); flex-shrink: 0;
+  transition: transform 0.18s ease;
+}
+.mst-resume-btn:hover .mst-resume-arrow { transform: translateX(4px); }
+
+/* ── Mastery Orb — signature visual identity ───────────────────── */
+.mst-hero-orb {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 16px;
+}
+.mst-orb-svg { width: 240px; height: 240px; transform: rotate(-90deg); }
+.mst-orb-track {
+  fill: none; stroke: rgba(255,255,255,0.045); stroke-width: 10;
+}
+.mst-orb-track-inner {
+  fill: none; stroke: rgba(0,184,217,0.06); stroke-width: 1.5;
+  stroke-dasharray: 2 7;
+}
+.mst-orb-fill {
+  fill: none; stroke: url(#mst-orb-grad); stroke-width: 10;
+  stroke-linecap: round;
+  stroke-dasharray: 578;
+  stroke-dashoffset: 318;
+  filter: drop-shadow(0 0 10px rgba(0,184,217,0.55));
+  transition: stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);
+}
+.mst-orb-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+}
+.mst-orb-pct {
+  font-family: var(--ff-d); font-size: 46px; font-weight: 700;
+  color: rgba(255,255,255,0.96); line-height: 1;
+  text-shadow: var(--gcx2);
+}
+.mst-orb-pct span { font-size: 22px; opacity: 0.55; }
+.mst-orb-lbl {
+  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--cy2); margin-top: 6px; font-weight: 700;
+}
+.mst-orb-caption {
+  font-family: var(--ff-b); font-size: 11.5px; color: rgba(255,255,255,0.32);
+  letter-spacing: 0.02em;
+}
+
+/* ── Hero action row ─────────────────────────────────────────────  */
+.mst-hero-actions {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  margin-top: 36px; padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.mst-action {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 16px 18px; border-radius: 12px;
+  background: rgba(255,255,255,0.012);
+  border: 1px solid rgba(255,255,255,0.05);
+  transition: border-color 0.18s ease, background 0.18s ease;
+}
+.mst-action:hover { background: rgba(255,255,255,0.025); }
+.mst-action.accent-grn { border-color: rgba(0,201,103,0.16); background: rgba(0,201,103,0.025); }
+.mst-action.accent-amb { border-color: rgba(212,152,0,0.16); background: rgba(212,152,0,0.025); }
+.mst-action-icon {
+  font-size: 16px; flex-shrink: 0; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px; background: rgba(0,184,217,0.08); color: var(--cy2);
+}
+.mst-action.accent-grn .mst-action-icon { background: rgba(0,201,103,0.10); color: var(--grn); }
+.mst-action.accent-amb .mst-action-icon { background: rgba(212,152,0,0.10); color: var(--amb2); }
+.mst-action-lbl {
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.36); font-weight: 700; margin-bottom: 6px;
+}
+.mst-action-title { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.86); line-height: 1.35; }
+.mst-action-detail { font-size: 11px; color: rgba(255,255,255,0.36); margin-top: 4px; }
+.mst-action-detail.mono { font-family: var(--ff-m); color: var(--cy2); font-size: 10.5px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   2 · TIER 2 — MASTERY · MOMENTUM · CAMPUS  (3-card row)
+══════════════════════════════════════════════════════════════════ */
+.mst-tier2-row {
+  display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px;
+}
+.mst-card2 {
+  border-radius: 18px; padding: 24px 26px;
+  background: linear-gradient(160deg, rgba(10,20,38,0.92), rgba(5,11,22,0.97));
+  border: 1px solid rgba(0,184,217,0.10);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04);
+  display: flex; flex-direction: column;
+}
+.mst-card2-lbl {
+  font-family: var(--ff-d); font-size: 10px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(255,255,255,0.42); font-weight: 700;
+  margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+}
+
+/* Learning Mastery card */
+.mst-rank-row { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.mst-rank-badge {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; color: var(--cy2);
+  background: linear-gradient(150deg, rgba(0,184,217,0.16), rgba(0,168,152,0.08));
+  border: 1px solid rgba(0,184,217,0.28);
+  box-shadow: 0 0 18px rgba(0,184,217,0.18);
+}
+.mst-rank-name { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 3px; }
+.mst-rank-next { font-size: 11.5px; color: rgba(255,255,255,0.36); }
+.mst-rank-next b { color: var(--cy2); font-weight: 600; }
+.mst-progress-track {
+  height: 6px; border-radius: 4px; background: rgba(255,255,255,0.05);
+  overflow: hidden; margin-bottom: 8px;
+}
+.mst-progress-fill {
+  height: 100%; border-radius: 4px;
+  background: linear-gradient(90deg, var(--tl), var(--cy));
+  box-shadow: 0 0 10px rgba(0,184,217,0.45);
+}
+.mst-progress-caption {
+  display: flex; justify-content: space-between; font-size: 10.5px;
+  color: rgba(255,255,255,0.32); margin-bottom: 20px;
+}
+.mst-milestones { display: flex; gap: 10px; margin-top: auto; }
+.mst-milestone {
+  flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 10px 6px; border-radius: 10px;
+  background: rgba(255,255,255,0.018); border: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+}
+.mst-milestone.done { border-color: rgba(0,201,103,0.22); background: rgba(0,201,103,0.04); }
+.mst-milestone-icon { font-size: 14px; color: rgba(255,255,255,0.25); }
+.mst-milestone.done .mst-milestone-icon { color: var(--grn); }
+.mst-milestone-lbl { font-size: 8.5px; letter-spacing: 0.04em; color: rgba(255,255,255,0.34); line-height: 1.3; }
+.mst-milestone.done .mst-milestone-lbl { color: rgba(255,255,255,0.62); }
+
+/* Momentum (streak) card */
+.mst-momentum-top { display: flex; align-items: center; gap: 18px; margin-bottom: 20px; }
+.mst-momentum-num {
+  font-family: var(--ff-d); font-size: 44px; font-weight: 700; line-height: 1;
+  color: var(--amb2); text-shadow: var(--gamb);
+}
+.mst-momentum-unit { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,152,0,0.55); margin-top: 4px; font-weight: 700; }
+.mst-momentum-best { font-size: 11.5px; color: rgba(255,255,255,0.34); }
+.mst-momentum-best b { color: rgba(255,255,255,0.70); font-weight: 600; }
+.mst-pips { display: flex; gap: 6px; margin-bottom: 16px; }
+.mst-pip {
+  flex: 1; height: 28px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center; font-size: 10px;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+  color: transparent;
+}
+.mst-pip.done {
+  background: rgba(0,201,103,0.10); border-color: rgba(0,201,103,0.35);
+  color: var(--grn); box-shadow: 0 0 10px rgba(0,201,103,0.18);
+}
+.mst-momentum-msg {
+  font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.6; margin-top: auto;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05);
+}
+.mst-momentum-msg b { color: var(--cy2); font-weight: 600; }
+
+/* Campus progress card */
+.mst-campus-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 16px; gap: 10px; }
+.mst-campus-name { font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.92); margin-bottom: 4px; }
+.mst-campus-meta { font-size: 11.5px; color: rgba(255,255,255,0.34); }
+.mst-campus-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.12em; white-space: nowrap;
+  color: var(--cy2); background: rgba(0,184,217,0.08); border: 1px solid rgba(0,184,217,0.20);
+  border-radius: 5px; padding: 4px 10px;
+}
+.mst-campus-modules { display: flex; gap: 6px; margin-bottom: 16px; }
+.mst-cmod {
+  flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.05);
+  position: relative; overflow: hidden;
+}
+.mst-cmod.done { background: linear-gradient(90deg, var(--tl), var(--grn)); box-shadow: 0 0 8px rgba(0,201,103,0.30); }
+.mst-cmod.active { background: linear-gradient(90deg, var(--tl), var(--cy)); box-shadow: 0 0 10px rgba(0,184,217,0.40); }
+.mst-cmod.active::after {
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: mst-shimmer 2.2s linear infinite;
+}
+@keyframes mst-shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.mst-campus-guide {
+  display: flex; align-items: center; gap: 10px; margin-top: auto;
+  padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 12px; color: rgba(255,255,255,0.42); line-height: 1.5;
+}
+.mst-campus-guide-icon {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 12px;
+  background: linear-gradient(135deg, rgba(79,82,196,0.20), rgba(0,184,217,0.12));
+  border: 1px solid rgba(120,130,230,0.30); color: var(--in3);
+}
+.mst-campus-guide b { color: rgba(255,255,255,0.70); font-weight: 600; }
+
+/* ══════════════════════════════════════════════════════════════════
+   3 · TIER 3 — LEARNING JOURNEY  +  MENTOR INSIGHTS
+══════════════════════════════════════════════════════════════════ */
+.mst-tier3-row { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; align-items: stretch; }
+.mst-tier3-row.mst-tier3-single { grid-template-columns: 1fr; }
+.mst-tier3-row.mst-tier3-single .mst-card3 { max-width: 100%; }
+.mst-card3 {
+  border-radius: 18px; padding: 24px 26px;
+  background: linear-gradient(165deg, rgba(6,12,24,0.92), rgba(3,7,15,0.97));
+  border: 1px solid rgba(0,184,217,0.07);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.40);
+}
+
+/* Learning Journey roadmap */
+.mst-journey-path { position: relative; padding: 28px 6px 4px; }
+.mst-journey-line {
+  position: absolute; top: 49px; left: 24px; right: 24px; height: 2px;
+  background: rgba(255,255,255,0.06); z-index: 0;
+}
+.mst-journey-line-fill {
+  position: absolute; top: 49px; left: 24px; height: 2px;
+  background: linear-gradient(90deg, var(--grn), var(--cy)); z-index: 1;
+  box-shadow: 0 0 8px rgba(0,184,217,0.4);
+}
+.mst-journey-nodes { display: flex; justify-content: space-between; position: relative; z-index: 2; }
+.mst-jnode { display: flex; flex-direction: column; align-items: center; gap: 10px; width: 16%; text-align: center; }
+.mst-jnode-dot {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700;
+  background: rgba(255,255,255,0.03); border: 2px solid rgba(255,255,255,0.10);
+  color: rgba(255,255,255,0.30);
+}
+.mst-jnode.done .mst-jnode-dot {
+  background: rgba(0,201,103,0.14); border-color: var(--grn); color: var(--grn);
+  box-shadow: 0 0 14px rgba(0,201,103,0.30);
+}
+.mst-jnode.current .mst-jnode-dot {
+  background: rgba(0,184,217,0.16); border-color: var(--cy);
+  color: var(--cy2); box-shadow: 0 0 0 5px rgba(0,184,217,0.10), 0 0 18px rgba(0,184,217,0.40);
+  animation: mst-jnode-pulse 2.4s ease-in-out infinite;
+}
+@keyframes mst-jnode-pulse {
+  0%,100% { box-shadow: 0 0 0 5px rgba(0,184,217,0.10), 0 0 18px rgba(0,184,217,0.40); }
+  50%     { box-shadow: 0 0 0 8px rgba(0,184,217,0.05), 0 0 26px rgba(0,184,217,0.55); }
+}
+.mst-jnode-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.42); line-height: 1.3; }
+.mst-jnode.done .mst-jnode-name { color: rgba(255,255,255,0.68); }
+.mst-jnode.current .mst-jnode-name { color: rgba(255,255,255,0.92); }
+.mst-jnode-tag {
+  font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700;
+  color: rgba(255,255,255,0.22);
+}
+.mst-jnode.done .mst-jnode-tag { color: var(--grn); }
+.mst-jnode.current .mst-jnode-tag { color: var(--cy2); }
+.mst-journey-note {
+  margin-top: 26px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.05);
+  font-size: 12.5px; color: rgba(255,255,255,0.36); line-height: 1.6;
+}
+.mst-journey-note b { color: rgba(255,255,255,0.70); font-weight: 600; }
+
+/* Mentor Insights */
+.mst-mentor-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.mst-mentor-badge {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.10em;
+  background: rgba(0,184,217,0.08); border: 1px solid rgba(0,184,217,0.20);
+  border-radius: 5px; padding: 4px 10px; color: var(--cy2);
+}
+.mst-mentor-pattern + .mst-mentor-pattern { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.045); }
+.mst-mp-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 4px; }
+.mst-mp-name { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.84); }
+.mst-mp-pct { font-family: var(--ff-d); font-size: 26px; font-weight: 700; line-height: 1; }
+.mst-mp-pct.cy { color: var(--cy2); text-shadow: var(--gcx2); }
+.mst-mp-pct.amb { color: var(--amb2); text-shadow: var(--gamb); }
+.mst-mp-sub { font-size: 10.5px; color: rgba(255,255,255,0.28); margin-bottom: 12px; }
+.mst-mp-grid { display: flex; gap: 14px; padding: 12px 14px; background: rgba(0,0,0,0.22); border-radius: 8px; border: 1px solid rgba(255,255,255,0.04); }
+.mst-mp-col { flex: 1; max-width: 420px; }
+.mst-mp-col-lbl { font-size: 8.5px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 5px; font-weight: 700; }
+.mst-mp-col-val { font-size: 11.5px; color: rgba(255,255,255,0.58); line-height: 1.5; }
+.mst-mp-col-val.mono { font-family: var(--ff-m); color: var(--cy2); font-size: 10.5px; }
+
+/* ══════════════════════════════════════════════════════════════════
+   4 · ANALYTICS & REPORTS  (Tier 4, recedes)
+══════════════════════════════════════════════════════════════════ */
+.mst-analytics-wrap { display: flex; flex-direction: column; gap: 18px; }
+.mst-analytics-divider {
+  display: flex; align-items: center; gap: 14px; margin: 6px 0;
+}
+.mst-analytics-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.05); }
+.mst-analytics-divider-lbl {
+  font-family: var(--ff-d); font-size: 9px; letter-spacing: 0.30em; text-transform: uppercase;
+  color: rgba(255,255,255,0.22); font-weight: 700; white-space: nowrap;
+}
+.mst-tier4-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; align-items: start; }
+.mst-card4 {
+  border-radius: 14px; padding: 18px 20px;
+  background: linear-gradient(165deg, rgba(5,9,18,0.85), rgba(2,4,9,0.92));
+  border: 1px solid rgba(255,255,255,0.045);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+}
+.mst-card4.gc-red,
+.mst-card4.err-dist-card {
+  background: linear-gradient(165deg, rgba(28,10,14,0.85), rgba(12,5,8,0.92)) !important;
+  border-color: rgba(176,58,74,0.18) !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35) !important;
+}
+.mst-card4.err-dist-card::before {
+  background: linear-gradient(90deg, transparent, rgba(176,58,74,0.30), transparent) !important;
+}
+.mst-card4.err-dist-card::after { display: none !important; }
+.mst-card4-lbl {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700;
+  color: rgba(255,255,255,0.34); margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+}
+
+@media (min-width: 1900px) {
+  .mst-orb-svg { width: 280px; height: 280px; }
+  .mst-orb-pct { font-size: 52px; }
+  .mst-hero-title { font-size: 72px; }
+  .mst-hero-sub { max-width: 56ch; }
+}
+
+/* ════ RESPONSIVE ════ */
+@media (max-width: 1280px) {
+  .mst-hero-grid { gap: 32px; }
+  .mst-hero-title { font-size: 52px; }
+  .mst-orb-svg { width: 200px; height: 200px; }
+  .mst-orb-pct { font-size: 38px; }
+  .mst-hero-stats { gap: 18px; }
+}
+@media (max-width: 980px) {
+  .mst-hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .mst-hero-orb { order: -1; }
+  .mst-orb-svg { width: 180px; height: 180px; }
+  .mst-tier2-row { grid-template-columns: 1fr; }
+  .mst-tier3-row { grid-template-columns: 1fr; }
+  .mst-tier4-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .mst-hero { padding: 28px 22px; }
+  .mst-hero-title { font-size: 42px; }
+  .mst-hero-actions { grid-template-columns: 1fr; }
+  .mst-hero-stats { gap: 16px; flex-wrap: wrap; }
+  .mst-journey-nodes { flex-wrap: wrap; gap: 16px 8px; }
+  .mst-jnode { width: 30%; }
+  .mst-journey-line, .mst-journey-line-fill { display: none; }
+  .ryg-header { flex-direction: column; align-items: flex-start !important; }
+  .ryg-header > div:last-child { width: 100%; flex-wrap: wrap; }
+  .ryg-tabs { flex: 1 1 auto; }
+  .mst-journey-toggle { flex-wrap: wrap; padding: 16px 18px; gap: 10px; }
+  .mst-journey-toggle-left { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .mst-journey-toggle-path { font-size: 11px; }
+  .mst-journey-toggle-right { width: 100%; justify-content: space-between; }
+  .mst-journey-body { padding: 0 18px; }
+  .mst-journey-collapsible.open .mst-journey-body { padding: 4px 18px 22px; max-height: 640px; }
+}
+
+/* ════ END MASTERY EXPERIENCE SYSTEM ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   MASTERY EXPERIENCE — LIGHT MODE
+══════════════════════════════════════════════════════════════════ */
+.light-mode .mst-dot-cy { background: var(--accent); box-shadow: 0 0 8px var(--accent-dim); }
+.light-mode .mst-dot-amb { background: var(--warn); box-shadow: 0 0 8px var(--warn-dim); }
+.light-mode .mst-dot-muted { background: rgba(15,23,42,0.18); }
+.light-mode .mst-pulse-dot { background: var(--accent); box-shadow: 0 0 10px var(--accent-dim), 0 0 24px var(--accent-dim); }
+
+.light-mode .mst-journey-collapsible {
+  background: var(--bg-surface);
+  border-color: rgba(15,23,42,0.06);
+  box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+}
+.light-mode .mst-journey-toggle:hover { background: var(--bg-raised); }
+.light-mode .mst-journey-toggle-lbl { color: var(--txt-heading); }
+.light-mode .mst-journey-toggle-path { color: var(--txt-dim); }
+.light-mode .mst-journey-toggle-current { color: var(--txt-muted); }
+.light-mode .mst-journey-toggle-current b { color: var(--accent); }
+.light-mode .mst-journey-toggle-chevron { background: var(--accent-dim); border-color: var(--accent-line); color: var(--accent); }
+.light-mode .mst-journey-toggle:hover .mst-journey-toggle-chevron { background: var(--accent-line); }
+
+.light-mode .mst-hero {
+  background:
+    radial-gradient(ellipse 70% 60% at 14% 8%, var(--accent-dim) 0%, transparent 60%),
+    linear-gradient(152deg, var(--bg-surface), var(--bg-elevated));
+  border-color: var(--accent-line);
+  box-shadow: 0 1px 0 var(--accent-line) inset, 0 18px 50px rgba(15,23,42,0.07);
+}
+.light-mode .mst-hero::before {
+  background: linear-gradient(90deg, transparent, var(--accent-line), var(--accent), var(--accent-line), transparent);
+}
+.light-mode .mst-eyebrow { color: var(--txt-muted); }
+.light-mode .mst-hero-path { color: var(--txt-dim); }
+.light-mode .mst-hero-path-name { color: var(--accent); }
+.light-mode .mst-hero-title {
+  background: linear-gradient(135deg, var(--txt-heading) 35%, var(--accent) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.light-mode .mst-hero-sub { color: var(--txt-body); }
+.light-mode .mst-stat-val { color: var(--txt-heading); }
+.light-mode .mst-stat-val.amb { color: var(--warn); text-shadow: none; }
+.light-mode .mst-stat-val.grn { color: var(--success); text-shadow: none; }
+.light-mode .mst-stat-sep { background: var(--accent-line); }
+.light-mode .mst-resume-btn {
+  background: linear-gradient(120deg, var(--accent), var(--accent-soft));
+  border-color: var(--accent);
+  box-shadow: 0 10px 28px rgba(79,70,229,0.22);
+}
+.light-mode .mst-resume-icon { background: #fff; color: var(--accent); box-shadow: none; }
+.light-mode .mst-resume-title { color: #fff; }
+.light-mode .mst-resume-sub { color: rgba(255,255,255,0.78); }
+.light-mode .mst-resume-arrow { color: #fff; }
+.light-mode .mst-orb-track { stroke: var(--accent-dim); }
+.light-mode .mst-orb-track-inner { stroke: var(--accent-line); }
+.light-mode .mst-orb-fill { filter: none; }
+.light-mode .mst-orb-pct { color: var(--txt-heading); text-shadow: none; }
+.light-mode .mst-orb-lbl { color: var(--accent); }
+.light-mode .mst-orb-caption { color: var(--txt-dim); }
+.light-mode .mst-hero-actions { border-top-color: rgba(15,23,42,0.06); }
+.light-mode .mst-action { background: var(--bg-raised); border-color: rgba(15,23,42,0.06); }
+.light-mode .mst-action:hover { background: var(--bg-sec); }
+.light-mode .mst-action.accent-grn { background: var(--success-dim); border-color: var(--success-line); }
+.light-mode .mst-action.accent-amb { background: var(--warn-dim); border-color: var(--warn-line); }
+.light-mode .mst-action-icon { background: var(--accent-dim); color: var(--accent); }
+.light-mode .mst-action.accent-grn .mst-action-icon { background: var(--success-dim); color: var(--success); }
+.light-mode .mst-action.accent-amb .mst-action-icon { background: var(--warn-dim); color: var(--warn); }
+.light-mode .mst-action-lbl { color: var(--txt-dim); }
+.light-mode .mst-action-title { color: var(--txt-heading); }
+.light-mode .mst-action-detail { color: var(--txt-muted); }
+.light-mode .mst-action-detail.mono { color: var(--accent); }
+
+.light-mode .mst-card2,
+.light-mode .mst-card3,
+.light-mode .mst-card4 {
+  background: var(--bg-surface);
+  border-color: rgba(15,23,42,0.06);
+  box-shadow: 0 8px 22px rgba(15,23,42,0.06);
+}
+.light-mode .mst-card2-lbl { color: var(--txt-dim); }
+
+.light-mode .mst-rank-badge { background: var(--accent-dim); border-color: var(--accent-line); color: var(--accent); box-shadow: none; }
+.light-mode .mst-rank-name, .light-mode .mst-campus-name { color: var(--txt-heading); }
+.light-mode .mst-rank-next { color: var(--txt-muted); }
+.light-mode .mst-rank-next b { color: var(--accent); }
+.light-mode .mst-progress-track { background: var(--bg-sec); }
+.light-mode .mst-progress-fill { background: linear-gradient(90deg, var(--accent-soft), var(--accent)); box-shadow: none; }
+.light-mode .mst-progress-caption { color: var(--txt-dim); }
+.light-mode .mst-milestone { background: var(--bg-raised); border-color: rgba(15,23,42,0.06); }
+.light-mode .mst-milestone.done { background: var(--success-dim); border-color: var(--success-line); }
+.light-mode .mst-milestone-icon { color: var(--txt-dim); }
+.light-mode .mst-milestone.done .mst-milestone-icon { color: var(--success); }
+.light-mode .mst-milestone-lbl { color: var(--txt-muted); }
+.light-mode .mst-milestone.done .mst-milestone-lbl { color: var(--txt-heading); }
+
+.light-mode .mst-momentum-num { color: var(--warn); text-shadow: none; }
+.light-mode .mst-momentum-unit { color: var(--warn); opacity: 0.75; }
+.light-mode .mst-momentum-best { color: var(--txt-muted); }
+.light-mode .mst-momentum-best b { color: var(--txt-heading); }
+.light-mode .mst-pip { background: var(--bg-sec); border-color: rgba(15,23,42,0.06); }
+.light-mode .mst-pip.done { background: var(--success-dim); border-color: var(--success-line); color: var(--success); box-shadow: none; }
+.light-mode .mst-momentum-msg { color: var(--txt-muted); border-top-color: rgba(15,23,42,0.06); }
+.light-mode .mst-momentum-msg b { color: var(--accent); }
+
+.light-mode .mst-campus-meta { color: var(--txt-muted); }
+.light-mode .mst-campus-badge { color: var(--accent); background: var(--accent-dim); border-color: var(--accent-line); }
+.light-mode .mst-cmod { background: var(--bg-sec); }
+.light-mode .mst-cmod.done { background: linear-gradient(90deg, var(--success), #34d399); box-shadow: none; }
+.light-mode .mst-cmod.active { background: linear-gradient(90deg, var(--accent-soft), var(--accent)); box-shadow: none; }
+.light-mode .mst-campus-guide { color: var(--txt-muted); border-top-color: rgba(15,23,42,0.06); }
+.light-mode .mst-campus-guide-icon { background: var(--accent-dim); border-color: var(--accent-line); color: var(--accent); }
+.light-mode .mst-campus-guide b { color: var(--txt-heading); }
+
+.light-mode .mst-journey-line { background: rgba(15,23,42,0.07); }
+.light-mode .mst-journey-line-fill { background: linear-gradient(90deg, var(--success), var(--accent)); box-shadow: none; }
+.light-mode .mst-jnode-dot { background: var(--bg-sec); border-color: rgba(15,23,42,0.08); color: var(--txt-dim); }
+.light-mode .mst-jnode.done .mst-jnode-dot { background: var(--success-dim); border-color: var(--success); color: var(--success); box-shadow: none; }
+.light-mode .mst-jnode.current .mst-jnode-dot { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); box-shadow: 0 0 0 5px var(--accent-dim); animation: none; }
+.light-mode .mst-jnode-name { color: var(--txt-muted); }
+.light-mode .mst-jnode.done .mst-jnode-name { color: var(--txt-body); }
+.light-mode .mst-jnode.current .mst-jnode-name { color: var(--txt-heading); }
+.light-mode .mst-jnode-tag { color: var(--txt-dim); }
+.light-mode .mst-jnode.done .mst-jnode-tag { color: var(--success); }
+.light-mode .mst-jnode.current .mst-jnode-tag { color: var(--accent); }
+.light-mode .mst-journey-note { color: var(--txt-muted); border-top-color: rgba(15,23,42,0.06); }
+.light-mode .mst-journey-note b { color: var(--txt-heading); }
+
+.light-mode .mst-mentor-badge { color: var(--accent); background: var(--accent-dim); border-color: var(--accent-line); }
+.light-mode .mst-mentor-pattern + .mst-mentor-pattern { border-top-color: rgba(15,23,42,0.06); }
+.light-mode .mst-mp-name { color: var(--txt-heading); }
+.light-mode .mst-mp-pct.cy { color: var(--accent); text-shadow: none; }
+.light-mode .mst-mp-pct.amb { color: var(--warn); text-shadow: none; }
+.light-mode .mst-mp-sub { color: var(--txt-dim); }
+.light-mode .mst-mp-grid { background: var(--bg-sec); border-color: rgba(15,23,42,0.05); }
+.light-mode .mst-mp-col-lbl { color: var(--txt-dim); }
+.light-mode .mst-mp-col-val { color: var(--txt-body); }
+.light-mode .mst-mp-col-val.mono { color: var(--accent); }
+
+.light-mode .mst-analytics-divider-line { background: rgba(15,23,42,0.06); }
+.light-mode .mst-analytics-divider-lbl { color: var(--txt-dim); }
+.light-mode .mst-card4-lbl { color: var(--txt-dim); }
+.light-mode .mst-card4.err-dist-card { background: #FFF5F5 !important; border-color: var(--danger-line) !important; box-shadow: 0 8px 22px rgba(185,28,28,0.06) !important; }
+.light-mode .err-dist-card .err-nm { color: var(--txt-heading) !important; }
+.light-mode .err-dist-card div[style*="rgba(255,255,255,0.28)"] { color: var(--txt-muted) !important; }
+.light-mode .ebar2 { background: rgba(15,23,42,0.06); }
+.light-mode .ebf2.gy { background: rgba(15,23,42,0.18); }
+.light-mode .err-row2-pct { color: var(--txt-muted); }
+
+/* ════ END MASTERY EXPERIENCE SYSTEM ════ */
+</style>
+
