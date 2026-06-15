@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15644,7 +15641,7 @@ html.light-mode .tb,
       <!-- Confidence bar — always visible -->
       <div style="padding:8px 0;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
-          <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.48);font-weight:600;">Confidence</div>
+          <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;font-weight:600;">Confidence</div>
           <div style="font-size:11px;font-weight:700;color:var(--grn);">91%</div>
         </div>
         <div class="cr-b"><div class="cr-f g" style="width:91%"></div></div>
@@ -15653,7 +15650,7 @@ html.light-mode .tb,
       <!-- LEVEL 3: Expandable — Why this recommendation? -->
       <div class="ace-accordion">
         <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          ▼ Why this recommendation?
+          <span class="acc-label">▼ Why this recommendation?</span>
           <span class="acc-chevron">▾</span>
         </button>
         <div class="ace-accordion-body">
@@ -15665,7 +15662,7 @@ html.light-mode .tb,
       <!-- LEVEL 3: Expandable — Related Concepts -->
       <div class="ace-accordion">
         <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          ▼ Related Concepts
+          <span class="acc-label">▼ Related Concepts</span>
           <span class="acc-chevron">▾</span>
         </button>
         <div class="ace-accordion-body">
@@ -15681,7 +15678,7 @@ html.light-mode .tb,
       <!-- LEVEL 3: Expandable — Confidence Analysis -->
       <div class="ace-accordion">
         <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          ▼ Confidence Analysis
+          <span class="acc-label">▼ Confidence Analysis</span>
           <span class="acc-chevron">▾</span>
         </button>
         <div class="ace-accordion-body">
@@ -15694,7 +15691,7 @@ html.light-mode .tb,
       <!-- LEVEL 3: Expandable — Learning Strategy -->
       <div class="ace-accordion">
         <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          ▼ Learning Strategy
+          <span class="acc-label">▼ Learning Strategy</span>
           <span class="acc-chevron">▾</span>
         </button>
         <div class="ace-accordion-body">
@@ -23938,5 +23935,135 @@ html.light-mode body,
 
 /* ════ END SECTION LABEL SIZE BUMP ════ */
 
-</style>
+/* ══════════════════════════════════════════════════════════════════
+   PURE WHITE TEXT — WORKSPACE PROBLEM & AI PANELS
+   Problem Statement, Input/Output, Example, Constraints, and the
+   AI Guidance / Current Weakness / Suggested Action / Confidence
+   text in the Workspace screen are set to solid #ffffff.
+══════════════════════════════════════════════════════════════════ */
 
+/* Problem Panel — section labels: Problem Statement / Example / Constraints */
+#scr-ws .ws-prob .stl {
+  color: #ffffff !important;
+}
+
+/* Problem Panel — problem statement body text */
+#scr-ws .ws-prob .ptxt {
+  color: #ffffff !important;
+}
+
+/* Problem Panel — Input / Output labels and values */
+#scr-ws .ws-prob .io-lbl,
+#scr-ws .ws-prob .io-v {
+  color: #ffffff !important;
+}
+
+/* Problem Panel — Example header + value */
+#scr-ws .ws-prob .exh,
+#scr-ws .ws-prob .exv {
+  color: #ffffff !important;
+}
+
+/* Problem Panel — Constraint tags: Time: O(1) / Space: O(1) / No imports */
+#scr-ws .ws-prob .cst {
+  color: #ffffff !important;
+}
+
+/* AI Panel — "AI Guidance" label + pattern text (incl. inline code) */
+#scr-ws .ws-ap .ace-ai-summary-label,
+#scr-ws .ws-ap .ace-ai-summary-text,
+#scr-ws .ws-ap .ace-ai-summary-text code {
+  color: #ffffff !important;
+}
+
+/* AI Panel — "Current Weakness" label, title, and body (incl. inline code) */
+#scr-ws .ws-ap .ace-ai-weakness-label,
+#scr-ws .ws-ap .ace-ai-weakness > div,
+#scr-ws .ws-ap .ace-ai-weakness-text,
+#scr-ws .ws-ap .ace-ai-weakness-text code {
+  color: #ffffff !important;
+}
+
+/* AI Panel — "Suggested Action" label, title, and body (incl. inline code) */
+#scr-ws .ws-ap .ace-ai-suggestion-label,
+#scr-ws .ws-ap .ace-ai-suggestion > div,
+#scr-ws .ws-ap .ace-ai-suggestion-text {
+  color: #ffffff !important;
+}
+
+/* ════ END PURE WHITE TEXT — WORKSPACE PANELS ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   ADAPTIVE AI PANEL — VISIBLE SCROLLBAR
+   Constrains #ws-ap-panel to the layout height so its content
+   scrolls internally, and gives it a clearly visible themed
+   scrollbar (WebKit + Firefox).
+══════════════════════════════════════════════════════════════════ */
+
+#scr-ws .ws-ap,
+#ws-ap-panel {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: rgba(0,184,217,0.45) rgba(0,184,217,0.06) !important;
+}
+
+#scr-ws .ws-ap::-webkit-scrollbar,
+#ws-ap-panel::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+#scr-ws .ws-ap::-webkit-scrollbar-track,
+#ws-ap-panel::-webkit-scrollbar-track {
+  background: rgba(0,184,217,0.05) !important;
+  border-radius: 4px !important;
+}
+
+#scr-ws .ws-ap::-webkit-scrollbar-thumb,
+#ws-ap-panel::-webkit-scrollbar-thumb {
+  background: rgba(0,184,217,0.40) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(0,184,217,0.10) !important;
+}
+
+#scr-ws .ws-ap::-webkit-scrollbar-thumb:hover,
+#ws-ap-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,184,217,0.65) !important;
+}
+
+/* ════ END ADAPTIVE AI PANEL SCROLLBAR ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   AI PANEL ACCORDIONS — CONSISTENT, ALIGNED HEADERS
+   "Why this recommendation?" wraps to two lines inside the 230px
+   panel; this gives every trigger a shared baseline alignment,
+   a hanging indent so wrapped text lines up under the label
+   (not under the "▼" marker), and keeps the chevron fixed at the
+   top-right regardless of how many lines the label takes.
+══════════════════════════════════════════════════════════════════ */
+
+#scr-ws .ace-accordion-trigger {
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  line-height: 1.5 !important;
+}
+
+#scr-ws .ace-accordion-trigger .acc-label {
+  flex: 1 1 auto;
+  padding-left: 13px;
+  text-indent: -13px;
+}
+
+#scr-ws .ace-accordion-trigger .acc-chevron {
+  flex: 0 0 auto;
+  margin-top: 0.15em;
+}
+
+/* ════ END AI PANEL ACCORDION ALIGNMENT ════ */
+
+</style>
