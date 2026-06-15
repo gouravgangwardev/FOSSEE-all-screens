@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15541,9 +15545,6 @@ html.light-mode .tb,
     <button class="ws-panel-btn active" id="ws-btn-prob" onclick="toggleWsPanel('ws','prob')" title="Toggle Question Panel">
       <span class="btn-icon">☰</span> Question
     </button>
-    <button class="ws-panel-btn" id="ws-btn-ap" onclick="toggleWsPanel('ws','ap')" title="Toggle Adaptive Panel">
-      <span class="btn-icon">✦</span> AI
-    </button>
     <div class="tb-sp"></div>
     <!-- Secondary utility actions — quiet -->
     <button class="bn-out" title="Reset code">↺</button>
@@ -15552,8 +15553,7 @@ html.light-mode .tb,
     <div class="ec-badge">+0 errors</div>
     <!-- Divider -->
     <div style="width:1px;height:18px;background:rgba(255,255,255,0.08);flex-shrink:0;"></div>
-    <!-- PRIMARY ACTIONS — Run then Submit (Submit is dominant) -->
-    <button class="bn-run" title="Run code (Ctrl+Enter)">▶ Run</button>
+    <!-- PRIMARY ACTIONS — Submit is dominant -->
     <button class="bn-sub" title="Submit solution (Ctrl+Shift+Enter)" style="font-size:12px;padding:7px 20px;letter-spacing:0.04em;">✓ Submit</button>
     <span style="color:var(--amb);font-size:11px;font-weight:700;text-shadow:var(--gamb);flex-shrink:0;">Streak: 3</span>
     <div class="av" style="flex-shrink:0;">RS</div>
@@ -15562,22 +15562,12 @@ html.light-mode .tb,
     <div class="ws-prob" id="ws-prob-panel">
       <div class="ct-hdr"><div class="ctag">C2: Basic Loops</div><div class="stag">Syntax</div><span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.85)">Attempt 12</span></div>
       <div class="qnum">Question 12</div>
-      <div class="stk-p"><span style="font-size:9.5px;color:var(--amb);margin-right:3px">Streak</span>
-        <div class="sp-dot" style="background:var(--amb);box-shadow:var(--gamb)"></div>
-        <div class="sp-dot" style="background:var(--amb);box-shadow:var(--gamb)"></div>
-        <div class="sp-dot" style="background:var(--amb);box-shadow:var(--gamb)"></div>
-        <div class="sp-dot" style="background:rgba(255,255,255,0.1)"></div>
-        <div class="sp-dot" style="background:rgba(255,255,255,0.1)"></div>
-        <span style="font-size:10px;color:var(--amb);margin-left:3px;font-weight:700;text-shadow:var(--gamb)">3</span>
-      </div>
       <div class="stl">Problem Statement</div>
       <div class="ptxt">Write a function that determines if a number is positive, negative, or zero using conditional statements.</div>
       <div class="io-sp" style="margin-top:9px"><div class="io-lbl">Input</div><div class="io-v">A single integer n (−10⁶ ≤ n ≤ 10⁹)</div></div>
       <div class="io-sp"><div class="io-lbl">Output</div><div class="io-v">Print 'Positive', 'Negative', or 'Zero'</div></div>
       <div class="stl">Example</div>
       <div class="ex-box"><div><div class="exh">Input</div><div class="exv">5</div></div><div><div class="exh">Output</div><div class="exv pos">Positive</div></div></div>
-      <div class="stl">Constraints</div>
-      <div class="cstags"><div class="cst">Time: O(1)</div><div class="cst">Space: O(1)</div><div class="cst">No imports</div></div>
       <div class="hint-bx">
         <div class="hnt-hdr"><span style="color:var(--amb);font-size:11px">⚡</span><div class="hnt-lbl">Adaptive Hint Available</div><div class="ai-b">AI</div></div>
         <div class="hnt-txt">Based on your error pattern, review: <span class="hnt-cod">if/elif/else</span> syntax</div>
@@ -15610,105 +15600,6 @@ html.light-mode .tb,
         <div class="ttr">&nbsp;&nbsp;&nbsp;&nbsp;for i in range(1 n+1)</div>
         <div class="ttr">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^</div>
       </div>
-    </div>
-    <div class="ws-ap" id="ws-ap-panel">
-      <!-- AI Panel Header — always visible -->
-      <div class="ace-ai-header">
-        <span class="ace-ai-badge">⚡ Adaptive AI</span>
-        <span class="ace-ai-live">Live</span>
-      </div>
-
-      <!-- LEVEL 1: AI Summary — always visible -->
-      <div class="ace-ai-summary">
-        <div class="ace-ai-summary-label">AI Guidance</div>
-        <div class="ace-ai-summary-text">Pattern detected: missing comma in <code style="font-family:var(--ff-m);font-size:10.5px;color:var(--cy2);background:rgba(0,184,217,0.08);padding:1px 5px;border-radius:3px;">range()</code> — seen in 73% of your first-attempt loop errors.</div>
-      </div>
-
-      <!-- LEVEL 1: Current Weakness — always visible -->
-      <div class="ace-ai-weakness">
-        <div class="ace-ai-weakness-label">⊗ Current Weakness</div>
-        <div style="font-size:12px;font-weight:700;color:var(--red2);margin-bottom:3px;">range() Syntax</div>
-        <div class="ace-ai-weakness-text">Line 3: argument separator missing between <code style="font-family:var(--ff-m);font-size:10px;color:var(--cy2);">1</code> and <code style="font-family:var(--ff-m);font-size:10px;color:var(--cy2);">n+1</code>.</div>
-      </div>
-
-      <!-- LEVEL 1: Primary Suggestion — always visible -->
-      <div class="ace-ai-suggestion">
-        <div class="ace-ai-suggestion-label">→ Suggested Action</div>
-        <div style="font-family:var(--ff-m);font-size:11px;color:var(--cy2);margin-bottom:4px;">range(start, stop, step)</div>
-        <div class="ace-ai-weakness-text">Separate arguments with commas. Use: <code style="font-family:var(--ff-m);font-size:10px;color:var(--cy2);">range(1, n+1)</code></div>
-      </div>
-
-      <!-- Confidence bar — always visible -->
-      <div style="padding:8px 0;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
-          <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#ffffff;font-weight:600;">Confidence</div>
-          <div style="font-size:11px;font-weight:700;color:var(--grn);">91%</div>
-        </div>
-        <div class="cr-b"><div class="cr-f g" style="width:91%"></div></div>
-      </div>
-
-      <!-- LEVEL 3: Expandable — Why this recommendation? -->
-      <div class="ace-accordion">
-        <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          <span class="acc-label">▼ Why this recommendation?</span>
-          <span class="acc-chevron">▾</span>
-        </button>
-        <div class="ace-accordion-body">
-          <p style="margin:0 0 6px;font-size:11px;color:rgba(255,255,255,0.65);line-height:1.55;">This error type — missing comma in <code style="font-family:var(--ff-m);color:var(--cy2);">range()</code> — matches your pattern from attempts 8, 10, and 12. It accounts for 73% of your loop errors.</p>
-          <p style="margin:0;font-size:11px;color:rgba(255,255,255,0.55);line-height:1.55;">Mastery on this concept: <strong style="color:var(--amb);">42%</strong> — below the 70% threshold.</p>
-        </div>
-      </div>
-
-      <!-- LEVEL 3: Expandable — Related Concepts -->
-      <div class="ace-accordion">
-        <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          <span class="acc-label">▼ Related Concepts</span>
-          <span class="acc-chevron">▾</span>
-        </button>
-        <div class="ace-accordion-body">
-          <div class="cmp-mini">
-            <div class="cmi"><div class="cmi-d dn"></div><span class="cmi-cd">C1</span>Conditionals</div>
-            <div class="cmi on"><div class="cmi-d"></div><span class="cmi-cd">C2</span>Basic Loops</div>
-            <div class="cmi"><div class="cmi-d"></div><span class="cmi-cd">C3</span>Lists+Loops</div>
-            <div class="cmi"><div class="cmi-d"></div><span class="cmi-cd">C4</span>Nested Loops</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LEVEL 3: Expandable — Confidence Analysis -->
-      <div class="ace-accordion">
-        <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          <span class="acc-label">▼ Confidence Analysis</span>
-          <span class="acc-chevron">▾</span>
-        </button>
-        <div class="ace-accordion-body">
-          <div class="cr-row"><div class="cr-l">Syntax Mastery</div><div class="cr-b"><div class="cr-f g" style="width:91%"></div></div><div class="cr-p">91%</div></div>
-          <div class="cr-row" style="margin-top:6px;"><div class="cr-l">Conceptual Mastery</div><div class="cr-b"><div class="cr-f a" style="width:42%"></div></div><div class="cr-p">42%</div></div>
-          <div class="cr-row" style="margin-top:6px;"><div class="cr-l">Error Frequency</div><div class="cr-b"><div class="cr-f r" style="width:73%;background:linear-gradient(90deg,var(--red),var(--red2));"></div></div><div class="cr-p">73%</div></div>
-        </div>
-      </div>
-
-      <!-- LEVEL 3: Expandable — Learning Strategy -->
-      <div class="ace-accordion">
-        <button class="ace-accordion-trigger" onclick="aceToggleAccordion(this)">
-          <span class="acc-label">▼ Learning Strategy</span>
-          <span class="acc-chevron">▾</span>
-        </button>
-        <div class="ace-accordion-body">
-          <div style="font-size:11px;color:rgba(255,255,255,0.62);line-height:1.55;">
-            <p style="margin:0 0 7px;"><strong style="color:rgba(255,255,255,0.82);">Immediate:</strong> Fix the comma in range() and run again.</p>
-            <p style="margin:0 0 7px;"><strong style="color:rgba(255,255,255,0.82);">Short-term:</strong> Review range() argument semantics — start, stop, step.</p>
-            <p style="margin:0;"><strong style="color:rgba(255,255,255,0.82);">Goal:</strong> 3 consecutive correct loop questions to advance mastery.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Streak and navigation -->
-      <div style="margin-top:auto;padding-top:8px;border-top:1px solid rgba(0,184,217,0.06);">
-        <div style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.40);margin-bottom:7px;font-weight:600;">Streak</div>
-        <div class="stk-d"><div class="ski ok">✓</div><div class="ski ok">✓</div><div class="ski fl">✕</div><div class="ski em"></div><div class="ski em"></div></div>
-      </div>
-      <div class="ws-fbtns"><div class="ws-fb db" onclick="sw('db')">Dashboard</div><div class="ws-fb ws">Workspace</div></div>
     </div>
   </div>
 </div>
@@ -17845,7 +17736,6 @@ goTo('login', '');
 
   var panels = {
     'ws:prob':  { panelId: 'ws-prob-panel',  btnId: 'ws-btn-prob',  hidden: false },
-    'ws:ap':    { panelId: 'ws-ap-panel',    btnId: 'ws-btn-ap',    hidden: true  },  /* hidden by default — click AI btn to open */
     's2:prob':  { panelId: 's2-prob-panel',  btnId: 's2-btn-prob',  hidden: false },
     's2:hint':  { panelId: 's2-hint-panel',  btnId: 's2-btn-hint',  hidden: true  },  /* hidden by default — click Hints btn to open */
   };
