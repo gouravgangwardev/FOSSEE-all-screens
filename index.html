@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15173,91 +15176,79 @@ html.light-mode .tb,
       </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════════════════
-         1B · LEARNING JOURNEY — collapsible roadmap strip
-    ═══════════════════════════════════════════════════════ -->
-    <div class="mst-journey-collapsible" id="mst-journey-card">
-      <button class="mst-journey-toggle" onclick="toggleMstJourney()">
-        <div class="mst-journey-toggle-left">
-          <span class="mst-pulse-dot"></span>
-          <span class="mst-journey-toggle-lbl">Learning Journey</span>
-          <span class="mst-journey-toggle-path">Frontend Mastery Path — 6 modules</span>
-        </div>
-        <div class="mst-journey-toggle-right">
-          <span class="mst-journey-toggle-current">Currently on <b>Basic Loops</b> · 45%</span>
-          <span class="mst-journey-toggle-chevron" id="mst-journey-chevron">▾</span>
-        </div>
-      </button>
-
-      <div class="mst-journey-body" id="mst-journey-body">
-        <div class="mst-journey-path">
-          <div class="mst-journey-line"></div>
-          <div class="mst-journey-line-fill" style="width:29%;"></div>
-          <div class="mst-journey-nodes">
-            <div class="mst-jnode done">
-              <div class="mst-jnode-dot">✓</div>
-              <div><div class="mst-jnode-name">Conditionals</div><div class="mst-jnode-tag">Completed</div></div>
-            </div>
-            <div class="mst-jnode current">
-              <div class="mst-jnode-dot">▶</div>
-              <div><div class="mst-jnode-name">Basic Loops</div><div class="mst-jnode-tag">45% · Current</div></div>
-            </div>
-            <div class="mst-jnode">
-              <div class="mst-jnode-dot">3</div>
-              <div><div class="mst-jnode-name">Lists + Loops</div><div class="mst-jnode-tag">Next</div></div>
-            </div>
-            <div class="mst-jnode">
-              <div class="mst-jnode-dot">4</div>
-              <div><div class="mst-jnode-name">Nested Loops</div><div class="mst-jnode-tag">Upcoming</div></div>
-            </div>
-            <div class="mst-jnode">
-              <div class="mst-jnode-dot">5</div>
-              <div><div class="mst-jnode-name">Strings</div><div class="mst-jnode-tag">Upcoming</div></div>
-            </div>
-            <div class="mst-jnode">
-              <div class="mst-jnode-dot">6</div>
-              <div><div class="mst-jnode-name">Functions</div><div class="mst-jnode-tag">Upcoming</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="mst-journey-note"><b>Reach 60% mastery</b> in Basic Loops to unlock Lists + Loops and continue your progression toward Functions.</div>
-      </div>
-    </div>
 
     <!-- ═══════════════════════════════════════════════════════
          2 · MASTERY · MOMENTUM · CAMPUS  (Tier 2)
     ═══════════════════════════════════════════════════════ -->
     <div class="mst-tier2-row">
 
-      <!-- Learning Mastery -->
-      <div class="mst-card2">
-        <div class="mst-card2-lbl"><div class="mst-dot mst-dot-cy"></div> Learning Mastery</div>
-        <div class="mst-rank-row">
-          <div class="mst-rank-badge">⊙</div>
-          <div>
-            <div class="mst-rank-name">Loop Apprentice</div>
-            <div class="mst-rank-next">Next rank: <b>Loop Practitioner</b> at 60%</div>
-          </div>
+      <!-- Error Distribution -->
+      <div class="mst-card4 err-dist-card gc-red">
+        <div class="mst-card4-lbl" style="justify-content:space-between;">
+          <span class="err-dist-title" style="display:flex;align-items:center;gap:7px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--red2);box-shadow:0 0 8px rgba(232,48,78,0.50);animation:dot-pulse 2s ease-in-out infinite;display:inline-block;"></span>
+            Error Distribution
+          </span>
+          <span style="font-size:8.5px;font-weight:700;background:rgba(232,48,78,0.10);border:1px solid rgba(232,48,78,0.28);border-radius:4px;padding:2px 8px;color:var(--red2);">14 TOTAL</span>
         </div>
-        <div class="mst-progress-track"><div class="mst-progress-fill" style="width:45%;"></div></div>
-        <div class="mst-progress-caption"><span>45% Mastered</span><span>3 questions to next rank</span></div>
-        <div class="mst-milestones">
-          <div class="mst-milestone done">
-            <div class="mst-milestone-icon">✓</div>
-            <div class="mst-milestone-lbl">Conditionals Mastered</div>
+        <div style="display:flex;justify-content:space-between;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:8px;">
+          <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Category</div>
+          <div style="font-size:7.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Count · Share</div>
+        </div>
+        <div class="err-row2">
+          <div class="err-row2-top">
+            <div>
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
+                <div class="err-nm" style="font-size:11.5px;">Syntax Errors</div>
+                <span style="font-size:7px;font-weight:700;letter-spacing:0.06em;background:rgba(232,48,78,0.12);border:1px solid rgba(232,48,78,0.25);border-radius:3px;padding:1px 6px;color:var(--red2);">MOST IMPACTFUL</span>
+              </div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Missing colons, brackets, indentation</div>
+            </div>
+            <div class="err-row2-meta">
+              <span class="ecnt r" style="font-family:var(--ff-d);font-weight:700;">6</span>
+              <span class="err-row2-pct">43%</span>
+            </div>
           </div>
-          <div class="mst-milestone done">
-            <div class="mst-milestone-icon">✓</div>
-            <div class="mst-milestone-lbl">First Loop Solved</div>
+          <div class="ebar2"><div class="ebf2 r" style="width:43%;"></div></div>
+        </div>
+        <div class="err-row2">
+          <div class="err-row2-top">
+            <div>
+              <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Concept Errors</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Misunderstood theory or definitions</div>
+            </div>
+            <div class="err-row2-meta">
+              <span class="ecnt a" style="font-family:var(--ff-d);font-weight:700;color:var(--amb);">4</span>
+              <span class="err-row2-pct">29%</span>
+            </div>
           </div>
-          <div class="mst-milestone">
-            <div class="mst-milestone-icon">○</div>
-            <div class="mst-milestone-lbl">60% Loop Mastery</div>
+          <div class="ebar2"><div class="ebf2 a" style="width:29%;"></div></div>
+        </div>
+        <div class="err-row2">
+          <div class="err-row2-top">
+            <div>
+              <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Logic Errors</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Incorrect flow, off-by-one, conditions</div>
+            </div>
+            <div class="err-row2-meta">
+              <span class="ecnt c" style="font-family:var(--ff-d);font-weight:700;color:var(--cy2);">3</span>
+              <span class="err-row2-pct">21%</span>
+            </div>
           </div>
-          <div class="mst-milestone">
-            <div class="mst-milestone-icon">○</div>
-            <div class="mst-milestone-lbl">Functions Unlocked</div>
+          <div class="ebar2"><div class="ebf2 c" style="width:21%;"></div></div>
+        </div>
+        <div class="err-row2" style="margin-bottom:0;">
+          <div class="err-row2-top">
+            <div>
+              <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Runtime Errors</div>
+              <div style="font-size:9px;color:rgba(255,255,255,0.28);">Crashes, null refs, type mismatches</div>
+            </div>
+            <div class="err-row2-meta">
+              <span style="font-family:var(--ff-d);font-weight:700;color:rgba(255,255,255,0.40);">1</span>
+              <span class="err-row2-pct">7%</span>
+            </div>
           </div>
+          <div class="ebar2"><div class="ebf2 gy" style="width:7%;"></div></div>
         </div>
       </div>
 
@@ -15288,7 +15279,7 @@ html.light-mode .tb,
     <!-- ═══════════════════════════════════════════════════════
          3 · MENTOR INSIGHTS  (Tier 3)
     ═══════════════════════════════════════════════════════ -->
-    <div class="mst-tier3-row mst-tier3-single">
+    <div class="mst-tier3-row">
 
       <!-- Mentor Insights -->
       <div class="mst-card3">
@@ -15334,6 +15325,18 @@ html.light-mode .tb,
         </div>
       </div>
 
+      <!-- Recommended Review -->
+      <div class="mst-card4">
+        <div class="mst-card4-lbl">Recommended Review</div>
+        <div style="background:rgba(0,184,217,0.04);border:1px solid rgba(0,184,217,0.12);border-radius:8px;padding:14px 16px;">
+          <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cy);opacity:0.80;margin-bottom:7px;font-weight:600;">Review Topic</div>
+          <div style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.86);margin-bottom:5px;">range() Function</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.46);line-height:1.6;margin-bottom:9px;">Argument syntax &amp; separators · <span style="font-family:var(--ff-m);color:var(--cy2);">range(start, stop, step)</span></div>
+          <div style="height:1px;background:rgba(0,184,217,0.07);margin-bottom:9px;"></div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.26);font-style:italic;">Paired with Currently Studying above</div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ═══════════════════════════════════════════════════════
@@ -15346,89 +15349,6 @@ html.light-mode .tb,
     </div>
 
     <div class="mst-analytics-wrap">
-
-      <!-- Error Distribution + Recommended Review -->
-      <div class="mst-tier4-row">
-        <div class="mst-card4 err-dist-card gc-red">
-          <div class="mst-card4-lbl" style="justify-content:space-between;">
-            <span class="err-dist-title" style="display:flex;align-items:center;gap:7px;">
-              <span style="width:6px;height:6px;border-radius:50%;background:var(--red2);box-shadow:0 0 8px rgba(232,48,78,0.50);animation:dot-pulse 2s ease-in-out infinite;display:inline-block;"></span>
-              Error Distribution
-            </span>
-            <span style="font-size:8.5px;font-weight:700;background:rgba(232,48,78,0.10);border:1px solid rgba(232,48,78,0.28);border-radius:4px;padding:2px 8px;color:var(--red2);">14 TOTAL</span>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:8px;">
-            <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Category</div>
-            <div style="font-size:7.5px;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.28);">Count · Share</div>
-          </div>
-          <div class="err-row2">
-            <div class="err-row2-top">
-              <div>
-                <div style="display:flex;align-items:center;gap:6px;margin-bottom:2px;">
-                  <div class="err-nm" style="font-size:11.5px;">Syntax Errors</div>
-                  <span style="font-size:7px;font-weight:700;letter-spacing:0.06em;background:rgba(232,48,78,0.12);border:1px solid rgba(232,48,78,0.25);border-radius:3px;padding:1px 6px;color:var(--red2);">MOST IMPACTFUL</span>
-                </div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Missing colons, brackets, indentation</div>
-              </div>
-              <div class="err-row2-meta">
-                <span class="ecnt r" style="font-family:var(--ff-d);font-weight:700;">6</span>
-                <span class="err-row2-pct">43%</span>
-              </div>
-            </div>
-            <div class="ebar2"><div class="ebf2 r" style="width:43%;"></div></div>
-          </div>
-          <div class="err-row2">
-            <div class="err-row2-top">
-              <div>
-                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Concept Errors</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Misunderstood theory or definitions</div>
-              </div>
-              <div class="err-row2-meta">
-                <span class="ecnt a" style="font-family:var(--ff-d);font-weight:700;color:var(--amb);">4</span>
-                <span class="err-row2-pct">29%</span>
-              </div>
-            </div>
-            <div class="ebar2"><div class="ebf2 a" style="width:29%;"></div></div>
-          </div>
-          <div class="err-row2">
-            <div class="err-row2-top">
-              <div>
-                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Logic Errors</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Incorrect flow, off-by-one, conditions</div>
-              </div>
-              <div class="err-row2-meta">
-                <span class="ecnt c" style="font-family:var(--ff-d);font-weight:700;color:var(--cy2);">3</span>
-                <span class="err-row2-pct">21%</span>
-              </div>
-            </div>
-            <div class="ebar2"><div class="ebf2 c" style="width:21%;"></div></div>
-          </div>
-          <div class="err-row2" style="margin-bottom:0;">
-            <div class="err-row2-top">
-              <div>
-                <div class="err-nm" style="font-size:11.5px;margin-bottom:2px;">Runtime Errors</div>
-                <div style="font-size:9px;color:rgba(255,255,255,0.28);">Crashes, null refs, type mismatches</div>
-              </div>
-              <div class="err-row2-meta">
-                <span style="font-family:var(--ff-d);font-weight:700;color:rgba(255,255,255,0.40);">1</span>
-                <span class="err-row2-pct">7%</span>
-              </div>
-            </div>
-            <div class="ebar2"><div class="ebf2 gy" style="width:7%;"></div></div>
-          </div>
-        </div>
-
-        <div class="mst-card4">
-          <div class="mst-card4-lbl">Recommended Review</div>
-          <div style="background:rgba(0,184,217,0.04);border:1px solid rgba(0,184,217,0.12);border-radius:8px;padding:14px 16px;">
-            <div style="font-size:7.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cy);opacity:0.80;margin-bottom:7px;font-weight:600;">Review Topic</div>
-            <div style="font-size:13.5px;font-weight:700;color:rgba(255,255,255,0.86);margin-bottom:5px;">range() Function</div>
-            <div style="font-size:10px;color:rgba(255,255,255,0.46);line-height:1.6;margin-bottom:9px;">Argument syntax &amp; separators · <span style="font-family:var(--ff-m);color:var(--cy2);">range(start, stop, step)</span></div>
-            <div style="height:1px;background:rgba(0,184,217,0.07);margin-bottom:9px;"></div>
-            <div style="font-size:9px;color:rgba(255,255,255,0.26);font-style:italic;">Paired with Currently Studying above</div>
-          </div>
-        </div>
-      </div>
 
       <!-- Practice Journey -->
       <div class="mst-card4 pj-section">
@@ -15607,140 +15527,6 @@ html.light-mode .tb,
               <div class="pj-legend-cell lv2"></div>
               <div class="pj-legend-cell lv3"></div>
               <span class="pj-legend-lbl">Deep Practice</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review Your Growth -->
-      <div class="mst-card4 ryg-card ryg-focus" style="padding:0;overflow:hidden;">
-        <div class="ryg-header">
-          <div style="flex:1;min-width:180px;">
-            <div class="mst-eyebrow" style="margin-bottom:4px;letter-spacing:0.10em;font-weight:600;color:rgba(255,255,255,0.38);"><div class="mst-dot mst-dot-muted"></div> Review Your Growth</div>
-            <div class="ryg-insight" id="ryg-insight">Accuracy improved by 4% compared with yesterday — strongest performance in midday sessions.</div>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-            <div class="ryg-tabs">
-              <button class="ryg-tab on" onclick="setRYGPeriod(this,'today')">Today</button>
-              <button class="ryg-tab" onclick="setRYGPeriod(this,'7d')">Last 7 Days</button>
-              <button class="ryg-tab" onclick="setRYGPeriod(this,'30d')">Last 30 Days</button>
-            </div>
-            <button class="ryg-toggle-btn" id="ryg-toggle-btn" onclick="toggleRYGAnalytics()">Show Detailed Analytics ▼</button>
-          </div>
-        </div>
-        <div class="ryg-body" id="ryg-body">
-          <div class="ryg-stats-row" id="ryg-stats-row">
-            <div class="ryg-stat-card ryg-c-emerald">
-              <div class="ryg-stat-top">
-                <div class="ryg-stat-lbl">Accuracy Trend</div>
-                <div class="ryg-stat-trend up" id="ryg-stat-0-trend">↑ 4%</div>
-              </div>
-              <div class="ryg-stat-val g" id="ryg-stat-0-val">71%</div>
-              <div class="ryg-stat-sub" id="ryg-stat-0-sub">vs. yesterday</div>
-              <div class="ryg-stat-note" id="ryg-stat-0-note">Based on your last 20 questions</div>
-            </div>
-            <div class="ryg-stat-card ryg-c-cyan">
-              <div class="ryg-stat-top">
-                <div class="ryg-stat-lbl">Questions Solved</div>
-                <div class="ryg-stat-trend up" id="ryg-stat-1-trend">↑ 2</div>
-              </div>
-              <div class="ryg-stat-val c" id="ryg-stat-1-val">7</div>
-              <div class="ryg-stat-sub" id="ryg-stat-1-sub">of 9 daily goal</div>
-              <div class="ryg-pbar"><div class="ryg-pbar-fill cyan" id="ryg-stat-1-bar" style="width:78%"></div></div>
-            </div>
-            <div class="ryg-stat-card ryg-c-violet">
-              <div class="ryg-stat-top">
-                <div class="ryg-stat-lbl">Correct Answers</div>
-                <div class="ryg-stat-trend up" id="ryg-stat-2-trend">↑ 1</div>
-              </div>
-              <div class="ryg-stat-val v" id="ryg-stat-2-val">5</div>
-              <div class="ryg-stat-sub" id="ryg-stat-2-sub">71% success rate</div>
-              <div class="ryg-stat-note" id="ryg-stat-2-note">2 incorrect of 7 attempted</div>
-            </div>
-            <div class="ryg-stat-card ryg-c-amber">
-              <div class="ryg-stat-top">
-                <div class="ryg-stat-lbl">Avg Daily Practice</div>
-                <div class="ryg-stat-trend up" id="ryg-stat-3-trend">↑ 0.6</div>
-              </div>
-              <div class="ryg-stat-val a" id="ryg-stat-3-val">5.4</div>
-              <div class="ryg-stat-sub" id="ryg-stat-3-sub">Qs / active day</div>
-              <div class="ryg-stat-note" id="ryg-stat-3-note">Steady rhythm this period</div>
-            </div>
-            <div class="ryg-stat-card ryg-c-rose">
-              <div class="ryg-stat-top">
-                <div class="ryg-stat-lbl">Learning Consistency</div>
-                <div class="ryg-stat-trend up" id="ryg-stat-4-trend">↑ 3%</div>
-              </div>
-              <div class="ryg-stat-val r" id="ryg-stat-4-val">86%</div>
-              <div class="ryg-stat-sub" id="ryg-stat-4-sub">6 of 7 days active</div>
-              <div class="ryg-pbar"><div class="ryg-pbar-fill rose" id="ryg-stat-4-bar" style="width:86%"></div></div>
-            </div>
-          </div>
-          <div class="row ryg-main-row" id="ryg-main-row" style="align-items:stretch;">
-            <div class="f2 ryg-chart-box" id="ryg-chart-box">
-              <div class="ryg-chart-hdr">
-                <span class="ryg-chart-title" id="ryg-chart-title">Accuracy by Session — Today</span>
-                <div class="ryg-chart-meta">
-                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot peak"></span>Peak <strong id="ryg-meta-peak">89%</strong></div>
-                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot avg"></span>Avg <strong id="ryg-meta-avg">76%</strong></div>
-                  <div class="ryg-chart-meta-item"><span class="ryg-chart-meta-dot trend"></span><span id="ryg-meta-trend">Improving</span></div>
-                </div>
-              </div>
-              <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;overflow:visible;" id="ryg-chart-svg" preserveAspectRatio="none">
-                <defs>
-                  <linearGradient id="ryg-area-fill" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="rgba(0,190,220,0.20)"/>
-                    <stop offset="50%" stop-color="rgba(0,180,210,0.08)"/>
-                    <stop offset="100%" stop-color="rgba(0,170,200,0.00)"/>
-                  </linearGradient>
-                  <filter id="ryg-glow-cy" x="-80%" y="-80%" width="260%" height="260%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                  <filter id="ryg-glow-grn" x="-80%" y="-80%" width="260%" height="260%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                  <filter id="ryg-glow-red" x="-80%" y="-80%" width="260%" height="260%">
-                    <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
-                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                  </filter>
-                </defs>
-                <g id="ryg-chart-content"></g>
-              </svg>
-            </div>
-            <div class="f1 slog-table-box ryg-hidden" id="ryg-analytics-panel">
-              <div class="slog-hdr">Session Log</div>
-              <div class="slog-col-hdr">
-                <span class="slog-ch">Session</span>
-                <span class="slog-ch">Questions</span>
-                <span class="slog-ch">Accuracy</span>
-              </div>
-              <div class="slog-row">
-                <span class="slog-session">Morning</span>
-                <span class="slog-q">3</span>
-                <span class="slog-acc">60%</span>
-              </div>
-              <div class="slog-row">
-                <span class="slog-session">Midday</span>
-                <span class="slog-q">2</span>
-                <span class="slog-acc g">80%</span>
-              </div>
-              <div class="slog-row">
-                <span class="slog-session">Afternoon</span>
-                <span class="slog-q">3</span>
-                <span class="slog-acc">67%</span>
-              </div>
-              <div class="slog-row">
-                <span class="slog-session" style="color:var(--cy2);">Current</span>
-                <span class="slog-q" style="color:rgba(255,255,255,0.25);">—</span>
-                <span class="slog-acc" style="color:rgba(255,255,255,0.25);">—</span>
-              </div>
-              <div class="slog-total-row">
-                <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,0.60);letter-spacing:0.06em;text-transform:uppercase;" id="ryg-slog-total-lbl">Today Avg</span>
-                <span></span>
-                <span style="font-size:13px;font-weight:700;color:var(--grn);text-align:right;text-shadow:var(--ggn2);" id="ryg-slog-total-val">71%</span>
-              </div>
             </div>
           </div>
         </div>
@@ -17660,259 +17446,6 @@ function sw(id) {
 function setPeriod(el, p) {
   el.closest('.period-toggle').querySelectorAll('.pt-btn').forEach(b => b.classList.remove('on'));
   el.classList.add('on');
-}
-
-/* ─── DASHBOARD: Review Your Growth — Accuracy chart data ─── */
-const RYG_CHART_DATA = {
-  today: {
-    title: 'Accuracy by Session — Today',
-    unit: 'SESSIONS',
-    points: [
-      { label: 'S1', value: 60 },
-      { label: 'S2', value: 88 },
-      { label: 'S3', value: 67 },
-      { label: 'S4', value: 80 },
-      { label: 'S5', value: 71 }
-    ]
-  },
-  '7d': {
-    title: 'Accuracy by Day — Last 7 Days',
-    unit: 'DAYS',
-    points: [
-      { label: 'Mon', value: 58 },
-      { label: 'Tue', value: 64 },
-      { label: 'Wed', value: 60 },
-      { label: 'Thu', value: 70 },
-      { label: 'Fri', value: 66 },
-      { label: 'Sat', value: 78 },
-      { label: 'Sun', value: 71 }
-    ]
-  },
-  '30d': {
-    title: 'Accuracy by Week — Last 30 Days',
-    unit: 'WEEKS',
-    points: [
-      { label: 'W1', value: 52 },
-      { label: 'W2', value: 58 },
-      { label: 'W3', value: 63 },
-      { label: 'W4', value: 69 },
-      { label: 'W5', value: 71 }
-    ]
-  }
-};
-
-/* ─── DASHBOARD: Review Your Growth — period-specific insight + KPI data ─── */
-const RYG_PERIOD_DATA = {
-  today: {
-    insight: '<strong>Today\'s performance remains steady</strong> — strongest accuracy during midday sessions.',
-    slogLabel: 'Today Avg',
-    stats: [
-      { val: '71%', trend: '↑ 4%', dir: 'up', sub: 'vs. yesterday', note: 'Based on your last 20 questions' },
-      { val: '7',   trend: '↑ 2',  dir: 'up', sub: 'of 9 daily goal', bar: 78 },
-      { val: '5',   trend: '↑ 1',  dir: 'up', sub: '71% success rate', note: '2 incorrect of 7 attempted' },
-      { val: '5.4', trend: '↑ 0.6', dir: 'up', sub: 'Qs / active day', note: 'Steady rhythm today' },
-      { val: '86%', trend: '↑ 3%', dir: 'up', sub: '6 of 7 days active', bar: 86 }
-    ]
-  },
-  '7d': {
-    insight: '<strong>Accuracy improved by 6%</strong> compared with the previous seven-day period.',
-    slogLabel: '7-Day Avg',
-    stats: [
-      { val: '67%', trend: '↑ 6%', dir: 'up', sub: 'vs. previous week', note: 'Based on this week\'s sessions' },
-      { val: '38',  trend: '↑ 9',  dir: 'up', sub: 'of 45 weekly goal', bar: 84 },
-      { val: '26',  trend: '↑ 7',  dir: 'up', sub: '68% success rate', note: '12 incorrect of 38 attempted' },
-      { val: '6.1', trend: '↑ 0.8', dir: 'up', sub: 'Qs / active day', note: 'Strong weekly momentum' },
-      { val: '91%', trend: '↑ 5%', dir: 'up', sub: '6 of 7 days active', bar: 91 }
-    ]
-  },
-  '30d': {
-    insight: '<strong>Strong consistency maintained</strong> this month while steadily improving accuracy.',
-    slogLabel: '30-Day Avg',
-    stats: [
-      { val: '63%', trend: '↑ 11%', dir: 'up', sub: 'vs. previous month', note: 'Based on this month\'s sessions' },
-      { val: '162', trend: '↑ 34', dir: 'up', sub: 'questions this month', bar: 90 },
-      { val: '103', trend: '↑ 28', dir: 'up', sub: '64% success rate', note: '59 incorrect of 162 attempted' },
-      { val: '5.8', trend: '↑ 0.4', dir: 'up', sub: 'Qs / active day', note: 'Sustained learning behavior' },
-      { val: '88%', trend: '↑ 6%', dir: 'up', sub: '26 of 30 days active', bar: 88 }
-    ]
-  }
-};
-
-/* ─── DASHBOARD: Review Your Growth — render the accuracy SVG chart ─── */
-function renderRYGChart(period) {
-  const data = RYG_CHART_DATA[period];
-  const content = document.getElementById('ryg-chart-content');
-  const titleEl = document.getElementById('ryg-chart-title');
-  if (!data || !content) return;
-  if (titleEl) titleEl.textContent = data.title;
-
-  const pts = data.points;
-  const n = pts.length;
-  const values = pts.map(function(p) { return p.value; });
-
-  /* Y scale — round outward to nice 5% steps, clamped 0–100 */
-  let valMax = Math.min(100, Math.ceil((Math.max.apply(null, values) + 5) / 5) * 5);
-  let valMin = Math.max(0, Math.floor((Math.min.apply(null, values) - 5) / 5) * 5);
-  if (valMax === valMin) valMax += 10;
-
-  /* Coordinate space — fits viewBox 0 0 600 180 cleanly */
-  const yTop = 18, yMid = 86, yBottom = 152, yBase = 168;
-  const xStart = 44, xEnd = 578;
-  const xStep = n > 1 ? (xEnd - xStart) / (n - 1) : 0;
-
-  function yFor(v) { return yTop + (valMax - v) / (valMax - valMin) * (yBottom - yTop); }
-
-  const coords = pts.map(function(p, i) {
-    return { x: xStart + i * xStep, y: yFor(p.value), label: p.label, value: p.value };
-  });
-
-  /* Chart intelligence: peak / lowest / average / trend */
-  const peak = coords.reduce(function(a, b) { return b.value > a.value ? b : a; });
-  const low  = coords.reduce(function(a, b) { return b.value < a.value ? b : a; });
-  const avgVal = Math.round(values.reduce(function(a, b) { return a + b; }, 0) / n);
-  const avgY = yFor(avgVal);
-  const trendUp = coords[n - 1].value >= coords[0].value;
-
-  /* Update chart meta readouts */
-  const peakEl = document.getElementById('ryg-meta-peak');
-  const avgEl = document.getElementById('ryg-meta-avg');
-  const trendEl = document.getElementById('ryg-meta-trend');
-  if (peakEl) peakEl.textContent = peak.value + '%';
-  if (avgEl) avgEl.textContent = avgVal + '%';
-  if (trendEl) trendEl.textContent = trendUp ? 'Improving' : 'Declining';
-
-  let svg = '';
-
-  /* Left margin for Y labels, right padding, top/bottom padding */
-  const lm = 38, rm = 12, pt = 20, pb = 36;
-  /* Re-derive coords using tighter margins */
-  const chartXStart = lm, chartXEnd = 600 - rm;
-  const chartYTop = pt, chartYBot = 180 - pb;
-  const chartXStep = n > 1 ? (chartXEnd - chartXStart) / (n - 1) : 0;
-  function cy(v) { return chartYTop + (valMax - v) / (valMax - valMin) * (chartYBot - chartYTop); }
-  const chartCoords = pts.map(function(p, i) {
-    return { x: chartXStart + i * chartXStep, y: cy(p.value), label: p.label, value: p.value };
-  });
-  const chartPeak = chartCoords.reduce(function(a,b){ return b.value>a.value?b:a; });
-  const chartLow  = chartCoords.reduce(function(a,b){ return b.value<a.value?b:a; });
-  const chartAvgY = cy(avgVal);
-
-  /* Subtle horizontal gridlines */
-  [[chartYTop, valMax], [cy((valMax+valMin)/2), Math.round((valMax+valMin)/2)], [chartYBot, valMin]].forEach(function(g) {
-    svg += '<line x1="' + lm + '" y1="' + g[0] + '" x2="' + chartXEnd + '" y2="' + g[0] + '" stroke="rgba(255,255,255,0.045)" stroke-width="1"/>';
-    svg += '<text x="' + (lm - 6) + '" y="' + (g[0] + 3.5) + '" font-size="8" fill="rgba(255,255,255,0.22)" text-anchor="end" font-family="\'JetBrains Mono\',monospace">' + Math.round(g[1]) + '%</text>';
-  });
-
-  /* AVG dashed line */
-  svg += '<line x1="' + chartXStart + '" y1="' + chartAvgY + '" x2="' + chartXEnd + '" y2="' + chartAvgY + '" stroke="rgba(255,255,255,0.13)" stroke-width="1" stroke-dasharray="3,5" class="ryg-avg-line"/>';
-  svg += '<text x="' + (chartXEnd - 4) + '" y="' + (chartAvgY - 5) + '" font-size="7.5" fill="rgba(255,255,255,0.28)" text-anchor="end" letter-spacing="1" font-family="\'JetBrains Mono\',monospace" class="ryg-avg-label">AVG ' + avgVal + '%</text>';
-
-  /* Area fill */
-  var areaD = 'M ' + chartCoords[0].x + ',' + chartCoords[0].y;
-  chartCoords.slice(1).forEach(function(c){ areaD += ' L ' + c.x + ',' + c.y; });
-  areaD += ' L ' + chartCoords[n-1].x + ',' + chartYBot + ' L ' + chartCoords[0].x + ',' + chartYBot + ' Z';
-  svg += '<path d="' + areaD + '" fill="url(#ryg-area-fill)" class="ryg-area-path"/>';
-
-  /* Main line — crisp, 1.5px, sharp joins */
-  var lineD = 'M ' + chartCoords[0].x + ',' + chartCoords[0].y;
-  chartCoords.slice(1).forEach(function(c){ lineD += ' L ' + c.x + ',' + c.y; });
-  svg += '<path d="' + lineD + '" fill="none" stroke="rgba(0,200,228,0.90)" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" class="ryg-line-path" pathLength="100"/>';
-
-  /* Peak & low labels */
-  chartCoords.forEach(function(c, i) {
-    const delay = (0.55 + i * 0.09).toFixed(2);
-    if (c === chartPeak) {
-      svg += '<text x="' + c.x + '" y="' + (c.y - 8) + '" font-size="9" font-weight="700" fill="#00c967" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
-    } else if (c === chartLow) {
-      svg += '<text x="' + c.x + '" y="' + (c.y + 14) + '" font-size="9" font-weight="700" fill="rgba(240,89,110,0.90)" text-anchor="middle" font-family="\'JetBrains Mono\',monospace" class="ryg-pt-label" style="animation-delay:' + delay + 's">' + c.value + '%</text>';
-    }
-  });
-
-  /* X-axis session labels */
-  chartCoords.forEach(function(c) {
-    svg += '<text x="' + c.x + '" y="' + (chartYBot + 14) + '" font-size="8" fill="rgba(255,255,255,0.22)" text-anchor="middle" font-family="\'Space Grotesk\',sans-serif">' + c.label + '</text>';
-  });
-
-  /* Unit caption */
-  svg += '<text x="' + ((chartXStart + chartXEnd) / 2) + '" y="' + (chartYBot + 28) + '" font-size="7.5" fill="rgba(255,255,255,0.12)" text-anchor="middle" letter-spacing="3" font-family="\'Space Grotesk\',sans-serif">' + data.unit + '</text>';
-
-  content.innerHTML = svg;
-
-  /* Restart entrance animations on each render (period switch) */
-  content.querySelectorAll('.ryg-line-path, .ryg-area-path, .ryg-pt, .ryg-pt-halo, .ryg-pt-label, .ryg-avg-line, .ryg-avg-label').forEach(function(el) {
-    el.style.animation = 'none';
-    void el.offsetWidth;
-    el.style.animation = '';
-  });
-}
-
-/* ─── DASHBOARD: Review Your Growth — update KPI cards + insight for period ─── */
-function renderRYGStats(period) {
-  const pd = RYG_PERIOD_DATA[period];
-  if (!pd) return;
-
-  const insightEl = document.getElementById('ryg-insight');
-  if (insightEl) {
-    insightEl.style.opacity = '0';
-    setTimeout(function() {
-      insightEl.innerHTML = pd.insight;
-      insightEl.style.opacity = '1';
-    }, 160);
-  }
-
-  pd.stats.forEach(function(s, i) {
-    const valEl = document.getElementById('ryg-stat-' + i + '-val');
-    const trendEl = document.getElementById('ryg-stat-' + i + '-trend');
-    const subEl = document.getElementById('ryg-stat-' + i + '-sub');
-    const noteEl = document.getElementById('ryg-stat-' + i + '-note');
-    const barEl = document.getElementById('ryg-stat-' + i + '-bar');
-    if (valEl) valEl.textContent = s.val;
-    if (trendEl) {
-      trendEl.textContent = s.trend;
-      trendEl.classList.remove('up', 'down');
-      trendEl.classList.add(s.dir);
-    }
-    if (subEl) subEl.textContent = s.sub;
-    if (noteEl && s.note !== undefined) noteEl.textContent = s.note;
-    if (barEl && s.bar !== undefined) barEl.style.width = s.bar + '%';
-  });
-
-  const slogTotalLbl = document.getElementById('ryg-slog-total-lbl');
-  const slogTotalVal = document.getElementById('ryg-slog-total-val');
-  if (slogTotalLbl) slogTotalLbl.textContent = pd.slogLabel;
-  if (slogTotalVal) slogTotalVal.textContent = pd.stats[0].val;
-}
-
-/* ─── DASHBOARD: Review Your Growth period toggle ─── */
-function setRYGPeriod(el, period) {
-  document.querySelectorAll('.ryg-tab').forEach(b => b.classList.remove('on'));
-  el.classList.add('on');
-  renderRYGChart(period);
-  renderRYGStats(period);
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', function() { renderRYGChart('today'); });
-} else {
-  renderRYGChart('today');
-}
-
-/* ─── DASHBOARD: Toggle Learning Journey roadmap ─── */
-function toggleMstJourney() {
-  const card = document.getElementById('mst-journey-card');
-  if (!card) return;
-  card.classList.toggle('open');
-}
-
-/* ─── DASHBOARD: Toggle analytics body visibility ─── */
-function toggleRYGAnalytics() {
-  const card  = document.querySelector('.ryg-card');
-  const panel = document.getElementById('ryg-analytics-panel');
-  const btn   = document.getElementById('ryg-toggle-btn');
-  if (!card || !panel || !btn) return;
-  const collapsed = panel.classList.toggle('ryg-hidden');
-  card.classList.toggle('ryg-focus', collapsed);
-  btn.textContent = collapsed ? 'Show Detailed Analytics ▼' : 'Hide Detailed Analytics ▲';
 }
 
 /* ─── DASHBOARD: Practice Journey Heatmap ─── */
@@ -22432,7 +21965,280 @@ html.light-mode body,
   .pj-insight-row { flex-direction:column; align-items:flex-start; }
 }
 
-/* ── Review Your Growth ── */
+/* ══════════════════════════════════════════════════════════════════
+   LEARNING JOURNEY — PREMIUM ROADMAP UPGRADE
+   Richer track, glassier nodes, layered glow, micro-interactions.
+   Additive — preserves existing structure, classes, and JS hooks.
+══════════════════════════════════════════════════════════════════ */
+
+/* Track: deeper rest state + soft inner shadow so the fill reads as
+   "light filling a channel" rather than a flat bar */
+#scr-db .mst-journey-line {
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.10), rgba(255,255,255,0.03));
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* Fill: multi-stop gradient with a brighter leading edge + ambient glow
+   that extends beyond the bar for a "charged" feel */
+#scr-db .mst-journey-line-fill {
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--grn) 0%, var(--tl2) 55%, var(--cy2) 100%);
+  box-shadow:
+    0 0 10px rgba(0,184,217,0.45),
+    0 0 26px rgba(0,184,217,0.18),
+    0 0 1px rgba(255,255,255,0.6);
+  transition: width 0.6s cubic-bezier(.4,0,.2,1);
+}
+/* Bright traveling tip at the end of the fill = "current position" */
+#scr-db .mst-journey-line-fill::after {
+  content: '';
+  position: absolute;
+  right: -1px; top: 50%;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  background: var(--cy3);
+  box-shadow: 0 0 8px rgba(68,221,239,0.9), 0 0 18px rgba(0,184,217,0.5);
+}
+
+/* Nodes: glassier dot surface with inner highlight + crisper depth */
+#scr-db .mst-jnode-dot {
+  width: 38px; height: 38px;
+  background: linear-gradient(155deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+  border: 1.5px solid rgba(255,255,255,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 4px 10px rgba(0,0,0,0.35);
+  transition: transform 0.22s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1), border-color 0.22s cubic-bezier(.4,0,.2,1);
+}
+#scr-db .mst-jnode:hover .mst-jnode-dot {
+  transform: translateY(-2px) scale(1.05);
+  border-color: rgba(0,184,217,0.30);
+}
+
+/* Done node: cleaner emerald glass, subtle ring */
+#scr-db .mst-jnode.done .mst-jnode-dot {
+  background: linear-gradient(155deg, rgba(0,201,103,0.22), rgba(0,201,103,0.06));
+  border-color: rgba(0,201,103,0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.10),
+    0 0 0 4px rgba(0,201,103,0.06),
+    0 0 16px rgba(0,201,103,0.30);
+}
+
+/* Current node: layered glow + brighter glass, calmer pulse */
+#scr-db .mst-jnode.current .mst-jnode-dot {
+  background: linear-gradient(155deg, rgba(0,184,217,0.26), rgba(0,184,217,0.08));
+  border-color: var(--cy2);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.14),
+    0 0 0 5px rgba(0,184,217,0.08),
+    0 0 22px rgba(0,184,217,0.45),
+    0 0 46px rgba(0,184,217,0.16);
+  animation: mst-jnode-pulse-v2 2.8s ease-in-out infinite;
+}
+@keyframes mst-jnode-pulse-v2 {
+  0%,100% {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      0 0 0 5px rgba(0,184,217,0.08),
+      0 0 22px rgba(0,184,217,0.45),
+      0 0 46px rgba(0,184,217,0.16);
+  }
+  50% {
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.14),
+      0 0 0 8px rgba(0,184,217,0.05),
+      0 0 30px rgba(0,184,217,0.60),
+      0 0 64px rgba(0,184,217,0.22);
+  }
+}
+
+/* Typography: tighten names, give "current" tag a pill treatment */
+#scr-db .mst-jnode-name {
+  font-weight: 650;
+  letter-spacing: 0.005em;
+  transition: color 0.18s ease;
+}
+#scr-db .mst-jnode.current .mst-jnode-name {
+  text-shadow: 0 0 18px rgba(0,184,217,0.30);
+}
+#scr-db .mst-jnode-tag {
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  letter-spacing: 0.14em;
+}
+#scr-db .mst-jnode.done .mst-jnode-tag {
+  background: rgba(0,201,103,0.10);
+  border-color: rgba(0,201,103,0.25);
+}
+#scr-db .mst-jnode.current .mst-jnode-tag {
+  background: rgba(0,184,217,0.12);
+  border-color: rgba(0,184,217,0.30);
+  box-shadow: 0 0 12px rgba(0,184,217,0.18);
+}
+
+/* Toggle header: crisper current-module readout */
+#scr-db .mst-journey-toggle-current {
+  font-weight: 500;
+}
+#scr-db .mst-journey-toggle-current b {
+  text-shadow: 0 0 14px rgba(0,184,217,0.35);
+}
+
+/* Subtle entrance polish for the body reveal */
+#scr-db .mst-journey-collapsible.open .mst-journey-body {
+  animation: mst-journey-reveal 0.45s cubic-bezier(.4,0,.2,1);
+}
+@keyframes mst-journey-reveal {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   LEARNING JOURNEY — PREMIUM POLISH PASS 2
+   Card depth, glass toggle bar, refined eyebrow/label hierarchy,
+   richer "current module" pill, subtle dynamic micro-interactions.
+   Additive — preserves structure, classes, JS hooks.
+══════════════════════════════════════════════════════════════════ */
+
+/* Card: layered ambient depth — soft top sheen + deeper cast shadow,
+   matching the hero's "raised glass panel" material */
+#scr-db .mst-journey-collapsible {
+  background:
+    radial-gradient(ellipse 80% 100% at 20% 0%, rgba(0,184,217,0.05) 0%, transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,0.020) 0%, rgba(255,255,255,0.004) 10%, transparent 28%),
+    linear-gradient(160deg, rgba(10,20,38,0.92), rgba(5,11,22,0.97));
+  border-color: rgba(0,184,217,0.13);
+  box-shadow:
+    0 1px 0 rgba(0,184,217,0.18) inset,
+    inset 0 1px 0 rgba(255,255,255,0.05),
+    0 16px 40px rgba(0,0,0,0.45);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+#scr-db .mst-journey-collapsible:hover {
+  border-color: rgba(0,184,217,0.20);
+}
+
+/* Toggle bar: glass separator + gentle highlight sweep on hover */
+#scr-db .mst-journey-toggle {
+  position: relative;
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+#scr-db .mst-journey-toggle:hover {
+  background: linear-gradient(90deg, rgba(0,184,217,0.045), rgba(0,184,217,0.01) 60%, transparent);
+}
+#scr-db .mst-journey-collapsible.open .mst-journey-toggle {
+  border-bottom-color: rgba(0,184,217,0.08);
+}
+
+/* Eyebrow label: crisper, slightly glowing premium mark */
+#scr-db .mst-journey-toggle-lbl {
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 0 16px rgba(0,184,217,0.22);
+}
+
+/* Path context: quiet, refined secondary register */
+#scr-db .mst-journey-toggle-path {
+  color: rgba(255,255,255,0.34);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+}
+
+/* "Currently on X · 45%" — give it a pill so it reads as a status
+   chip rather than plain text, with the module name as the focal
+   point */
+#scr-db .mst-journey-toggle-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: rgba(0,184,217,0.07);
+  border: 1px solid rgba(0,184,217,0.16);
+  color: rgba(255,255,255,0.50);
+  font-weight: 400;
+  transition: border-color 0.22s ease, background 0.22s ease;
+}
+#scr-db .mst-journey-toggle:hover .mst-journey-toggle-current {
+  border-color: rgba(0,184,217,0.28);
+  background: rgba(0,184,217,0.11);
+}
+#scr-db .mst-journey-toggle-current b {
+  color: var(--cy2);
+  text-shadow: 0 0 14px rgba(0,184,217,0.40);
+  font-weight: 700;
+}
+
+/* Pulse dot: tighter, more "live status" feel */
+#scr-db .mst-journey-toggle-left .mst-pulse-dot {
+  box-shadow: 0 0 8px rgba(0,184,217,0.55), 0 0 20px rgba(0,184,217,0.25);
+}
+
+/* Chevron: glassier, lifts slightly on hover for tactile feedback */
+#scr-db .mst-journey-toggle-chevron {
+  background: linear-gradient(155deg, rgba(0,184,217,0.14), rgba(0,184,217,0.04));
+  border-color: rgba(0,184,217,0.22);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1), background 0.18s ease, box-shadow 0.18s ease;
+}
+#scr-db .mst-journey-toggle:hover .mst-journey-toggle-chevron {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.10), 0 0 12px rgba(0,184,217,0.20);
+}
+
+/* Note footer: subtle top divider glow + slightly elevated copy */
+#scr-db .mst-journey-note {
+  border-top-color: rgba(0,184,217,0.07);
+  color: rgba(255,255,255,0.42);
+}
+#scr-db .mst-journey-note b {
+  color: rgba(255,255,255,0.82);
+  text-shadow: 0 0 12px rgba(0,184,217,0.18);
+}
+
+/* ── Review Your Growth — pure white text override ── */
+#scr-db .ryg-header .mst-eyebrow,
+#scr-db .ryg-insight,
+#scr-db .ryg-insight strong,
+#scr-db .ryg-insight b,
+#scr-db .ryg-tab,
+#scr-db .ryg-tab.on,
+#scr-db .ryg-toggle-btn,
+#scr-db .ryg-chart-title,
+#scr-db .ryg-chart-meta-item,
+#scr-db .ryg-chart-meta-item strong,
+#scr-db .ryg-stat-lbl,
+#scr-db .ryg-stat-val,
+#scr-db .ryg-stat-sub,
+#scr-db .ryg-stat-note,
+#scr-db #ryg-meta-peak,
+#scr-db #ryg-meta-avg,
+#scr-db #ryg-meta-trend,
+#scr-db .pj-day-lbl,
+/* Activity Heatmap */
+#scr-db .pj-heatmap-title,
+/* Your Practice Journey */
+#scr-db .pj-section .mst-eyebrow,
+#scr-db .pj-insight,
+#scr-db .pj-insight strong,
+/* Mentor Insights */
+#scr-db .mst-mentor-head .mst-eyebrow,
+#scr-db .mst-mentor-badge,
+#scr-db .mst-mp-name,
+#scr-db .mst-mp-sub,
+#scr-db .mst-mp-col-lbl,
+#scr-db .mst-mp-col-val,
+#scr-db .mst-mp-col-val.mono,
+/* Current Learning Mission */
+#scr-db .mst-hero .mst-eyebrow {
+  color:#fff !important;
+}
+
+
 .ryg-header {
   padding:18px 24px; display:flex; align-items:center; gap:16px;
   flex-wrap:wrap; border-bottom:1px solid rgba(0,184,217,0.07);
@@ -23836,7 +23642,7 @@ html.light-mode body,
    tightened so they don't visually compete with tier-2/3 metrics */
 #scr-db .mst-card4 .ecnt,
 #scr-db .err-row2-meta .ecnt {
-  font-size: 16px;
+  font-size: 16px !important;
 }
 
 /* ── PASS 5 · MENTOR INSIGHTS — STORYTELLING REFINEMENT ──────────────
@@ -23899,7 +23705,7 @@ html.light-mode body,
 /* Topbar title: more deliberate spacing, slightly dimmer so the hero
    content remains the visual entry point */
 #scr-db .tb .tb-title {
-  color: rgba(255,255,255,0.88);
+  color: rgba(255,255,255,0.88) !important;
 }
 
 /* Analytics divider: feels like a deliberate chapter break rather than
