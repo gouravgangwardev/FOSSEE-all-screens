@@ -8643,6 +8643,178 @@ body, .dv, .dk, .tb-bc span, .clbl, .pi-nm, .ctb-type, .fb-v, .seq-v,
 .light-mode .cl-meta { color: rgba(0,0,0,0.55) !important; }
 
 /* ════ END TEXT VISIBILITY IMPROVEMENT PASS ════ */
+
+
+/* ══════════════════════════════════════════════════════════════════
+   TERMINAL — VISUALLY DISTINCT FROM CODE EDITOR (v3 Workspace)
+   Different surface tone, strong top separator, red-accented tab
+   bar when error is active, brighter prompt and error colours.
+══════════════════════════════════════════════════════════════════ */
+
+/* ── Terminal container ── */
+#scr-ws .term {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(107,110,216,0.013) 2px,
+      rgba(107,110,216,0.013) 4px
+    ),
+    linear-gradient(180deg,
+      rgba(10,7,28,0.99) 0%,
+      rgba(7,5,22,0.995) 60%,
+      rgba(5,4,18,1.00) 100%
+    ) !important;
+  border-top: 3px solid rgba(107,110,216,0.60) !important;
+  box-shadow:
+    0 -8px 40px rgba(79,82,196,0.18),
+    0 -2px 12px rgba(107,110,216,0.22),
+    inset 0 1px 0  rgba(144,150,232,0.10),
+    inset 0 0  60px rgba(79,82,196,0.04) !important;
+  height: 160px !important;
+  position: relative !important;
+  padding: 0 !important;
+}
+
+/* Top glow seam */
+#scr-ws .term::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(144,150,232,0.70) 30%,
+    rgba(180,185,245,0.90) 50%,
+    rgba(144,150,232,0.70) 70%,
+    transparent
+  );
+  border-radius: 0 0 50% 50%;
+  pointer-events: none;
+}
+
+/* Left accent strip */
+#scr-ws .term::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg,
+    rgba(144,150,232,0.90) 0%,
+    rgba(107,110,216,0.50) 40%,
+    rgba(79,82,196,0.15)  80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ── Tab bar ── */
+#scr-ws .term-tabs {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  height: 32px !important;
+  padding: 0 12px 0 14px !important;
+  background: linear-gradient(90deg,
+    rgba(18,12,48,0.95) 0%,
+    rgba(12,8,36,0.92) 100%
+  ) !important;
+  border-bottom: 1px solid rgba(107,110,216,0.28) !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+}
+
+/* CONSOLE badge */
+#scr-ws .term .term-badge {
+  font-family: var(--ff-d) !important;
+  font-size: 9px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
+  color: var(--in2) !important;
+  background: rgba(79,82,196,0.14) !important;
+  border: 1px solid rgba(107,110,216,0.35) !important;
+  border-radius: 4px !important;
+  padding: 2px 7px !important;
+  margin-right: 6px !important;
+  text-shadow: 0 0 10px rgba(107,110,216,0.55) !important;
+  box-shadow: 0 0 8px rgba(79,82,196,0.18), inset 0 0 6px rgba(107,110,216,0.06) !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* Inactive tabs */
+#scr-ws .term .tt {
+  color: rgba(180,185,220,0.28) !important;
+  font-size: 9.5px !important;
+  letter-spacing: 0.08em !important;
+  padding: 2px 0 !important;
+  transition: color .18s !important;
+}
+#scr-ws .term .tt:hover {
+  color: rgba(180,185,220,0.55) !important;
+}
+
+/* Active error tab */
+#scr-ws .term .tt.on {
+  color: var(--red2) !important;
+  text-shadow: 0 0 10px rgba(232,48,78,0.60), 0 0 24px rgba(232,48,78,0.22) !important;
+  font-weight: 600 !important;
+}
+
+/* Clear / Copy utility spans */
+#scr-ws .term-tabs > span {
+  color: rgba(180,185,220,0.40) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.05em !important;
+  cursor: pointer !important;
+  transition: color .15s !important;
+}
+#scr-ws .term-tabs > span:hover {
+  color: rgba(180,185,220,0.85) !important;
+}
+
+/* Content area padding */
+#scr-ws .term > div:not(.term-tabs) {
+  padding: 8px 14px 6px 18px !important;
+  line-height: 1.7 !important;
+}
+
+/* ── Prompt ($) ── */
+#scr-ws .term .tp {
+  color: var(--in3) !important;
+  text-shadow: 0 0 12px rgba(144,150,232,0.55), var(--gvio2) !important;
+  font-weight: 700 !important;
+  margin-right: 6px !important;
+}
+
+/* Command text next to $ */
+#scr-ws .term > div:not(.term-tabs):first-of-type {
+  color: rgba(210,215,240,0.82) !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* ── Error line ── */
+#scr-ws .term .te {
+  color: var(--red2) !important;
+  text-shadow: 0 0 12px rgba(232,48,78,0.45) !important;
+  font-weight: 600 !important;
+  background: rgba(232,48,78,0.06) !important;
+  border-left: 2px solid rgba(232,48,78,0.45) !important;
+  padding-left: 8px !important;
+  margin-left: -8px !important;
+  border-radius: 0 2px 2px 0 !important;
+}
+
+/* ── Trace / file path lines ── */
+#scr-ws .term .ttr {
+  color: rgba(160,165,210,0.42) !important;
+  font-size: 10px !important;
+}
+
+/* ════ END TERMINAL DIFFERENTIATION ════ */
 </style>
 
 <!-- ══════════════════════════════════════════════════════════
@@ -15590,7 +15762,7 @@ html.light-mode .tb,
         <div class="cl_"><div class="ln">8</div><div class="ct_"><span class="cf_">count_up</span>(n)</div></div>
       </div>
       <div class="term">
-        <div class="term-tabs"><div class="tt">Output</div><div class="tt">Terminal</div><div class="tt on">• SyntaxError</div>
+        <div class="term-tabs"><span class="term-badge">⬡ CONSOLE</span><div class="tt">Output</div><div class="tt">Terminal</div><div class="tt on">• SyntaxError</div>
           <span style="margin-left:auto;color:rgba(255,255,255,0.88);font-size:9.5px;cursor:pointer">Clear</span>
           <span style="color:rgba(255,255,255,0.88);font-size:9.5px;cursor:pointer;margin-left:8px">Copy</span>
         </div>
@@ -23832,9 +24004,16 @@ html.light-mode body,
    text in the Workspace screen are set to solid #ffffff.
 ══════════════════════════════════════════════════════════════════ */
 
+/* Problem Panel — Question 12 number */
+#scr-ws .ws-prob .qnum {
+  color: var(--cy2) !important;
+  text-shadow: 0 0 18px rgba(23,204,224,0.35) !important;
+}
+
 /* Problem Panel — section labels: Problem Statement / Example / Constraints */
 #scr-ws .ws-prob .stl {
-  color: #ffffff !important;
+  color: var(--amb2) !important;
+  text-shadow: 0 0 12px rgba(235,184,58,0.30) !important;
 }
 
 /* Problem Panel — problem statement body text */
@@ -23842,8 +24021,13 @@ html.light-mode body,
   color: #ffffff !important;
 }
 
-/* Problem Panel — Input / Output labels and values */
-#scr-ws .ws-prob .io-lbl,
+/* Problem Panel — Input / Output labels */
+#scr-ws .ws-prob .io-lbl {
+  color: var(--tl2) !important;
+  text-shadow: 0 0 10px rgba(30,196,178,0.28) !important;
+}
+
+/* Problem Panel — Input / Output values */
 #scr-ws .ws-prob .io-v {
   color: #ffffff !important;
 }
@@ -23955,5 +24139,68 @@ html.light-mode body,
 }
 
 /* ════ END AI PANEL ACCORDION ALIGNMENT ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   FEEDBACK PANEL — DISTINCT SURFACE LAYER
+   Visually separates the AI feedback column (.ws-ap) from the
+   coding workspace: its own elevated surface tone, a stronger
+   divider against the editor, and a soft shadow so it reads as a
+   separate, system-generated layer at first glance. Layout,
+   dimensions, transitions, text and functionality are unchanged —
+   purely a surface/elevation treatment using existing design tokens.
+══════════════════════════════════════════════════════════════════ */
+
+#scr-ws .ws-ap,
+#ws-ap-panel {
+  background:
+    linear-gradient(180deg, rgba(8,16,34,0.97), rgba(5,10,24,0.985)) !important;
+  border-left: 1px solid rgba(0,184,217,0.22) !important;
+  box-shadow:
+    -10px 0 28px rgba(0,0,0,0.45),
+    -1px 0 0 rgba(0,184,217,0.06),
+    inset 1px 0 0 rgba(255,255,255,0.02) !important;
+  position: relative !important;
+}
+
+/* Subtle cyan seam along the divider for extra definition */
+#scr-ws .ws-ap::before,
+#ws-ap-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(0,184,217,0.30) 12%, rgba(0,184,217,0.12) 50%, transparent 90%);
+  pointer-events: none;
+}
+
+.light-mode #scr-ws .ws-ap,
+.light-mode #ws-ap-panel {
+  background: linear-gradient(180deg, #EFE7D8, #E8DFD0) !important;
+  border-left: 1px solid rgba(148,163,184,0.28) !important;
+  box-shadow:
+    -10px 0 24px rgba(15,23,42,0.10),
+    -1px 0 0 rgba(148,163,184,0.10) !important;
+}
+
+.light-mode #scr-ws .ws-ap::before,
+.light-mode #ws-ap-panel::before {
+  background: linear-gradient(180deg, transparent, rgba(148,163,184,0.35) 12%, rgba(148,163,184,0.14) 50%, transparent 90%);
+}
+
+/* ════ END FEEDBACK PANEL DISTINCT SURFACE ════ */
+
+/* ══════════════════════════════════════════════════════════════════
+   DESIGN SYSTEM COLOURS — WORKSPACE V3 LABELS
+   Adaptive Hint Available label uses emerald green
+══════════════════════════════════════════════════════════════════ */
+
+#scr-ws .ws-prob .hnt-lbl {
+  color: var(--grn) !important;
+  text-shadow: 0 0 10px rgba(0,201,103,0.35) !important;
+}
+
+/* ════ END DESIGN SYSTEM COLOURS — WORKSPACE V3 LABELS ════ */
 
 </style>
